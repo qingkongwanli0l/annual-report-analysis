@@ -1,0 +1,9 @@
+{
+  "name": "annual-report-analysis-export",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}

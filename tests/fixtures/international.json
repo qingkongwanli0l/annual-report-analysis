@@ -1,0 +1,130 @@
+[
+  {
+    "company": {
+      "name": "Tencent Holdings Limited",
+      "identifier": "00700.HK",
+      "market": "Hong Kong",
+      "industry": "non-financial",
+      "accounting_standard": "IFRS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "prior_period_start": "2023-01-01",
+      "prior_period_end": "2023-12-31",
+      "display_unit": "人民币百万元",
+      "display_multiplier": "1000000",
+      "language": "zh"
+    },
+    "sources": [
+      {
+        "id": "tencent2024",
+        "title": "Tencent Annual Report 2024",
+        "url": "https://static.www.tencent.com/uploads/2025/04/08/1132b72b565389d1b913aea60a648d73.pdf",
+        "published": null,
+        "sha256": "95b0652da8294527d150a56a9de293627b53e73b4a4c21202c153ea6eb4e9134",
+        "locator": "PDF p. 124 / printed p. 123, consolidated income statement; PDF p. 136 / printed p. 135, Note 2.1"
+      }
+    ],
+    "facts": [
+      {
+        "id": "revenue_2024", "metric": "revenue", "label": "收入",
+        "value": "660257", "raw_value": "660,257", "currency": "CNY", "unit_multiplier": "1000000",
+        "period_start": "2024-01-01", "period_end": "2024-12-31", "scope": "consolidated", "standard": "IFRS",
+        "source_id": "tencent2024", "locator": "PDF p. 124 / printed p. 123, consolidated income statement, Revenues total, 2024 column",
+        "restated": false, "basis": "reported"
+      },
+      {
+        "id": "revenue_2023", "metric": "revenue", "label": "收入（比较期）",
+        "value": "609015", "raw_value": "609,015", "currency": "CNY", "unit_multiplier": "1000000",
+        "period_start": "2023-01-01", "period_end": "2023-12-31", "scope": "consolidated", "standard": "IFRS",
+        "source_id": "tencent2024", "locator": "PDF p. 124 / printed p. 123, consolidated income statement, Revenues total, 2023 column",
+        "restated": false, "basis": "reported"
+      },
+      {
+        "id": "net_income_2024", "metric": "net_income", "label": "年度利润（含非控股权益）",
+        "value": "196467", "raw_value": "196,467", "currency": "CNY", "unit_multiplier": "1000000",
+        "period_start": "2024-01-01", "period_end": "2024-12-31", "scope": "consolidated", "standard": "IFRS",
+        "source_id": "tencent2024", "locator": "PDF p. 124 / printed p. 123, consolidated income statement, profit for the year, 2024 column",
+        "restated": false, "basis": "reported"
+      },
+      {
+        "id": "parent_net_income_2024", "metric": "parent_net_income", "label": "归属于本公司权益持有人的利润",
+        "value": "194073", "raw_value": "194,073", "currency": "CNY", "unit_multiplier": "1000000",
+        "period_start": "2024-01-01", "period_end": "2024-12-31", "scope": "consolidated", "standard": "IFRS",
+        "source_id": "tencent2024", "locator": "PDF p. 124 / printed p. 123, consolidated income statement, attributable to equity holders, 2024 column",
+        "restated": false, "basis": "reported"
+      }
+    ],
+    "coverage": [
+      {"section": "合并损益表", "status": "partial", "source_id": "tencent2024", "locator": "PDF p. 124 / printed p. 123", "note": "仅人工核对四个金额和表头期间、单位。"},
+      {"section": "编制基础", "status": "partial", "source_id": "tencent2024", "locator": "PDF p. 136 / printed p. 135, Note 2.1", "note": "核对 IFRS Accounting Standards；未检查全部会计政策。"}
+    ],
+    "analysis": {
+      "summary": [],
+      "sections": [{"title": "样例口径", "items": [{"text": "合并报表按 IFRS 编制，金额为人民币百万元；净利率采用含非控股权益的年度利润。", "kind": "fact", "evidence": ["source:tencent2024", "fact:net_income_2024"]}]}],
+      "questions": [],
+      "limitations": ["这是四个金额及两个比率的抽查样例，未核对整份年报、资产负债表或现金流量表。", "比较金额取自同一份 2024 年报，未开展跨报告重述核查；未使用 non-IFRS 利润替代法定报表利润。"]
+    }
+  },
+  {
+    "company": {
+      "name": "Apple Inc.",
+      "identifier": "AAPL",
+      "market": "US",
+      "industry": "non-financial",
+      "accounting_standard": "US GAAP",
+      "scope": "consolidated",
+      "currency": "USD",
+      "period_start": "2023-10-01",
+      "period_end": "2024-09-28",
+      "prior_period_start": "2022-09-25",
+      "prior_period_end": "2023-09-30",
+      "display_unit": "百万美元",
+      "display_multiplier": "1000000",
+      "language": "zh"
+    },
+    "sources": [
+      {
+        "id": "apple2024",
+        "title": "Apple 2024 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm",
+        "published": "2024-11-01",
+        "locator": "Printed p. 29, consolidated statements of operations; p. 34, Note 1; p. 48, audit opinion; p. 27, foreign exchange risk (U.S. dollar presentation)"
+      }
+    ],
+    "facts": [
+      {
+        "id": "revenue_2024", "metric": "revenue", "label": "销售净额",
+        "value": "391035", "raw_value": "391,035", "currency": "USD", "unit_multiplier": "1000000",
+        "period_start": "2023-10-01", "period_end": "2024-09-28", "scope": "consolidated", "standard": "US GAAP",
+        "source_id": "apple2024", "locator": "Printed p. 29, consolidated statements of operations, total net sales, year ended September 28, 2024",
+        "restated": false, "basis": "reported"
+      },
+      {
+        "id": "revenue_2023", "metric": "revenue", "label": "销售净额（比较财年）",
+        "value": "383285", "raw_value": "383,285", "currency": "USD", "unit_multiplier": "1000000",
+        "period_start": "2022-09-25", "period_end": "2023-09-30", "scope": "consolidated", "standard": "US GAAP",
+        "source_id": "apple2024", "locator": "Printed p. 29, consolidated statements of operations, total net sales, year ended September 30, 2023",
+        "restated": false, "basis": "reported"
+      },
+      {
+        "id": "net_income_2024", "metric": "net_income", "label": "净利润",
+        "value": "93736", "raw_value": "93,736", "currency": "USD", "unit_multiplier": "1000000",
+        "period_start": "2023-10-01", "period_end": "2024-09-28", "scope": "consolidated", "standard": "US GAAP",
+        "source_id": "apple2024", "locator": "Printed p. 29, consolidated statements of operations, net income, year ended September 28, 2024",
+        "restated": false, "basis": "reported"
+      }
+    ],
+    "coverage": [
+      {"section": "合并利润表", "status": "partial", "source_id": "apple2024", "locator": "Printed p. 29", "note": "仅人工核对三个金额、表头期间和百万计量单位；p. 27 说明美元列示。"},
+      {"section": "财年与编制基础", "status": "partial", "source_id": "apple2024", "locator": "Printed pp. 34 and 48", "note": "核对合并口径、52/53 周财年及 US GAAP 审计意见。"}
+    ],
+    "analysis": {
+      "summary": [],
+      "sections": [{"title": "样例口径", "items": [{"text": "公司按 US GAAP 编制合并报表。FY2024 为 52 周，FY2023 为 53 周；本样例的收入同比直接比较披露财年金额，未调整额外一周的影响。", "kind": "fact", "evidence": ["source:apple2024"]}]}],
+      "questions": [],
+      "limitations": ["这是三个金额及两个比率的抽查样例，未核对整份年报、资产负债表或现金流量表。", "比较金额来自同一份 2024 Form 10-K；附注说明部分比较数据重分类，未另行核对前次报告，也未将其描述为未经重分类的原始金额。", "财年期间不同于自然年；收入同比包含 52 周对 53 周的期间长度差异。"]
+    }
+  }
+]
