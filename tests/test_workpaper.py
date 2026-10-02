@@ -87,6 +87,38 @@ class WorkpaperTests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, 'published after'):
             Workpaper.model_validate(self.data)
 
+    def test_historical_comparison_cannot_be_relabelled_as_next_year(self):
+        growth = next(c for c in self.data['calculations'] if c['op'] == 'growth')
+        growth['context'].update(start='2026-01-01', end='2026-12-31')
+        c, _ = self.evaluate()
+        self.assertIsNone(c[growth['id']]['value'])
+        self.assertIn('current input', c[growth['id']]['reason'])
+
+    def test_balance_growth_can_describe_the_intervening_year(self):
+        growth = next(c for c in self.data['calculations'] if c['op'] == 'growth')
+        for term in growth['terms']:
+            self.fact(term['ref'])['context'].update(start=None, aggregation='instant')
+        c, _ = self.evaluate()
+        self.assertEqual(c[growth['id']]['status'], 'calculated')
+        growth['context']['start'] = '2025-06-01'
+        c, _ = self.evaluate()
+        self.assertEqual(c[growth['id']]['status'], 'not_calculated')
+
+    def test_dimensionless_driver_cannot_change_physical_units(self):
+        ctx = dict(self.data['facts'][0]['context'], measure='count', currency=None,
+                   physical_unit='GWh', aggregation='flow', start='2025-01-01', end='2025-12-31', scale='1')
+        self.data['facts'].extend([
+            dict(id='volume_probe', label='Volume', concept='volume', value='100', context=ctx,
+                 evidence=[], state='assumption', note='Constructed unit probe'),
+            dict(id='driver_probe', label='Driver', concept='driver', value='1.2',
+                 context=dict(ctx, measure='ratio', physical_unit=None, aggregation='assumption'),
+                 evidence=[], state='assumption', note='Constructed dimensionless driver')])
+        self.data['calculations'].append(dict(id='product_probe', label='Mismatched output', op='product',
+            terms=[dict(ref='volume_probe'), dict(ref='driver_probe')], context=dict(ctx, physical_unit='shares'),
+            definition='100 GWh times 1.2', interpretation='Cannot become shares', period_rule='forecast'))
+        c, _ = self.evaluate()
+        self.assertIsNone(c['product_probe']['value'])
+
     def test_unknown_publication_date_remains_unknown_and_visible(self):
         self.data['sources'][0]['published'] = None
         self.data['sources'][0]['availability_note'] = 'Uploaded PDF gives a month and approval date, not an announcement date'

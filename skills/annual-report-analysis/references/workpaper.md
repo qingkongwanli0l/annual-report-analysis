@@ -85,7 +85,9 @@ Node 不在 PATH 时给 `--node /absolute/path/to/node`。运行结果列未计�
 
 `reconciliations.tolerance` 采用基础单位：人民币千元披露中容许2千元舍入差写 `2000`，并说明所依据的显示精度、加总行数及运算；审计重要性或净资产百分比不能充当舍入依据。结果 `within_input_tolerance` 仅表示残差未超过输入阈值，不证明该阈值合理、差额确由舍入造成或不存在遗漏。差额不是自动认定错报，超出容差需要逐项查原因，不能靠扩大容差关闭。
 
-结论中的动态数值写 `{{gross_profit}}`，导出时自动代入数值和单位；记录 ID 保留在表格及证据链。重要数值不要在自由文本手工复制。各 `evidence`/`counterevidence` 可以引用 evidence、fact、calculation ID；沿计算输入追溯原文。
+Excel 金额残差按两端 Decimal 基础单位结果保留的小数位计算 ROUND（取较细者，至少到基础单位个位），小数位在 Reconciliations J 列公开。该处理只消除二进制算术尾差，不增加容差；例如精确到分的零差额仍为零，真实一分差额仍保留。原始值和计算值不会按单元格显示格式截断。若编辑输入时提高了小数精度，须重跑导出；Excel 的有效数字限制仍存在，高精度结果以 Python Decimal 复算为依据。
+
+结论、程序结果及步骤、资料请求等分析叙述中的动态数值写 `{{gross_profit}}`，导出时自动代入数值和单位；未知 ID 会报错。原文证据不做这种替换。记录 ID 保留在表格及证据链。重要数值不要在自由文本手工复制。各 `evidence`/`counterevidence` 可以引用 evidence、fact、calculation ID；沿计算输入追溯原文。
 
 ## 模型和复核
 

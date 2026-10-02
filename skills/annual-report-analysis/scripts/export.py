@@ -61,10 +61,21 @@ def prepare(w, result):
     unknown_dates = [s.id for s in w.sources if s.published is None]
     if unknown_dates:
         data["mandate"]["limitations"].append("来源 "+", ".join(unknown_dates)+" 的正式公布日期未核验；不得据此证明在信息截止日前已公开。当前披露内容可以继续分析，历史时点结论须补充公告时间证据。")
-    for finding in data["findings"]:
-        for key in ("title", "question", "conclusion", "mechanism", "changes_if"):
-            finding[key] = resolve(finding[key])
-        finding["alternatives"] = [resolve(x) for x in finding["alternatives"]]
+    narrative_fields = {
+        "findings": ("title", "question", "conclusion", "mechanism", "changes_if", "alternatives"),
+        "procedures": ("purpose", "assertions", "population", "selection", "steps", "result"),
+        "requests": ("request", "reason", "close_when"),
+        "sections": ("title",),
+        "quantitative": ("label", "assumptions", "limitations"),
+    }
+    for group, keys in narrative_fields.items():
+        for record in data[group]:
+            for key in keys:
+                value = record[key]
+                record[key] = [resolve(x) for x in value] if isinstance(value, list) else resolve(value)
+    for key in ("title", "purpose"):
+        data["mandate"][key] = resolve(data["mandate"][key])
+    data["mandate"]["limitations"] = [resolve(x) for x in data["mandate"]["limitations"]]
     data["figures"] = figures
     data["results"] = result
     return data
@@ -72,7 +83,7 @@ def prepare(w, result):
 
 def workbook(w, data, path):
     with xlsxwriter.Workbook(path, {"strings_to_formulas": False, "strings_to_urls": False}) as book:
-        book.set_properties({"title": w.mandate.title, "comments": f"Workpaper {w.mandate.version}"})
+        book.set_properties({"title": data["mandate"]["title"], "comments": f"Workpaper {w.mandate.version}"})
         head = book.add_format({"bold": True, "bg_color": "#213B45", "font_color": "white", "text_wrap": True})
         wrap = book.add_format({"text_wrap": True, "valign": "top"})
         number = book.add_format({"num_format": "#,##0.00;[Red](#,##0.00)"})
@@ -92,10 +103,11 @@ def workbook(w, data, path):
             return ws
 
         sheet("Readme", ["字段 / field", "内容 / value"], [
-            ["任务", w.mandate.title], ["版本", w.mandate.version], ["信息截止", str(w.mandate.cutoff)],
+            ["任务", data["mandate"]["title"]], ["版本", w.mandate.version], ["信息截止", str(w.mandate.cutoff)],
             ["范围", w.mandate.scope], ["准则", w.mandate.accounting_basis],
             ["单位", "Facts D=原始值，E=倍数，F=基础单位。Calculations D=基础单位，E=展示值。"],
             ["复算", "数值公式可编辑；修改主体、期间、币种、规则或资料后须重跑 export.py 复核口径。"],
+            ["勾稽精度", "金额残差按本次Decimal输入/计算保留的小数位ROUND，消除Excel二进制尾差，不改变业务容差；提高输入小数精度后须重跑导出。"],
             ["缺口", "空值不是零。未执行程序、假设与已披露数据分别标识。"],
             *[["限制", x] for x in data["mandate"]["limitations"]]], [22, 110])
         rows = []
@@ -140,12 +152,20 @@ def workbook(w, data, path):
                 ws.write_formula(i-1, 4, "=NA()", number, "#N/A")
             cells[c.id] = f"'Calculations'!D{i}"
         checks = {r["id"]: r for r in data["results"]["reconciliations"]}
+        normalized = {f.id: f.value*f.context.scale if f.value is not None else None for f in w.facts}
+        normalized.update({key: Decimal(r["normalized"]) if r["normalized"] is not None else None for key, r in rs.items()})
         rows = [[r.id, r.label, r.actual, r.expected, None, float(r.tolerance), checks[r.id]["status"], r.basis, checks[r.id]["reason"]] for r in w.reconciliations]
-        ws = sheet("Reconciliations", ["ID", "勾稽", "实际", "目标", "残差 基础单位", "容差 基础单位", "状态", "容差依据", "未测试原因"], rows)
+        ws = sheet("Reconciliations", ["ID", "勾稽", "实际", "目标", "残差 基础单位", "容差 基础单位", "状态", "容差依据", "未测试原因", "金额残差小数位"], rows)
         for i, r in enumerate(w.reconciliations, 2):
             value = checks[r.id]["residual"]
             if reconciliation_matches(records[r.actual], records[r.expected]):
-                ws.write_formula(i-1, 4, f"={cells[r.actual]}-{cells[r.expected]}", number, float(value) if value is not None else "#N/A")
+                expr = f"{cells[r.actual]}-{cells[r.expected]}"
+                amounts = [normalized[r.actual], normalized[r.expected]]
+                if records[r.actual].context.measure == "money" and all(v is not None for v in amounts):
+                    places = max(0, *(-v.as_tuple().exponent for v in amounts))
+                    ws.write_number(i-1, 9, places)
+                    expr = f"ROUND({expr},J{i})"
+                ws.write_formula(i-1, 4, "="+expr, number, float(value) if value is not None else "#N/A")
                 ws.write_formula(i-1, 6, f'=IF(COUNT(E{i},F{i})<2,"not_tested",IF(ABS(E{i})<=F{i},"within_input_tolerance","unexplained_difference"))', wrap, checks[r.id]["status"])
                 ws.write_formula(i-1, 8, f'=IF(ISNUMBER(E{i}),"","missing or unavailable input")', wrap, checks[r.id]["reason"])
         sheet("Sources", ["ID", "文件", "链接", "公布日期", "SHA256", "时间证据与限制"],
@@ -156,10 +176,10 @@ def workbook(w, data, path):
               [[f["id"], f["question"], f["conclusion"], f["mechanism"], f["status"], ", ".join(f["evidence"]),
                 ", ".join(f["counterevidence"]), "\n".join(f["alternatives"]), f["changes_if"]] for f in data["findings"]], [18,45,85,75,18,35,35,75,75])
         sheet("Procedures", ["ID", "事项", "目的与认定", "总体", "选取", "步骤", "状态", "实际结果", "证据", "执行者日期"],
-              [[p.id, p.finding, p.purpose+" / "+", ".join(p.assertions), p.population, p.selection,
-                "\n".join(p.steps), p.status, p.result, ", ".join(p.evidence), f"{p.performed_by or ''} {p.performed_on or ''}"] for p in w.procedures])
+              [[p["id"], p["finding"], p["purpose"]+" / "+", ".join(p["assertions"]), p["population"], p["selection"],
+                "\n".join(p["steps"]), p["status"], p["result"], ", ".join(p["evidence"]), f"{p['performed_by'] or ''} {p['performed_on'] or ''}"] for p in data["procedures"]])
         sheet("Requests", ["ID", "事项", "所需资料", "影响", "责任角色", "关闭条件"],
-              [[r.id, r.finding, r.request, r.reason, r.owner_role, r.close_when] for r in w.requests], [18,18,75,70,30,75])
+              [[r["id"], r["finding"], r["request"], r["reason"], r["owner_role"], r["close_when"]] for r in data["requests"]], [18,18,75,70,30,75])
         for index, q in enumerate(w.quantitative, 1):
             if q.method == "operating_cash_scenario_v1":
                 scenario_sheets(book, sheet, q.artifact, f"Q{index}", number)
@@ -182,8 +202,8 @@ def workbook(w, data, path):
                                          float(r["recovery_rate"]) if r["recovery_rate"] is not None else "#N/A")
                     ws.merge_range(len(totals)+3, 0, len(totals)+4, 6, "回收分配是已运行结果快照；这里只联动合计、未偿和比例。修改估值、债权或顺位后，重跑 recovery.py 与 export.py，不在本表重新分配。", wrap)
             sheet(f"Quant{index}Notes", ["field", "value"], [["method", q.method], ["as_of", str(q.as_of)],
-                  ["input references", ", ".join(q.input_refs)], ["assumptions", "\n".join(q.assumptions)],
-                  ["limitations", "\n".join(q.limitations)], ["reproduction", f"See quantitative-{q.id}.json input_snapshot and method version"]], [28,110])
+                  ["input references", ", ".join(q.input_refs)], ["assumptions", "\n".join(data["quantitative"][index-1]["assumptions"])],
+                  ["limitations", "\n".join(data["quantitative"][index-1]["limitations"])], ["reproduction", f"See quantitative-{q.id}.json input_snapshot and method version"]], [28,110])
 
 
 def scenario_sheets(book, sheet, artifact, prefix, number):
@@ -211,6 +231,12 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             "capex", "drawdown", "principal", "dividends", "cash_begin", "cash_end", "debt_begin", "debt_end",
             "cash_headroom", "funding_needed_to_floor", "interest_coverage", "debt_to_ebitda", "status"]
     cash = sheet(prefix+"Cash", keys, [])
+    cash.set_landscape()
+    cash.set_paper(9)
+    cash.repeat_rows(0)
+    cash.repeat_columns(0)
+    cash.print_area(0, 0, len(snapshot["periods"]), len(keys)-1)
+    cash.set_header(f"&L{prefix}Cash&R{snapshot['currency']} × {snapshot['amount_scale']:g}")
     output = {r["period_end"]: r for r in artifact["rows"]}
     for i, period in enumerate(snapshot["periods"], 2):
         d = lambda col: f"'{prefix}Drivers'!{col}{i}"
@@ -347,6 +373,7 @@ def word(data, path):
         t._tbl.tblPr.append(borders)
         for cell, text in zip(t.rows[0].cells, headers):
             cell.text = text
+            cell.paragraphs[0].paragraph_format.keep_with_next = True
             shading = OxmlElement("w:shd")
             shading.set(qn("w:fill"), "E6EEF0")
             cell._tc.get_or_add_tcPr().append(shading)

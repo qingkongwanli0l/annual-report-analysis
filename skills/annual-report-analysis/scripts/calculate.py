@@ -82,7 +82,7 @@ def context_error(c, inputs):
         return "division output must be a ratio or explicitly defined turnover days"
     if c.op == "product":
         nonratio = [x for x in ctx if x.measure != "ratio"]
-        if len(nonratio) > 1 or (nonratio and (out.measure, out.currency) != (nonratio[0].measure, nonratio[0].currency)):
+        if len(nonratio) > 1 or (nonratio and (out.measure, out.currency, out.physical_unit) != (nonratio[0].measure, nonratio[0].currency, nonratio[0].physical_unit)):
             return "product supports a quantity multiplied by a dimensionless driver"
         if not nonratio and out.measure != "ratio":
             return "two ratios must produce a ratio"
@@ -99,6 +99,9 @@ def context_error(c, inputs):
     if c.period_rule == "comparison":
         if len(ctx) != 2 or ctx[0].end <= ctx[1].end or ctx[0].aggregation != ctx[1].aggregation:
             return "comparison requires current and earlier comparable periods"
+        starts = (ctx[0].start,) if ctx[0].start else (None, ctx[1].end+timedelta(days=1))
+        if out.end != ctx[0].end or out.start not in starts:
+            return "comparison output period must match the current input"
         if bool(ctx[0].start) != bool(ctx[1].start):
             return "cannot compare a period with an instant"
         if ctx[0].start and abs((ctx[0].end-ctx[0].start).days - (ctx[1].end-ctx[1].start).days) > 1:
