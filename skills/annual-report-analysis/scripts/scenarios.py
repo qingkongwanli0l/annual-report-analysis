@@ -101,6 +101,8 @@ class Scenario(Input):
                 raise ValueError("reverse bounds must be increasing non-negative driver values")
             if self.reverse.test_date not in [p.end for p in self.periods]:
                 raise ValueError("reverse test_date must be a forecast period end")
+            if self.periods[self.reverse.period_index].end > self.reverse.test_date:
+                raise ValueError("reverse driver period cannot follow the cash test date")
         if self.opening.available_at < self.opening.date:
             raise ValueError("opening actual balances cannot be public before their measurement date")
         if self.opening.date > self.as_of or any(x.available_at > self.as_of for x in sourced):
@@ -125,7 +127,7 @@ def _project(s):
         ar_end = revenue * p.dso / days
         inv_end = cost * p.dio / days
         purchases = cost + inv_end - inventory
-        if s.payables_denominator == "purchases" and purchases < 0:
+        if purchases < 0:
             raise ValueError("negative implied purchases: supplied inventory path is not feasible")
         ap_base = cost if s.payables_denominator == "cost_of_sales" else purchases
         ap_end = ap_base * p.dpo / days
@@ -187,6 +189,10 @@ def _reverse(s):
 
     low, high = target.bounds
     a, b = objective(low), objective(high)
+    if a == 0 and b == 0:
+        return {"status": "not_identified", "definition": target.definition,
+                "bounds": [low, high], "endpoint_cash_residuals": [a, b],
+                "reason": "both bounds already meet the cash target; no unique driver boundary established"}
     if a * b > 0:
         return {"status": "not_bracketed", "definition": target.definition,
                 "bounds": [low, high], "endpoint_cash_residuals": [a, b],

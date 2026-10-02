@@ -23,7 +23,7 @@ Node 不在 PATH 时给 `--node /absolute/path/to/node`。运行结果列未计�
 | 记录 | 实际用途 |
 |---|---|
 | mandate | 标题、实体、行业、目的、期间、资料截止日、准则、范围、语言、版本、方法版本和任务限制 |
-| sources | 文件/网页 ID、标题、正式 URL、公布日期，PDF 的 SHA256 |
+| sources | 文件/网页 ID、标题、正式 URL 或上传文件路径、公布日期（未核验填 null）、availability_note 时间依据与限制，PDF 的 SHA256 |
 | evidence | 来源 ID、PDF 页码及印刷页/附注/表/行、实际观察与可靠性限制；文字事实也在此保存 |
 | facts | 原始科目、统一概念名、原值、context、证据 IDs；reported/restated/assumption/missing 状态和调整或缺失说明 |
 | calculations | 引用事实或前序计算的确定性运算、结果口径、定义、经济解释边界；禁止直接提供计算结果 |
@@ -35,6 +35,8 @@ Node 不在 PATH 时给 `--node /absolute/path/to/node`。运行结果列未计�
 | quantitative | 场景/面板/回收脚本结果，输入事实和证据、假设、限制、方法、截至日及含输入快照的 artifact |
 
 `performed` 程序必须有本次真实执行者、日期和结果证据；不能填写原审计师名称来表示本次执行。缺资料时用 `awaiting_data`，已做但证据不足用 `limited`，纯计划用 `planned`。程序的字段完整不能证明证据充分，结论仍按专业方法评估。
+
+上传文件没有精确公告日期时，`sources.published=null`，在 `availability_note` 记录已知信息；批准报出日、审计签署日和封面月份不能代替公告日。导出器会保留时间未核验限制，不阻止当前内容分析，也不能因此声称历史时点可用性已验证。时点研究仍需取得真实公告证据；`panel.py` 的可用时间不允许用占位日期填充。
 
 每个事实/计算的 `context` 包含：
 
@@ -75,11 +77,15 @@ Node 不在 PATH 时给 `--node /absolute/path/to/node`。运行结果列未计�
 
 `period_rule`：same 为相同期间；comparison 为本期与上期、相同统计方式和等长期间；rollforward 为期初/本期变动/期末；balance_flow 为同终点的余额及期间流量；forecast 用于显式假设驱动。平均余额专用 `average_balance`，要求同概念、真实期初前一天和期末。规则表示计算所需的关系，不能用 forecast 绕过缺失历史。
 
+原始余额事实仍用 `instant, start=null`。滚动计算需要单独记录运算窗口：例如 `cash_end_rebuilt` 使用 `sum` 引用期初现金及本期经营、投资、筹资、汇率等实际变动，`period_rule=rollforward`，计算 context 为 `aggregation=instant, start=2025-01-01, end=2025-12-31`；这里 start 表示桥的运算窗口，结果仍是期末余额。可将其与 `instant, start=null, end=2025-12-31` 的已披露期末现金勾稽。不要为配合计算去改原始余额事实。
+
+由前序计算得到的余额，可填写 `calculations.concept`（例如 `adjusted_invested_capital`），期初和期末定义必须相同，再用 `average_balance` 引用两项计算。不能把已算出的金额重新标为 reported 事实；concept 只是明确口径，不会证明调整在经济上正确。
+
 金额按 `原值 × scale` 统一到基础单位后计算，结果再除以输出 scale。币种、主体、范围或准则不一致时不计算。跨准则或主体调整先给完整对照及证据；不要为通过脚本擅自改 context。
 
-`reconciliations.tolerance` 采用基础单位：人民币千元披露中容许2千元舍入差写 `2000`，并说明为何使用该容差。差额不是自动认定错报，超出容差需要逐项查原因，不能靠扩大容差关闭。
+`reconciliations.tolerance` 采用基础单位：人民币千元披露中容许2千元舍入差写 `2000`，并说明所依据的显示精度、加总行数及运算；审计重要性或净资产百分比不能充当舍入依据。结果 `within_input_tolerance` 仅表示残差未超过输入阈值，不证明该阈值合理、差额确由舍入造成或不存在遗漏。差额不是自动认定错报，超出容差需要逐项查原因，不能靠扩大容差关闭。
 
-结论中的动态数值写 `{{gross_profit}}`，导出时自动代入数值、单位及 ID。重要数值不要在自由文本手工复制。各 `evidence`/`counterevidence` 可以引用 evidence、fact、calculation ID；沿计算输入追溯原文。
+结论中的动态数值写 `{{gross_profit}}`，导出时自动代入数值和单位；记录 ID 保留在表格及证据链。重要数值不要在自由文本手工复制。各 `evidence`/`counterevidence` 可以引用 evidence、fact、calculation ID；沿计算输入追溯原文。
 
 ## 模型和复核
 

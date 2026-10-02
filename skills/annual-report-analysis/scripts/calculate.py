@@ -42,15 +42,24 @@ def evaluate(w: Workpaper):
     checks = []
     for r in w.reconciliations:
         a, b = values[r.actual], values[r.expected]
-        ca, cb = records[r.actual].context, records[r.expected].context
-        same = (ca.entity, ca.scope, ca.currency, ca.measure, ca.end) == (cb.entity, cb.scope, cb.currency, cb.measure, cb.end)
-        if ca.measure == "ratio" and ca.aggregation != cb.aggregation:
-            same = False
+        ra, rb = records[r.actual], records[r.expected]
+        same = reconciliation_matches(ra, rb)
         residual = a - b if a is not None and b is not None and same else None
-        status = "not_tested" if residual is None else "within_precision" if abs(residual) <= r.tolerance else "unexplained_difference"
+        status = "not_tested" if residual is None else "within_input_tolerance" if abs(residual) <= r.tolerance else "unexplained_difference"
         checks.append({"id": r.id, "residual": str(residual) if residual is not None else None,
-                       "status": status, "basis": r.basis})
+                       "status": status, "basis": r.basis,
+                       "reason": "incompatible financial contexts" if not same else "missing or unavailable input" if residual is None else ""})
     return {"calculations": results, "reconciliations": checks}
+
+
+def reconciliation_matches(a, b):
+    ca, cb = a.context, b.context
+    same = (ca.entity, ca.scope, ca.basis, ca.currency, ca.measure, ca.physical_unit, ca.end) == (cb.entity, cb.scope, cb.basis, cb.currency, cb.measure, cb.physical_unit, cb.end)
+    periods_match = (ca.aggregation, ca.start) == (cb.aggregation, cb.start)
+    closing_bridge = any(getattr(bridge, "period_rule", None) == "rollforward"
+                         and balance.context.aggregation == "instant" and balance.context.start is None
+                         for bridge, balance in ((a, b), (b, a)))
+    return same and (periods_match or closing_bridge)
 
 
 def context_error(c, inputs):

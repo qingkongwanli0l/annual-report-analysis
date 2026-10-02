@@ -4,8 +4,10 @@ import hashlib
 import json
 import re
 import subprocess
+import platform
 from datetime import datetime
 from decimal import Decimal
+from importlib.metadata import version
 from pathlib import Path
 
 import xlsxwriter
@@ -15,7 +17,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
-from calculate import evaluate, excel_expression
+from calculate import context_error, evaluate, excel_expression, reconciliation_matches
 from workpaper import Workpaper
 
 
@@ -56,6 +58,9 @@ def prepare(w, result):
         return re.sub(r"\{\{([^{}]+)\}\}", replace, text)
 
     data = w.model_dump(mode="json")
+    unknown_dates = [s.id for s in w.sources if s.published is None]
+    if unknown_dates:
+        data["mandate"]["limitations"].append("来源 "+", ".join(unknown_dates)+" 的正式公布日期未核验；不得据此证明在信息截止日前已公开。当前披露内容可以继续分析，历史时点结论须补充公告时间证据。")
     for finding in data["findings"]:
         for key in ("title", "question", "conclusion", "mechanism", "changes_if"):
             finding[key] = resolve(finding[key])
@@ -92,7 +97,7 @@ def workbook(w, data, path):
             ["单位", "Facts D=原始值，E=倍数，F=基础单位。Calculations D=基础单位，E=展示值。"],
             ["复算", "数值公式可编辑；修改主体、期间、币种、规则或资料后须重跑 export.py 复核口径。"],
             ["缺口", "空值不是零。未执行程序、假设与已披露数据分别标识。"],
-            *[["限制", x] for x in w.mandate.limitations]], [22, 110])
+            *[["限制", x] for x in data["mandate"]["limitations"]]], [22, 110])
         rows = []
         for f in w.facts:
             c = f.context
@@ -102,12 +107,11 @@ def workbook(w, data, path):
         ws = sheet("Facts", ["ID", "原始科目", "证据", "原始数值", "倍数", "基础单位数值", "量纲", "币种",
                              "实体", "范围", "开始", "结束", "统计类型", "状态", "准则", "说明", "概念", "实物单位"], rows)
         cells = {}
+        records = {r.id: r for r in [*w.facts, *w.calculations]}
         for i, f in enumerate(w.facts, 2):
             cells[f.id] = f"'Facts'!F{i}"
-            if f.value is not None:
-                ws.write_formula(i-1, 5, f"=D{i}*E{i}", number, float(f.value*f.context.scale))
-            else:
-                ws.write_formula(i-1, 5, "=NA()", number, "#N/A")
+            ws.write_formula(i-1, 5, f"=IF(COUNT(D{i},E{i})=2,D{i}*E{i},NA())", number,
+                             float(f.value*f.context.scale) if f.value is not None else "#N/A")
         rs = {r["id"]: r for r in data["results"]["calculations"]}
         calcrows = [[c.id, c.label, "", None, None, rs[c.id]["status"], rs[c.id]["reason"],
                      c.definition, c.interpretation, unit(c.context), float(c.context.scale),
@@ -124,22 +128,28 @@ def workbook(w, data, path):
                     test = f"OR({test},{cells[c.terms[0].ref]}<0)"
                 expr = f"=IF({test},NA(),{expr[1:]})"
             ws.write_string(i-1, 2, expr, wrap)
-            if r["normalized"] is not None:
-                ws.write_formula(i-1, 3, expr, number, float(r["normalized"]))
-                ws.write_formula(i-1, 4, f"=D{i}/K{i}", percent if c.context.measure == "ratio" else number, float(r["value"]))
+            if not context_error(c, [records[t.ref] for t in c.terms]):
+                ws.write_formula(i-1, 3, expr, number, float(r["normalized"]) if r["normalized"] is not None else "#N/A")
+                ws.write_formula(i-1, 4, f"=D{i}/K{i}", percent if c.context.measure == "ratio" else number,
+                                 float(r["value"]) if r["value"] is not None else "#N/A")
+                ws.write_formula(i-1, 5, f'=IF(ISNUMBER(D{i}),"calculated","not_calculated")', wrap, r["status"])
+                ws.write_formula(i-1, 6, f'=IF(ISNUMBER(D{i}),"","检查缺失值、分母与输入；口径变更须重跑Python")', wrap,
+                                 "" if r["normalized"] is not None else "检查缺失值、分母与输入；口径变更须重跑Python")
             else:
                 ws.write_formula(i-1, 3, "=NA()", number, "#N/A")
                 ws.write_formula(i-1, 4, "=NA()", number, "#N/A")
             cells[c.id] = f"'Calculations'!D{i}"
         checks = {r["id"]: r for r in data["results"]["reconciliations"]}
-        rows = [[r.id, r.label, r.actual, r.expected, None, float(r.tolerance), checks[r.id]["status"], r.basis] for r in w.reconciliations]
-        ws = sheet("Reconciliations", ["ID", "勾稽", "实际", "目标", "残差 基础单位", "容差 基础单位", "状态", "容差依据"], rows)
+        rows = [[r.id, r.label, r.actual, r.expected, None, float(r.tolerance), checks[r.id]["status"], r.basis, checks[r.id]["reason"]] for r in w.reconciliations]
+        ws = sheet("Reconciliations", ["ID", "勾稽", "实际", "目标", "残差 基础单位", "容差 基础单位", "状态", "容差依据", "未测试原因"], rows)
         for i, r in enumerate(w.reconciliations, 2):
             value = checks[r.id]["residual"]
-            if value is not None:
-                ws.write_formula(i-1, 4, f"={cells[r.actual]}-{cells[r.expected]}", number, float(value))
-        sheet("Sources", ["ID", "文件", "链接", "公布日期", "SHA256"],
-              [[s.id, s.title, s.url, str(s.published), s.sha256] for s in w.sources], [20, 60, 100, 20, 70])
+            if reconciliation_matches(records[r.actual], records[r.expected]):
+                ws.write_formula(i-1, 4, f"={cells[r.actual]}-{cells[r.expected]}", number, float(value) if value is not None else "#N/A")
+                ws.write_formula(i-1, 6, f'=IF(COUNT(E{i},F{i})<2,"not_tested",IF(ABS(E{i})<=F{i},"within_input_tolerance","unexplained_difference"))', wrap, checks[r.id]["status"])
+                ws.write_formula(i-1, 8, f'=IF(ISNUMBER(E{i}),"","missing or unavailable input")', wrap, checks[r.id]["reason"])
+        sheet("Sources", ["ID", "文件", "链接", "公布日期", "SHA256", "时间证据与限制"],
+              [[s.id, s.title, s.url, str(s.published) if s.published else "未核验", s.sha256, s.availability_note] for s in w.sources], [20, 60, 100, 20, 70, 70])
         sheet("Evidence", ["ID", "来源", "定位", "观察", "可靠性与限制"],
               [[e.id, e.source, e.locator, e.observation, e.reliability] for e in w.evidence], [20, 20, 45, 90, 65])
         sheet("Findings", ["ID", "问题", "结论", "机制", "状态", "依据", "反证", "其他解释", "改变结论条件"],
@@ -159,6 +169,18 @@ def workbook(w, data, path):
                 rows = q.artifact.get("rows", [])
                 keys = list(dict.fromkeys(k for row in rows for k in row))
                 sheet(f"Quant{index}", keys or ["result"], [[row.get(k, "") for k in keys] for row in rows])
+                if q.method == "single_entity_recovery_waterfall":
+                    claims = {c["id"]: c for c in q.artifact["input_snapshot"]["claims"]}
+                    totals = [r for r in rows if r["kind"] == "claim_total"]
+                    ws = sheet(f"Q{index}Recovery", ["债权", "原金额", "担保池回收", "一般财产回收", "合计回收", "未偿", "回收比例"],
+                               [[claims[r["claim_id"]]["label"], *[float(r[k]) for k in ("original_claim", "secured", "general", "result", "unpaid")],
+                                 float(r["recovery_rate"]) if r["recovery_rate"] is not None else None] for r in totals])
+                    for i, r in enumerate(totals, 2):
+                        ws.write_formula(i-1, 4, f"=C{i}+D{i}", number, float(r["result"]))
+                        ws.write_formula(i-1, 5, f"=B{i}-E{i}", number, float(r["unpaid"]))
+                        ws.write_formula(i-1, 6, f"=IF(B{i}>0,E{i}/B{i},NA())", percent,
+                                         float(r["recovery_rate"]) if r["recovery_rate"] is not None else "#N/A")
+                    ws.merge_range(len(totals)+3, 0, len(totals)+4, 6, "回收分配是已运行结果快照；这里只联动合计、未偿和比例。修改估值、债权或顺位后，重跑 recovery.py 与 export.py，不在本表重新分配。", wrap)
             sheet(f"Quant{index}Notes", ["field", "value"], [["method", q.method], ["as_of", str(q.as_of)],
                   ["input references", ", ".join(q.input_refs)], ["assumptions", "\n".join(q.assumptions)],
                   ["limitations", "\n".join(q.limitations)], ["reproduction", f"See quantitative-{q.id}.json input_snapshot and method version"]], [28,110])
@@ -201,7 +223,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
                     f"D{i}-E{i}", f"W{i}*{d('N')}*{d('C')}/{inputs}B3", f"MAX(F{i}-G{i},0)*{d('J')}",
                     f"F{i}-G{i}-H{i}", f"B{i}*{d('K')}/{d('C')}", f"C{i}*{d('L')}/{d('C')}",
                     f"C{i}+K{i}-{previous_inventory}",
-                    f'IF({inputs}B4="purchases",IF(L{i}<0,NA(),L{i}),C{i})*{d("M")}/{d("C")}',
+                    f'IF(L{i}<0,NA(),IF({inputs}B4="purchases",L{i},C{i}))*{d("M")}/{d("C")}',
                     f"J{i}+K{i}-M{i}", f"N{i}-{previous_nwc}", f"I{i}+E{i}-O{i}", d('I'), d('O'), d('P'), d('Q'),
                     previous_cash, f"U{i}+P{i}-Q{i}+R{i}-S{i}-T{i}", previous_debt,
                     f"IF(W{i}+R{i}-S{i}<0,NA(),W{i}+R{i}-S{i})", f"V{i}-{inputs}B5", f"MAX({inputs}B5-V{i},0)",
@@ -348,7 +370,8 @@ def word(data, path):
     doc.add_paragraph(f"{m['period_start']} — {m['period_end']}　资料截止 {m['cutoff']}　底稿 {m['version']}")
     doc.add_paragraph(m["purpose"])
     findings = {f["id"]: f for f in data["findings"]}
-    doc.add_heading("核心判断", 1)
+    if data["findings"]:
+        doc.add_heading("核心判断", 1)
     for f in data["findings"][:3]:
         doc.add_paragraph(f"{f['conclusion']} [{f['id']}; {', '.join(f['evidence'])}]")
     doc.add_paragraph(f"范围：{m['scope']}。会计基础：{m['accounting_basis']}。")
@@ -367,11 +390,12 @@ def word(data, path):
                          "反证："+(", ".join(f["counterevidence"]) or "尚无足以排除其他解释的额外证据"),
                          "其他解释："+"；".join(f["alternatives"]), "判断改变条件："+f["changes_if"]):
                 doc.add_paragraph(text)
-    doc.add_heading("勾稽结果", 1)
+    if data["reconciliations"]:
+        doc.add_heading("勾稽结果", 1)
     for r in data["reconciliations"]:
         result = next(x for x in data["results"]["reconciliations"] if x["id"] == r["id"])
-        doc.add_paragraph(f"{r['label']} [{r['id']}]：{result['status']}；基础单位残差 {result['residual']}。{r['basis']}")
-    for q in data["quantitative"]:
+        doc.add_paragraph(f"{r['label']} [{r['id']}]：{result['status']}；基础单位残差 {result['residual'] if result['residual'] is not None else '未计算'}。{result['reason']} {r['basis']}")
+    for index, q in enumerate(data["quantitative"], 1):
         doc.add_page_break()
         doc.add_heading(q["label"], 1)
         doc.add_paragraph(f"{q['method']}；截至 {q['as_of']}。")
@@ -415,12 +439,25 @@ def word(data, path):
                 table(["企业", "预测", "实际下一期", "Last-value基准"],
                       [[p["entity"], fmt(p["predicted"]), fmt(p["actual"]), fmt(p["last_value_baseline"])] for p in predictions])
             doc.add_paragraph(f"未成熟结果 {len(artifact['pending_outcomes'])} 条；其他排除 {len(artifact['excluded_pairs'])} 条。记录、版本和排除理由详见工作簿。")
+        elif q["method"] == "single_entity_recovery_waterfall":
+            snapshot = artifact["input_snapshot"]
+            claims = {c["id"]: c for c in snapshot["claims"]}
+            doc.add_paragraph(f"单一法人 {snapshot['entity']}；金额单位 {snapshot['currency']} {snapshot['unit']}。估值基础：{snapshot['value_basis']}。顺位依据：{snapshot['priority_basis']}。")
+            table(["债权", "原金额", "担保池回收", "一般回收", "总回收", "未偿", "回收比例"],
+                  [[claims[r["claim_id"]]["label"], r["original_claim"], r["secured"], r["general"], r["result"], r["unpaid"],
+                    f"{Decimal(r['recovery_rate']):.2%}" if r["recovery_rate"] is not None else "未定义"]
+                   for r in rows if r["kind"] == "claim_total"])
+            for r in rows:
+                if r["kind"] in ("cost", "estate_residual", "reconciliation"):
+                    doc.add_paragraph(f"{r['kind']} / {r['pool']}：{r['result']}；{r['formula']}；输入 {r['raw_input']}。")
+            doc.add_paragraph("分配顺位、估值、抵押池或债权改变必须重跑 recovery.py。工作簿只对已分配回收的合计、未偿与比例提供联动公式，不重新决定法律顺位。")
         doc.add_paragraph("证据记录："+", ".join(q["evidence"]))
         doc.add_heading("假设与适用限制", 2)
         for text in q["assumptions"]+q["limitations"]:
             doc.add_paragraph(text)
-        doc.add_paragraph(f"完整逐期结果、输入快照与复算信息见 Excel Quant 工作表及 quantitative-{q['id']}.json。")
-    doc.add_heading("已执行程序与待核工作", 1)
+        doc.add_paragraph(f"完整结果、输入快照与复算信息见 Excel Q{index}/Quant{index} 系列工作表及 quantitative-{q['id']}.json。")
+    if data["procedures"] or data["requests"]:
+        doc.add_heading("已执行程序与待核工作", 1)
     for p in data["procedures"]:
         doc.add_heading(f"{p['id']} {p['purpose']}", 2)
         doc.add_paragraph(f"状态 {p['status']}；认定 {'、'.join(p['assertions'])}；总体 {p['population']}；选取 {p['selection']}。")
@@ -433,7 +470,7 @@ def word(data, path):
         doc.add_paragraph(f"影响：{r['reason']}。责任角色：{r['owner_role']}。关闭条件：{r['close_when']}")
     doc.add_heading("来源与定位", 1)
     for s in data["sources"]:
-        doc.add_paragraph(f"[{s['id']}] {s['title']}；公布 {s['published']}\n{s['url']}")
+        doc.add_paragraph(f"[{s['id']}] {s['title']}；公布 {s['published'] or '未核验'}\n{s['url']}\n{s['availability_note']}")
     for e in data["evidence"]:
         doc.add_paragraph(f"[{e['id']}] {e['source']} {e['locator']}。{e['observation']} {e['reliability']}")
     for border in doc.element.xpath(".//w:pPr/w:pBdr"):
@@ -458,8 +495,13 @@ def export(input_path, output_dir, node="node"):
         (out / f"quantitative-{q.id}.json").write_text(json.dumps(q.artifact, ensure_ascii=False, indent=2), encoding="utf-8")
     workbook(w, data, out / "workbook.xlsx")
     word(data, out / "report.docx")
-    subprocess.run([node, str(Path(__file__).with_name("export_pptx.cjs")), str(out / "presentation-data.json"), str(out / "presentation.pptx")], check=True)
+    presentation = subprocess.run([node, str(Path(__file__).with_name("export_pptx.cjs")), str(out / "presentation-data.json"), str(out / "presentation.pptx")], check=True, stdout=subprocess.PIPE, text=True)
     manifest = {"version": w.mandate.version, "input_sha256": hashlib.sha256(raw).hexdigest(),
+                "export_environment": {"python": platform.python_version(),
+                    **{name: version(name) for name in ("pydantic", "python-docx", "XlsxWriter")},
+                    **json.loads(presentation.stdout)},
+                "scripts_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in Path(__file__).parent.iterdir() if p.suffix in (".py", ".cjs")},
                 "files": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir() if p.name in
                           ("report.docx", "workbook.xlsx", "presentation.pptx", "workpaper.json", "results.json")}}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")

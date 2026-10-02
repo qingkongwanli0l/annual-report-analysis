@@ -98,6 +98,29 @@ class ScenarioTests(unittest.TestCase):
         self.assertAlmostEqual(row["payables_end"], 53.4)
         self.assertAlmostEqual(row["cash_end"], -12.75753424657534)
 
+    def test_negative_inventory_implied_purchases_are_not_cash_release(self):
+        for denominator in ('cost_of_sales', 'purchases'):
+            data = cash_case()
+            data['payables_denominator'] = denominator
+            data['opening']['inventory'] = 100
+            data['periods'][0].update(volume=100, unit_variable_cost=.2, dio=0)
+            with self.assertRaisesRegex(ValueError, 'negative implied purchases'):
+                scenarios.run(data)
+
+    def test_reverse_cannot_change_the_past_or_claim_a_unique_flat_root(self):
+        data = cash_case()
+        data['periods'].append({**data['periods'][0], 'start':'2026-01-01', 'end':'2026-12-31', 'principal':50})
+        data['reverse'] = dict(period_index=1, driver='dso', bounds=[0,60], test_date='2025-12-31',
+                               target_cash=32.5, definition='Constructed cash boundary', source='Constructed input',
+                               available_at='2024-12-31')
+        with self.assertRaisesRegex(ValueError, 'cannot follow'):
+            scenarios.run(data)
+        data['periods'] = data['periods'][:1]
+        data['opening'].update(receivables=0, inventory=0, payables=0, debt=0)
+        data['periods'][0].update(volume=0, fixed_cash_cost=0, depreciation=0, capex=0, principal=0, dividends=0)
+        data['reverse'].update(period_index=0, target_cash=80)
+        self.assertEqual(scenarios.run(data)['reverse']['status'], 'not_identified')
+
     def test_reverse_boundary_has_independent_closed_form(self):
         data = cash_case()
         data["reverse"] = {"period_index": 0, "driver": "dso", "bounds": [36.5, 60],

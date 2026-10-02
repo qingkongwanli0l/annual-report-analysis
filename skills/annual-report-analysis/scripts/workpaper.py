@@ -30,7 +30,8 @@ class Source(Record):
     id: str
     title: str
     url: str
-    published: date
+    published: date | None
+    availability_note: str = ""
     sha256: str | None = None
 
 
@@ -100,6 +101,7 @@ class Term(Record):
 class Calculation(Record):
     id: str
     label: str
+    concept: str | None = None
     op: Literal["sum", "difference", "ratio", "growth", "average_balance", "product"]
     terms: list[Term] = Field(min_length=1)
     context: Context
@@ -213,7 +215,7 @@ class Workpaper(Record):
 
         for e in self.evidence:
             require([e.source], sources, e.id)
-            if sources[e.source].published > self.mandate.cutoff:
+            if sources[e.source].published and sources[e.source].published > self.mandate.cutoff:
                 raise ValueError(f"{e.id}: source published after analysis cutoff")
         for f in self.facts:
             require(f.evidence, evidence, f.id)

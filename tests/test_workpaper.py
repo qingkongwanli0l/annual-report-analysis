@@ -9,6 +9,7 @@ from pydantic import ValidationError
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'skills/annual-report-analysis/scripts'))
 from calculate import evaluate
+from export import prepare
 from workpaper import Workpaper
 
 
@@ -68,10 +69,33 @@ class WorkpaperTests(unittest.TestCase):
         self.assertIsNone(c['average_parent_equity']['value'])
         self.assertIsNone(c['roe_simple']['value'])
 
+    def test_average_can_trace_derived_opening_and_closing_balances(self):
+        for suffix, date_suffix in [('open', '_prior'), ('close', '')]:
+            self.data['calculations'].append(dict(id='capital_'+suffix, label='Illustrative financing capital',
+                concept='illustrative_financing_capital', op='sum',
+                terms=[dict(ref='equity'+date_suffix), dict(ref='debt'+date_suffix), dict(ref='cash'+date_suffix, weight='-1')],
+                context=self.fact('equity'+date_suffix)['context'], definition='Equity plus financing debt less cash',
+                interpretation='Illustrative capital bridge, not an official ROIC definition'))
+        avg = json.loads(json.dumps(next(c for c in self.data['calculations'] if c['id'] == 'average_parent_equity')))
+        avg.update(id='capital_average', terms=[dict(ref='capital_open'), dict(ref='capital_close')])
+        self.data['calculations'].append(avg)
+        c, _ = self.evaluate()
+        self.assertEqual(Decimal(c['capital_average']['value']), Decimal('165170386.5'))
+
     def test_sources_after_cutoff_rejected(self):
         self.data['mandate']['cutoff'] = '2026-03-09'
         with self.assertRaisesRegex(ValidationError, 'published after'):
             Workpaper.model_validate(self.data)
+
+    def test_unknown_publication_date_remains_unknown_and_visible(self):
+        self.data['sources'][0]['published'] = None
+        self.data['sources'][0]['availability_note'] = 'Uploaded PDF gives a month and approval date, not an announcement date'
+        w = Workpaper.model_validate(self.data)
+        data = prepare(w, evaluate(w))
+        self.assertIsNone(data['sources'][0]['published'])
+        self.assertIn('公布日期未核验', data['mandate']['limitations'][-1])
+        self.assertIn('不得据此证明', data['mandate']['limitations'][-1])
+        self.assertEqual(data['results']['reconciliations'][0]['residual'], '0')
 
     def test_unexecuted_procedure_cannot_claim_performed_without_evidence(self):
         self.data['procedures'][1]['status'] = 'performed'
@@ -84,6 +108,25 @@ class WorkpaperTests(unittest.TestCase):
         _, r = self.evaluate()
         self.assertEqual(r['R_FX']['status'], 'unexplained_difference')
         self.assertEqual(Decimal(r['R_FX']['residual']), Decimal(2664641000))
+
+    def test_equal_values_with_different_contexts_do_not_reconcile(self):
+        for field, value in [('basis', 'US GAAP'), ('start', '2025-07-01'),
+                             ('physical_unit', 'shares')]:
+            with self.subTest(field=field):
+                a = json.loads(json.dumps(self.fact('revenue')))
+                b = json.loads(json.dumps(a))
+                a['id'], b['id'] = 'probe_a', 'probe_b'
+                if field == 'physical_unit':
+                    for f in (a, b):
+                        f['context'].update(measure='count', currency=None, physical_unit='GWh')
+                b['context'][field] = value
+                self.data.update(facts=[a, b], calculations=[], findings=[], procedures=[], requests=[], sections=[],
+                                 reconciliations=[dict(id='probe', label='Context probe', actual=a['id'], expected=b['id'],
+                                                       tolerance='0', basis='Equal numbers need comparable contexts')])
+                _, r = self.evaluate()
+                self.assertEqual(r['probe']['status'], 'not_tested')
+                self.assertIsNone(r['probe']['residual'])
+                self.setUp()
 
 
 if __name__ == '__main__':
