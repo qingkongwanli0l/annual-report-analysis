@@ -1,0 +1,3334 @@
+{
+  "mandate": {
+    "title": "宁德时代2025年经营现金与信用分析",
+    "entity": "宁德时代集团",
+    "industry": "锂离子电池制造",
+    "purpose": "解释业务增长如何转为现金，识别资本扩张、供应商融资与资产估计需要进一步核查的事项，供研究员复核。",
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31",
+    "cutoff": "2026-03-10",
+    "accounting_basis": "CAS",
+    "scope": "consolidated",
+    "language": "zh-CN",
+    "version": "catl-2025-example-v1",
+    "methods": [
+      "年报四表及附注复算；分析者明确口径的供应商融资敏感性"
+    ],
+    "limitations": [
+      "本例为选定公开资料的专业研究示范，不是整本年报全部披露的完整审计。",
+      "未取得银行/授信合同、按法人可调度现金、逐月预算、保修明细及资产组原始预测，不出具正式信用等级或审计鉴证。",
+      "事实以2026年3月10日已公开的2025年报为界；假设与实际披露分列。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "AR",
+      "title": "宁德时代新能源科技股份有限公司2025年年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF",
+      "published": "2026-03-10",
+      "sha256": "c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E_BIZ",
+      "source": "AR",
+      "locator": "PDF及印刷页24—27 收入成本与产销表",
+      "observation": "主营电池收入与销量不同范围；产品、地区与合并范围变动分别披露。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_BS",
+      "source": "AR",
+      "locator": "PDF及印刷页111—113 合并资产负债表",
+      "observation": "人民币千元；合并资产负债和所有者权益，区别母公司表。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_PL",
+      "source": "AR",
+      "locator": "PDF及印刷页116—119 利润表",
+      "observation": "合并总净利润、归母净利润、少数损益与母公司净利润分列。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_CF",
+      "source": "AR",
+      "locator": "PDF及印刷页120—121 合并现金流量表",
+      "observation": "经营、投资、筹资和汇率影响分别披露。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_EQ",
+      "source": "AR",
+      "locator": "PDF及印刷页123—125 合并权益变动表",
+      "observation": "权益包括综合收益、资本交易、利润分配及专项储备变动。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_POLICY",
+      "source": "AR",
+      "locator": "PDF及印刷页134、153 会计基础及收入政策",
+      "observation": "采用CAS与公历年、人民币列报；质量保证不构成单独履约义务，返利为可变对价。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_BRIDGE",
+      "source": "AR",
+      "locator": "PDF及印刷页200—201 附注67 现金流补充资料",
+      "observation": "净利润至CFO的非现金调整与经营性存货、应收、应付分别列示。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_DEBT",
+      "source": "AR",
+      "locator": "PDF及印刷页200 筹资负债变动表",
+      "observation": "借款、应付债券和租赁的期初、现金及非现金变动与期末。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_SUPPLY",
+      "source": "AR",
+      "locator": "PDF及印刷页202—203 附注67 供应商融资",
+      "observation": "跨页包含融单与反向保理；供应商已收款是合计的子集，不能再加一次。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_CASH",
+      "source": "AR",
+      "locator": "PDF及印刷页202—203 现金构成与排除项目",
+      "observation": "保证金、质押存款和不可随时支取定期存款排除在现金等价物外。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_PPE",
+      "source": "AR",
+      "locator": "PDF及印刷页177—180 固定资产与减值",
+      "observation": "固定资产转固不等于当年现金支出；被测试资产组的账面值、可收回额和减值单列。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_WARRANTY",
+      "source": "AR",
+      "locator": "PDF及印刷页192 预计负债",
+      "observation": "售后综合服务费用估计依赖质保内累计销量、维修成本和维修率；未披露完整准备滚动。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    },
+    {
+      "id": "E_AUDIT",
+      "source": "AR",
+      "locator": "PDF及印刷页107—110 审计报告",
+      "observation": "无保留意见；固定资产减值和收入确认为关键审计事项，原审计程序非本次执行。",
+      "reliability": "发行人正式年报；本次读取定位并复算，未独立确认底层交易真实性。"
+    }
+  ],
+  "facts": [
+    {
+      "id": "revenue",
+      "label": "营业收入",
+      "concept": "revenue",
+      "value": "423701834",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "revenue_prior",
+      "label": "营业收入 上期",
+      "concept": "revenue",
+      "value": "362012554",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cost",
+      "label": "营业成本",
+      "concept": "cost",
+      "value": "312383297",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cost_prior",
+      "label": "营业成本 上期",
+      "concept": "cost",
+      "value": "273518959",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ni",
+      "label": "合并净利润",
+      "concept": "ni",
+      "value": "76786309",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ni_prior",
+      "label": "合并净利润 上期",
+      "concept": "ni",
+      "value": "54006794",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cfo",
+      "label": "经营活动现金净额",
+      "concept": "cfo",
+      "value": "133219982",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cfo_prior",
+      "label": "经营活动现金净额 上期",
+      "concept": "cfo",
+      "value": "96990345",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cash",
+      "label": "现金及现金等价物",
+      "concept": "cash",
+      "value": "299929741",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cash_prior",
+      "label": "现金及现金等价物 上期",
+      "concept": "cash",
+      "value": "270159734",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "assets",
+      "label": "资产总额",
+      "concept": "assets",
+      "value": "974827544",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "assets_prior",
+      "label": "资产总额 上期",
+      "concept": "assets",
+      "value": "786658123",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "equity",
+      "label": "所有者权益总额",
+      "concept": "equity",
+      "value": "371026324",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "equity_prior",
+      "label": "所有者权益总额 上期",
+      "concept": "equity",
+      "value": "273456174",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "parent_equity",
+      "label": "归母权益",
+      "concept": "parent_equity",
+      "value": "337107747",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "parent_equity_prior",
+      "label": "归母权益 上期",
+      "concept": "parent_equity",
+      "value": "246930033",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "inventory",
+      "label": "存货账面值",
+      "concept": "inventory",
+      "value": "94526239",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "inventory_prior",
+      "label": "存货账面值 上期",
+      "concept": "inventory",
+      "value": "59835533",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ar",
+      "label": "应收账款账面值",
+      "concept": "ar",
+      "value": "76403264",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ar_prior",
+      "label": "应收账款账面值 上期",
+      "concept": "ar",
+      "value": "64135510",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ap",
+      "label": "应付账款",
+      "concept": "ap",
+      "value": "160328962",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ap_prior",
+      "label": "应付账款 上期",
+      "concept": "ap",
+      "value": "130977408",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "contract_liability",
+      "label": "合同负债",
+      "concept": "contract_liability",
+      "value": "49233377",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "contract_liability_prior",
+      "label": "合同负债 上期",
+      "concept": "contract_liability",
+      "value": "27834446",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "supply",
+      "label": "供应商融资安排合计",
+      "concept": "supply",
+      "value": "37222781",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SUPPLY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "supply_prior",
+      "label": "供应商融资安排合计 上期",
+      "concept": "supply",
+      "value": "44362409",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SUPPLY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "warranty",
+      "label": "售后综合服务预计负债",
+      "concept": "warranty",
+      "value": "51233080",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_WARRANTY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "warranty_prior",
+      "label": "售后综合服务预计负债 上期",
+      "concept": "warranty",
+      "value": "39070181",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_WARRANTY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "debt",
+      "label": "筹资负债表借款债券及租赁合计",
+      "concept": "debt",
+      "value": "119601197",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_DEBT"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "debt_prior",
+      "label": "筹资负债表借款债券及租赁合计 上期",
+      "concept": "debt",
+      "value": "136346553",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_DEBT"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "power_sales",
+      "label": "动力电池系统收入",
+      "concept": "power_sales",
+      "value": "316506369",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "power_sales_prior",
+      "label": "动力电池系统收入 上期",
+      "concept": "power_sales",
+      "value": "253041337",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "storage_sales",
+      "label": "储能电池系统收入",
+      "concept": "storage_sales",
+      "value": "62439820",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "storage_sales_prior",
+      "label": "储能电池系统收入 上期",
+      "concept": "storage_sales",
+      "value": "57290460",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "materials_sales",
+      "label": "材料及回收收入",
+      "concept": "materials_sales",
+      "value": "21860936",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "materials_sales_prior",
+      "label": "材料及回收收入 上期",
+      "concept": "materials_sales",
+      "value": "28699935",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ni_parent",
+      "label": "归母净利润",
+      "concept": "ni_parent",
+      "value": "72201282",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ni_nci",
+      "label": "少数股东损益",
+      "concept": "ni_nci",
+      "value": "4585027",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cfi",
+      "label": "投资现金流",
+      "concept": "cfi",
+      "value": "-94475790",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cff",
+      "label": "筹资现金流",
+      "concept": "cff",
+      "value": "-6309543",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "fx",
+      "label": "汇率对现金影响",
+      "concept": "fx",
+      "value": "-2664640",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cash_increase",
+      "label": "披露现金净增加",
+      "concept": "cash_increase",
+      "value": "29770008",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "capex",
+      "label": "购建长期资产现金",
+      "concept": "capex",
+      "value": "42344558",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CF"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "comprehensive",
+      "label": "综合收益总额",
+      "concept": "comprehensive",
+      "value": "84006523",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_EQ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "capital_transactions",
+      "label": "所有者投入和减少资本净额",
+      "concept": "capital_transactions",
+      "value": "40416391",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_EQ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "distributions",
+      "label": "权益表对股东分配",
+      "concept": "distributions",
+      "value": "-26842954",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_EQ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "reserve_change",
+      "label": "专项储备变动",
+      "concept": "reserve_change",
+      "value": "-9811",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_EQ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "debt_cash_in",
+      "label": "筹资负债现金增加",
+      "concept": "debt_cash_in",
+      "value": "39790079",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_DEBT"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "debt_cash_out",
+      "label": "筹资负债现金减少",
+      "concept": "debt_cash_out",
+      "value": "-54608510",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_DEBT"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "debt_noncash",
+      "label": "筹资负债非现金变动",
+      "concept": "debt_noncash",
+      "value": "-1926925",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_DEBT"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ppe_impairment",
+      "label": "固定资产本期计提减值",
+      "concept": "ppe_impairment",
+      "value": "2659992",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PPE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ppe_transfer",
+      "label": "在建转入固定资产",
+      "concept": "ppe_transfer",
+      "value": "60616240",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PPE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "liabilities",
+      "label": "负债总额",
+      "concept": "liabilities",
+      "value": "603801220",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "book_cash",
+      "label": "货币资金",
+      "concept": "book_cash",
+      "value": "333512927",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BS"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cash_excluded",
+      "label": "排除于现金等价物的货币资金",
+      "concept": "cash_excluded",
+      "value": "33583185",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "guarantee_cash",
+      "label": "受限保证金",
+      "concept": "guarantee_cash",
+      "value": "18428631",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "pledged_cash",
+      "label": "质押定期存款",
+      "concept": "pledged_cash",
+      "value": "461587",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "term_deposits",
+      "label": "不可随时支取定期存款及利息",
+      "concept": "term_deposits",
+      "value": "14692968",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "supply_notes",
+      "label": "融单",
+      "concept": "supply_notes",
+      "value": "23902653",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SUPPLY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "reverse_factoring",
+      "label": "反向保理",
+      "concept": "reverse_factoring",
+      "value": "13320128",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SUPPLY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "supplier_received",
+      "label": "其中供应商已从融资方收到款项",
+      "concept": "supplier_received",
+      "value": "30728127",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SUPPLY"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ppe_test_carrying",
+      "label": "被测试相关资产减值前账面额",
+      "concept": "ppe_test_carrying",
+      "value": "2865508",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PPE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ppe_recoverable",
+      "label": "该组可收回金额",
+      "concept": "ppe_recoverable",
+      "value": "205516",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PPE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "ni_company",
+      "label": "母公司净利润",
+      "concept": "ni_company",
+      "value": "70414214",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "parent_only",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_PL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "volume",
+      "label": "电池系统销售量 GWh",
+      "concept": "volume",
+      "value": "661",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "count",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "GWh"
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "volume_prior",
+      "label": "电池系统销售量 GWh 上期",
+      "concept": "volume",
+      "value": "475",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "count",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "GWh"
+      },
+      "evidence": [
+        "E_BIZ"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "asset_imp",
+      "label": "资产减值",
+      "concept": "asset_imp",
+      "value": "8660164",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "credit_imp",
+      "label": "信用减值",
+      "concept": "credit_imp",
+      "value": "418585",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "depreciation",
+      "label": "固定资产折旧",
+      "concept": "depreciation",
+      "value": "24322780",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "rou_dep",
+      "label": "使用权折旧",
+      "concept": "rou_dep",
+      "value": "337367",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "amort",
+      "label": "无形资产摊销",
+      "concept": "amort",
+      "value": "512000",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "deferred_amort",
+      "label": "长期待摊摊销",
+      "concept": "deferred_amort",
+      "value": "1764508",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "disposal",
+      "label": "处置损失",
+      "concept": "disposal",
+      "value": "-174640",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "scrap",
+      "label": "报废损失",
+      "concept": "scrap",
+      "value": "151291",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "fair_value",
+      "label": "公允价值损失",
+      "concept": "fair_value",
+      "value": "-974079",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "finance",
+      "label": "财务费用",
+      "concept": "finance",
+      "value": "2470751",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "investment",
+      "label": "投资损失",
+      "concept": "investment",
+      "value": "-8429599",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "deferred_tax_asset",
+      "label": "递延税资产变动",
+      "concept": "deferred_tax_asset",
+      "value": "-7660090",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "deferred_tax_liab",
+      "label": "递延税负债变动",
+      "concept": "deferred_tax_liab",
+      "value": "1900952",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "inventory_cf",
+      "label": "存货现金调整",
+      "concept": "inventory_cf",
+      "value": "-39837988",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "receivables_cf",
+      "label": "经营应收现金调整",
+      "concept": "receivables_cf",
+      "value": "-16911542",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "payables_cf",
+      "label": "经营应付现金调整",
+      "concept": "payables_cf",
+      "value": "89965735",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "other_cf",
+      "label": "披露其他现金调整",
+      "concept": "other_cf",
+      "value": "-82524",
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_BRIDGE"
+      ],
+      "state": "reported",
+      "note": ""
+    }
+  ],
+  "calculations": [
+    {
+      "id": "gross_profit",
+      "label": "毛利",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "cost",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "收入减成本",
+      "interpretation": "收入减成本",
+      "period_rule": "same"
+    },
+    {
+      "id": "gross_margin",
+      "label": "毛利率",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "gross_profit",
+          "weight": "1"
+        },
+        {
+          "ref": "revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "毛利/营业收入",
+      "interpretation": "毛利/营业收入",
+      "period_rule": "same"
+    },
+    {
+      "id": "revenue_growth",
+      "label": "收入同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "revenue_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "ni_growth",
+      "label": "合并净利润同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "ni",
+          "weight": "1"
+        },
+        {
+          "ref": "ni_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "cfo_growth",
+      "label": "经营现金同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "cfo",
+          "weight": "1"
+        },
+        {
+          "ref": "cfo_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "power_sales_growth",
+      "label": "动力系统收入同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "power_sales",
+          "weight": "1"
+        },
+        {
+          "ref": "power_sales_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "storage_sales_growth",
+      "label": "储能系统收入同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "storage_sales",
+          "weight": "1"
+        },
+        {
+          "ref": "storage_sales_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "materials_sales_growth",
+      "label": "材料回收收入同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "materials_sales",
+          "weight": "1"
+        },
+        {
+          "ref": "materials_sales_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "volume_growth",
+      "label": "销售量同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "volume",
+          "weight": "1"
+        },
+        {
+          "ref": "volume_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同范围本期减上期，再除以上期",
+      "interpretation": "销量和收入范围仍须核对，不能直接推出售价变化。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "cfo_profit",
+      "label": "CFO与合并净利润之比",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "cfo",
+          "weight": "1"
+        },
+        {
+          "ref": "ni",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同一集团CFO/总净利润",
+      "interpretation": "经营负债增长可能暂时抬高该比率，不能单独证明盈利质量。",
+      "period_rule": "same"
+    },
+    {
+      "id": "cfo_bridge",
+      "label": "净利润至CFO复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ni",
+          "weight": "1"
+        },
+        {
+          "ref": "asset_imp",
+          "weight": "1"
+        },
+        {
+          "ref": "credit_imp",
+          "weight": "1"
+        },
+        {
+          "ref": "depreciation",
+          "weight": "1"
+        },
+        {
+          "ref": "rou_dep",
+          "weight": "1"
+        },
+        {
+          "ref": "amort",
+          "weight": "1"
+        },
+        {
+          "ref": "deferred_amort",
+          "weight": "1"
+        },
+        {
+          "ref": "disposal",
+          "weight": "1"
+        },
+        {
+          "ref": "scrap",
+          "weight": "1"
+        },
+        {
+          "ref": "fair_value",
+          "weight": "1"
+        },
+        {
+          "ref": "finance",
+          "weight": "1"
+        },
+        {
+          "ref": "investment",
+          "weight": "1"
+        },
+        {
+          "ref": "deferred_tax_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "deferred_tax_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "inventory_cf",
+          "weight": "1"
+        },
+        {
+          "ref": "receivables_cf",
+          "weight": "1"
+        },
+        {
+          "ref": "payables_cf",
+          "weight": "1"
+        },
+        {
+          "ref": "other_cf",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "附注67原始带符号调整之和",
+      "interpretation": "附注67原始带符号调整之和",
+      "period_rule": "same"
+    },
+    {
+      "id": "working_capital_effect",
+      "label": "经营营运资本现金净贡献",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "inventory_cf",
+          "weight": "1"
+        },
+        {
+          "ref": "receivables_cf",
+          "weight": "1"
+        },
+        {
+          "ref": "payables_cf",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "披露的存货、经营应收及经营应付三项之和",
+      "interpretation": "披露的存货、经营应收及经营应付三项之和",
+      "period_rule": "same"
+    },
+    {
+      "id": "fcf_simple",
+      "label": "CFO减购建长期资产现金",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "cfo",
+          "weight": "1"
+        },
+        {
+          "ref": "capex",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "仅定义为CFO减现金资本支出",
+      "interpretation": "不是可分配现金；未扣并购、股利、债务偿还或区分维持/扩张投资。",
+      "period_rule": "same"
+    },
+    {
+      "id": "cash_flow_change",
+      "label": "现金变动四项之和",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cfo",
+          "weight": "1"
+        },
+        {
+          "ref": "cfi",
+          "weight": "1"
+        },
+        {
+          "ref": "cff",
+          "weight": "1"
+        },
+        {
+          "ref": "fx",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "经营+投资+筹资+汇率",
+      "interpretation": "经营+投资+筹资+汇率",
+      "period_rule": "same"
+    },
+    {
+      "id": "cash_rollforward",
+      "label": "期末现金复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cash_prior",
+          "weight": "1"
+        },
+        {
+          "ref": "cfo",
+          "weight": "1"
+        },
+        {
+          "ref": "cfi",
+          "weight": "1"
+        },
+        {
+          "ref": "cff",
+          "weight": "1"
+        },
+        {
+          "ref": "fx",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "期初现金加四类变动",
+      "interpretation": "期初现金加四类变动",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "balance_sheet",
+      "label": "负债加权益",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "liabilities",
+          "weight": "1"
+        },
+        {
+          "ref": "equity",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "负债+总权益",
+      "interpretation": "负债+总权益",
+      "period_rule": "same"
+    },
+    {
+      "id": "profit_attribution",
+      "label": "净利润归属合计",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ni_parent",
+          "weight": "1"
+        },
+        {
+          "ref": "ni_nci",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "归母+少数损益",
+      "interpretation": "归母+少数损益",
+      "period_rule": "same"
+    },
+    {
+      "id": "equity_rollforward",
+      "label": "权益变动复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "equity_prior",
+          "weight": "1"
+        },
+        {
+          "ref": "comprehensive",
+          "weight": "1"
+        },
+        {
+          "ref": "capital_transactions",
+          "weight": "1"
+        },
+        {
+          "ref": "distributions",
+          "weight": "1"
+        },
+        {
+          "ref": "reserve_change",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "期初+综合收益+投入减少+分配+专项储备",
+      "interpretation": "期初+综合收益+投入减少+分配+专项储备",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "debt_rollforward",
+      "label": "筹资负债滚动复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "debt_prior",
+          "weight": "1"
+        },
+        {
+          "ref": "debt_cash_in",
+          "weight": "1"
+        },
+        {
+          "ref": "debt_cash_out",
+          "weight": "1"
+        },
+        {
+          "ref": "debt_noncash",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "期初+现金增减+非现金",
+      "interpretation": "期初+现金增减+非现金",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "supply_components",
+      "label": "供应商融资构成合计",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "supply_notes",
+          "weight": "1"
+        },
+        {
+          "ref": "reverse_factoring",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "融单+反向保理；已收款为子集不再相加",
+      "interpretation": "融单+反向保理；已收款为子集不再相加",
+      "period_rule": "same"
+    },
+    {
+      "id": "supply_change",
+      "label": "供应商融资余额变化",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "supply",
+          "weight": "1"
+        },
+        {
+          "ref": "supply_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "期末减期初",
+      "interpretation": "期末减期初",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "cash_composition",
+      "label": "货币资金构成复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cash",
+          "weight": "1"
+        },
+        {
+          "ref": "cash_excluded",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "现金等价物+附注排除项目",
+      "interpretation": "现金等价物+附注排除项目",
+      "period_rule": "same"
+    },
+    {
+      "id": "cash_exclusion_sum",
+      "label": "非现金等价物三项之和",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "guarantee_cash",
+          "weight": "1"
+        },
+        {
+          "ref": "pledged_cash",
+          "weight": "1"
+        },
+        {
+          "ref": "term_deposits",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "受限保证金+质押定存+不可随时支取定存利息",
+      "interpretation": "受限保证金+质押定存+不可随时支取定存利息",
+      "period_rule": "same"
+    },
+    {
+      "id": "debt_supply_sensitivity",
+      "label": "含供应商融资的债务敏感性口径",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "debt",
+          "weight": "1"
+        },
+        {
+          "ref": "supply",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "筹资负债台账加供应商融资安排一次",
+      "interpretation": "分析者敏感性，不改报表债务；需完整合同决定最终信用调整，避免重复计入应付账款。",
+      "period_rule": "same"
+    },
+    {
+      "id": "average_parent_equity",
+      "label": "期初期末平均归母权益",
+      "op": "average_balance",
+      "terms": [
+        {
+          "ref": "parent_equity_prior",
+          "weight": "1"
+        },
+        {
+          "ref": "parent_equity",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "average",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "两期真实归母权益简单平均",
+      "interpretation": "两期真实归母权益简单平均",
+      "period_rule": "same"
+    },
+    {
+      "id": "roe_simple",
+      "label": "简单平均权益ROE",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ni_parent",
+          "weight": "1"
+        },
+        {
+          "ref": "average_parent_equity",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "归母净利润/简单平均归母权益",
+      "interpretation": "不是发行人披露的加权平均ROE。",
+      "period_rule": "same"
+    },
+    {
+      "id": "ppe_imp_recalc",
+      "label": "该组固定资产减值复算",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ppe_test_carrying",
+          "weight": "1"
+        },
+        {
+          "ref": "ppe_recoverable",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代集团",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "definition": "被测资产组账面减可收回额",
+      "interpretation": "不是全部固定资产的可收回额；不能外推到集团所有产线。",
+      "period_rule": "same"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "R_BS",
+      "label": "资产负债关系",
+      "actual": "balance_sheet",
+      "expected": "assets",
+      "tolerance": "0",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_NI",
+      "label": "利润归属",
+      "actual": "profit_attribution",
+      "expected": "ni",
+      "tolerance": "1000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_CFO",
+      "label": "净利润至CFO",
+      "actual": "cfo_bridge",
+      "expected": "cfo",
+      "tolerance": "10000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_FX",
+      "label": "现金变动含汇率",
+      "actual": "cash_flow_change",
+      "expected": "cash_increase",
+      "tolerance": "2000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_CASH",
+      "label": "现金滚动",
+      "actual": "cash_rollforward",
+      "expected": "cash",
+      "tolerance": "3000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_EQ",
+      "label": "权益滚动",
+      "actual": "equity_rollforward",
+      "expected": "equity",
+      "tolerance": "3000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_DEBT",
+      "label": "融资负债滚动",
+      "actual": "debt_rollforward",
+      "expected": "debt",
+      "tolerance": "3000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_SUPPLY",
+      "label": "跨页供应商融资",
+      "actual": "supply_components",
+      "expected": "supply",
+      "tolerance": "1000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_COMPOSITION",
+      "label": "货币资金桥",
+      "actual": "cash_composition",
+      "expected": "book_cash",
+      "tolerance": "2000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    },
+    {
+      "id": "R_EXCLUDED",
+      "label": "排除项目合计",
+      "actual": "cash_exclusion_sum",
+      "expected": "cash_excluded",
+      "tolerance": "2000",
+      "basis": "基础单位人民币；原表以千元披露。按参加计算项目的独立舍入上界保留残差，不将容差内残差强制归零。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F_GROWTH",
+      "title": "增长集中于动力电池且需要解释量价结构",
+      "question": "增长从何而来",
+      "conclusion": "收入增长{{revenue_growth}}，动力系统增长{{power_sales_growth}}，储能增长{{storage_sales_growth}}，材料回收同比{{materials_sales_growth}}。",
+      "mechanism": "销量增长高于合并收入，但收入含非电池业务，销量单位与产品结构也不同，不能将两者之比直接称为电池降价。产能扩张与存货增加要求核对投产及订单兑现。",
+      "status": "conditional",
+      "evidence": [
+        "E_BIZ",
+        "revenue_growth",
+        "volume_growth"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "产品结构和地区组合变化可能影响收入增速。",
+        "并表变化也可能影响同比；未取得同范围量价明细。"
+      ],
+      "changes_if": "取得同产品同范围的数量、单价、并购及汇率桥后，重新判断有机增长与单位经济性。"
+    },
+    {
+      "id": "F_CASH",
+      "title": "现金表现强但依赖经营负债提供资金",
+      "question": "利润为何低于CFO",
+      "conclusion": "CFO为{{cfo}}，与总净利润之比{{cfo_profit}}；营运资本三项合计贡献{{working_capital_effect}}。",
+      "mechanism": "存货和经营应收占用被经营应付增加超过，需区分业务规模、客户预收、付款期和融资安排。CFO减现金资本支出为{{fcf_simple}}，尚不是自由可分配资金。",
+      "status": "conditional",
+      "evidence": [
+        "E_BRIDGE",
+        "cfo_bridge",
+        "working_capital_effect",
+        "fcf_simple"
+      ],
+      "counterevidence": [
+        "E_SUPPLY"
+      ],
+      "alternatives": [
+        "采购规模和合同负债变化可能使经营应付增加，并不必然是延迟付款。",
+        "期末余额差额受合并、非现金和重分类影响，不能替代现金流附注项目。"
+      ],
+      "changes_if": "逐月回款付款、客户预收和供应商账期桥显示资金贡献不可持续时，下调可持续现金假设。"
+    },
+    {
+      "id": "F_SUPPLY",
+      "title": "供应商融资总额下降仍有撤回与集中风险",
+      "question": "是否把CFO改善全部归因于融资扩张",
+      "conclusion": "跨页融资安排合计{{supply}}，较期初变动{{supply_change}}；供应商已收款{{supplier_received}}是其中一部分。",
+      "mechanism": "余额下降反驳“全部现金改善来自供应链融资新增”的解释。把全部安排一次性纳入债务的敏感性口径为{{debt_supply_sensitivity}}；需合同条款决定信用分类。",
+      "status": "conditional",
+      "evidence": [
+        "E_SUPPLY",
+        "supply_components",
+        "supply_change"
+      ],
+      "counterevidence": [
+        "E_BRIDGE"
+      ],
+      "alternatives": [
+        "余额下降仍可能同时伴随普通贸易应付款上升。",
+        "供应商融资可替换其他资金，风险还取决于期限、集中度和终止条款。"
+      ],
+      "changes_if": "取得融资机构、到期梯度及撤回条款，重算现金缺口和债务口径；不能把存量总额直接当本期CFO调整额。"
+    },
+    {
+      "id": "F_LIQUIDITY",
+      "title": "账面资金不能直接当法人偿债现金",
+      "question": "集团大额现金意味着怎样的流动性",
+      "conclusion": "货币资金{{book_cash}}中，现金及现金等价物{{cash}}，排除项目{{cash_excluded}}；现金桥保留千元级舍入差。",
+      "mechanism": "排除项目包含受限保证金、质押定存和不可随时支取定存及利息，各类限制不同。集团现金尚需法人、币种、地区、季节性及经营最低现金判断，不能直接抵销全部集团债务。",
+      "status": "conditional",
+      "evidence": [
+        "E_CASH",
+        "E_CF",
+        "cash_composition",
+        "debt"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "部分定存到期后可用，但时间须匹配债务到期。",
+        "境外现金可能受转移或税费限制；年报汇总不足以确认可调度数。"
+      ],
+      "changes_if": "按法人取得账户限制、债务期限和承诺授信条件，才能完成分期流动性覆盖。"
+    },
+    {
+      "id": "F_ESTIMATES",
+      "title": "扩张中的减值与售后成本需要单独验证",
+      "question": "高增长是否证明资产和准备估计充足",
+      "conclusion": "被测试固定资产组减值前账面{{ppe_test_carrying}}、可收回额{{ppe_recoverable}}；售后预计负债{{warranty}}。",
+      "mechanism": "总体产能利用率不能推翻个别旧产线减值。转固{{ppe_transfer}}与当期购建现金{{capex}}反映不同边界。售后预计负债依赖质保内销量、维修率与单位成本，余额增加不能替代费用与实际使用桥。",
+      "status": "conditional",
+      "evidence": [
+        "E_PPE",
+        "E_WARRANTY",
+        "E_POLICY",
+        "ppe_imp_recalc"
+      ],
+      "counterevidence": [
+        "E_BIZ"
+      ],
+      "alternatives": [
+        "技术迭代或客户迁移可使局部产线减值，即使集团需求增长。",
+        "准备余额增加可能来自销量、维修率、成本或实际支出节奏，公开表无法分清。"
+      ],
+      "changes_if": "取得资产组预算/折现参数与历史兑现，及售后准备新增、使用、冲回和批次维修数据后，形成可收回额和准备敏感性。"
+    },
+    {
+      "id": "F_EQUITY",
+      "title": "权益增长同时包含利润与资本交易",
+      "question": "股东回报怎样复算",
+      "conclusion": "归母净利润{{ni_parent}}与母公司净利润{{ni_company}}分开；简单平均权益ROE为{{roe_simple}}。",
+      "mechanism": "集团权益增长由综合收益、股东投入与分配共同形成；集团盈利不能直接代表母公司可分红现金。简单平均ROE不是公司披露的加权ROE，香港发行新股也影响分母与资金。",
+      "status": "conditional",
+      "evidence": [
+        "E_EQ",
+        "E_PL",
+        "equity_rollforward",
+        "roe_simple"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "资本交易和其他综合收益会改变权益而不增加经营利润。",
+        "母公司投资收益和子公司分红存在时间及可分配限制。"
+      ],
+      "changes_if": "分红能力判断需要母公司可分配利润、法定限制和实际资金，而非只看集团ROE。"
+    },
+    {
+      "id": "F_AUDIT",
+      "title": "审计重点是追加程序的起点",
+      "question": "关键审计事项能说明什么",
+      "conclusion": "原报告为无保留意见，固定资产减值和收入确认为关键审计事项；本次只执行披露取证与复算。",
+      "mechanism": "关键审计事项说明原审计中的重要关注，不等于确认错报。本次需将收入截止、可变对价及资产组估计落实到合同与数据，不能复制原审计师程序为已完成。",
+      "status": "supported",
+      "evidence": [
+        "E_AUDIT",
+        "E_POLICY",
+        "E_PPE"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "存在重要估计不等于估计错误。",
+        "无保留意见也不意味着每项经营假设均经独立证实。"
+      ],
+      "changes_if": "实际合同、验收、返利及资产组证据支持或反驳原判断后更新风险状态。"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "P_RECALC",
+      "finding": "F_CASH",
+      "purpose": "复算所选报表与附注关系",
+      "assertions": [
+        "准确性",
+        "列报"
+      ],
+      "population": "本例已列事实所对应的报表及附注",
+      "selection": "按现金、债务、利润归属、权益及供应商融资重要问题选取；非审计抽样",
+      "steps": [
+        "按PDF页码读取原始科目及千元单位。",
+        "使用同一底稿重新加总桥及残差。",
+        "对供应商融资跨页和现金等价物附注回看原页。"
+      ],
+      "status": "performed",
+      "result": "本次已完成取证和计算输入准备；确定性运行的每项实际残差列于Reconciliations，不能仅据复算证明交易真实性。",
+      "evidence": [
+        "E_CF",
+        "E_BRIDGE",
+        "E_DEBT",
+        "E_EQ",
+        "E_SUPPLY"
+      ],
+      "performed_by": "Codex 本次公开资料分析",
+      "performed_on": "2026-10-02"
+    },
+    {
+      "id": "P_CONTRACT",
+      "finding": "F_AUDIT",
+      "purpose": "验证收入截止及返利估计",
+      "assertions": [
+        "发生",
+        "截止",
+        "准确性"
+      ],
+      "population": "年末前后主要客户交付、验收及返利合同与收入明细",
+      "selection": "待取得总体与重要性后确定；不能以年报披露金额代替总体",
+      "steps": [
+        "将合同、验收、发票及期后回款按交易匹配。",
+        "检查年末前后交付截止及期后退货折让。",
+        "重算返利条款和可变对价限制。"
+      ],
+      "status": "awaiting_data",
+      "result": "未取得底层合同与明细，未执行细节检查；暂无确认错报金额。",
+      "evidence": []
+    }
+  ],
+  "requests": [
+    {
+      "id": "REQ_CASH",
+      "finding": "F_LIQUIDITY",
+      "request": "取得逐法人、币种、月份的债务本金利息、受限现金、承诺额度到期与提款条件，以及未来经营/投资/分红预算。",
+      "reason": "集团现金汇总不能证明每个到期点的可用资金。",
+      "owner_role": "资金负责人及信用分析师",
+      "close_when": "来源用途与期初现金逐月闭合，融资条件有证据，压力下最小现金和契约时点可重算。"
+    },
+    {
+      "id": "REQ_ESTIMATE",
+      "finding": "F_ESTIMATES",
+      "request": "取得资产组范围与完整减值预测、折现率依据、历史预算兑现，以及售后准备新增/使用/冲回和质保批次数据。",
+      "reason": "仅年报余额不能验证全部减值及保修估计。",
+      "owner_role": "资产/售后财务负责人及审计估计负责人",
+      "close_when": "账面范围与模型一致，关键参数有证据，独立敏感性可复算，重大差异处理完成。"
+    }
+  ],
+  "sections": [
+    {
+      "title": "业务增长与量价结构",
+      "findings": [
+        "F_GROWTH"
+      ],
+      "figures": [
+        "revenue",
+        "revenue_growth",
+        "power_sales_growth",
+        "volume_growth"
+      ]
+    },
+    {
+      "title": "利润与经营现金质量",
+      "findings": [
+        "F_CASH"
+      ],
+      "figures": [
+        "cfo",
+        "cfo_profit",
+        "working_capital_effect",
+        "fcf_simple"
+      ]
+    },
+    {
+      "title": "供应商融资与债务口径",
+      "findings": [
+        "F_SUPPLY"
+      ],
+      "figures": [
+        "supply",
+        "supply_change",
+        "debt",
+        "debt_supply_sensitivity"
+      ]
+    },
+    {
+      "title": "资金可用性与流动性",
+      "findings": [
+        "F_LIQUIDITY"
+      ],
+      "figures": [
+        "book_cash",
+        "cash",
+        "cash_excluded"
+      ]
+    },
+    {
+      "title": "资产估计与售后义务",
+      "findings": [
+        "F_ESTIMATES"
+      ],
+      "figures": [
+        "ppe_test_carrying",
+        "ppe_recoverable",
+        "ppe_impairment",
+        "warranty"
+      ]
+    },
+    {
+      "title": "权益变动与股东回报",
+      "findings": [
+        "F_EQUITY"
+      ],
+      "figures": [
+        "ni_parent",
+        "ni_company",
+        "average_parent_equity",
+        "roe_simple"
+      ]
+    },
+    {
+      "title": "审计事项与未完成程序",
+      "findings": [
+        "F_AUDIT"
+      ],
+      "figures": []
+    }
+  ]
+}

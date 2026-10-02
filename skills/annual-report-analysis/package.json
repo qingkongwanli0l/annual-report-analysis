@@ -1,0 +1,7 @@
+{
+  "name": "annual-report-analysis-exports",
+  "version": "0.2.0-dev",
+  "private": true,
+  "description": "Editable presentation export for the shared annual-report workpaper",
+  "dependencies": { "pptxgenjs": "^4.0.1" }
+}

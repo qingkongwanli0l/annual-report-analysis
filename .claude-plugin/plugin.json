@@ -1,0 +1,8 @@
+{
+  "name": "annual-report-analysis",
+  "version": "0.2.0-dev",
+  "description": "Source-linked annual report analysis and editable financial research deliverables.",
+  "author": { "name": "annual-report-analysis contributors" },
+  "repository": "https://github.com/qingkongwanli0l/annual-report-analysis",
+  "license": "MIT"
+}

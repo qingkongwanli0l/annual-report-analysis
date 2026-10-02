@@ -1,0 +1,11 @@
+{
+  "name": "annual-report-analysis",
+  "version": "0.2.0-dev",
+  "description": "Source-linked annual report analysis for accounting, audit support, quantitative fundamentals and corporate credit research.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "企业年报专业分析",
+    "shortDescription": "从原始披露到可复算底稿与 Word、Excel、PPT",
+    "defaultPrompt": ["分析这份企业年报，解释业务、利润、现金与信用风险，并交付可复核的研究成果。"]
+  }
+}
