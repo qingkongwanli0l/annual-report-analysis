@@ -255,7 +255,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
                     f"C{i}+K{i}-{previous_inventory}",
                     f'IF(L{i}<0,NA(),IF({inputs}B4="purchases",L{i},C{i}))*{d("M")}/{d("C")}',
                     f"J{i}+K{i}-M{i}", f"N{i}-{previous_nwc}", f"I{i}+E{i}-O{i}", d('I'), d('O'), d('P'), d('Q'),
-                    previous_cash, f"U{i}+P{i}-Q{i}+R{i}-S{i}-T{i}", previous_debt,
+                    previous_cash, f"IF(ISNUMBER(X{i}),U{i}+P{i}-Q{i}+R{i}-S{i}-T{i},NA())", previous_debt,
                     f"IF(W{i}+R{i}-S{i}<0,NA(),W{i}+R{i}-S{i})", f"V{i}-{inputs}B5", f"MAX({inputs}B5-V{i},0)",
                     f"IF(G{i}>0,F{i}/G{i},NA())", f"IF(D{i}>0,X{i}/D{i},NA())"]
         row = output.get(period["end"], {})
@@ -274,8 +274,9 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
     dates = [p["end"] for p in snapshot["periods"]]
     for i, c in enumerate(contracts, 2):
         if c["test_date"] in dates:
-            ref = f"'{prefix}Cash'!{xl_col_to_name(keys.index(c['metric']))}{dates.index(c['test_date'])+2}"
-            ws.write_formula(i-1, 5, "="+ref, number, c["value"] if c["value"] is not None else "#N/A")
+            row = dates.index(c['test_date'])+2
+            ref = f"'{prefix}Cash'!{xl_col_to_name(keys.index(c['metric']))}{row}"
+            ws.write_formula(i-1, 5, f"=IF(ISNUMBER('{prefix}Cash'!V{row}),{ref},NA())", number, c["value"] if c["value"] is not None else "#N/A")
             comparison = ">=" if c["relation"] == "at_least" else "<="
             ws.write_formula(i-1, 6, f'=IF(COUNT(E{i}:F{i})=2,IF(F{i}{comparison}E{i},"within_input_threshold","outside_input_threshold"),"not_tested")', None, c["status"])
     reverse = artifact.get("reverse")
@@ -306,9 +307,9 @@ def panel_sheets(sheet, artifact, prefix, number, percent):
                [[r["entity"], r["record_id"], r["available_at"], r["version"], r["gross_margin"], r["gross_profit_to_assets"], r["gross_profitability_percentile"], r["peer_n"]] for r in peers])
     for i, row in enumerate(peers, 2):
         location = locations[row["record_id"]]
-        ws.write_formula(i-1, 4, "=IFERROR("+margin(row["record_id"])+",NA())" if row["gross_margin"] is not None else "=NA()", percent, row["gross_margin"] if row["gross_margin"] is not None else "#N/A")
+        ws.write_formula(i-1, 4, "=IFERROR("+margin(row["record_id"])+",NA())", percent, row["gross_margin"] if row["gross_margin"] is not None else "#N/A")
         expr = f"('{prefix}Records'!F{location}-'{prefix}Records'!G{location})/'{prefix}Records'!H{location}"
-        ws.write_formula(i-1, 5, f"=IF(AND(COUNT('{prefix}Records'!F{location}:H{location})=3,'{prefix}Records'!H{location}>0),{expr},NA())" if row["gross_profit_to_assets"] is not None else "=NA()", percent, row["gross_profit_to_assets"] if row["gross_profit_to_assets"] is not None else "#N/A")
+        ws.write_formula(i-1, 5, f"=IF(AND(COUNT('{prefix}Records'!F{location}:H{location})=3,'{prefix}Records'!H{location}>0),{expr},NA())", percent, row["gross_profit_to_assets"] if row["gross_profit_to_assets"] is not None else "#N/A")
         area = f"F$2:F${len(peers)+1}"
         ws.write_formula(i-1, 6, f'=IF(ISNUMBER(F{i}),IFERROR((COUNTIF({area},"<"&F{i})+(COUNTIF({area},F{i})+1)/2)/COUNT({area}),NA()),NA())', percent,
                          row["gross_profitability_percentile"] if row["gross_profitability_percentile"] is not None else "#N/A")
