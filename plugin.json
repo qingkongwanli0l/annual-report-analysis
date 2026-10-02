@@ -1,8 +1,0 @@
-{
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "annual-report-analysis",
-  "version": "0.1.0",
-  "description": "Evidence-based annual report analysis with accounting-aware workpapers and Word, Excel, and PowerPoint exports.",
-  "license": "MIT",
-  "keywords": ["annual-report", "financial-statements", "accounting", "a-shares"]
-}
