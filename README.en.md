@@ -14,6 +14,8 @@ The Python scripts use maintained libraries for PDF extraction, validation, nume
 
 The [CATL 2025 workpaper](examples/catl-2025/workpaper.json) has source references and actual financial calculations. [Word](examples/catl-2025/deliverables/report.docx), [Excel](examples/catl-2025/deliverables/workbook.xlsx) and [PowerPoint](examples/catl-2025/deliverables/presentation.pptx) are generated from that same workpaper.
 
+The [example guide](examples/catl-2025/README.md) provides the source checksum, page references, expected figures and retained reconciliation differences.
+
 ```bash
 python -m pip install -r skills/annual-report-analysis/requirements.txt
 npm install --prefix skills/annual-report-analysis

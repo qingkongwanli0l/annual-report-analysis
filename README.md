@@ -19,6 +19,8 @@
 
 [宁德时代2025年底稿](examples/catl-2025/workpaper.json)以官方年报为输入，复算利润现金、融资负债、权益、供应商融资和现金口径。示例成果：[Word](examples/catl-2025/deliverables/report.docx)、[Excel](examples/catl-2025/deliverables/workbook.xlsx)、[PPT](examples/catl-2025/deliverables/presentation.pptx)。这是限定范围研究示范，不是完整审计或正式评级。
 
+[复现说明与原文核对要点](examples/catl-2025/README.md)列出输入校验值、关键事实页码、预期计算及保留的差额。
+
 ```bash
 python -m pip install -r skills/annual-report-analysis/requirements.txt
 npm install --prefix skills/annual-report-analysis
