@@ -133,7 +133,7 @@ def workbook(w, data, path):
         for i, c in enumerate(w.calculations, 2):
             r = rs[c.id]
             expr = excel_expression(c, cells) if len(c.terms) == 2 or c.op == "sum" else "=NA()"
-            if c.op in ("ratio", "growth"):
+            if c.op in ("ratio", "growth") and len(c.terms) == 2:
                 den = cells[c.terms[1].ref]
                 test = f"{den}<=0" if c.denominator == "positive" or c.op == "growth" else f"{den}=0"
                 if c.op == "growth":
@@ -196,9 +196,9 @@ def workbook(w, data, path):
                                [[claims[r["claim_id"]]["label"], *[float(r[k]) for k in ("original_claim", "secured", "general", "result", "unpaid")],
                                  float(r["recovery_rate"]) if r["recovery_rate"] is not None else None] for r in totals])
                     for i, r in enumerate(totals, 2):
-                        ws.write_formula(i-1, 4, f"=C{i}+D{i}", number, float(r["result"]))
-                        ws.write_formula(i-1, 5, f"=B{i}-E{i}", number, float(r["unpaid"]))
-                        ws.write_formula(i-1, 6, f"=IF(B{i}>0,E{i}/B{i},NA())", percent,
+                        ws.write_formula(i-1, 4, f"=IF(COUNT(C{i}:D{i})=2,C{i}+D{i},NA())", number, float(r["result"]))
+                        ws.write_formula(i-1, 5, f"=IF(COUNT(B{i},E{i})=2,B{i}-E{i},NA())", number, float(r["unpaid"]))
+                        ws.write_formula(i-1, 6, f"=IF(AND(COUNT(B{i},E{i})=2,B{i}>0),E{i}/B{i},NA())", percent,
                                          float(r["recovery_rate"]) if r["recovery_rate"] is not None else "#N/A")
                     ws.merge_range(len(totals)+3, 0, len(totals)+4, 6, "回收分配是已运行结果快照；这里只联动合计、未偿和比例。修改估值、债权或顺位后，重跑 recovery.py 与 export.py，不在本表重新分配。", wrap)
             sheet(f"Quant{index}Notes", ["field", "value"], [["method", q.method], ["as_of", str(q.as_of)],
@@ -215,7 +215,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
         ["payables_denominator", snapshot["payables_denominator"], "purchases或cost_of_sales"],
         ["minimum_cash", floor["value"], floor["source"]],
         *[[key, opening[key], opening["source"]] for key in ("cash", "receivables", "inventory", "payables", "debt")],
-        ["复算边界", "编辑数字驱动可重算公式；日期/来源/口径/期间或逆向目标改变须重跑脚本", "负现金后续期间为#N/A；不自动融资"]], [32,55,85])
+        ["复算边界", "编辑合法数字驱动可重算；缺失、非数字或越界驱动为#N/A。日期/来源/口径/期间或逆向目标改变须重跑脚本", "负现金后续期间为#N/A；不自动融资"]], [32,55,85])
     inputs = f"'{prefix}Inputs'!"
     driver_keys = ["start", "end", "days", "volume", "unit_price", "unit_variable_cost", "fixed_cash_cost",
                    "depreciation", "capex", "tax_rate", "dso", "dio", "dpo", "interest_rate", "drawdown", "principal", "dividends", "source", "available_at"]
@@ -240,6 +240,10 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
     output = {r["period_end"]: r for r in artifact["rows"]}
     for i, period in enumerate(snapshot["periods"], 2):
         d = lambda col: f"'{prefix}Drivers'!{col}{i}"
+        valid = (f"IFERROR(AND(COUNT({inputs}B2:B3,{inputs}B5:B10)=8,{inputs}B2>0,{inputs}B3>0,"
+                 f"MIN({inputs}B5:B10)>=0,OR({inputs}B4=\"purchases\",{inputs}B4=\"cost_of_sales\"),"
+                 f"COUNT('{prefix}Drivers'!A{i}:Q{i})=17,{d('C')}>0,"
+                 f"MIN('{prefix}Drivers'!D{i}:M{i},'{prefix}Drivers'!O{i}:Q{i})>=0,{d('J')}<=1),FALSE)")
         prev = i-1
         previous_cash = f"V{prev}" if i > 2 else inputs+"B6"
         previous_debt = f"X{prev}" if i > 2 else inputs+"B10"
@@ -259,9 +263,10 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
         for col, formula in enumerate(formulas, 1):
             if i > 2:
                 formula = f"IF({previous_cash}<0,NA(),{formula})"
+            formula = f"IF({valid},{formula},NA())"
             value = period["depreciation"] if keys[col] == "depreciation" and row else row.get(keys[col])
             cash.write_formula(i-1, col, "="+formula, number, value if value is not None else "#N/A")
-        cash.write_formula(i-1, 28, f'=IFERROR(IF(V{i}<0,"unfunded_cash_shortfall",IF(V{i}<{inputs}B5,"below_cash_floor","conditional")),"not_projected")',
+        cash.write_formula(i-1, 28, f'=IF(NOT({valid}),"invalid_numeric_inputs",IFERROR(IF(V{i}<0,"unfunded_cash_shortfall",IF(V{i}<{inputs}B5,"below_cash_floor","conditional")),"not_projected"))',
                            None, row.get("status", "not_projected"))
     contracts = artifact.get("contracts", [])
     ws = sheet(prefix+"Contracts", ["条件", "日期", "指标", "关系", "阈值", "计算值", "结果", "定义", "依据"],
@@ -272,7 +277,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             ref = f"'{prefix}Cash'!{xl_col_to_name(keys.index(c['metric']))}{dates.index(c['test_date'])+2}"
             ws.write_formula(i-1, 5, "="+ref, number, c["value"] if c["value"] is not None else "#N/A")
             comparison = ">=" if c["relation"] == "at_least" else "<="
-            ws.write_formula(i-1, 6, f'=IFERROR(IF(F{i}{comparison}E{i},"within_input_threshold","outside_input_threshold"),"not_tested")', None, c["status"])
+            ws.write_formula(i-1, 6, f'=IF(COUNT(E{i}:F{i})=2,IF(F{i}{comparison}E{i},"within_input_threshold","outside_input_threshold"),"not_tested")', None, c["status"])
     reverse = artifact.get("reverse")
     if reverse:
         rows = [["status", reverse["status"]], ["definition", reverse["definition"]],
@@ -305,7 +310,7 @@ def panel_sheets(sheet, artifact, prefix, number, percent):
         expr = f"('{prefix}Records'!F{location}-'{prefix}Records'!G{location})/'{prefix}Records'!H{location}"
         ws.write_formula(i-1, 5, f"=IF(AND(COUNT('{prefix}Records'!F{location}:H{location})=3,'{prefix}Records'!H{location}>0),{expr},NA())" if row["gross_profit_to_assets"] is not None else "=NA()", percent, row["gross_profit_to_assets"] if row["gross_profit_to_assets"] is not None else "#N/A")
         area = f"F$2:F${len(peers)+1}"
-        ws.write_formula(i-1, 6, f'=IFERROR((COUNTIF({area},"<"&F{i})+(COUNTIF({area},F{i})+1)/2)/COUNT({area}),NA())', percent,
+        ws.write_formula(i-1, 6, f'=IF(ISNUMBER(F{i}),IFERROR((COUNTIF({area},"<"&F{i})+(COUNTIF({area},F{i})+1)/2)/COUNT({area}),NA()),NA())', percent,
                          row["gross_profitability_percentile"] if row["gross_profitability_percentile"] is not None else "#N/A")
         ws.write_formula(i-1, 7, f"=COUNT({area})", number, row["peer_n"])
     train = artifact["training_pairs"]

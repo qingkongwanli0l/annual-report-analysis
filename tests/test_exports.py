@@ -15,6 +15,28 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_incomplete_ratio_or_growth_remains_unavailable_in_workbook(self):
+        for operation in ('ratio', 'growth'):
+            with self.subTest(operation=operation):
+                raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
+                calculation = next(c for c in raw['calculations'] if c['op'] == operation)
+                calculation['terms'] = calculation['terms'][:1]
+                w = Workpaper.model_validate(raw)
+                result = evaluate(w)
+                row = next(i for i, c in enumerate(w.calculations, 2) if c.id == calculation['id'])
+                computed = result['calculations'][row-2]
+                self.assertEqual(computed['status'], 'not_calculated')
+                self.assertEqual(computed['reason'], 'operation requires two inputs')
+                with tempfile.TemporaryDirectory() as directory:
+                    path = Path(directory)/'workbook.xlsx'
+                    workbook(w, prepare(w, result), path)
+                    with ZipFile(path) as z:
+                        ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                        xml = ET.fromstring(z.read('xl/worksheets/sheet3.xml'))
+                    cell = xml.find(f".//x:c[@r='D{row}']", ns)
+                    self.assertEqual(cell.find('x:f', ns).text, 'NA()')
+                    self.assertEqual(cell.find('x:v', ns).text, '#N/A')
+
     def test_monetary_reconciliation_keeps_a_real_cent_difference(self):
         ctx = dict(entity='A', scope='consolidated', start='2025-01-01', end='2025-12-31',
                    aggregation='flow', basis='test', measure='money', currency='CNY')
@@ -101,7 +123,7 @@ class ExportTests(unittest.TestCase):
                 recovery_index = next(i for i, s in enumerate(sheets, 1) if s.get('name') == 'Q1Recovery')
                 xml = ET.fromstring(z.read(f'xl/worksheets/sheet{recovery_index}.xml'))
                 cell = xml.find(".//x:c[@r='E2']", ns)
-                self.assertEqual(cell.find('x:f', ns).text, 'C2+D2')
+                self.assertEqual(cell.find('x:f', ns).text, 'IF(COUNT(C2:D2)=2,C2+D2,NA())')
                 self.assertEqual(float(cell.find('x:v', ns).text), 85)
 
 

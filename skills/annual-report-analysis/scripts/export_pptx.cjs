@@ -68,6 +68,7 @@ async function main() {
   for (const section of d.sections) {
     const selected = section.findings.map(id => findings[id]);
     const figures = section.figures.slice(0, 4).map(id => d.figures[id]);
+    if (!selected.length && !figures.length) continue;
     const width = figures.length ? 7.65 : 12;
     const chunks = selected.length ? selected.flatMap(f => paragraphs(`${f.conclusion}\n\n判断改变条件\n${f.changes_if}`, width, 3.35, 18).map(body => ({f,body}))) : [{}];
     for (const [index, chunk] of chunks.entries()) {
