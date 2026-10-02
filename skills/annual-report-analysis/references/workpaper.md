@@ -9,12 +9,17 @@ Python 3.11+，Node 18+。用宿主提供的解释器或任务虚拟环境安装
 ```bash
 python /path/to/skill/scripts/extract_pdf.py annual-report.pdf --output /task/pages.json
 python /path/to/skill/scripts/extract_pdf.py annual-report.pdf --pages 111 112 113 --output /task/selected-pages.json
+python /path/to/skill/scripts/extract_pdf.py annual-report.pdf --pages 7 8 --tables --render /task/page-images --output /task/table-pages.json
 python /path/to/skill/scripts/export.py /task/workpaper.json --output /task/deliverables
 ```
 
 Node 不在 PATH 时给 `--node /absolute/path/to/node`。运行结果列未计算记录；查看 `results.json` 中具体原因，判断应补输入、改口径还是保留不适用。不要为了通过校验而改写事实。
 
 产物：`report.docx`、`workbook.xlsx`、`presentation.pptx`；另保存 `workpaper.json`、`results.json`、用于 PPT 的同源数据及 `manifest.json` 文件校验值。量化模型原始输入快照及结果保存在 `quantitative-记录ID.json`。本地文件生成不会发布或外传资料。
+
+PDF提取默认保留页码与文本。`--tables`另外给出候选表的边界、原始单元格矩阵和单元格坐标；`--render`将选定原页输出为150dpi PNG，`rendered_page`记录路径。表号、矩阵行列从1开始引用；合并单元格的`null`不填零，不自动补列名或续页表头。原文坐标单位为PDF点，必须核对表头页、目标行、列名、期间及单位后，才能写入事实。
+
+候选识别只在检测视图排除宽高均大于1pt的无描边填充矩形，以减少底色伪边框；原文与原页渲染不改变。这个启发式可能漏掉宽边框、只有色块或无竖线的表，也可能把页面段落识别为表。未识别或列关系不一致时回看原页，不用候选数量或JSON成功代替取证。代码不提供OCR，不宣称表格已验证。
 
 ## 数据契约
 
