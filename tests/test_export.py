@@ -60,6 +60,17 @@ class ExportRegressions(unittest.TestCase):
             self.assertIn("Cached calculations do not match", result.stderr)
             self.assertFalse(destination.exists())
 
+    def test_reconciliation_status_tracks_the_residual(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "book.xlsx"
+            export_excel(self.data, output)
+            with zipfile.ZipFile(output) as book:
+                sheet = ET.fromstring(book.read("xl/worksheets/sheet5.xml"))
+                cell = sheet.find(".//s:c[@r='H2']", NS)
+                formula = cell.find("s:f", NS).text
+                self.assertIn("ABS(C2)<=I2", formula)
+                self.assertEqual(cell.find("s:v", NS).text, "matched")
+
 
 if __name__ == "__main__":
     unittest.main()

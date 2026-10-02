@@ -282,6 +282,10 @@ def export_excel(data, destination):
                 cached = float(Decimal(item["value"]))
                 fmt = percent if item["unit"] == "percent" else numeric
                 ws.write_formula(row, 2, excel_expression(item["expression"], rows), fmt, cached)
+                if key == "checks":
+                    ws.write_formula(row, 7,
+                                     f'=IF(ISNUMBER(C{row+1}),IF(ABS(C{row+1})<=I{row+1},"matched","difference"),"unavailable")',
+                                     text_format, item["status"])
                 display_formula = f"=C{row+1}"
                 display_value = cached
                 if item["unit"] == "currency":
