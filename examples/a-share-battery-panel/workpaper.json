@@ -1,0 +1,3259 @@
+{
+  "mandate": {
+    "title": "A股电池企业：原始披露与历史时点验证",
+    "entity": "四家预选A股电池企业",
+    "industry": "industrial",
+    "purpose": "演示原文取证、原始版本保留、列报变化识别、固定小样本毛利率模型及可复算交接；不作投资或评级结论。",
+    "period_start": "2022-01-01",
+    "period_end": "2025-12-31",
+    "cutoff": "2026-10-02",
+    "accounting_basis": "CAS",
+    "scope": "各报告当期合并范围",
+    "language": "zh-CN",
+    "version": "real-disclosure-example-v1",
+    "methods": [
+      "pit_margin_persistence_v1"
+    ],
+    "limitations": [
+      "仅四家事先选定企业，产品结构和合并范围不同；不是全市场样本或完全同质同业。",
+      "公告日期来自官方列表，次日零点仅为日级证据的保守边界；没有证明历史精确字节从未替换。",
+      "亿纬2022当前官方PDF的生成时间晚于原公告，历史可用时间为空，不纳入时点模型。",
+      "2024年保证类质量保证成本重分类造成列报断点；原报告毛利率不等于跨年同口径经营质量。",
+      "研究在2026年事后完成，研究者已知部分后期披露；这是固定方法流程演示，不是前瞻注册实验。",
+      "留出误差只描述本次样本，不证明预测优势、统计显著性、因果、收益、违约概率或评级。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "s_002074_2022",
+      "title": "国轩高科股份有限公司 2022 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-04-28/1216662624.PDF",
+      "published": "2023-04-28",
+      "availability_note": "官方列表日期2023-04-28；保守可用时点2023-04-29T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+      "sha256": "5f1037d1f4e4ef525605ec8c2274c095346ffae05a20d49ce54354cf3e166cfb"
+    },
+    {
+      "id": "s_002074_2023",
+      "title": "国轩高科股份有限公司 2023 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-04-20/1219700973.PDF",
+      "published": "2024-04-20",
+      "availability_note": "官方列表日期2024-04-20；保守可用时点2024-04-21T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+      "sha256": "865d69b0da6dfa059de2c924e16eb8a4e5b11fabc1b19c985769baf44c94739d"
+    },
+    {
+      "id": "s_002074_2024",
+      "title": "国轩高科股份有限公司 2024 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+      "published": "2025-04-25",
+      "availability_note": "官方列表日期2025-04-25；保守可用时点2025-04-26T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+      "sha256": "cacf470f2dea6d0cf64ed9aa61872c726f739129a3715876a0b1059d2a9168ba"
+    },
+    {
+      "id": "s_002074_2025",
+      "title": "国轩高科股份有限公司 2025 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225254220.pdf",
+      "published": "2026-04-29",
+      "availability_note": "官方列表日期2026-04-29；保守可用时点2026-04-30T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。；先前检索到同日候选1225241936.PDF，正常请求返回404；本次官网IR及巨潮列表均指向1225254220.pdf。后者元数据为2026-04-29 16:11:55+08:00，同日版本先后/差异未核实；采用日结束后的保守时点，不称其为唯一初始版本。",
+      "sha256": "2a255f70026f280deb60691a7937b662615a1b1addb2ce379a56e95698e358fb"
+    },
+    {
+      "id": "s_300014_2022",
+      "title": "惠州亿纬锂能股份有限公司 2022 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-04-18/1218857751.PDF",
+      "published": null,
+      "availability_note": "官方列表日期2023-04-18；保守可用时点None。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。；当前巨潮PDF与另行取得的深交所PDF的CreationDate/ModDate均为2024-01-10，晚于列表标注的2023-04-18；未查得可证实为2023首次发布的官方全文版本，故available_at留空，不得用于该时点训练或回测。",
+      "sha256": "b681916e887b793ea79dee427de10af98a70cc2de52f28af030eb5da93d48dcf"
+    },
+    {
+      "id": "s_300014_2023",
+      "title": "惠州亿纬锂能股份有限公司 2023 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-04-19/1219668064.PDF",
+      "published": "2024-04-19",
+      "availability_note": "官方列表日期2024-04-19；保守可用时点2024-04-20T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+      "sha256": "959d6d51d529fd5129c829d1358ad41d384c95560ef2f8dc23caedd91e01f33e"
+    },
+    {
+      "id": "s_300014_2024",
+      "title": "惠州亿纬锂能股份有限公司 2024 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+      "published": "2025-04-18",
+      "availability_note": "官方列表日期2025-04-18；保守可用时点2025-04-19T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+      "sha256": "06be1a045d1ec713113cdcf626abfa534e2068f358770d5940975818a5a538aa"
+    },
+    {
+      "id": "s_300014_2025",
+      "title": "惠州亿纬锂能股份有限公司 2025 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225045391.PDF",
+      "published": "2026-03-28",
+      "availability_note": "官方列表日期2026-03-28；保守可用时点2026-03-29T00:00:00+08:00。现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+      "sha256": "3bee0ca9a6232c60c53f195d078446a45fd4941bd997258b474cebe835eea3b8"
+    },
+    {
+      "id": "s_300207_2022",
+      "title": "欣旺达电子股份有限公司 2022 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-04-27/1216623719.PDF",
+      "published": "2023-04-27",
+      "availability_note": "官方列表日期2023-04-27；保守可用时点2023-04-28T00:00:00+08:00。本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。",
+      "sha256": "7533c4ae926b324b7059aa590c89b6e6775c296f9122ada0f4f388c91c30ac57"
+    },
+    {
+      "id": "s_300207_2023",
+      "title": "欣旺达电子股份有限公司 2023 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-04-11/1219567241.PDF",
+      "published": "2024-04-11",
+      "availability_note": "官方列表日期2024-04-11；保守可用时点2024-04-12T00:00:00+08:00。本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。",
+      "sha256": "2b607a8320966d5648b7d819dbe53cd0b9a0e9fabf0e873f07ebfe0f83a6d821"
+    },
+    {
+      "id": "s_300207_2024",
+      "title": "欣旺达电子股份有限公司 2024 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-04-22/1223194845.PDF",
+      "published": "2025-04-22",
+      "availability_note": "官方列表日期2025-04-22；保守可用时点2025-04-23T00:00:00+08:00。本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。",
+      "sha256": "c12b433318341147f879c878899bdb03ffd875505b04ba6a51bb649d6d574c92"
+    },
+    {
+      "id": "s_300207_2025",
+      "title": "欣旺达电子股份有限公司 2025 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160491.PDF",
+      "published": "2026-04-24",
+      "availability_note": "官方列表日期2026-04-24；保守可用时点2026-04-25T00:00:00+08:00。本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。",
+      "sha256": "1bf90eb16fc3b0ba81928df909c06ae13d97d27da23216f37f4a7fc1198bec04"
+    },
+    {
+      "id": "s_300750_2022",
+      "title": "宁德时代新能源科技股份有限公司 2022 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2023-03-10/1216084559.PDF",
+      "published": "2023-03-10",
+      "availability_note": "官方列表日期2023-03-10；保守可用时点2023-03-11T00:00:00+08:00。当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "sha256": "ac4fa5c3b96956462054986773b0c6129189ba6dcdc257c737f1b398ca7e2a10"
+    },
+    {
+      "id": "s_300750_2023",
+      "title": "宁德时代新能源科技股份有限公司 2023 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-03-16/1219313047.PDF",
+      "published": "2024-03-16",
+      "availability_note": "官方列表日期2024-03-16；保守可用时点2024-03-17T00:00:00+08:00。当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "sha256": "6081f0377617dddb82f900569d6458c278a7ab26697b34c87684188eac083471"
+    },
+    {
+      "id": "s_300750_2024",
+      "title": "宁德时代新能源科技股份有限公司 2024 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806982.PDF",
+      "published": "2025-03-15",
+      "availability_note": "官方列表日期2025-03-15；保守可用时点2025-03-16T00:00:00+08:00。当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad"
+    },
+    {
+      "id": "s_300750_2025",
+      "title": "宁德时代新能源科技股份有限公司 2025 年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF",
+      "published": "2026-03-10",
+      "availability_note": "官方列表日期2026-03-10；保守可用时点2026-03-11T00:00:00+08:00。当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "sha256": "c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e_002074_2022",
+      "source": "s_002074_2022",
+      "locator": "其中：营业收入：PDF物理页164，2022年度，原单位元；其中：营业成本：PDF物理页164，2022年度，原单位元；资产总计：PDF物理页161，2022年12月31日，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_002074_2023",
+      "source": "s_002074_2023",
+      "locator": "其中：营业收入：PDF物理页122，2023年度，原单位元；其中：营业成本：PDF物理页122，2023年度，原单位元；资产总计：PDF物理页119，2023年12月31日，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_002074_2024",
+      "source": "s_002074_2024",
+      "locator": "其中：营业收入：PDF物理页132，2024年度，原单位元；其中：营业成本：PDF物理页132，2024年度，原单位元；资产总计：PDF物理页128，期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "p_002074_2024",
+      "source": "s_002074_2024",
+      "locator": "PDF物理页[132, 183]，会计政策变更及比较数",
+      "observation": "2024年报告披露保证类质量保证金从销售费用重分类至营业成本，调整363,418,904.40元。保留2023年报告本年列，不回填重分类后的比较数。",
+      "reliability": "记录已观察重列；未穷尽其他历史修订或证明业务范围恒定。"
+    },
+    {
+      "id": "e_002074_2025",
+      "source": "s_002074_2025",
+      "locator": "其中：营业收入：PDF物理页127，2025年度，原单位元；其中：营业成本：PDF物理页127，2025年度，原单位元；资产总计：PDF物理页124，期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。；先前检索到同日候选1225241936.PDF，正常请求返回404；本次官网IR及巨潮列表均指向1225254220.pdf。后者元数据为2026-04-29 16:11:55+08:00，同日版本先后/差异未核实；采用日结束后的保守时点，不称其为唯一初始版本。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300014_2022",
+      "source": "s_300014_2022",
+      "locator": "其中：营业收入：PDF物理页97，2022年度，原单位元；其中：营业成本：PDF物理页97，2022年度，原单位元；资产总计：PDF物理页93，2022年12月31日，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。；当前巨潮PDF与另行取得的深交所PDF的CreationDate/ModDate均为2024-01-10，晚于列表标注的2023-04-18；未查得可证实为2023首次发布的官方全文版本，故available_at留空，不得用于该时点训练或回测。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300014_2023",
+      "source": "s_300014_2023",
+      "locator": "其中：营业收入：PDF物理页99，2023年度，原单位元；其中：营业成本：PDF物理页99，2023年度，原单位元；资产总计：PDF物理页95，2023年12月31日，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300014_2024",
+      "source": "s_300014_2024",
+      "locator": "其中：营业收入：PDF物理页97，2024年度，原单位元；其中：营业成本：PDF物理页97，2024年度，原单位元；资产总计：PDF物理页93，期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "p_300014_2024",
+      "source": "s_300014_2024",
+      "locator": "PDF物理页[97, 140]，会计政策变更及比较数",
+      "observation": "2024年报告披露保证类质保费用重分类，将2023年比较营业成本增加190,977,076.26元。保留2023年报告本年列，不回填重分类后的比较数。",
+      "reliability": "记录已观察重列；未穷尽其他历史修订或证明业务范围恒定。"
+    },
+    {
+      "id": "e_300014_2025",
+      "source": "s_300014_2025",
+      "locator": "其中：营业收入：PDF物理页90，2025年度，原单位元；其中：营业成本：PDF物理页90，2025年度，原单位元；资产总计：PDF物理页86，期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300207_2022",
+      "source": "s_300207_2022",
+      "locator": "其中：营业收入：PDF物理页138，2022年度，原单位元；其中：营业成本：PDF物理页138，2022年度，原单位元；资产总计：PDF物理页135，2022-12-31期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300207_2023",
+      "source": "s_300207_2023",
+      "locator": "其中：营业收入：PDF物理页133，2023年度，原单位元；其中：营业成本：PDF物理页133，2023年度，原单位元；资产总计：PDF物理页129，2023-12-31期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300207_2024",
+      "source": "s_300207_2024",
+      "locator": "其中：营业收入：PDF物理页129，2024年度，原单位元；其中：营业成本：PDF物理页129，2024年度，原单位元；资产总计：PDF物理页126，2024-12-31期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "p_300207_2024",
+      "source": "s_300207_2024",
+      "locator": "PDF物理页[172]，会计政策变更及比较数",
+      "observation": "本报告p172自2024-01-01执行解释第18号保证类质量保证规定，并追溯调整2023营业成本和销售费用；当期营业成本已采用新分类。原始2023当期值与2024所列比较值不相同。",
+      "reliability": "记录已观察重列；未穷尽其他历史修订或证明业务范围恒定。"
+    },
+    {
+      "id": "e_300207_2025",
+      "source": "s_300207_2025",
+      "locator": "其中：营业收入：PDF物理页112，2025年度，原单位元；其中：营业成本：PDF物理页112，2025年度，原单位元；资产总计：PDF物理页109，2025-12-31期末余额，原单位元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。；未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300750_2022",
+      "source": "s_300750_2022",
+      "locator": "其中：营业收入：PDF物理页105，2022年度，原单位万元；其中：营业成本：PDF物理页105，2022年度，原单位万元；资产总计：PDF物理页101，2022-12-31期末余额，原单位万元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300750_2023",
+      "source": "s_300750_2023",
+      "locator": "其中：营业收入：PDF物理页120，2023年度，原单位万元；其中：营业成本：PDF物理页120，2023年度，原单位万元；资产总计：PDF物理页116，2023-12-31期末余额，原单位万元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "e_300750_2024",
+      "source": "s_300750_2024",
+      "locator": "其中：营业收入：PDF物理页119，2024年度，原单位千元；其中：营业成本：PDF物理页119，2024年度，原单位千元；资产总计：PDF物理页115，2024-12-31期末余额，原单位千元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。历史可用性与跨期经济可比性仍需分别判断。"
+    },
+    {
+      "id": "p_300750_2024",
+      "source": "s_300750_2024",
+      "locator": "PDF物理页[114, 119, 162, 163]，会计政策变更及比较数",
+      "observation": "保证类质量保证列报政策：2023营业成本由309070434千元增加14911696千元至323982130千元；销售费用反向重分类。保留2023原报告成本，不以后年比较数回填历史预测。2024政策使当年营业成本增加11842606千元。毛利变化受列报影响，不等于经济利润同比变化。；单位由万元改为千元，2023比较值有显示舍入。2023原始精度保留。",
+      "reliability": "记录已观察重列；未穷尽其他历史修订或证明业务范围恒定。"
+    },
+    {
+      "id": "e_300750_2025",
+      "source": "s_300750_2025",
+      "locator": "其中：营业收入：PDF物理页116，2025年度，原单位千元；其中：营业成本：PDF物理页116，2025年度，原单位千元；资产总计：PDF物理页112，2025-12-31期末余额，原单位千元",
+      "observation": "当年合并表本期数及期末余额；收入、营业成本、资产总计分别取证。官方日期证据与已见重列差异见sources.json。",
+      "reliability": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。历史可用性与跨期经济可比性仍需分别判断。"
+    }
+  ],
+  "facts": [
+    {
+      "id": "002074_2022_revenue",
+      "label": "国轩高科股份有限公司2022其中：营业收入",
+      "concept": "revenue",
+      "value": "23051701484.60",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2022_cost_of_sales",
+      "label": "国轩高科股份有限公司2022其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "18949696156.70",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2022_total_assets",
+      "label": "国轩高科股份有限公司2022资产总计",
+      "concept": "total_assets",
+      "value": "72627365266.66",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2022-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2023_revenue",
+      "label": "国轩高科股份有限公司2023其中：营业收入",
+      "concept": "revenue",
+      "value": "31605490020.32",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2023_cost_of_sales",
+      "label": "国轩高科股份有限公司2023其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "26257211896.71",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2023_total_assets",
+      "label": "国轩高科股份有限公司2023资产总计",
+      "concept": "total_assets",
+      "value": "93592652122.38",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2023-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2024_revenue",
+      "label": "国轩高科股份有限公司2024其中：营业收入",
+      "concept": "revenue",
+      "value": "35391817095.44",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2024_cost_of_sales",
+      "label": "国轩高科股份有限公司2024其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "29020131352.84",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2024_total_assets",
+      "label": "国轩高科股份有限公司2024资产总计",
+      "concept": "total_assets",
+      "value": "107839685095.13",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2025_revenue",
+      "label": "国轩高科股份有限公司2025其中：营业收入",
+      "concept": "revenue",
+      "value": "45070461822.87",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2025_cost_of_sales",
+      "label": "国轩高科股份有限公司2025其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "37780369237.62",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "002074_2025_total_assets",
+      "label": "国轩高科股份有限公司2025资产总计",
+      "concept": "total_assets",
+      "value": "127214519738.62",
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_002074_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2022_revenue",
+      "label": "惠州亿纬锂能股份有限公司2022其中：营业收入",
+      "concept": "revenue",
+      "value": "36303947808.53",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。历史时点版本未核实，仅保留当前内容核查。"
+    },
+    {
+      "id": "300014_2022_cost_of_sales",
+      "label": "惠州亿纬锂能股份有限公司2022其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "30338440631.84",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。历史时点版本未核实，仅保留当前内容核查。"
+    },
+    {
+      "id": "300014_2022_total_assets",
+      "label": "惠州亿纬锂能股份有限公司2022资产总计",
+      "concept": "total_assets",
+      "value": "83637813181.68",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2022-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。历史时点版本未核实，仅保留当前内容核查。"
+    },
+    {
+      "id": "300014_2023_revenue",
+      "label": "惠州亿纬锂能股份有限公司2023其中：营业收入",
+      "concept": "revenue",
+      "value": "48783587175.86",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2023_cost_of_sales",
+      "label": "惠州亿纬锂能股份有限公司2023其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "40473296810.60",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2023_total_assets",
+      "label": "惠州亿纬锂能股份有限公司2023资产总计",
+      "concept": "total_assets",
+      "value": "94355337998.71",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2023-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2024_revenue",
+      "label": "惠州亿纬锂能股份有限公司2024其中：营业收入",
+      "concept": "revenue",
+      "value": "48614556525.09",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2024_cost_of_sales",
+      "label": "惠州亿纬锂能股份有限公司2024其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "40149208233.59",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2024_total_assets",
+      "label": "惠州亿纬锂能股份有限公司2024资产总计",
+      "concept": "total_assets",
+      "value": "100890624125.27",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2025_revenue",
+      "label": "惠州亿纬锂能股份有限公司2025其中：营业收入",
+      "concept": "revenue",
+      "value": "61469630776.09",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2025_cost_of_sales",
+      "label": "惠州亿纬锂能股份有限公司2025其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "51528491525.28",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300014_2025_total_assets",
+      "label": "惠州亿纬锂能股份有限公司2025资产总计",
+      "concept": "total_assets",
+      "value": "125542296569.58",
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300014_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2022_revenue",
+      "label": "欣旺达电子股份有限公司2022其中：营业收入",
+      "concept": "revenue",
+      "value": "52162269313.89",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2022_cost_of_sales",
+      "label": "欣旺达电子股份有限公司2022其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "44942949296.33",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2022_total_assets",
+      "label": "欣旺达电子股份有限公司2022资产总计",
+      "concept": "total_assets",
+      "value": "74494462459.10",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2022-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2023_revenue",
+      "label": "欣旺达电子股份有限公司2023其中：营业收入",
+      "concept": "revenue",
+      "value": "47862226994.24",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2023_cost_of_sales",
+      "label": "欣旺达电子股份有限公司2023其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "40876301967.08",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2023_total_assets",
+      "label": "欣旺达电子股份有限公司2023资产总计",
+      "concept": "total_assets",
+      "value": "79261259472.63",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2023-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2024_revenue",
+      "label": "欣旺达电子股份有限公司2024其中：营业收入",
+      "concept": "revenue",
+      "value": "56020634117.81",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2024_cost_of_sales",
+      "label": "欣旺达电子股份有限公司2024其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "47518996934.90",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2024_total_assets",
+      "label": "欣旺达电子股份有限公司2024资产总计",
+      "concept": "total_assets",
+      "value": "87322726522.33",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2025_revenue",
+      "label": "欣旺达电子股份有限公司2025其中：营业收入",
+      "concept": "revenue",
+      "value": "63246252072.73",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2025_cost_of_sales",
+      "label": "欣旺达电子股份有限公司2025其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "54429259848.68",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300207_2025_total_assets",
+      "label": "欣旺达电子股份有限公司2025资产总计",
+      "concept": "total_assets",
+      "value": "108072225016.49",
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300207_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2022_revenue",
+      "label": "宁德时代新能源科技股份有限公司2022其中：营业收入",
+      "concept": "revenue",
+      "value": "32859398.75",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2022_cost_of_sales",
+      "label": "宁德时代新能源科技股份有限公司2022其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "26204960.92",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2022_total_assets",
+      "label": "宁德时代新能源科技股份有限公司2022资产总计",
+      "concept": "total_assets",
+      "value": "60095235.19",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2022-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2022"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2023_revenue",
+      "label": "宁德时代新能源科技股份有限公司2023其中：营业收入",
+      "concept": "revenue",
+      "value": "40091704.49",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2023_cost_of_sales",
+      "label": "宁德时代新能源科技股份有限公司2023其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "30907043.40",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2023_total_assets",
+      "label": "宁德时代新能源科技股份有限公司2023资产总计",
+      "concept": "total_assets",
+      "value": "71716804.11",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2023-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2023"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2024_revenue",
+      "label": "宁德时代新能源科技股份有限公司2024其中：营业收入",
+      "concept": "revenue",
+      "value": "362012554",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2024_cost_of_sales",
+      "label": "宁德时代新能源科技股份有限公司2024其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "273518959",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2024_total_assets",
+      "label": "宁德时代新能源科技股份有限公司2024资产总计",
+      "concept": "total_assets",
+      "value": "786658123",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2024"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2025_revenue",
+      "label": "宁德时代新能源科技股份有限公司2025其中：营业收入",
+      "concept": "revenue",
+      "value": "423701834",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2025_cost_of_sales",
+      "label": "宁德时代新能源科技股份有限公司2025其中：营业成本",
+      "concept": "cost_of_sales",
+      "value": "312383297",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    },
+    {
+      "id": "300750_2025_total_assets",
+      "label": "宁德时代新能源科技股份有限公司2025资产总计",
+      "concept": "total_assets",
+      "value": "974827544",
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_300750_2025"
+      ],
+      "state": "reported",
+      "note": "原报告当期值。不以后年比较数回填。"
+    }
+  ],
+  "calculations": [
+    {
+      "id": "002074_2022_gross",
+      "label": "国轩高科股份有限公司2022毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "002074_2022_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2022_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2022_margin",
+      "label": "国轩高科股份有限公司2022毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "002074_2022_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2022_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2023_gross",
+      "label": "国轩高科股份有限公司2023毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "002074_2023_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2023_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2023_margin",
+      "label": "国轩高科股份有限公司2023毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "002074_2023_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2023_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2024_gross",
+      "label": "国轩高科股份有限公司2024毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "002074_2024_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2024_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2024_margin",
+      "label": "国轩高科股份有限公司2024毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "002074_2024_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2024_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2025_gross",
+      "label": "国轩高科股份有限公司2025毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "002074_2025_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2025_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2025_margin",
+      "label": "国轩高科股份有限公司2025毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "002074_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2025_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "002074_2025_gpa",
+      "label": "国轩高科股份有限公司2025毛利/期末资产",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "002074_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "002074_2025_total_assets",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "国轩高科股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/当期期末总资产",
+      "interpretation": "明确采用期末资产；不是使用平均资产的ROA。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2022_gross",
+      "label": "惠州亿纬锂能股份有限公司2022毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300014_2022_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2022_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2022_margin",
+      "label": "惠州亿纬锂能股份有限公司2022毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300014_2022_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2022_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2023_gross",
+      "label": "惠州亿纬锂能股份有限公司2023毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300014_2023_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2023_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2023_margin",
+      "label": "惠州亿纬锂能股份有限公司2023毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300014_2023_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2023_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2024_gross",
+      "label": "惠州亿纬锂能股份有限公司2024毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300014_2024_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2024_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2024_margin",
+      "label": "惠州亿纬锂能股份有限公司2024毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300014_2024_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2024_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2025_gross",
+      "label": "惠州亿纬锂能股份有限公司2025毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300014_2025_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2025_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2025_margin",
+      "label": "惠州亿纬锂能股份有限公司2025毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300014_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2025_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300014_2025_gpa",
+      "label": "惠州亿纬锂能股份有限公司2025毛利/期末资产",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300014_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300014_2025_total_assets",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "惠州亿纬锂能股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/当期期末总资产",
+      "interpretation": "明确采用期末资产；不是使用平均资产的ROA。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2022_gross",
+      "label": "欣旺达电子股份有限公司2022毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300207_2022_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2022_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2022_margin",
+      "label": "欣旺达电子股份有限公司2022毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300207_2022_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2022_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2023_gross",
+      "label": "欣旺达电子股份有限公司2023毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300207_2023_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2023_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2023_margin",
+      "label": "欣旺达电子股份有限公司2023毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300207_2023_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2023_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2024_gross",
+      "label": "欣旺达电子股份有限公司2024毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300207_2024_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2024_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2024_margin",
+      "label": "欣旺达电子股份有限公司2024毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300207_2024_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2024_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2025_gross",
+      "label": "欣旺达电子股份有限公司2025毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300207_2025_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2025_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2025_margin",
+      "label": "欣旺达电子股份有限公司2025毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300207_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2025_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300207_2025_gpa",
+      "label": "欣旺达电子股份有限公司2025毛利/期末资产",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300207_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300207_2025_total_assets",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "欣旺达电子股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/当期期末总资产",
+      "interpretation": "明确采用期末资产；不是使用平均资产的ROA。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2022_gross",
+      "label": "宁德时代新能源科技股份有限公司2022毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300750_2022_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2022_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2022_margin",
+      "label": "宁德时代新能源科技股份有限公司2022毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300750_2022_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2022_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2022-01-01",
+        "end": "2022-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2023_gross",
+      "label": "宁德时代新能源科技股份有限公司2023毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300750_2023_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2023_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2023_margin",
+      "label": "宁德时代新能源科技股份有限公司2023毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300750_2023_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2023_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2024_gross",
+      "label": "宁德时代新能源科技股份有限公司2024毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300750_2024_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2024_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2024_margin",
+      "label": "宁德时代新能源科技股份有限公司2024毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300750_2024_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2024_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2025_gross",
+      "label": "宁德时代新能源科技股份有限公司2025毛利",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "300750_2025_revenue",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2025_cost_of_sales",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期合并营业收入减营业成本",
+      "interpretation": "原报告列报口径；成本重分类会改变毛利。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2025_margin",
+      "label": "宁德时代新能源科技股份有限公司2025毛利率",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300750_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2025_revenue",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/营业收入",
+      "interpretation": "不代表同口径经济利润变化或下一年保证。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "300750_2025_gpa",
+      "label": "宁德时代新能源科技股份有限公司2025毛利/期末资产",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "300750_2025_gross",
+          "weight": "1"
+        },
+        {
+          "ref": "300750_2025_total_assets",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "宁德时代新能源科技股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "当期毛利/当期期末总资产",
+      "interpretation": "明确采用期末资产；不是使用平均资产的ROA。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    }
+  ],
+  "reconciliations": [],
+  "findings": [
+    {
+      "id": "vintage",
+      "title": "先核实版本，再划分时间",
+      "question": "历史文件与公告日能否对应？",
+      "conclusion": "可用记录按固定截止分割；亿纬2022保留内容但不参与历史模型。日期级官方记录不能证明精确字节的历史可得。",
+      "mechanism": "后生成文件若沿用早期公告日，会引入未来信息。",
+      "status": "conditional",
+      "evidence": [
+        "e_300014_2022"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "列报政策、样本选择及业务结构差异不能由一个比率模型消除。"
+      ],
+      "changes_if": "取得原始字节版及可验证历史时间后，另立版本重新运行并报告变化。"
+    },
+    {
+      "id": "classification",
+      "title": "成本重分类改变跨期含义",
+      "question": "毛利变化是否全部来自经营？",
+      "conclusion": "2024报告中的保证类质量保证列报变化使旧期比较成本重列；模型保留原报告值，估计对象是原始披露毛利率。",
+      "mechanism": "销售费用转入营业成本可以改变毛利率，而不因此改变利润总额；不能将全部毛利变化解释为经营改善或恶化。",
+      "status": "conditional",
+      "evidence": [
+        "p_300750_2024",
+        "p_300207_2024",
+        "p_002074_2024",
+        "p_300014_2024"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "列报政策、样本选择及业务结构差异不能由一个比率模型消除。"
+      ],
+      "changes_if": "若研究目的改为经济可比趋势，需要另建截至当时可得的调整桥，不能覆盖原版本。"
+    },
+    {
+      "id": "holdout",
+      "title": "固定方法与基准一同报告",
+      "question": "固定OLS是否优于沿用上期值？",
+      "conclusion": "训练、留出及未成熟记录均按预先约定划分，逐公司误差及两项MAE见模型表。本案例不据结果选择模型。",
+      "mechanism": "三个训练配对只支持代数拟合；产品结构、政策断点及共同周期限制外推。",
+      "status": "conditional",
+      "evidence": [
+        "e_300750_2022",
+        "e_300207_2022",
+        "e_002074_2022"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "列报政策、样本选择及业务结构差异不能由一个比率模型消除。"
+      ],
+      "changes_if": "需要更多历史可用版本、不同周期和预先独立设定的验证任务，才可评价推广表现。"
+    },
+    {
+      "id": "peers",
+      "title": "样本内位置需要业务解释",
+      "question": "同业位置能否直接转成质量评级？",
+      "conclusion": "毛利/期末资产及百分位仅描述四家公司当前所给样本，不映射健康分数、违约概率或投资评级。",
+      "mechanism": "电池品类、资产投入阶段、外协比例和合并范围都会影响该指标。",
+      "status": "conditional",
+      "evidence": [
+        "002074_2025_gpa",
+        "300014_2025_gpa",
+        "300207_2025_gpa",
+        "300750_2025_gpa"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "列报政策、样本选择及业务结构差异不能由一个比率模型消除。"
+      ],
+      "changes_if": "取得可比产品和分部信息后才可形成更细的经营解释。"
+    }
+  ],
+  "procedures": [],
+  "requests": [],
+  "sections": [
+    {
+      "title": "先核实版本，再划分时间",
+      "findings": [
+        "vintage"
+      ],
+      "figures": []
+    },
+    {
+      "title": "成本重分类改变跨期含义",
+      "findings": [
+        "classification"
+      ],
+      "figures": []
+    },
+    {
+      "title": "固定方法与基准一同报告",
+      "findings": [
+        "holdout"
+      ],
+      "figures": []
+    },
+    {
+      "title": "样本内位置需要业务解释",
+      "findings": [
+        "peers"
+      ],
+      "figures": []
+    }
+  ],
+  "quantitative": [
+    {
+      "id": "panel",
+      "label": "四家预选企业的固定历史毛利率模型",
+      "method": "pit_margin_persistence_v1",
+      "as_of": "2026-10-02",
+      "input_refs": [
+        "002074_2022_revenue",
+        "002074_2022_cost_of_sales",
+        "002074_2022_total_assets",
+        "002074_2023_revenue",
+        "002074_2023_cost_of_sales",
+        "002074_2023_total_assets",
+        "002074_2024_revenue",
+        "002074_2024_cost_of_sales",
+        "002074_2024_total_assets",
+        "002074_2025_revenue",
+        "002074_2025_cost_of_sales",
+        "002074_2025_total_assets",
+        "300014_2023_revenue",
+        "300014_2023_cost_of_sales",
+        "300014_2023_total_assets",
+        "300014_2024_revenue",
+        "300014_2024_cost_of_sales",
+        "300014_2024_total_assets",
+        "300014_2025_revenue",
+        "300014_2025_cost_of_sales",
+        "300014_2025_total_assets",
+        "300207_2022_revenue",
+        "300207_2022_cost_of_sales",
+        "300207_2022_total_assets",
+        "300207_2023_revenue",
+        "300207_2023_cost_of_sales",
+        "300207_2023_total_assets",
+        "300207_2024_revenue",
+        "300207_2024_cost_of_sales",
+        "300207_2024_total_assets",
+        "300207_2025_revenue",
+        "300207_2025_cost_of_sales",
+        "300207_2025_total_assets",
+        "300750_2022_revenue",
+        "300750_2022_cost_of_sales",
+        "300750_2022_total_assets",
+        "300750_2023_revenue",
+        "300750_2023_cost_of_sales",
+        "300750_2023_total_assets",
+        "300750_2024_revenue",
+        "300750_2024_cost_of_sales",
+        "300750_2024_total_assets",
+        "300750_2025_revenue",
+        "300750_2025_cost_of_sales",
+        "300750_2025_total_assets"
+      ],
+      "evidence": [
+        "e_002074_2022",
+        "e_002074_2023",
+        "e_002074_2024",
+        "p_002074_2024",
+        "e_002074_2025",
+        "e_300014_2022",
+        "e_300014_2023",
+        "e_300014_2024",
+        "p_300014_2024",
+        "e_300014_2025",
+        "e_300207_2022",
+        "e_300207_2023",
+        "e_300207_2024",
+        "p_300207_2024",
+        "e_300207_2025",
+        "e_300750_2022",
+        "e_300750_2023",
+        "e_300750_2024",
+        "p_300750_2024",
+        "e_300750_2025"
+      ],
+      "assumptions": [
+        "Supplied universe: 事先选定宁德时代、亿纬锂能、国轩高科、欣旺达2022至2025官方合并披露；只取available_at已核对的记录。不是市场总体。",
+        "Current peers use the latest version available at as_of, with period-end assets as denominator.",
+        "Historical x and y use first-publication gross margins; future restatements never replace them.",
+        "One frozen pooled OLS: next-year gross margin = intercept + slope × current gross margin.",
+        "Training pairs must have both releases available by 2024-10-02T00:00:00+08:00."
+      ],
+      "limitations": [
+        "Industrial annual statements only; gross profitability is not comparable for banks and insurers.",
+        "Ranks describe the supplied universe, not the whole market; no missing or delisted companies are invented.",
+        "Missing or non-positive revenue is not zero margin; negative gross profits remain valid observations.",
+        "Three observations only establish algebraic identifiability, not empirical reliability or cycle coverage.",
+        "Holdout MAE is descriptive; no independence assumption, significance, causality, PD or investment return is claimed.",
+        "Model is frozen at one cutoff, not tuned on holdout; observed firms may recur in the holdout.",
+        "Unconstrained OLS predictions are not clipped to an economically plausible interval; inspect extrapolation.",
+        "仅四家事先选定企业，产品结构和合并范围不同；不是全市场样本或完全同质同业。",
+        "公告日期来自官方列表，次日零点仅为日级证据的保守边界；没有证明历史精确字节从未替换。",
+        "亿纬2022当前官方PDF的生成时间晚于原公告，历史可用时间为空，不纳入时点模型。",
+        "2024年保证类质量保证成本重分类造成列报断点；原报告毛利率不等于跨年同口径经营质量。",
+        "研究在2026年事后完成，研究者已知部分后期披露；这是固定方法流程演示，不是前瞻注册实验。",
+        "留出误差只描述本次样本，不证明预测优势、统计显著性、因果、收益、违约概率或评级。"
+      ],
+      "artifact": {
+        "method": "pit_margin_persistence_v1",
+        "as_of": "2026-10-02T00:00:00+08:00",
+        "input_snapshot": {
+          "as_of": "2026-10-02T00:00:00+08:00",
+          "training_cutoff": "2024-10-02T00:00:00+08:00",
+          "peer_period_end": "2025-12-31",
+          "industry": "battery-industrial",
+          "accounting_basis": "CAS",
+          "currency": "CNY",
+          "universe_definition": "事先选定宁德时代、亿纬锂能、国轩高科、欣旺达2022至2025官方合并披露；只取available_at已核对的记录。不是市场总体。",
+          "records": [
+            {
+              "id": "002074_2022",
+              "entity": "国轩高科股份有限公司",
+              "period_start": "2022-01-01",
+              "period_end": "2022-12-31",
+              "available_at": "2023-04-29T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 23051701484.6,
+              "cost_of_sales": 18949696156.7,
+              "total_assets": 72627365266.66,
+              "source": "https://static.cninfo.com.cn/finalpage/2023-04-28/1216662624.PDF"
+            },
+            {
+              "id": "002074_2023",
+              "entity": "国轩高科股份有限公司",
+              "period_start": "2023-01-01",
+              "period_end": "2023-12-31",
+              "available_at": "2024-04-21T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 31605490020.32,
+              "cost_of_sales": 26257211896.71,
+              "total_assets": 93592652122.38,
+              "source": "https://static.cninfo.com.cn/finalpage/2024-04-20/1219700973.PDF"
+            },
+            {
+              "id": "002074_2024",
+              "entity": "国轩高科股份有限公司",
+              "period_start": "2024-01-01",
+              "period_end": "2024-12-31",
+              "available_at": "2025-04-26T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 35391817095.44,
+              "cost_of_sales": 29020131352.84,
+              "total_assets": 107839685095.13,
+              "source": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF"
+            },
+            {
+              "id": "002074_2025",
+              "entity": "国轩高科股份有限公司",
+              "period_start": "2025-01-01",
+              "period_end": "2025-12-31",
+              "available_at": "2026-04-30T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 45070461822.87,
+              "cost_of_sales": 37780369237.62,
+              "total_assets": 127214519738.62,
+              "source": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225254220.pdf"
+            },
+            {
+              "id": "300014_2023",
+              "entity": "惠州亿纬锂能股份有限公司",
+              "period_start": "2023-01-01",
+              "period_end": "2023-12-31",
+              "available_at": "2024-04-20T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 48783587175.86,
+              "cost_of_sales": 40473296810.6,
+              "total_assets": 94355337998.71,
+              "source": "https://static.cninfo.com.cn/finalpage/2024-04-19/1219668064.PDF"
+            },
+            {
+              "id": "300014_2024",
+              "entity": "惠州亿纬锂能股份有限公司",
+              "period_start": "2024-01-01",
+              "period_end": "2024-12-31",
+              "available_at": "2025-04-19T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 48614556525.09,
+              "cost_of_sales": 40149208233.59,
+              "total_assets": 100890624125.27,
+              "source": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF"
+            },
+            {
+              "id": "300014_2025",
+              "entity": "惠州亿纬锂能股份有限公司",
+              "period_start": "2025-01-01",
+              "period_end": "2025-12-31",
+              "available_at": "2026-03-29T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 61469630776.09,
+              "cost_of_sales": 51528491525.28,
+              "total_assets": 125542296569.58,
+              "source": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225045391.PDF"
+            },
+            {
+              "id": "300207_2022",
+              "entity": "欣旺达电子股份有限公司",
+              "period_start": "2022-01-01",
+              "period_end": "2022-12-31",
+              "available_at": "2023-04-28T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 52162269313.89,
+              "cost_of_sales": 44942949296.33,
+              "total_assets": 74494462459.1,
+              "source": "https://static.cninfo.com.cn/finalpage/2023-04-27/1216623719.PDF"
+            },
+            {
+              "id": "300207_2023",
+              "entity": "欣旺达电子股份有限公司",
+              "period_start": "2023-01-01",
+              "period_end": "2023-12-31",
+              "available_at": "2024-04-12T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 47862226994.24,
+              "cost_of_sales": 40876301967.08,
+              "total_assets": 79261259472.63,
+              "source": "https://static.cninfo.com.cn/finalpage/2024-04-11/1219567241.PDF"
+            },
+            {
+              "id": "300207_2024",
+              "entity": "欣旺达电子股份有限公司",
+              "period_start": "2024-01-01",
+              "period_end": "2024-12-31",
+              "available_at": "2025-04-23T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 56020634117.81,
+              "cost_of_sales": 47518996934.9,
+              "total_assets": 87322726522.33,
+              "source": "https://static.cninfo.com.cn/finalpage/2025-04-22/1223194845.PDF"
+            },
+            {
+              "id": "300207_2025",
+              "entity": "欣旺达电子股份有限公司",
+              "period_start": "2025-01-01",
+              "period_end": "2025-12-31",
+              "available_at": "2026-04-25T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 63246252072.73,
+              "cost_of_sales": 54429259848.68,
+              "total_assets": 108072225016.49,
+              "source": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160491.PDF"
+            },
+            {
+              "id": "300750_2022",
+              "entity": "宁德时代新能源科技股份有限公司",
+              "period_start": "2022-01-01",
+              "period_end": "2022-12-31",
+              "available_at": "2023-03-11T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 328593987500.0,
+              "cost_of_sales": 262049609200.0,
+              "total_assets": 600952351900.0,
+              "source": "https://static.cninfo.com.cn/finalpage/2023-03-10/1216084559.PDF"
+            },
+            {
+              "id": "300750_2023",
+              "entity": "宁德时代新能源科技股份有限公司",
+              "period_start": "2023-01-01",
+              "period_end": "2023-12-31",
+              "available_at": "2024-03-17T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 400917044900.0,
+              "cost_of_sales": 309070434000.0,
+              "total_assets": 717168041100.0,
+              "source": "https://static.cninfo.com.cn/finalpage/2024-03-16/1219313047.PDF"
+            },
+            {
+              "id": "300750_2024",
+              "entity": "宁德时代新能源科技股份有限公司",
+              "period_start": "2024-01-01",
+              "period_end": "2024-12-31",
+              "available_at": "2025-03-16T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 362012554000.0,
+              "cost_of_sales": 273518959000.0,
+              "total_assets": 786658123000.0,
+              "source": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806982.PDF"
+            },
+            {
+              "id": "300750_2025",
+              "entity": "宁德时代新能源科技股份有限公司",
+              "period_start": "2025-01-01",
+              "period_end": "2025-12-31",
+              "available_at": "2026-03-11T00:00:00+08:00",
+              "version": "own-year-report-current-column",
+              "industry": "battery-industrial",
+              "accounting_basis": "CAS",
+              "currency": "CNY",
+              "revenue": 423701834000.0,
+              "cost_of_sales": 312383297000.0,
+              "total_assets": 974827544000.0,
+              "source": "https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF"
+            }
+          ]
+        },
+        "assumptions": [
+          "Supplied universe: 事先选定宁德时代、亿纬锂能、国轩高科、欣旺达2022至2025官方合并披露；只取available_at已核对的记录。不是市场总体。",
+          "Current peers use the latest version available at as_of, with period-end assets as denominator.",
+          "Historical x and y use first-publication gross margins; future restatements never replace them.",
+          "One frozen pooled OLS: next-year gross margin = intercept + slope × current gross margin.",
+          "Training pairs must have both releases available by 2024-10-02T00:00:00+08:00."
+        ],
+        "limitations": [
+          "Industrial annual statements only; gross profitability is not comparable for banks and insurers.",
+          "Ranks describe the supplied universe, not the whole market; no missing or delisted companies are invented.",
+          "Missing or non-positive revenue is not zero margin; negative gross profits remain valid observations.",
+          "Three observations only establish algebraic identifiability, not empirical reliability or cycle coverage.",
+          "Holdout MAE is descriptive; no independence assumption, significance, causality, PD or investment return is claimed.",
+          "Model is frozen at one cutoff, not tuned on holdout; observed firms may recur in the holdout.",
+          "Unconstrained OLS predictions are not clipped to an economically plausible interval; inspect extrapolation.",
+          "仅四家事先选定企业，产品结构和合并范围不同；不是全市场样本或完全同质同业。",
+          "公告日期来自官方列表，次日零点仅为日级证据的保守边界；没有证明历史精确字节从未替换。",
+          "亿纬2022当前官方PDF的生成时间晚于原公告，历史可用时间为空，不纳入时点模型。",
+          "2024年保证类质量保证成本重分类造成列报断点；原报告毛利率不等于跨年同口径经营质量。",
+          "研究在2026年事后完成，研究者已知部分后期披露；这是固定方法流程演示，不是前瞻注册实验。",
+          "留出误差只描述本次样本，不证明预测优势、统计显著性、因果、收益、违约概率或评级。"
+        ],
+        "rows": [
+          {
+            "kind": "peer",
+            "entity": "宁德时代新能源科技股份有限公司",
+            "record_id": "300750_2025",
+            "version": "own-year-report-current-column",
+            "available_at": "2026-03-11T00:00:00+08:00",
+            "period_end": "2025-12-31",
+            "source": "https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF",
+            "gross_margin": 0.26272847570445024,
+            "gross_profit_to_assets": 0.11419305669516454,
+            "peer_n": 4,
+            "gross_profitability_percentile": 1.0
+          },
+          {
+            "kind": "peer",
+            "entity": "惠州亿纬锂能股份有限公司",
+            "record_id": "300014_2025",
+            "version": "own-year-report-current-column",
+            "available_at": "2026-03-29T00:00:00+08:00",
+            "period_end": "2025-12-31",
+            "source": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225045391.PDF",
+            "gross_margin": 0.1617244015507708,
+            "gross_profit_to_assets": 0.07918557747030114,
+            "peer_n": 4,
+            "gross_profitability_percentile": 0.5
+          },
+          {
+            "kind": "peer",
+            "entity": "欣旺达电子股份有限公司",
+            "record_id": "300207_2025",
+            "version": "own-year-report-current-column",
+            "available_at": "2026-04-25T00:00:00+08:00",
+            "period_end": "2025-12-31",
+            "source": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160491.PDF",
+            "gross_margin": 0.13940734723554696,
+            "gross_profit_to_assets": 0.08158425740475574,
+            "peer_n": 4,
+            "gross_profitability_percentile": 0.75
+          },
+          {
+            "kind": "peer",
+            "entity": "国轩高科股份有限公司",
+            "record_id": "002074_2025",
+            "version": "own-year-report-current-column",
+            "available_at": "2026-04-30T00:00:00+08:00",
+            "period_end": "2025-12-31",
+            "source": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225254220.pdf",
+            "gross_margin": 0.16174878823963604,
+            "gross_profit_to_assets": 0.057305507266218615,
+            "peer_n": 4,
+            "gross_profitability_percentile": 0.25
+          },
+          {
+            "entity": "宁德时代新能源科技股份有限公司",
+            "origin_id": "300750_2024",
+            "target_id": "300750_2025",
+            "origin_available_at": "2025-03-16T00:00:00+08:00",
+            "target_available_at": "2026-03-11T00:00:00+08:00",
+            "x": 0.2444489673692366,
+            "actual": 0.26272847570445024,
+            "source": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806982.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF",
+            "kind": "out_of_time_prediction",
+            "predicted": 0.2693491671093619,
+            "last_value_baseline": 0.2444489673692366
+          },
+          {
+            "entity": "惠州亿纬锂能股份有限公司",
+            "origin_id": "300014_2024",
+            "target_id": "300014_2025",
+            "origin_available_at": "2025-04-19T00:00:00+08:00",
+            "target_available_at": "2026-03-29T00:00:00+08:00",
+            "x": 0.17413196574427312,
+            "actual": 0.1617244015507708,
+            "source": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225045391.PDF",
+            "kind": "out_of_time_prediction",
+            "predicted": 0.18287222426008745,
+            "last_value_baseline": 0.17413196574427312
+          },
+          {
+            "entity": "欣旺达电子股份有限公司",
+            "origin_id": "300207_2024",
+            "target_id": "300207_2025",
+            "origin_available_at": "2025-04-23T00:00:00+08:00",
+            "target_available_at": "2026-04-25T00:00:00+08:00",
+            "x": 0.1517590315923819,
+            "actual": 0.13940734723554696,
+            "source": "https://static.cninfo.com.cn/finalpage/2025-04-22/1223194845.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160491.PDF",
+            "kind": "out_of_time_prediction",
+            "predicted": 0.15535764167958083,
+            "last_value_baseline": 0.1517590315923819
+          },
+          {
+            "entity": "国轩高科股份有限公司",
+            "origin_id": "002074_2024",
+            "target_id": "002074_2025",
+            "origin_available_at": "2025-04-26T00:00:00+08:00",
+            "target_available_at": "2026-04-30T00:00:00+08:00",
+            "x": 0.1800327382292262,
+            "actual": 0.16174878823963604,
+            "source": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225254220.pdf",
+            "kind": "out_of_time_prediction",
+            "predicted": 0.19012908608803408,
+            "last_value_baseline": 0.1800327382292262
+          }
+        ],
+        "model": {
+          "status": "estimated",
+          "training_n": 3,
+          "test_n": 4,
+          "intercept": -0.03127797699868451,
+          "slope": 1.2298155616830793,
+          "test_mae": 0.018024776601665057,
+          "baseline_mae": 0.015330676718785262,
+          "validation_status": "observed_holdout"
+        },
+        "training_pairs": [
+          {
+            "entity": "宁德时代新能源科技股份有限公司",
+            "origin_id": "300750_2022",
+            "target_id": "300750_2023",
+            "origin_available_at": "2023-03-11T00:00:00+08:00",
+            "target_available_at": "2024-03-17T00:00:00+08:00",
+            "x": 0.20251246471757187,
+            "actual": 0.2290913097069972,
+            "source": "https://static.cninfo.com.cn/finalpage/2023-03-10/1216084559.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2024-03-16/1219313047.PDF"
+          },
+          {
+            "entity": "欣旺达电子股份有限公司",
+            "origin_id": "300207_2022",
+            "target_id": "300207_2023",
+            "origin_available_at": "2023-04-28T00:00:00+08:00",
+            "target_available_at": "2024-04-12T00:00:00+08:00",
+            "x": 0.138401187534945,
+            "actual": 0.1459590467447476,
+            "source": "https://static.cninfo.com.cn/finalpage/2023-04-27/1216623719.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2024-04-11/1219567241.PDF"
+          },
+          {
+            "entity": "国轩高科股份有限公司",
+            "origin_id": "002074_2022",
+            "target_id": "002074_2023",
+            "origin_available_at": "2023-04-29T00:00:00+08:00",
+            "target_available_at": "2024-04-21T00:00:00+08:00",
+            "x": 0.1779480499797552,
+            "actual": 0.16921990831882222,
+            "source": "https://static.cninfo.com.cn/finalpage/2023-04-28/1216662624.PDF",
+            "target_source": "https://static.cninfo.com.cn/finalpage/2024-04-20/1219700973.PDF"
+          }
+        ],
+        "pending_outcomes": [
+          {
+            "record_id": "300750_2025",
+            "reason": "next-year outcome is not yet observed by as_of"
+          },
+          {
+            "record_id": "300014_2025",
+            "reason": "next-year outcome is not yet observed by as_of"
+          },
+          {
+            "record_id": "300207_2025",
+            "reason": "next-year outcome is not yet observed by as_of"
+          },
+          {
+            "record_id": "002074_2025",
+            "reason": "next-year outcome is not yet observed by as_of"
+          }
+        ],
+        "excluded_pairs": [
+          {
+            "record_id": "300750_2023",
+            "reason": "label immature at training cutoff; origin is not out of time"
+          },
+          {
+            "record_id": "300207_2023",
+            "reason": "label immature at training cutoff; origin is not out of time"
+          },
+          {
+            "record_id": "300014_2023",
+            "reason": "label immature at training cutoff; origin is not out of time"
+          },
+          {
+            "record_id": "002074_2023",
+            "reason": "label immature at training cutoff; origin is not out of time"
+          }
+        ],
+        "selected_peer_versions": [
+          "300750_2025",
+          "300014_2025",
+          "300207_2025",
+          "002074_2025"
+        ]
+      }
+    }
+  ]
+}

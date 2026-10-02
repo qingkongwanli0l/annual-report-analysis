@@ -1,0 +1,1601 @@
+{
+  "arithmetic": "Python standard-library Decimal, precision 70 significant digits, default ROUND_HALF_EVEN; no regression library",
+  "training_cutoff": "2024-10-02T00:00:00+08:00",
+  "as_of": "2026-10-02T00:00:00+08:00",
+  "fixed_entity_order": [
+    "300750",
+    "300014",
+    "002074",
+    "300207"
+  ],
+  "definitions": {
+    "x": "(own-year revenue - own-year cost_of_sales) / own-year revenue",
+    "y": "next-year own-report gross margin",
+    "OLS": "b=sum((x-xbar)*(y-ybar))/sum((x-xbar)^2); a=ybar-b*xbar",
+    "MAE": "sum(abs(prediction-actual))/n_holdout",
+    "last_value": "prediction=x",
+    "GP_to_assets": "(2025 revenue - 2025 cost_of_sales) / 2025 period-ending total assets",
+    "percentile": "(count_less + (count_equal_including_self + 1)/2) / N"
+  },
+  "record_count": 16,
+  "used_record_count": 15,
+  "classification_counts": {
+    "train": 3,
+    "excluded": 5,
+    "holdout": 4,
+    "pending": 4
+  },
+  "financial_records": [
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "available_at": "2023-03-11T00:00:00+08:00",
+      "revenue_cny_yuan": "328593987500.00",
+      "cost_of_sales_cny_yuan": "262049609200.00",
+      "total_assets_cny_yuan": "600952351900.00",
+      "gross_profit_cny_yuan": "66544378300.00",
+      "gross_margin": "0.2025124647175718636665559804255395878173212162014985134199998105564850",
+      "gross_profit_to_ending_assets": "0.1107315381820373569620436990921442801994631814336360533012168081673831"
+    },
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "available_at": "2024-03-17T00:00:00+08:00",
+      "revenue_cny_yuan": "400917044900.00",
+      "cost_of_sales_cny_yuan": "309070434000.00",
+      "total_assets_cny_yuan": "717168041100.00",
+      "gross_profit_cny_yuan": "91846610900.00",
+      "gross_margin": "0.2290913097069971943215827090418624404063095996345851545510082153157166",
+      "gross_profit_to_ending_assets": "0.1280684660168691948144313370463713486855765581046609189177936445556428"
+    },
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "available_at": "2025-03-16T00:00:00+08:00",
+      "revenue_cny_yuan": "362012554000",
+      "cost_of_sales_cny_yuan": "273518959000",
+      "total_assets_cny_yuan": "786658123000",
+      "gross_profit_cny_yuan": "88493595000",
+      "gross_margin": "0.2444489673692365928282144602090235798839175063525559392617085870452990",
+      "gross_profit_to_ending_assets": "0.1124930797924271863140730576298898778421436321963715361012041567642975"
+    },
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "available_at": "2026-03-11T00:00:00+08:00",
+      "revenue_cny_yuan": "423701834000",
+      "cost_of_sales_cny_yuan": "312383297000",
+      "total_assets_cny_yuan": "974827544000",
+      "gross_profit_cny_yuan": "111318537000",
+      "gross_margin": "0.2627284757044502195853133833732709308971270584587556918623108910120979",
+      "gross_profit_to_ending_assets": "0.1141930566951645346615277830106121827021334144821825018108023422858885"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "available_at": null,
+      "revenue_cny_yuan": "36303947808.53",
+      "cost_of_sales_cny_yuan": "30338440631.84",
+      "total_assets_cny_yuan": "83637813181.68",
+      "gross_profit_cny_yuan": "5965507176.69",
+      "gross_margin": "0.1643211699221410961968201279046882143482205406765618693410783070407732",
+      "gross_profit_to_ending_assets": "0.07132548006404216693189740759736124362447651827415795962946785677571794"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "available_at": "2024-04-20T00:00:00+08:00",
+      "revenue_cny_yuan": "48783587175.86",
+      "cost_of_sales_cny_yuan": "40473296810.60",
+      "total_assets_cny_yuan": "94355337998.71",
+      "gross_profit_cny_yuan": "8310290365.26",
+      "gross_margin": "0.1703501289337790254272532396677440974570099369939777589589521432583192",
+      "gross_profit_to_ending_assets": "0.08807440619176856728537585707973548730897300986435526501664397929316379"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "available_at": "2025-04-19T00:00:00+08:00",
+      "revenue_cny_yuan": "48614556525.09",
+      "cost_of_sales_cny_yuan": "40149208233.59",
+      "total_assets_cny_yuan": "100890624125.27",
+      "gross_profit_cny_yuan": "8465348291.50",
+      "gross_margin": "0.1741319657442730960525411359052867817509834661531433457429079591687819",
+      "gross_profit_to_ending_assets": "0.08390619410768111677186956938622858594855300962579797785943208472522623"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "available_at": "2026-03-29T00:00:00+08:00",
+      "revenue_cny_yuan": "61469630776.09",
+      "cost_of_sales_cny_yuan": "51528491525.28",
+      "total_assets_cny_yuan": "125542296569.58",
+      "gross_profit_cny_yuan": "9941139250.81",
+      "gross_margin": "0.1617244015507708310666953049408047647023551331307705077863705477335016",
+      "gross_profit_to_ending_assets": "0.07918557747030115479539953810974056969177914600953637183669377314284551"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "available_at": "2023-04-29T00:00:00+08:00",
+      "revenue_cny_yuan": "23051701484.60",
+      "cost_of_sales_cny_yuan": "18949696156.70",
+      "total_assets_cny_yuan": "72627365266.66",
+      "gross_profit_cny_yuan": "4102005327.90",
+      "gross_margin": "0.1779480499797552892001586717441419040091155666639349692526861206532353",
+      "gross_profit_to_ending_assets": "0.05648016161455121088123979310565097288669513991088447159501858293320079"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "available_at": "2024-04-21T00:00:00+08:00",
+      "revenue_cny_yuan": "31605490020.32",
+      "cost_of_sales_cny_yuan": "26257211896.71",
+      "total_assets_cny_yuan": "93592652122.38",
+      "gross_profit_cny_yuan": "5348278123.61",
+      "gross_margin": "0.1692199083188221876313745854701340945274658041752206613205337478383266",
+      "gross_profit_to_ending_assets": "0.05714420953278139439171157319425394284678675922560925408941227014849121"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "available_at": "2025-04-26T00:00:00+08:00",
+      "revenue_cny_yuan": "35391817095.44",
+      "cost_of_sales_cny_yuan": "29020131352.84",
+      "total_assets_cny_yuan": "107839685095.13",
+      "gross_profit_cny_yuan": "6371685742.60",
+      "gross_margin": "0.1800327382292261361829108000502769677861288160054587138162197310576055",
+      "gross_profit_to_ending_assets": "0.05908479551826642856335600990273611034706484744167901698593681087002277"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "available_at": "2026-04-30T00:00:00+08:00",
+      "revenue_cny_yuan": "45070461822.87",
+      "cost_of_sales_cny_yuan": "37780369237.62",
+      "total_assets_cny_yuan": "127214519738.62",
+      "gross_profit_cny_yuan": "7290092585.25",
+      "gross_margin": "0.1617487882396360361446201967553954838821754713774565089900536506017667",
+      "gross_profit_to_ending_assets": "0.05730550726621861631238495363368253231448690209545723608995743857849776"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "available_at": "2023-04-28T00:00:00+08:00",
+      "revenue_cny_yuan": "52162269313.89",
+      "cost_of_sales_cny_yuan": "44942949296.33",
+      "total_assets_cny_yuan": "74494462459.10",
+      "gross_profit_cny_yuan": "7219320017.56",
+      "gross_margin": "0.1384011875349450623909035545620011901425040852070563244546952188164153",
+      "gross_profit_to_ending_assets": "0.09691082772123703629378619631514027541697125829391848372919350863863223"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "available_at": "2024-04-12T00:00:00+08:00",
+      "revenue_cny_yuan": "47862226994.24",
+      "cost_of_sales_cny_yuan": "40876301967.08",
+      "total_assets_cny_yuan": "79261259472.63",
+      "gross_profit_cny_yuan": "6985925027.16",
+      "gross_margin": "0.1459590467447476714622941926129516403290344481525115498983878566163399",
+      "gross_profit_to_ending_assets": "0.08813795129728333079297894280627515974065175083549660752448101266855399"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "available_at": "2025-04-23T00:00:00+08:00",
+      "revenue_cny_yuan": "56020634117.81",
+      "cost_of_sales_cny_yuan": "47518996934.90",
+      "total_assets_cny_yuan": "87322726522.33",
+      "gross_profit_cny_yuan": "8501637182.91",
+      "gross_margin": "0.1517590315923819871103471999001295911746684777561122681252128223355822",
+      "gross_profit_to_ending_assets": "0.09735881507016363786445955700302850818706827039101631259954538569809947"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "available_at": "2026-04-25T00:00:00+08:00",
+      "revenue_cny_yuan": "63246252072.73",
+      "cost_of_sales_cny_yuan": "54429259848.68",
+      "total_assets_cny_yuan": "108072225016.49",
+      "gross_profit_cny_yuan": "8816992224.05",
+      "gross_margin": "0.1394073472355469164490359486703119649399653087730214130781718516193586",
+      "gross_profit_to_ending_assets": "0.08158425740475571401806133144609698416456088260537238912067748492640018"
+    }
+  ],
+  "unit_conversion_audit": {
+    "all_48_values_match": true,
+    "used_45_values_match": true,
+    "checks": [
+      {
+        "entity_id": "300750",
+        "year": 2022,
+        "metric": "revenue",
+        "raw": "32,859,398.75",
+        "unit": "万元",
+        "scale": "10000",
+        "converted_cny_yuan": "328593987500.00",
+        "ledger_cny_yuan": "328593987500.00",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2022,
+        "metric": "cost_of_sales",
+        "raw": "26,204,960.92",
+        "unit": "万元",
+        "scale": "10000",
+        "converted_cny_yuan": "262049609200.00",
+        "ledger_cny_yuan": "262049609200.00",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2022,
+        "metric": "total_assets",
+        "raw": "60,095,235.19",
+        "unit": "万元",
+        "scale": "10000",
+        "converted_cny_yuan": "600952351900.00",
+        "ledger_cny_yuan": "600952351900.00",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2023,
+        "metric": "revenue",
+        "raw": "40,091,704.49",
+        "unit": "万元",
+        "scale": "10000",
+        "converted_cny_yuan": "400917044900.00",
+        "ledger_cny_yuan": "400917044900.00",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2023,
+        "metric": "cost_of_sales",
+        "raw": "30,907,043.40",
+        "unit": "万元",
+        "scale": "10000",
+        "converted_cny_yuan": "309070434000.00",
+        "ledger_cny_yuan": "309070434000.00",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2023,
+        "metric": "total_assets",
+        "raw": "71,716,804.11",
+        "unit": "万元",
+        "scale": "10000",
+        "converted_cny_yuan": "717168041100.00",
+        "ledger_cny_yuan": "717168041100.00",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2024,
+        "metric": "revenue",
+        "raw": "362,012,554",
+        "unit": "千元",
+        "scale": "1000",
+        "converted_cny_yuan": "362012554000",
+        "ledger_cny_yuan": "362012554000",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2024,
+        "metric": "cost_of_sales",
+        "raw": "273,518,959",
+        "unit": "千元",
+        "scale": "1000",
+        "converted_cny_yuan": "273518959000",
+        "ledger_cny_yuan": "273518959000",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2024,
+        "metric": "total_assets",
+        "raw": "786,658,123",
+        "unit": "千元",
+        "scale": "1000",
+        "converted_cny_yuan": "786658123000",
+        "ledger_cny_yuan": "786658123000",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2025,
+        "metric": "revenue",
+        "raw": "423,701,834",
+        "unit": "千元",
+        "scale": "1000",
+        "converted_cny_yuan": "423701834000",
+        "ledger_cny_yuan": "423701834000",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2025,
+        "metric": "cost_of_sales",
+        "raw": "312,383,297",
+        "unit": "千元",
+        "scale": "1000",
+        "converted_cny_yuan": "312383297000",
+        "ledger_cny_yuan": "312383297000",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2025,
+        "metric": "total_assets",
+        "raw": "974,827,544",
+        "unit": "千元",
+        "scale": "1000",
+        "converted_cny_yuan": "974827544000",
+        "ledger_cny_yuan": "974827544000",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2022,
+        "metric": "revenue",
+        "raw": "52,162,269,313.89",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "52162269313.89",
+        "ledger_cny_yuan": "52162269313.89",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2022,
+        "metric": "cost_of_sales",
+        "raw": "44,942,949,296.33",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "44942949296.33",
+        "ledger_cny_yuan": "44942949296.33",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2022,
+        "metric": "total_assets",
+        "raw": "74,494,462,459.10",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "74494462459.10",
+        "ledger_cny_yuan": "74494462459.10",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2023,
+        "metric": "revenue",
+        "raw": "47,862,226,994.24",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "47862226994.24",
+        "ledger_cny_yuan": "47862226994.24",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2023,
+        "metric": "cost_of_sales",
+        "raw": "40,876,301,967.08",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "40876301967.08",
+        "ledger_cny_yuan": "40876301967.08",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2023,
+        "metric": "total_assets",
+        "raw": "79,261,259,472.63",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "79261259472.63",
+        "ledger_cny_yuan": "79261259472.63",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2024,
+        "metric": "revenue",
+        "raw": "56,020,634,117.81",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "56020634117.81",
+        "ledger_cny_yuan": "56020634117.81",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2024,
+        "metric": "cost_of_sales",
+        "raw": "47,518,996,934.90",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "47518996934.90",
+        "ledger_cny_yuan": "47518996934.90",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2024,
+        "metric": "total_assets",
+        "raw": "87,322,726,522.33",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "87322726522.33",
+        "ledger_cny_yuan": "87322726522.33",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2025,
+        "metric": "revenue",
+        "raw": "63,246,252,072.73",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "63246252072.73",
+        "ledger_cny_yuan": "63246252072.73",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2025,
+        "metric": "cost_of_sales",
+        "raw": "54,429,259,848.68",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "54429259848.68",
+        "ledger_cny_yuan": "54429259848.68",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2025,
+        "metric": "total_assets",
+        "raw": "108,072,225,016.49",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "108072225016.49",
+        "ledger_cny_yuan": "108072225016.49",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2022,
+        "metric": "revenue",
+        "raw": "23,051,701,484.60",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "23051701484.60",
+        "ledger_cny_yuan": "23051701484.60",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2022,
+        "metric": "cost_of_sales",
+        "raw": "18,949,696,156.70",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "18949696156.70",
+        "ledger_cny_yuan": "18949696156.70",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2022,
+        "metric": "total_assets",
+        "raw": "72,627,365,266.66",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "72627365266.66",
+        "ledger_cny_yuan": "72627365266.66",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2023,
+        "metric": "revenue",
+        "raw": "31,605,490,020.32",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "31605490020.32",
+        "ledger_cny_yuan": "31605490020.32",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2023,
+        "metric": "cost_of_sales",
+        "raw": "26,257,211,896.71",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "26257211896.71",
+        "ledger_cny_yuan": "26257211896.71",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2023,
+        "metric": "total_assets",
+        "raw": "93,592,652,122.38",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "93592652122.38",
+        "ledger_cny_yuan": "93592652122.38",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2024,
+        "metric": "revenue",
+        "raw": "35,391,817,095.44",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "35391817095.44",
+        "ledger_cny_yuan": "35391817095.44",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2024,
+        "metric": "cost_of_sales",
+        "raw": "29,020,131,352.84",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "29020131352.84",
+        "ledger_cny_yuan": "29020131352.84",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2024,
+        "metric": "total_assets",
+        "raw": "107,839,685,095.13",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "107839685095.13",
+        "ledger_cny_yuan": "107839685095.13",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2025,
+        "metric": "revenue",
+        "raw": "45,070,461,822.87",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "45070461822.87",
+        "ledger_cny_yuan": "45070461822.87",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2025,
+        "metric": "cost_of_sales",
+        "raw": "37,780,369,237.62",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "37780369237.62",
+        "ledger_cny_yuan": "37780369237.62",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2025,
+        "metric": "total_assets",
+        "raw": "127,214,519,738.62",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "127214519738.62",
+        "ledger_cny_yuan": "127214519738.62",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2022,
+        "metric": "revenue",
+        "raw": "36,303,947,808.53",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "36303947808.53",
+        "ledger_cny_yuan": "36303947808.53",
+        "matches": true,
+        "used_record": false
+      },
+      {
+        "entity_id": "300014",
+        "year": 2022,
+        "metric": "cost_of_sales",
+        "raw": "30,338,440,631.84",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "30338440631.84",
+        "ledger_cny_yuan": "30338440631.84",
+        "matches": true,
+        "used_record": false
+      },
+      {
+        "entity_id": "300014",
+        "year": 2022,
+        "metric": "total_assets",
+        "raw": "83,637,813,181.68",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "83637813181.68",
+        "ledger_cny_yuan": "83637813181.68",
+        "matches": true,
+        "used_record": false
+      },
+      {
+        "entity_id": "300014",
+        "year": 2023,
+        "metric": "revenue",
+        "raw": "48,783,587,175.86",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "48783587175.86",
+        "ledger_cny_yuan": "48783587175.86",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2023,
+        "metric": "cost_of_sales",
+        "raw": "40,473,296,810.60",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "40473296810.60",
+        "ledger_cny_yuan": "40473296810.60",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2023,
+        "metric": "total_assets",
+        "raw": "94,355,337,998.71",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "94355337998.71",
+        "ledger_cny_yuan": "94355337998.71",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2024,
+        "metric": "revenue",
+        "raw": "48,614,556,525.09",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "48614556525.09",
+        "ledger_cny_yuan": "48614556525.09",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2024,
+        "metric": "cost_of_sales",
+        "raw": "40,149,208,233.59",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "40149208233.59",
+        "ledger_cny_yuan": "40149208233.59",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2024,
+        "metric": "total_assets",
+        "raw": "100,890,624,125.27",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "100890624125.27",
+        "ledger_cny_yuan": "100890624125.27",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2025,
+        "metric": "revenue",
+        "raw": "61,469,630,776.09",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "61469630776.09",
+        "ledger_cny_yuan": "61469630776.09",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2025,
+        "metric": "cost_of_sales",
+        "raw": "51,528,491,525.28",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "51528491525.28",
+        "ledger_cny_yuan": "51528491525.28",
+        "matches": true,
+        "used_record": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2025,
+        "metric": "total_assets",
+        "raw": "125,542,296,569.58",
+        "unit": "元",
+        "scale": "1",
+        "converted_cny_yuan": "125542296569.58",
+        "ledger_cny_yuan": "125542296569.58",
+        "matches": true,
+        "used_record": true
+      }
+    ]
+  },
+  "availability_audit": {
+    "all_15_used_after_period_end": true,
+    "all_15_equal_official_date_next_day_midnight": true,
+    "all_15_on_or_before_as_of": true,
+    "checks": [
+      {
+        "entity_id": "300750",
+        "year": 2022,
+        "period_end": "2022-12-31",
+        "official_announcement_date": "2023-03-10",
+        "available_at": "2023-03-11T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2023,
+        "period_end": "2023-12-31",
+        "official_announcement_date": "2024-03-16",
+        "available_at": "2024-03-17T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "300750",
+        "year": 2024,
+        "period_end": "2024-12-31",
+        "official_announcement_date": "2025-03-15",
+        "available_at": "2025-03-16T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "300750",
+        "year": 2025,
+        "period_end": "2025-12-31",
+        "official_announcement_date": "2026-03-10",
+        "available_at": "2026-03-11T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "300207",
+        "year": 2022,
+        "period_end": "2022-12-31",
+        "official_announcement_date": "2023-04-27",
+        "available_at": "2023-04-28T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2023,
+        "period_end": "2023-12-31",
+        "official_announcement_date": "2024-04-11",
+        "available_at": "2024-04-12T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "300207",
+        "year": 2024,
+        "period_end": "2024-12-31",
+        "official_announcement_date": "2025-04-22",
+        "available_at": "2025-04-23T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "300207",
+        "year": 2025,
+        "period_end": "2025-12-31",
+        "official_announcement_date": "2026-04-24",
+        "available_at": "2026-04-25T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "002074",
+        "year": 2022,
+        "period_end": "2022-12-31",
+        "official_announcement_date": "2023-04-28",
+        "available_at": "2023-04-29T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2023,
+        "period_end": "2023-12-31",
+        "official_announcement_date": "2024-04-20",
+        "available_at": "2024-04-21T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "002074",
+        "year": 2024,
+        "period_end": "2024-12-31",
+        "official_announcement_date": "2025-04-25",
+        "available_at": "2025-04-26T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "002074",
+        "year": 2025,
+        "period_end": "2025-12-31",
+        "official_announcement_date": "2026-04-29",
+        "available_at": "2026-04-30T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "300014",
+        "year": 2023,
+        "period_end": "2023-12-31",
+        "official_announcement_date": "2024-04-19",
+        "available_at": "2024-04-20T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": true
+      },
+      {
+        "entity_id": "300014",
+        "year": 2024,
+        "period_end": "2024-12-31",
+        "official_announcement_date": "2025-04-18",
+        "available_at": "2025-04-19T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      },
+      {
+        "entity_id": "300014",
+        "year": 2025,
+        "period_end": "2025-12-31",
+        "official_announcement_date": "2026-03-28",
+        "available_at": "2026-03-29T00:00:00+08:00",
+        "after_entire_period_end_day": true,
+        "equals_next_day_midnight": true,
+        "on_or_before_as_of": true,
+        "on_or_before_training_cutoff": false
+      }
+    ]
+  },
+  "training_pairs": [
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "origin_year": 2022,
+      "target_year": 2023,
+      "origin_available_at": "2023-03-11T00:00:00+08:00",
+      "label_available_at": "2024-03-17T00:00:00+08:00",
+      "x_gross_margin": "0.2025124647175718636665559804255395878173212162014985134199998105564850",
+      "y_gross_margin": "0.2290913097069971943215827090418624404063095996345851545510082153157166"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "origin_year": 2022,
+      "target_year": 2023,
+      "origin_available_at": "2023-04-29T00:00:00+08:00",
+      "label_available_at": "2024-04-21T00:00:00+08:00",
+      "x_gross_margin": "0.1779480499797552892001586717441419040091155666639349692526861206532353",
+      "y_gross_margin": "0.1692199083188221876313745854701340945274658041752206613205337478383266"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "origin_year": 2022,
+      "target_year": 2023,
+      "origin_available_at": "2023-04-28T00:00:00+08:00",
+      "label_available_at": "2024-04-12T00:00:00+08:00",
+      "x_gross_margin": "0.1384011875349450623909035545620011901425040852070563244546952188164153",
+      "y_gross_margin": "0.1459590467447476714622941926129516403290344481525115498983878566163399"
+    }
+  ],
+  "excluded_pairs": [
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "origin_year": 2023,
+      "target_year": 2024,
+      "origin_available_at": "2024-03-17T00:00:00+08:00",
+      "label_available_at": "2025-03-16T00:00:00+08:00",
+      "x_gross_margin": "0.2290913097069971943215827090418624404063095996345851545510082153157166",
+      "y_gross_margin": "0.2444489673692365928282144602090235798839175063525559392617085870452990",
+      "reason": "label_after_training_cutoff_and_origin_not_after_cutoff"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "origin_year": 2022,
+      "target_year": 2023,
+      "origin_available_at": null,
+      "label_available_at": "2024-04-20T00:00:00+08:00",
+      "x_gross_margin": "0.1643211699221410961968201279046882143482205406765618693410783070407732",
+      "reason": "origin_historical_version_unresolved_available_at_null"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "origin_year": 2023,
+      "target_year": 2024,
+      "origin_available_at": "2024-04-20T00:00:00+08:00",
+      "label_available_at": "2025-04-19T00:00:00+08:00",
+      "x_gross_margin": "0.1703501289337790254272532396677440974570099369939777589589521432583192",
+      "y_gross_margin": "0.1741319657442730960525411359052867817509834661531433457429079591687819",
+      "reason": "label_after_training_cutoff_and_origin_not_after_cutoff"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "origin_year": 2023,
+      "target_year": 2024,
+      "origin_available_at": "2024-04-21T00:00:00+08:00",
+      "label_available_at": "2025-04-26T00:00:00+08:00",
+      "x_gross_margin": "0.1692199083188221876313745854701340945274658041752206613205337478383266",
+      "y_gross_margin": "0.1800327382292261361829108000502769677861288160054587138162197310576055",
+      "reason": "label_after_training_cutoff_and_origin_not_after_cutoff"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "origin_year": 2023,
+      "target_year": 2024,
+      "origin_available_at": "2024-04-12T00:00:00+08:00",
+      "label_available_at": "2025-04-23T00:00:00+08:00",
+      "x_gross_margin": "0.1459590467447476714622941926129516403290344481525115498983878566163399",
+      "y_gross_margin": "0.1517590315923819871103471999001295911746684777561122681252128223355822",
+      "reason": "label_after_training_cutoff_and_origin_not_after_cutoff"
+    }
+  ],
+  "pending_pairs": [
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "origin_year": 2025,
+      "target_year": 2026,
+      "origin_available_at": "2026-03-11T00:00:00+08:00",
+      "label_available_at": null,
+      "x_gross_margin": "0.2627284757044502195853133833732709308971270584587556918623108910120979",
+      "reason": "next_year_label_not_available_as_of"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "origin_year": 2025,
+      "target_year": 2026,
+      "origin_available_at": "2026-03-29T00:00:00+08:00",
+      "label_available_at": null,
+      "x_gross_margin": "0.1617244015507708310666953049408047647023551331307705077863705477335016",
+      "reason": "next_year_label_not_available_as_of"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "origin_year": 2025,
+      "target_year": 2026,
+      "origin_available_at": "2026-04-30T00:00:00+08:00",
+      "label_available_at": null,
+      "x_gross_margin": "0.1617487882396360361446201967553954838821754713774565089900536506017667",
+      "reason": "next_year_label_not_available_as_of"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "origin_year": 2025,
+      "target_year": 2026,
+      "origin_available_at": "2026-04-25T00:00:00+08:00",
+      "label_available_at": null,
+      "x_gross_margin": "0.1394073472355469164490359486703119649399653087730214130781718516193586",
+      "reason": "next_year_label_not_available_as_of"
+    }
+  ],
+  "fit": {
+    "n": 3,
+    "x_mean": "0.1729539007440907384192060689105608939896469560241632690424603833420452",
+    "y_mean": "0.1814234215901890178050838290416493917542699506541057885899766065901277",
+    "sum_squared_x_deviations": "0.002092540220875935186044682025996055046773557140016508790183719812760572",
+    "sum_cross_deviations": "0.002573438527080971200488965264352737834475338049835920052595350757745209",
+    "intercept": "-0.0312779769986843275585974021658403199708742296876121757963068892347952",
+    "slope": "1.229815561683078415412943818397879719344133991231114004052878382852798"
+  },
+  "holdout_pairs": [
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "origin_year": 2024,
+      "target_year": 2025,
+      "origin_available_at": "2025-03-16T00:00:00+08:00",
+      "label_available_at": "2026-03-11T00:00:00+08:00",
+      "x_gross_margin": "0.2444489673692365928282144602090235798839175063525559392617085870452990",
+      "y_gross_margin": "0.2627284757044502195853133833732709308971270584587556918623108910120979",
+      "predicted_gross_margin": "0.2693491671093618802720702824224005528645840098234401234382765009214215",
+      "absolute_error": "0.0066206914049116606867568990491296219674569513646844315759656099093236",
+      "last_value_prediction": "0.2444489673692365928282144602090235798839175063525559392617085870452990",
+      "last_value_absolute_error": "0.0182795083352136267570989231642473510132095521061997526006023039667989"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "origin_year": 2024,
+      "target_year": 2025,
+      "origin_available_at": "2025-04-19T00:00:00+08:00",
+      "label_available_at": "2026-03-29T00:00:00+08:00",
+      "x_gross_margin": "0.1741319657442730960525411359052867817509834661531433457429079591687819",
+      "y_gross_margin": "0.1617244015507708310666953049408047647023551331307705077863705477335016",
+      "predicted_gross_margin": "0.1828722242600874598338044409813786638083697479920804388193848201657115",
+      "absolute_error": "0.0211478227093166287671091360405738991060146148613099310330142724322099",
+      "last_value_prediction": "0.1741319657442730960525411359052867817509834661531433457429079591687819",
+      "last_value_absolute_error": "0.0124075641935022649858458309644820170486283330223728379565374114352803"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "origin_year": 2024,
+      "target_year": 2025,
+      "origin_available_at": "2025-04-26T00:00:00+08:00",
+      "label_available_at": "2026-04-30T00:00:00+08:00",
+      "x_gross_margin": "0.1800327382292261361829108000502769677861288160054587138162197310576055",
+      "y_gross_margin": "0.1617487882396360361446201967553954838821754713774565089900536506017667",
+      "predicted_gross_margin": "0.1901290860880340372591245441523493119772873891899599368607923881637448",
+      "absolute_error": "0.0283802978483980011145043473969538280951119178125034278707387375619781",
+      "last_value_prediction": "0.1800327382292261361829108000502769677861288160054587138162197310576055",
+      "last_value_absolute_error": "0.0182839499895901000382906032948814839039533446280022048261660804558388"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "origin_year": 2024,
+      "target_year": 2025,
+      "origin_available_at": "2025-04-23T00:00:00+08:00",
+      "label_available_at": "2026-04-25T00:00:00+08:00",
+      "x_gross_margin": "0.1517590315923819871103471999001295911746684777561122681252128223355822",
+      "y_gross_margin": "0.1394073472355469164490359486703119649399653087730214130781718516193586",
+      "predicted_gross_margin": "0.1553576416795809680705361761961257709494580815589780201696361650820436",
+      "absolute_error": "0.0159502944440340516215002275258138060094927727859566070914643134626850",
+      "last_value_prediction": "0.1517590315923819871103471999001295911746684777561122681252128223355822",
+      "last_value_absolute_error": "0.0123516843568350706613112512298176262347031689830908550470409707162236"
+    }
+  ],
+  "holdout_metrics": {
+    "n": 4,
+    "model_mae": "0.01802477660166508554746765250311778879451906420611359939279573334154915",
+    "last_value_mae": "0.0153306767187852656106366521633571195501235996849164126075866916435354",
+    "model_mae_percentage_points": "1.802477660166508554746765250311778879451906420611359939279573334154915",
+    "last_value_mae_percentage_points": "1.533067671878526561063665216335711955012359968491641260758669164353540"
+  },
+  "latest_profitability": [
+    {
+      "entity_id": "300750",
+      "entity": "CATL",
+      "year": 2025,
+      "gross_profit_cny_yuan": "111318537000",
+      "ending_total_assets_cny_yuan": "974827544000",
+      "gross_profit_to_ending_assets": "0.1141930566951645346615277830106121827021334144821825018108023422858885",
+      "count_less": 3,
+      "count_equal_including_self": 1,
+      "sample_size": 4,
+      "sample_percentile_fraction": "1",
+      "sample_percentile_percent": "100"
+    },
+    {
+      "entity_id": "300014",
+      "entity": "EVE",
+      "year": 2025,
+      "gross_profit_cny_yuan": "9941139250.81",
+      "ending_total_assets_cny_yuan": "125542296569.58",
+      "gross_profit_to_ending_assets": "0.07918557747030115479539953810974056969177914600953637183669377314284551",
+      "count_less": 1,
+      "count_equal_including_self": 1,
+      "sample_size": 4,
+      "sample_percentile_fraction": "0.5",
+      "sample_percentile_percent": "50.0"
+    },
+    {
+      "entity_id": "002074",
+      "entity": "Gotion",
+      "year": 2025,
+      "gross_profit_cny_yuan": "7290092585.25",
+      "ending_total_assets_cny_yuan": "127214519738.62",
+      "gross_profit_to_ending_assets": "0.05730550726621861631238495363368253231448690209545723608995743857849776",
+      "count_less": 0,
+      "count_equal_including_self": 1,
+      "sample_size": 4,
+      "sample_percentile_fraction": "0.25",
+      "sample_percentile_percent": "25.00"
+    },
+    {
+      "entity_id": "300207",
+      "entity": "Sunwoda",
+      "year": 2025,
+      "gross_profit_cny_yuan": "8816992224.05",
+      "ending_total_assets_cny_yuan": "108072225016.49",
+      "gross_profit_to_ending_assets": "0.08158425740475571401806133144609698416456088260537238912067748492640018",
+      "count_less": 2,
+      "count_equal_including_self": 1,
+      "sample_size": 4,
+      "sample_percentile_fraction": "0.75",
+      "sample_percentile_percent": "75.00"
+    }
+  ],
+  "limitations": [
+    "Only three training pairs and four held-out pairs; this is a fixed-sample process illustration, not statistical evidence of predictive power, generalization, or investment performance.",
+    "CAS Interpretation No.18 warranty presentation changes create a known cost-of-sales break between original 2023 reports and 2024 onward. Original own-year columns are retained; no later comparative value is backfilled and no fitting is adjusted.",
+    "The ledgers link current official files to official date records but do not prove original publication byte identity or exhaust historical revisions. available_at is the conservative next-day midnight boundary from day-level official dates, not an actual publication timestamp.",
+    "EVE 2022 has unresolved historical bytes: current official PDFs show January 10, 2024 metadata against an April 18, 2023 announcement date. available_at remains null and its 2022 origin is excluded; the fixed company list is retained.",
+    "Gotion 2025 has an unresolved same-day alternative URL/version observation; using end-of-announcement-day availability does not establish which bytes were the unique initial version.",
+    "Reported consolidated scope and business mix may change across years; CAS and consolidated labels do not establish economic comparability.",
+    "The profitability denominator is period-ending total assets, not average assets. Percentiles describe only the four preselected companies in 2025 and are not industry percentiles.",
+    "The audit verifies ledger arithmetic, timestamps, and recorded source claims only; it does not re-examine original PDFs or independently authenticate source evidence."
+  ],
+  "ledger_comparability": [
+    {
+      "source_year": 2024,
+      "physical_pages": [
+        162,
+        163
+      ],
+      "affected_year": 2023,
+      "description": "保证类质量保证列报政策：2023营业成本由309070434千元增加14911696千元至323982130千元；销售费用反向重分类。保留2023原报告成本，不以后年比较数回填历史预测。2024政策使当年营业成本增加11842606千元。毛利变化受列报影响，不等于经济利润同比变化。"
+    },
+    {
+      "source_year": 2024,
+      "physical_pages": [
+        114,
+        119
+      ],
+      "description": "单位由万元改为千元，2023比较值有显示舍入。2023原始精度保留。"
+    }
+  ],
+  "ledger_record_limitations": [
+    {
+      "entity_id": "300750",
+      "year": 2022,
+      "version_limit": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300750",
+      "year": 2023,
+      "version_limit": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300750",
+      "year": 2024,
+      "version_limit": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300750",
+      "year": 2025,
+      "version_limit": "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。",
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300207",
+      "year": 2022,
+      "version_limit": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+      "comparability_notes": [
+        "保留2022原年报当期资产74,494,462,459.10元。2023年报p11、p129比较数将其调整为74,499,179,802.85元，增加4,717,343.75元；p12说明原因为解释第16号递延所得税初始确认豁免规定。后年比较值仅记录差异，未回填。",
+        "采用各年度实际合并范围；未声称各年度子公司集合、业务结构或会计政策完全不变。"
+      ]
+    },
+    {
+      "entity_id": "300207",
+      "year": 2023,
+      "version_limit": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+      "comparability_notes": [
+        "本报告采用解释第16号并调整期初资产。2023当期营业成本原值40,876,301,967.08元予以保留；2024年报p172依解释第18号质量保证会计处理，把2023营业成本比较数调整为41,115,257,464.91元（+238,955,497.83元），对应销售费用减少相同金额。后年比较值未回填，训练与留出成本口径存在已知差异。",
+        "采用各年度实际合并范围；未声称各年度子公司集合、业务结构或会计政策完全不变。"
+      ]
+    },
+    {
+      "entity_id": "300207",
+      "year": 2024,
+      "version_limit": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+      "comparability_notes": [
+        "本报告p172自2024-01-01执行解释第18号保证类质量保证规定，并追溯调整2023营业成本和销售费用；当期营业成本已采用新分类。原始2023当期值与2024所列比较值不相同。",
+        "采用各年度实际合并范围；未声称各年度子公司集合、业务结构或会计政策完全不变。"
+      ]
+    },
+    {
+      "entity_id": "300207",
+      "year": 2025,
+      "version_limit": "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+      "comparability_notes": [
+        "p154重要会计政策变更、重要会计估计变更及首次执行新准则调整均标为不适用。本次所见2024比较营业收入、营业成本和期初总资产与2024原年报当期数一致。集团合并范围未重构成固定企业集合。",
+        "采用各年度实际合并范围；未声称各年度子公司集合、业务结构或会计政策完全不变。"
+      ]
+    },
+    {
+      "entity_id": "002074",
+      "year": 2022,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "2018070902",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "WPS 文字",
+          "Producer": "",
+          "CreationDate": "D:20230427201736+12'17'",
+          "ModDate": "D:20230427201736+12'17'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "002074",
+      "year": 2023,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "2018070902",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "Microsoft® Word 2016",
+          "Producer": "Microsoft® Word 2016",
+          "CreationDate": "D:20240419195859+08'00'",
+          "ModDate": "D:20240419195859+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ],
+        "observed_comparative_restatement": {
+          "comparison_report_year": 2024,
+          "comparison_report_pdf": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+          "physical_pages": [
+            132,
+            183
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_value": "26257211896.71",
+          "later_comparative_value": "26620630801.11",
+          "reason": "2024年报告披露保证类质量保证金从销售费用重分类至营业成本，调整363,418,904.40元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "002074",
+      "year": 2024,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "2018070902",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "Microsoft® Word 2016",
+          "Producer": "Microsoft® Word 2016",
+          "CreationDate": "D:20250424212806+08'00'",
+          "ModDate": "D:20250424212806+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ],
+        "observed_comparative_restatement": {
+          "comparison_report_year": 2024,
+          "comparison_report_pdf": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+          "physical_pages": [
+            132,
+            183
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_value": "26257211896.71",
+          "later_comparative_value": "26620630801.11",
+          "reason": "2024年报告披露保证类质量保证金从销售费用重分类至营业成本，调整363,418,904.40元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "002074",
+      "year": 2025,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "2018070902",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "WPS 文字",
+          "Producer": "",
+          "CreationDate": "D:20260429161155+08'00'",
+          "ModDate": "D:20260429161155+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+          "先前检索到同日候选1225241936.PDF，正常请求返回404；本次官网IR及巨潮列表均指向1225254220.pdf。后者元数据为2026-04-29 16:11:55+08:00，同日版本先后/差异未核实；采用日结束后的保守时点，不称其为唯一初始版本。"
+        ]
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300014",
+      "year": 2022,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "杨慧艳",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "Microsoft® Word 2019",
+          "Producer": "Microsoft® Word 2019",
+          "CreationDate": "D:20240110093636+08'00'",
+          "ModDate": "D:20240110093636+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+          "当前巨潮PDF与另行取得的深交所PDF的CreationDate/ModDate均为2024-01-10，晚于列表标注的2023-04-18；未查得可证实为2023首次发布的官方全文版本，故available_at留空，不得用于该时点训练或回测。"
+        ],
+        "alternate_official_pdf": {
+          "url": "https://disc.static.szse.cn/download/disc/disk03/finalpage/2023-04-18/ca0a0206-d8a3-46db-bb70-b9868b79d830.PDF?n=%E4%BA%BF%E7%BA%AC%E9%94%82%E8%83%BD%EF%BC%9A2022%E5%B9%B4%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf",
+          "sha256": "b681916e887b793ea79dee427de10af98a70cc2de52f28af030eb5da93d48dcf",
+          "metadata": {
+            "Title": "",
+            "Author": "杨慧艳",
+            "Subject": "",
+            "Keywords": "",
+            "Creator": "Microsoft® Word 2019",
+            "Producer": "Microsoft® Word 2019",
+            "CreationDate": "D:20240110093636+08'00'",
+            "ModDate": "D:20240110093636+08'00'"
+          }
+        }
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300014",
+      "year": 2023,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "Microsoft® Word 2016",
+          "Producer": "Microsoft® Word 2016",
+          "CreationDate": "D:20240418184320+08'00'",
+          "ModDate": "D:20240418184320+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ],
+        "observed_comparative_restatement": {
+          "comparison_report_year": 2024,
+          "comparison_report_pdf": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+          "physical_pages": [
+            97,
+            140
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_value": "40473296810.60",
+          "later_comparative_value": "40664273886.86",
+          "reason": "2024年报告披露保证类质保费用重分类，将2023年比较营业成本增加190,977,076.26元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300014",
+      "year": 2024,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "张倩怡",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "Microsoft® Word 2019",
+          "Producer": "Microsoft® Word 2019",
+          "CreationDate": "D:20250417165418+08'00'",
+          "ModDate": "D:20250417165418+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ],
+        "observed_comparative_restatement": {
+          "comparison_report_year": 2024,
+          "comparison_report_pdf": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+          "physical_pages": [
+            97,
+            140
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_value": "40473296810.60",
+          "later_comparative_value": "40664273886.86",
+          "reason": "2024年报告披露保证类质保费用重分类，将2023年比较营业成本增加190,977,076.26元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      },
+      "comparability_notes": []
+    },
+    {
+      "entity_id": "300014",
+      "year": 2025,
+      "version_limit": {
+        "retrieved_and_hashed_at_utc": "2026-10-02T22:31:08Z",
+        "pdf_metadata": {
+          "Title": "",
+          "Author": "张倩怡",
+          "Subject": "",
+          "Keywords": "",
+          "Creator": "Microsoft® Word 2019",
+          "Producer": "Microsoft® Word 2019",
+          "CreationDate": "D:20260327195709+08'00'",
+          "ModDate": "D:20260327195709+08'00'"
+        },
+        "first_available_byte_identity_proven": false,
+        "limitations": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": []
+    }
+  ]
+}

@@ -19,6 +19,8 @@
 
 [复现说明与原文核对要点](examples/catl-2025/README.md)列出输入校验值、关键事实页码、预期计算及保留的差额。
 
+[四家A股电池企业的真实披露案例](examples/a-share-battery-panel/README.md)进一步展示2022—2025原报告版本、成本重分类、历史时间分割和独立复算；附三种实际文件。此次留出样本中，简单上期值基准优于固定OLS，失败结果与适用限制一同公开。
+
 ```bash
 python -m pip install -r skills/annual-report-analysis/requirements.txt
 npm install --prefix skills/annual-report-analysis

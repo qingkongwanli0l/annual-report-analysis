@@ -1,0 +1,1653 @@
+{
+  "method": {
+    "purpose": "四家预选A股电池企业2022—2025年官方来源证据清单，只验证真实取数与时点分割流程。",
+    "sample": [
+      "002074.SZ",
+      "300014.SZ",
+      "300207.SZ",
+      "300750.SZ"
+    ],
+    "report_selection": "每年使用该年度完整年报合并报表本年营业收入、营业成本及期末资产总计；不使用后年比较数回填历史原值。",
+    "period": "各报告会计年度为完整公历年度1月1日至12月31日，CAS，合并报表。",
+    "decimal_encoding": "raw、scale、base均为精确十进制字符串；raw去除千位逗号，base=raw×scale，base单位人民币元。",
+    "page_numbering": "page为PDF一基物理页，printed_page为报表印刷页码。欣旺达三个原值所在页已复核页首印刷页码与物理页一致。",
+    "availability_rule": "官方日期按Asia/Shanghai解释；仅日级日期的available_at设为公告日结束后的次日00:00:00+08:00，非实际发布时分秒。明确存在晚生成信号且原版本未解决时留null。",
+    "metadata_rule": "CreationDate/ModDate仅作版本一致性风险信号；SHA固定本次取得字节，元数据或无矛盾均不证明历史精确字节可得。",
+    "source_queries": [
+      {
+        "entities": [
+          "002074.SZ",
+          "300014.SZ"
+        ],
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "parameters": {
+          "tabName": "fulltext",
+          "pageSize": "30",
+          "pageNum": "1",
+          "column": "szse",
+          "category": "",
+          "plate": "",
+          "seDate": "2023-01-01~2026-10-02",
+          "searchkey": "年度报告",
+          "secid": "",
+          "sortName": "time",
+          "sortType": "asc",
+          "isHLtitle": "false"
+        },
+        "stock_parameters": [
+          "002074,9900001001",
+          "300014,9900008311"
+        ]
+      },
+      {
+        "entities": [
+          "300207.SZ"
+        ],
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "parameters": {
+          "pageNum": "1",
+          "pageSize": "30",
+          "tabName": "fulltext",
+          "column": "szse",
+          "stock": "300207,9900018948",
+          "searchkey": "",
+          "secid": "",
+          "plate": "",
+          "category": "category_ndbg_szsh",
+          "trade": "",
+          "seDate": "2023-01-01~2026-10-02",
+          "sortName": "",
+          "sortType": "",
+          "isHLtitle": "false"
+        }
+      }
+    ]
+  },
+  "boundaries": [
+    "保留预选四家16条来源记录，不因结果换样本；亿纬2022年available_at为空，因此当前只有15条具有可用边界。",
+    "亿纬2022当前巨潮和深交所PDF均带2024-01-10晚生成信号，不能把2023-04-18公告日赋为该版本历史可用时间。",
+    "所有记录historical_exact_byte_availability_proven均为false；未取得公告当日独立字节快照，未声称穷尽历史修订。",
+    "合并范围采用各年度实际范围，未重构为固定子公司或业务集合；已见会计重列可能影响跨年指标可比性。",
+    "已见后年重列仅作为comparability_notes保存，不覆盖原年报本年原值。",
+    "这是来源归档，不含模型、预测或回测输出，不支持PD、统计显著性或普适预测声明。"
+  ],
+  "records": [
+    {
+      "id": "002074_2022",
+      "entity": "国轩高科股份有限公司",
+      "ticker": "002074.SZ",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2023-04-28",
+      "available_at": "2023-04-29T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2023-04-28/1216662624.PDF",
+        "sha256": "5f1037d1f4e4ef525605ec8c2274c095346ffae05a20d49ce54354cf3e166cfb",
+        "page_count": 306,
+        "metadata": {
+          "CreationDate": "D:20230427201736+12'17'",
+          "ModDate": "D:20230427201736+12'17'",
+          "Creator": "WPS 文字"
+        },
+        "balance_header_page": 160,
+        "income_header_page": 164,
+        "policy_pages": [
+          183,
+          184
+        ],
+        "visual_review_pages": [
+          160,
+          161,
+          164
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900001001&stockCode=002074&announcementId=1216662624&announcementTime=2023-04-28",
+        "selected_record": {
+          "secCode": "002074",
+          "orgId": "9900001001",
+          "announcementId": "1216662624",
+          "announcementTitle": "2022年年度报告",
+          "announcementTime": 1682611200000,
+          "adjunctUrl": "finalpage/2023-04-28/1216662624.PDF"
+        },
+        "query_snapshot_sha256": "20e7d18c81a64daa8d5346f3ecb3ec88d42dc242b93b1494148469250f5c4e6e",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict",
+        "issuer_IR_url": "https://www.gotion.com.cn/investor?year=2022"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": [],
+      "facts": {
+        "revenue": {
+          "raw": "23051701484.60",
+          "scale": "1",
+          "unit": "元",
+          "base": "23051701484.60",
+          "page": 164,
+          "printed_page": 164,
+          "label": "其中：营业收入",
+          "column": "2022年度"
+        },
+        "cost_of_sales": {
+          "raw": "18949696156.70",
+          "scale": "1",
+          "unit": "元",
+          "base": "18949696156.70",
+          "page": 164,
+          "printed_page": 164,
+          "label": "其中：营业成本",
+          "column": "2022年度"
+        },
+        "total_assets": {
+          "raw": "72627365266.66",
+          "scale": "1",
+          "unit": "元",
+          "base": "72627365266.66",
+          "page": 161,
+          "printed_page": 161,
+          "label": "资产总计",
+          "column": "2022年12月31日"
+        }
+      }
+    },
+    {
+      "id": "002074_2023",
+      "entity": "国轩高科股份有限公司",
+      "ticker": "002074.SZ",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2024-04-20",
+      "available_at": "2024-04-21T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2024-04-20/1219700973.PDF",
+        "sha256": "865d69b0da6dfa059de2c924e16eb8a4e5b11fabc1b19c985769baf44c94739d",
+        "page_count": 255,
+        "metadata": {
+          "CreationDate": "D:20240419195859+08'00'",
+          "ModDate": "D:20240419195859+08'00'",
+          "Creator": "Microsoft® Word 2016",
+          "Producer": "Microsoft® Word 2016"
+        },
+        "balance_header_page": 118,
+        "income_header_page": 122,
+        "policy_pages": [
+          141,
+          142,
+          144
+        ],
+        "visual_review_pages": [
+          118,
+          119,
+          122
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900001001&stockCode=002074&announcementId=1219700973&announcementTime=2024-04-20",
+        "selected_record": {
+          "secCode": "002074",
+          "orgId": "9900001001",
+          "announcementId": "1219700973",
+          "announcementTitle": "2023年年度报告",
+          "announcementTime": 1713542400000,
+          "adjunctUrl": "finalpage/2024-04-20/1219700973.PDF"
+        },
+        "query_snapshot_sha256": "20e7d18c81a64daa8d5346f3ecb3ec88d42dc242b93b1494148469250f5c4e6e",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict",
+        "issuer_IR_url": "https://www.gotion.com.cn/investor?year=2023"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+          "pages": [
+            132,
+            183
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_base": "26257211896.71",
+          "later_comparative_base": "26620630801.11",
+          "note": "2024年报告披露保证类质量保证金从销售费用重分类至营业成本，调整363,418,904.40元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "31605490020.32",
+          "scale": "1",
+          "unit": "元",
+          "base": "31605490020.32",
+          "page": 122,
+          "printed_page": 122,
+          "label": "其中：营业收入",
+          "column": "2023年度"
+        },
+        "cost_of_sales": {
+          "raw": "26257211896.71",
+          "scale": "1",
+          "unit": "元",
+          "base": "26257211896.71",
+          "page": 122,
+          "printed_page": 122,
+          "label": "其中：营业成本",
+          "column": "2023年度"
+        },
+        "total_assets": {
+          "raw": "93592652122.38",
+          "scale": "1",
+          "unit": "元",
+          "base": "93592652122.38",
+          "page": 119,
+          "printed_page": 119,
+          "label": "资产总计",
+          "column": "2023年12月31日"
+        }
+      }
+    },
+    {
+      "id": "002074_2024",
+      "entity": "国轩高科股份有限公司",
+      "ticker": "002074.SZ",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2025-04-25",
+      "available_at": "2025-04-26T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+        "sha256": "cacf470f2dea6d0cf64ed9aa61872c726f739129a3715876a0b1059d2a9168ba",
+        "page_count": 269,
+        "metadata": {
+          "CreationDate": "D:20250424212806+08'00'",
+          "ModDate": "D:20250424212806+08'00'",
+          "Creator": "Microsoft® Word 2016",
+          "Producer": "Microsoft® Word 2016"
+        },
+        "balance_header_page": 127,
+        "income_header_page": 132,
+        "policy_pages": [
+          151,
+          154
+        ],
+        "visual_review_pages": [
+          127,
+          128,
+          132
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900001001&stockCode=002074&announcementId=1223284129&announcementTime=2025-04-25",
+        "selected_record": {
+          "secCode": "002074",
+          "orgId": "9900001001",
+          "announcementId": "1223284129",
+          "announcementTitle": "2024年年度报告",
+          "announcementTime": 1745510400000,
+          "adjunctUrl": "finalpage/2025-04-25/1223284129.PDF"
+        },
+        "query_snapshot_sha256": "20e7d18c81a64daa8d5346f3ecb3ec88d42dc242b93b1494148469250f5c4e6e",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict",
+        "issuer_IR_url": "https://www.gotion.com.cn/investor?year=2024"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-25/1223284129.PDF",
+          "pages": [
+            132,
+            183
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_base": "26257211896.71",
+          "later_comparative_base": "26620630801.11",
+          "note": "2024年报告披露保证类质量保证金从销售费用重分类至营业成本，调整363,418,904.40元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "35391817095.44",
+          "scale": "1",
+          "unit": "元",
+          "base": "35391817095.44",
+          "page": 132,
+          "printed_page": 131,
+          "label": "其中：营业收入",
+          "column": "2024年度"
+        },
+        "cost_of_sales": {
+          "raw": "29020131352.84",
+          "scale": "1",
+          "unit": "元",
+          "base": "29020131352.84",
+          "page": 132,
+          "printed_page": 131,
+          "label": "其中：营业成本",
+          "column": "2024年度"
+        },
+        "total_assets": {
+          "raw": "107839685095.13",
+          "scale": "1",
+          "unit": "元",
+          "base": "107839685095.13",
+          "page": 128,
+          "printed_page": 127,
+          "label": "资产总计",
+          "column": "期末余额"
+        }
+      }
+    },
+    {
+      "id": "002074_2025",
+      "entity": "国轩高科股份有限公司",
+      "ticker": "002074.SZ",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2026-04-29",
+      "available_at": "2026-04-30T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225254220.pdf",
+        "sha256": "2a255f70026f280deb60691a7937b662615a1b1addb2ce379a56e95698e358fb",
+        "page_count": 265,
+        "metadata": {
+          "CreationDate": "D:20260429161155+08'00'",
+          "ModDate": "D:20260429161155+08'00'",
+          "Creator": "WPS 文字"
+        },
+        "balance_header_page": 123,
+        "income_header_page": 127,
+        "policy_pages": [
+          147,
+          149
+        ],
+        "visual_review_pages": [
+          123,
+          124,
+          127
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900001001&stockCode=002074&announcementId=1225254220&announcementTime=2026-04-29",
+        "selected_record": {
+          "secCode": "002074",
+          "orgId": "9900001001",
+          "announcementId": "1225254220",
+          "announcementTitle": "2025年年度报告",
+          "announcementTime": 1777392000000,
+          "adjunctUrl": "finalpage/2026-04-29/1225254220.pdf"
+        },
+        "query_snapshot_sha256": "20e7d18c81a64daa8d5346f3ecb3ec88d42dc242b93b1494148469250f5c4e6e",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict",
+        "issuer_IR_url": "https://www.gotion.com.cn/investor?year=2025"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+          "先前检索到同日候选1225241936.PDF，正常请求返回404；本次官网IR及巨潮列表均指向1225254220.pdf。后者元数据为2026-04-29 16:11:55+08:00，同日版本先后/差异未核实；采用日结束后的保守时点，不称其为唯一初始版本。"
+        ]
+      },
+      "comparability_notes": [],
+      "facts": {
+        "revenue": {
+          "raw": "45070461822.87",
+          "scale": "1",
+          "unit": "元",
+          "base": "45070461822.87",
+          "page": 127,
+          "printed_page": 127,
+          "label": "其中：营业收入",
+          "column": "2025年度"
+        },
+        "cost_of_sales": {
+          "raw": "37780369237.62",
+          "scale": "1",
+          "unit": "元",
+          "base": "37780369237.62",
+          "page": 127,
+          "printed_page": 127,
+          "label": "其中：营业成本",
+          "column": "2025年度"
+        },
+        "total_assets": {
+          "raw": "127214519738.62",
+          "scale": "1",
+          "unit": "元",
+          "base": "127214519738.62",
+          "page": 124,
+          "printed_page": 124,
+          "label": "资产总计",
+          "column": "期末余额"
+        }
+      }
+    },
+    {
+      "id": "300014_2022",
+      "entity": "惠州亿纬锂能股份有限公司",
+      "ticker": "300014.SZ",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2023-04-18",
+      "available_at": null,
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2023-04-18/1218857751.PDF",
+        "sha256": "b681916e887b793ea79dee427de10af98a70cc2de52f28af030eb5da93d48dcf",
+        "page_count": 230,
+        "metadata": {
+          "CreationDate": "D:20240110093636+08'00'",
+          "ModDate": "D:20240110093636+08'00'",
+          "Creator": "Microsoft® Word 2019",
+          "Producer": "Microsoft® Word 2019"
+        },
+        "balance_header_page": 91,
+        "income_header_page": 97,
+        "policy_pages": [
+          111,
+          112
+        ],
+        "visual_review_pages": [
+          91,
+          93,
+          97
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900008311&stockCode=300014&announcementId=1218857751&announcementTime=2023-04-18",
+        "selected_record": {
+          "secCode": "300014",
+          "orgId": "9900008311",
+          "announcementId": "1218857751",
+          "announcementTitle": "2022年年度报告",
+          "announcementTime": 1681747200000,
+          "adjunctUrl": "finalpage/2023-04-18/1218857751.PDF"
+        },
+        "query_snapshot_sha256": "4a06e613705c62b5f18df85724af704ef9be532848b8523cd45ec07346948047",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "historical_byte_version_unresolved"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。",
+          "当前巨潮PDF与另行取得的深交所PDF的CreationDate/ModDate均为2024-01-10，晚于列表标注的2023-04-18；未查得可证实为2023首次发布的官方全文版本，故available_at留空，不得用于该时点训练或回测。"
+        ],
+        "alternate_official_pdf": {
+          "url": "https://disc.static.szse.cn/download/disc/disk03/finalpage/2023-04-18/ca0a0206-d8a3-46db-bb70-b9868b79d830.PDF?n=%E4%BA%BF%E7%BA%AC%E9%94%82%E8%83%BD%EF%BC%9A2022%E5%B9%B4%E5%B9%B4%E5%BA%A6%E6%8A%A5%E5%91%8A.pdf",
+          "sha256": "b681916e887b793ea79dee427de10af98a70cc2de52f28af030eb5da93d48dcf",
+          "metadata": {
+            "CreationDate": "D:20240110093636+08'00'",
+            "ModDate": "D:20240110093636+08'00'"
+          }
+        }
+      },
+      "comparability_notes": [],
+      "facts": {
+        "revenue": {
+          "raw": "36303947808.53",
+          "scale": "1",
+          "unit": "元",
+          "base": "36303947808.53",
+          "page": 97,
+          "printed_page": 97,
+          "label": "其中：营业收入",
+          "column": "2022年度"
+        },
+        "cost_of_sales": {
+          "raw": "30338440631.84",
+          "scale": "1",
+          "unit": "元",
+          "base": "30338440631.84",
+          "page": 97,
+          "printed_page": 97,
+          "label": "其中：营业成本",
+          "column": "2022年度"
+        },
+        "total_assets": {
+          "raw": "83637813181.68",
+          "scale": "1",
+          "unit": "元",
+          "base": "83637813181.68",
+          "page": 93,
+          "printed_page": 93,
+          "label": "资产总计",
+          "column": "2022年12月31日"
+        }
+      }
+    },
+    {
+      "id": "300014_2023",
+      "entity": "惠州亿纬锂能股份有限公司",
+      "ticker": "300014.SZ",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2024-04-19",
+      "available_at": "2024-04-20T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2024-04-19/1219668064.PDF",
+        "sha256": "959d6d51d529fd5129c829d1358ad41d384c95560ef2f8dc23caedd91e01f33e",
+        "page_count": 236,
+        "metadata": {
+          "CreationDate": "D:20240418184320+08'00'",
+          "ModDate": "D:20240418184320+08'00'",
+          "Creator": "Microsoft® Word 2016",
+          "Producer": "Microsoft® Word 2016"
+        },
+        "balance_header_page": 93,
+        "income_header_page": 99,
+        "policy_pages": [
+          111,
+          112,
+          113
+        ],
+        "visual_review_pages": [
+          93,
+          95,
+          99
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900008311&stockCode=300014&announcementId=1219668064&announcementTime=2024-04-19",
+        "selected_record": {
+          "secCode": "300014",
+          "orgId": "9900008311",
+          "announcementId": "1219668064",
+          "announcementTitle": "2023年年度报告",
+          "announcementTime": 1713456000000,
+          "adjunctUrl": "finalpage/2024-04-19/1219668064.PDF"
+        },
+        "query_snapshot_sha256": "4a06e613705c62b5f18df85724af704ef9be532848b8523cd45ec07346948047",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+          "pages": [
+            97,
+            140
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_base": "40473296810.60",
+          "later_comparative_base": "40664273886.86",
+          "note": "2024年报告披露保证类质保费用重分类，将2023年比较营业成本增加190,977,076.26元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "48783587175.86",
+          "scale": "1",
+          "unit": "元",
+          "base": "48783587175.86",
+          "page": 99,
+          "printed_page": 99,
+          "label": "其中：营业收入",
+          "column": "2023年度"
+        },
+        "cost_of_sales": {
+          "raw": "40473296810.60",
+          "scale": "1",
+          "unit": "元",
+          "base": "40473296810.60",
+          "page": 99,
+          "printed_page": 99,
+          "label": "其中：营业成本",
+          "column": "2023年度"
+        },
+        "total_assets": {
+          "raw": "94355337998.71",
+          "scale": "1",
+          "unit": "元",
+          "base": "94355337998.71",
+          "page": 95,
+          "printed_page": 95,
+          "label": "资产总计",
+          "column": "2023年12月31日"
+        }
+      }
+    },
+    {
+      "id": "300014_2024",
+      "entity": "惠州亿纬锂能股份有限公司",
+      "ticker": "300014.SZ",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2025-04-18",
+      "available_at": "2025-04-19T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+        "sha256": "06be1a045d1ec713113cdcf626abfa534e2068f358770d5940975818a5a538aa",
+        "page_count": 235,
+        "metadata": {
+          "CreationDate": "D:20250417165418+08'00'",
+          "ModDate": "D:20250417165418+08'00'",
+          "Creator": "Microsoft® Word 2019",
+          "Producer": "Microsoft® Word 2019"
+        },
+        "balance_header_page": 91,
+        "income_header_page": 97,
+        "policy_pages": [
+          109,
+          110,
+          111
+        ],
+        "visual_review_pages": [
+          91,
+          93,
+          97
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900008311&stockCode=300014&announcementId=1223125812&announcementTime=2025-04-18",
+        "selected_record": {
+          "secCode": "300014",
+          "orgId": "9900008311",
+          "announcementId": "1223125812",
+          "announcementTitle": "2024年年度报告",
+          "announcementTime": 1744905600000,
+          "adjunctUrl": "finalpage/2025-04-18/1223125812.PDF"
+        },
+        "query_snapshot_sha256": "4a06e613705c62b5f18df85724af704ef9be532848b8523cd45ec07346948047",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "source_url": "https://static.cninfo.com.cn/finalpage/2025-04-18/1223125812.PDF",
+          "pages": [
+            97,
+            140
+          ],
+          "affected_year": 2023,
+          "metric": "cost_of_sales",
+          "original_base": "40473296810.60",
+          "later_comparative_base": "40664273886.86",
+          "note": "2024年报告披露保证类质保费用重分类，将2023年比较营业成本增加190,977,076.26元。保留2023年报告本年列，不回填重分类后的比较数。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "48614556525.09",
+          "scale": "1",
+          "unit": "元",
+          "base": "48614556525.09",
+          "page": 97,
+          "printed_page": 96,
+          "label": "其中：营业收入",
+          "column": "2024年度"
+        },
+        "cost_of_sales": {
+          "raw": "40149208233.59",
+          "scale": "1",
+          "unit": "元",
+          "base": "40149208233.59",
+          "page": 97,
+          "printed_page": 96,
+          "label": "其中：营业成本",
+          "column": "2024年度"
+        },
+        "total_assets": {
+          "raw": "100890624125.27",
+          "scale": "1",
+          "unit": "元",
+          "base": "100890624125.27",
+          "page": 93,
+          "printed_page": 92,
+          "label": "资产总计",
+          "column": "期末余额"
+        }
+      }
+    },
+    {
+      "id": "300014_2025",
+      "entity": "惠州亿纬锂能股份有限公司",
+      "ticker": "300014.SZ",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2026-03-28",
+      "available_at": "2026-03-29T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225045391.PDF",
+        "sha256": "3bee0ca9a6232c60c53f195d078446a45fd4941bd997258b474cebe835eea3b8",
+        "page_count": 222,
+        "metadata": {
+          "CreationDate": "D:20260327195709+08'00'",
+          "ModDate": "D:20260327195709+08'00'",
+          "Creator": "Microsoft® Word 2019",
+          "Producer": "Microsoft® Word 2019"
+        },
+        "balance_header_page": 85,
+        "income_header_page": 90,
+        "policy_pages": [
+          101,
+          102
+        ],
+        "visual_review_pages": [
+          85,
+          86,
+          90
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "official_page": "https://www.cninfo.com.cn/new/disclosure/detail?plate=szse&orgId=9900008311&stockCode=300014&announcementId=1225045391&announcementTime=2026-03-28",
+        "selected_record": {
+          "secCode": "300014",
+          "orgId": "9900008311",
+          "announcementId": "1225045391",
+          "announcementTitle": "2025年年度报告",
+          "announcementTime": 1774627200000,
+          "adjunctUrl": "finalpage/2026-03-28/1225045391.PDF"
+        },
+        "query_snapshot_sha256": "4a06e613705c62b5f18df85724af704ef9be532848b8523cd45ec07346948047",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:31:08Z",
+        "notes": [
+          "现时官方公告列表与已获取全文进行关联；未声称查尽所有历史修订或已证明初始披露字节未被替换。PDF元数据只用于发现矛盾，不能证明历史公开可得时间。"
+        ]
+      },
+      "comparability_notes": [],
+      "facts": {
+        "revenue": {
+          "raw": "61469630776.09",
+          "scale": "1",
+          "unit": "元",
+          "base": "61469630776.09",
+          "page": 90,
+          "printed_page": 90,
+          "label": "其中：营业收入",
+          "column": "2025年度"
+        },
+        "cost_of_sales": {
+          "raw": "51528491525.28",
+          "scale": "1",
+          "unit": "元",
+          "base": "51528491525.28",
+          "page": 90,
+          "printed_page": 90,
+          "label": "其中：营业成本",
+          "column": "2025年度"
+        },
+        "total_assets": {
+          "raw": "125542296569.58",
+          "scale": "1",
+          "unit": "元",
+          "base": "125542296569.58",
+          "page": 86,
+          "printed_page": 86,
+          "label": "资产总计",
+          "column": "期末余额"
+        }
+      }
+    },
+    {
+      "id": "300207_2022",
+      "entity": "欣旺达电子股份有限公司",
+      "ticker": "300207.SZ",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2023-04-27",
+      "available_at": "2023-04-28T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2023-04-27/1216623719.PDF",
+        "sha256": "7533c4ae926b324b7059aa590c89b6e6775c296f9122ada0f4f388c91c30ac57",
+        "page_count": 288,
+        "metadata": {
+          "CreationDate": "D:20230426201205+08'00'",
+          "ModDate": "D:20230426201219+08'00'"
+        },
+        "balance_header_page": 134,
+        "income_header_page": 138,
+        "policy_pages": [
+          160
+        ],
+        "visual_review_pages": [
+          134,
+          135,
+          138,
+          160
+        ]
+      },
+      "availability_evidence": {
+        "kind": "issuer_disclosure_notice_on_cninfo",
+        "url": "https://static.cninfo.com.cn/finalpage/2023-04-27/1216623641.PDF",
+        "title": "2022年年度报告披露提示性公告",
+        "page": 1,
+        "sha256": "f964ed591785f5f0c59cf0d3e29c45be73f83fa3841cf479460ca5a8e361aa5d",
+        "note": "公司公告正文明确表示2022年年度报告全文及摘要已于2023-04-27在指定信息披露网站巨潮资讯网上披露。日期不是仅从URL路径推断。",
+        "official_list_endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "official_announcement_id": "1216623719",
+        "query_snapshot_sha256": "34230c9f3e1861d92a848c443a1ab0903e5639f138a1b22d66a786c444eb11c5",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_publication_date_verified"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:27:26.046943+00:00",
+        "metadata_conflict_status": "no_later_metadata_signal_detected",
+        "has_later_metadata_signal": false,
+        "notes": [
+          "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+          "未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2023,
+          "pages": [
+            11,
+            12,
+            129
+          ],
+          "note": "保留2022原年报当期资产74,494,462,459.10元。2023年报p11、p129比较数将其调整为74,499,179,802.85元，增加4,717,343.75元；p12说明原因为解释第16号递延所得税初始确认豁免规定。后年比较值仅记录差异，未回填。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "52162269313.89",
+          "scale": "1",
+          "unit": "元",
+          "base": "52162269313.89",
+          "page": 138,
+          "printed_page": 138,
+          "label": "其中：营业收入",
+          "column": "2022年度"
+        },
+        "cost_of_sales": {
+          "raw": "44942949296.33",
+          "scale": "1",
+          "unit": "元",
+          "base": "44942949296.33",
+          "page": 138,
+          "printed_page": 138,
+          "label": "其中：营业成本",
+          "column": "2022年度"
+        },
+        "total_assets": {
+          "raw": "74494462459.10",
+          "scale": "1",
+          "unit": "元",
+          "base": "74494462459.10",
+          "page": 135,
+          "printed_page": 135,
+          "label": "资产总计",
+          "column": "2022-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300207_2023",
+      "entity": "欣旺达电子股份有限公司",
+      "ticker": "300207.SZ",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2024-04-11",
+      "available_at": "2024-04-12T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2024-04-11/1219567241.PDF",
+        "sha256": "2b607a8320966d5648b7d819dbe53cd0b9a0e9fabf0e873f07ebfe0f83a6d821",
+        "page_count": 298,
+        "metadata": {
+          "CreationDate": "D:20240410182117+08'00'",
+          "ModDate": "D:20240410182117+08'00'"
+        },
+        "balance_header_page": 128,
+        "income_header_page": 132,
+        "policy_pages": [
+          151
+        ],
+        "visual_review_pages": [
+          128,
+          129,
+          132,
+          133,
+          151
+        ]
+      },
+      "availability_evidence": {
+        "kind": "issuer_disclosure_notice_on_cninfo",
+        "url": "https://static.cninfo.com.cn/finalpage/2024-04-11/1219567210.PDF",
+        "title": "2023年年度报告披露提示性公告",
+        "page": 1,
+        "sha256": "925862d2a5062b03561567c510e9de03ce7af582f27bc2dbd44536433772ac2c",
+        "note": "公司公告正文明确表示2023年年度报告全文及摘要已于2024-04-11在指定信息披露网站巨潮资讯网上披露。日期不是仅从URL路径推断。",
+        "official_list_endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "official_announcement_id": "1219567241",
+        "query_snapshot_sha256": "34230c9f3e1861d92a848c443a1ab0903e5639f138a1b22d66a786c444eb11c5",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_publication_date_verified"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:27:26.046943+00:00",
+        "metadata_conflict_status": "no_later_metadata_signal_detected",
+        "has_later_metadata_signal": false,
+        "notes": [
+          "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+          "未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "pages": [
+            172
+          ],
+          "note": "本报告采用解释第16号并调整期初资产。2023当期营业成本原值40,876,301,967.08元予以保留；2024年报p172依解释第18号质量保证会计处理，把2023营业成本比较数调整为41,115,257,464.91元（+238,955,497.83元），对应销售费用减少相同金额。后年比较值未回填，训练与留出成本口径存在已知差异。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "47862226994.24",
+          "scale": "1",
+          "unit": "元",
+          "base": "47862226994.24",
+          "page": 133,
+          "printed_page": 133,
+          "label": "其中：营业收入",
+          "column": "2023年度"
+        },
+        "cost_of_sales": {
+          "raw": "40876301967.08",
+          "scale": "1",
+          "unit": "元",
+          "base": "40876301967.08",
+          "page": 133,
+          "printed_page": 133,
+          "label": "其中：营业成本",
+          "column": "2023年度"
+        },
+        "total_assets": {
+          "raw": "79261259472.63",
+          "scale": "1",
+          "unit": "元",
+          "base": "79261259472.63",
+          "page": 129,
+          "printed_page": 129,
+          "label": "资产总计",
+          "column": "2023-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300207_2024",
+      "entity": "欣旺达电子股份有限公司",
+      "ticker": "300207.SZ",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2025-04-22",
+      "available_at": "2025-04-23T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2025-04-22/1223194845.PDF",
+        "sha256": "c12b433318341147f879c878899bdb03ffd875505b04ba6a51bb649d6d574c92",
+        "page_count": 293,
+        "metadata": {
+          "CreationDate": "D:20250421193613+08'00'",
+          "ModDate": "D:20250421193613+08'00'"
+        },
+        "balance_header_page": 124,
+        "income_header_page": 129,
+        "policy_pages": [
+          147,
+          148
+        ],
+        "visual_review_pages": [
+          124,
+          125,
+          126,
+          129,
+          147,
+          148
+        ]
+      },
+      "availability_evidence": {
+        "kind": "issuer_disclosure_notice_on_cninfo",
+        "url": "https://static.cninfo.com.cn/finalpage/2025-04-22/1223194899.PDF",
+        "title": "2024年年度报告披露提示性公告",
+        "page": 1,
+        "sha256": "ce1110ffd85d5b2e12c6ba7493f30deb66420aa4f23e7dbaf017b0c30517a2f9",
+        "note": "公司公告正文明确表示2024年年度报告全文及摘要已于2025-04-22在指定信息披露网站巨潮资讯网上披露。日期不是仅从URL路径推断。",
+        "official_list_endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "official_announcement_id": "1223194845",
+        "query_snapshot_sha256": "34230c9f3e1861d92a848c443a1ab0903e5639f138a1b22d66a786c444eb11c5",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_publication_date_verified"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:27:26.046943+00:00",
+        "metadata_conflict_status": "no_later_metadata_signal_detected",
+        "has_later_metadata_signal": false,
+        "notes": [
+          "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+          "未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "pages": [
+            172
+          ],
+          "note": "本报告p172自2024-01-01执行解释第18号保证类质量保证规定，并追溯调整2023营业成本和销售费用；当期营业成本已采用新分类。原始2023当期值与2024所列比较值不相同。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "56020634117.81",
+          "scale": "1",
+          "unit": "元",
+          "base": "56020634117.81",
+          "page": 129,
+          "printed_page": 129,
+          "label": "其中：营业收入",
+          "column": "2024年度"
+        },
+        "cost_of_sales": {
+          "raw": "47518996934.90",
+          "scale": "1",
+          "unit": "元",
+          "base": "47518996934.90",
+          "page": 129,
+          "printed_page": 129,
+          "label": "其中：营业成本",
+          "column": "2024年度"
+        },
+        "total_assets": {
+          "raw": "87322726522.33",
+          "scale": "1",
+          "unit": "元",
+          "base": "87322726522.33",
+          "page": 126,
+          "printed_page": 126,
+          "label": "资产总计",
+          "column": "2024-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300207_2025",
+      "entity": "欣旺达电子股份有限公司",
+      "ticker": "300207.SZ",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2026-04-24",
+      "available_at": "2026-04-25T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160491.PDF",
+        "sha256": "1bf90eb16fc3b0ba81928df909c06ae13d97d27da23216f37f4a7fc1198bec04",
+        "page_count": 278,
+        "metadata": {
+          "CreationDate": "D:20260423151156+08'00'",
+          "ModDate": "D:20260423151156+08'00'"
+        },
+        "balance_header_page": 108,
+        "income_header_page": 112,
+        "policy_pages": [
+          131
+        ],
+        "visual_review_pages": [
+          108,
+          109,
+          112,
+          131
+        ]
+      },
+      "availability_evidence": {
+        "kind": "issuer_disclosure_notice_on_cninfo",
+        "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160523.PDF",
+        "title": "2025年年度报告披露提示性公告",
+        "page": 1,
+        "sha256": "34edbe82501db3d625f1d81f2e0a7506e65ff26d6dfc22ee66359ac280d0c9c4",
+        "note": "公司公告正文明确表示2025年年度报告全文及摘要已于2026-04-24在指定信息披露网站巨潮资讯网上披露。日期不是仅从URL路径推断。",
+        "official_list_endpoint": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "official_announcement_id": "1225160491",
+        "query_snapshot_sha256": "34230c9f3e1861d92a848c443a1ab0903e5639f138a1b22d66a786c444eb11c5",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_publication_date_verified"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:27:26.046943+00:00",
+        "metadata_conflict_status": "no_later_metadata_signal_detected",
+        "has_later_metadata_signal": false,
+        "notes": [
+          "本次巨潮年度报告分类公开查询仅观察到这四份全文及对应摘要；未检出另外的修订全文，但未声称穷尽所有历史版本。SHA-256固定本次下载字节，不证明历史时点的文件内容从未被替换。",
+          "未取得公告当日的独立历史快照或字节校验值；当前PDF自述时间早于公告日，只能作为一致性信号，不能证明当前字节在公告日已经存在，也不能证明链接从未替换。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2025,
+          "pages": [
+            154
+          ],
+          "note": "p154重要会计政策变更、重要会计估计变更及首次执行新准则调整均标为不适用。本次所见2024比较营业收入、营业成本和期初总资产与2024原年报当期数一致。集团合并范围未重构成固定企业集合。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "63246252072.73",
+          "scale": "1",
+          "unit": "元",
+          "base": "63246252072.73",
+          "page": 112,
+          "printed_page": 112,
+          "label": "其中：营业收入",
+          "column": "2025年度"
+        },
+        "cost_of_sales": {
+          "raw": "54429259848.68",
+          "scale": "1",
+          "unit": "元",
+          "base": "54429259848.68",
+          "page": 112,
+          "printed_page": 112,
+          "label": "其中：营业成本",
+          "column": "2025年度"
+        },
+        "total_assets": {
+          "raw": "108072225016.49",
+          "scale": "1",
+          "unit": "元",
+          "base": "108072225016.49",
+          "page": 109,
+          "printed_page": 109,
+          "label": "资产总计",
+          "column": "2025-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300750_2022",
+      "entity": "宁德时代新能源科技股份有限公司",
+      "ticker": "300750.SZ",
+      "year": 2022,
+      "period_start": "2022-01-01",
+      "period_end": "2022-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2023-03-10",
+      "available_at": "2023-03-11T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2023-03-10/1216084559.PDF",
+        "sha256": "ac4fa5c3b96956462054986773b0c6129189ba6dcdc257c737f1b398ca7e2a10",
+        "page_count": 209,
+        "metadata": {
+          "CreationDate": "D:20230309195034+08'00'",
+          "ModDate": "D:20230309195034+08'00'",
+          "Producer": "Microsoft® Word 2016"
+        },
+        "balance_header_page": 100,
+        "income_header_page": 105,
+        "policy_pages": [
+          122
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "selected_record": {
+          "secCode": "300750",
+          "orgId": "GD165627",
+          "announcementId": "1216084559",
+          "announcementTitle": "2022年年度报告",
+          "announcementTime": 1678377600000,
+          "adjunctUrl": "finalpage/2023-03-10/1216084559.PDF"
+        },
+        "query_snapshot_sha256": "9a83b06e20682b07a1d1874544a82c4a127e302f3e9c14464926b050ce781ee5",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:38:33.861740+00:00",
+        "notes": [
+          "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。"
+        ]
+      },
+      "comparability_notes": [],
+      "facts": {
+        "revenue": {
+          "raw": "32859398.75",
+          "scale": "10000",
+          "unit": "万元",
+          "base": "328593987500.00",
+          "page": 105,
+          "printed_page": 105,
+          "label": "其中：营业收入",
+          "column": "2022年度"
+        },
+        "cost_of_sales": {
+          "raw": "26204960.92",
+          "scale": "10000",
+          "unit": "万元",
+          "base": "262049609200.00",
+          "page": 105,
+          "printed_page": 105,
+          "label": "其中：营业成本",
+          "column": "2022年度"
+        },
+        "total_assets": {
+          "raw": "60095235.19",
+          "scale": "10000",
+          "unit": "万元",
+          "base": "600952351900.00",
+          "page": 101,
+          "printed_page": 101,
+          "label": "资产总计",
+          "column": "2022-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300750_2023",
+      "entity": "宁德时代新能源科技股份有限公司",
+      "ticker": "300750.SZ",
+      "year": 2023,
+      "period_start": "2023-01-01",
+      "period_end": "2023-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2024-03-16",
+      "available_at": "2024-03-17T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2024-03-16/1219313047.PDF",
+        "sha256": "6081f0377617dddb82f900569d6458c278a7ab26697b34c87684188eac083471",
+        "page_count": 231,
+        "metadata": {
+          "CreationDate": "D:20240315195247+08'00'",
+          "ModDate": "D:20240315195247+08'00'",
+          "Producer": "Microsoft® Word 2016"
+        },
+        "balance_header_page": 115,
+        "income_header_page": 119,
+        "policy_pages": [
+          138
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "selected_record": {
+          "secCode": "300750",
+          "orgId": "GD165627",
+          "announcementId": "1219313047",
+          "announcementTitle": "2023年年度报告",
+          "announcementTime": 1710518400000,
+          "adjunctUrl": "finalpage/2024-03-16/1219313047.PDF"
+        },
+        "query_snapshot_sha256": "57254aea80705e0770429203fd48646ea9f572d77387f42ad0b16003de9552d1",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:38:33.861740+00:00",
+        "notes": [
+          "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "pages": [
+            162,
+            163
+          ],
+          "note": "保证类质量保证列报政策：2023营业成本由309070434千元增加14911696千元至323982130千元；销售费用反向重分类。保留2023原报告成本，不以后年比较数回填历史预测。2024政策使当年营业成本增加11842606千元。毛利变化受列报影响，不等于经济利润同比变化。"
+        },
+        {
+          "source_report_year": 2024,
+          "pages": [
+            114,
+            119
+          ],
+          "note": "单位由万元改为千元，2023比较值有显示舍入。2023原始精度保留。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "40091704.49",
+          "scale": "10000",
+          "unit": "万元",
+          "base": "400917044900.00",
+          "page": 120,
+          "printed_page": 119,
+          "label": "其中：营业收入",
+          "column": "2023年度"
+        },
+        "cost_of_sales": {
+          "raw": "30907043.40",
+          "scale": "10000",
+          "unit": "万元",
+          "base": "309070434000.00",
+          "page": 120,
+          "printed_page": 119,
+          "label": "其中：营业成本",
+          "column": "2023年度"
+        },
+        "total_assets": {
+          "raw": "71716804.11",
+          "scale": "10000",
+          "unit": "万元",
+          "base": "717168041100.00",
+          "page": 116,
+          "printed_page": 115,
+          "label": "资产总计",
+          "column": "2023-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300750_2024",
+      "entity": "宁德时代新能源科技股份有限公司",
+      "ticker": "300750.SZ",
+      "year": 2024,
+      "period_start": "2024-01-01",
+      "period_end": "2024-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2025-03-15",
+      "available_at": "2025-03-16T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2025-03-15/1222806982.PDF",
+        "sha256": "b4f1713d7b821eb076c102711d177fe942ccc2bc8dd171ae5d7a95799a65b0ad",
+        "page_count": 229,
+        "metadata": {
+          "CreationDate": "D:20250314182857+08'00'",
+          "ModDate": "D:20250314182857+08'00'",
+          "Producer": "Microsoft® Word LTSC"
+        },
+        "balance_header_page": 114,
+        "income_header_page": 119,
+        "policy_pages": [
+          137
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "selected_record": {
+          "secCode": "300750",
+          "orgId": "GD165627",
+          "announcementId": "1222806982",
+          "announcementTitle": "2024年年度报告",
+          "announcementTime": 1741968000000,
+          "adjunctUrl": "finalpage/2025-03-15/1222806982.PDF"
+        },
+        "query_snapshot_sha256": "feec90d45dd2b7a96eced582e9b4adde52c566242c54137e14428a5d986175fe",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:38:33.861740+00:00",
+        "notes": [
+          "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。"
+        ]
+      },
+      "comparability_notes": [
+        {
+          "source_report_year": 2024,
+          "pages": [
+            162,
+            163
+          ],
+          "note": "保证类质量保证列报政策：2023营业成本由309070434千元增加14911696千元至323982130千元；销售费用反向重分类。保留2023原报告成本，不以后年比较数回填历史预测。2024政策使当年营业成本增加11842606千元。毛利变化受列报影响，不等于经济利润同比变化。"
+        },
+        {
+          "source_report_year": 2024,
+          "pages": [
+            114,
+            119
+          ],
+          "note": "单位由万元改为千元，2023比较值有显示舍入。2023原始精度保留。"
+        }
+      ],
+      "facts": {
+        "revenue": {
+          "raw": "362012554",
+          "scale": "1000",
+          "unit": "千元",
+          "base": "362012554000",
+          "page": 119,
+          "printed_page": 119,
+          "label": "其中：营业收入",
+          "column": "2024年度"
+        },
+        "cost_of_sales": {
+          "raw": "273518959",
+          "scale": "1000",
+          "unit": "千元",
+          "base": "273518959000",
+          "page": 119,
+          "printed_page": 119,
+          "label": "其中：营业成本",
+          "column": "2024年度"
+        },
+        "total_assets": {
+          "raw": "786658123",
+          "scale": "1000",
+          "unit": "千元",
+          "base": "786658123000",
+          "page": 115,
+          "printed_page": 115,
+          "label": "资产总计",
+          "column": "2024-12-31期末余额"
+        }
+      }
+    },
+    {
+      "id": "300750_2025",
+      "entity": "宁德时代新能源科技股份有限公司",
+      "ticker": "300750.SZ",
+      "year": 2025,
+      "period_start": "2025-01-01",
+      "period_end": "2025-12-31",
+      "basis": "CAS",
+      "scope": "consolidated",
+      "currency": "CNY",
+      "published": "2026-03-10",
+      "available_at": "2026-03-11T00:00:00+08:00",
+      "pdf": {
+        "url": "https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF",
+        "sha256": "c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9",
+        "page_count": 232,
+        "metadata": {
+          "CreationDate": "D:20260309191613+08'00'",
+          "ModDate": "D:20260309191613+08'00'",
+          "Producer": "Microsoft® Word LTSC"
+        },
+        "balance_header_page": 111,
+        "income_header_page": 116,
+        "policy_pages": [
+          134
+        ]
+      },
+      "availability_evidence": {
+        "url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+        "method": "POST",
+        "selected_record": {
+          "secCode": "300750",
+          "orgId": "GD165627",
+          "announcementId": "1225002214",
+          "announcementTitle": "2025年年度报告",
+          "announcementTime": 1773072000000,
+          "adjunctUrl": "finalpage/2026-03-10/1225002214.PDF"
+        },
+        "query_snapshot_sha256": "3f4b91e0d2338b3dc687fcdde75ccf86d4b4b32b4d0e711ff01bf9a995fe5f06",
+        "precision": "day",
+        "timezone": "Asia/Shanghai",
+        "status": "official_list_date_verified_no_observed_cross_day_version_conflict"
+      },
+      "version_limit": {
+        "historical_exact_byte_availability_proven": false,
+        "observed_at": "2026-10-02T22:38:33.861740+00:00",
+        "notes": [
+          "当前官方文件与官方公告记录对应；无观察到晚生成信号，但未取得当日独立字节快照，不能证明从未替换或穷尽修订。"
+        ]
+      },
+      "comparability_notes": [],
+      "facts": {
+        "revenue": {
+          "raw": "423701834",
+          "scale": "1000",
+          "unit": "千元",
+          "base": "423701834000",
+          "page": 116,
+          "printed_page": 116,
+          "label": "其中：营业收入",
+          "column": "2025年度"
+        },
+        "cost_of_sales": {
+          "raw": "312383297",
+          "scale": "1000",
+          "unit": "千元",
+          "base": "312383297000",
+          "page": 116,
+          "printed_page": 116,
+          "label": "其中：营业成本",
+          "column": "2025年度"
+        },
+        "total_assets": {
+          "raw": "974827544",
+          "scale": "1000",
+          "unit": "千元",
+          "base": "974827544000",
+          "page": 112,
+          "printed_page": 112,
+          "label": "资产总计",
+          "column": "2025-12-31期末余额"
+        }
+      }
+    }
+  ]
+}

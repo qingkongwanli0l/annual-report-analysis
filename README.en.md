@@ -14,6 +14,8 @@ The [CATL 2025 workpaper](examples/catl-2025/workpaper.json) has source referenc
 
 The [example guide](examples/catl-2025/README.md) provides the source checksum, page references, expected figures and retained reconciliation differences.
 
+The [four-company A-share battery example](examples/a-share-battery-panel/README.md) adds real 2022–2025 disclosures, version gaps, cost reclassification, a fixed historical split and an independent arithmetic check, with all three Office files. The last-value baseline beats the fixed OLS model on this small holdout; the result and limitations remain public.
+
 ```bash
 python -m pip install -r skills/annual-report-analysis/requirements.txt
 npm install --prefix skills/annual-report-analysis

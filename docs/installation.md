@@ -2,6 +2,13 @@
 
 同一份 `skills/annual-report-analysis` 目录包含入口、专业方法、脚本和依赖。无需金融数据订阅或本项目单独的模型 API Key；使用者仍需要对应宿主的正常模型访问权限。默认读取用户提供的年报，在线找报告需要宿主浏览能力。
 
+当前重建版尚未合并主分支。试用本版时明确取得开发分支，再按下述宿主方式安装：
+
+```bash
+git clone --branch rebuild/annual-report-expert https://github.com/qingkongwanli0l/annual-report-analysis.git
+cd annual-report-analysis
+```
+
 ## Claude Code
 
 复制整个技能目录到项目 `.claude/skills/annual-report-analysis/` 或个人 `~/.claude/skills/annual-report-analysis/`，不要只复制SKILL.md。用 `/annual-report-analysis` 调用。也可在本仓库运行 `claude --plugin-dir .` 测试插件；插件技能的命名空间为 `/annual-report-analysis:annual-report-analysis`。本项目不修改用户全局权限，不安装MCP。
