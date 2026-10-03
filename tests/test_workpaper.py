@@ -69,6 +69,33 @@ class WorkpaperTests(unittest.TestCase):
         self.assertIsNone(c['average_parent_equity']['value'])
         self.assertIsNone(c['roe_simple']['value'])
 
+    def test_average_accepts_disclosed_first_day_opening_balance(self):
+        opening = self.fact('parent_equity_prior')
+        opening.update(value='80', note='Constructed balance explicitly disclosed as opening on 1 January')
+        self.fact('parent_equity')['value'] = '120'
+        opening['context']['end'] = '2025-01-01'
+        c, _ = self.evaluate()
+        self.assertEqual(c['average_parent_equity']['value'], '100')
+        self.assertEqual(opening['context']['end'], '2025-01-01')
+        for date in ['2025-01-02', '2025-12-31']:
+            with self.subTest(date=date):
+                opening['context']['end'] = date
+                c, _ = self.evaluate()
+                self.assertIsNone(c['average_parent_equity']['value'])
+
+    def test_rollforward_accepts_first_day_opening_but_not_later_balance(self):
+        for key, value in [('cash_prior', '80'), ('cfo', '20'), ('cfi', '-10'), ('cff', '5'), ('fx', '-1')]:
+            self.fact(key)['value'] = value
+        opening = self.fact('cash_prior')
+        opening['note'] = 'Constructed balance explicitly disclosed as opening on 1 January'
+        opening['context']['end'] = '2025-01-01'
+        c, _ = self.evaluate()
+        self.assertEqual(c['cash_rollforward']['value'], '94')
+        self.assertEqual(opening['context']['end'], '2025-01-01')
+        opening['context']['end'] = '2025-01-02'
+        c, _ = self.evaluate()
+        self.assertIsNone(c['cash_rollforward']['value'])
+
     def test_average_can_trace_derived_opening_and_closing_balances(self):
         for suffix, date_suffix in [('open', '_prior'), ('close', '')]:
             self.data['calculations'].append(dict(id='capital_'+suffix, label='Illustrative financing capital',

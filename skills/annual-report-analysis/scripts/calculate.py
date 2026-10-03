@@ -91,7 +91,8 @@ def context_error(c, inputs):
     if c.op == "average_balance":
         if not out.start or any(x.aggregation != "instant" for x in ctx):
             return "average balance requires two actual instant balances and a defined period"
-        if sorted(x.end for x in ctx) != [out.start - timedelta(days=1), out.end]:
+        beginning, ending = sorted(x.end for x in ctx)
+        if beginning not in (out.start - timedelta(days=1), out.start) or ending != out.end or beginning >= ending:
             return "average balance requires beginning and ending balances; ending balance cannot substitute"
         if not getattr(inputs[0], "concept", None) or getattr(inputs[0], "concept", None) != getattr(inputs[1], "concept", None):
             return "average balance inputs must refer to the same balance concept"
@@ -113,7 +114,7 @@ def context_error(c, inputs):
             return "rollforward requires a start date"
         for x in ctx:
             if x.aggregation == "instant":
-                if x.end not in (out.start-timedelta(days=1), out.end):
+                if x.end not in (out.start-timedelta(days=1), out.start, out.end):
                     return "balance outside rollforward boundaries"
             elif (x.start, x.end) != (out.start, out.end):
                 return "movement outside rollforward period"
