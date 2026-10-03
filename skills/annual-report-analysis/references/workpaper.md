@@ -102,6 +102,23 @@ Excel 金额残差按两端 Decimal 基础单位结果保留的小数位计算 R
 
 `scenarios.py`、`panel.py`、`recovery.py` 各有具体 JSON 输入和 CLI，按对应方法参考执行，再用其 `to_workpaper_result` 适配函数记录实际产物。模型输入快照、计算版本和结果均保留。没有运行不得编写一个看似成功的 artifact；关键结果应独立复算或改变单一假设重新运行。
 
+专门脚本可在保留原始事实 context 的前提下承接已取证的跨范围桥。将实际执行的输入快照、结果行、算式、单位和执行说明保存为 `quantitative.artifact`，并填写输入引用、证据、假设与限制。其他 method 的 `artifact.rows` 按各行原始字段进入 Word、Excel、PPT；导出只展示已运行快照，不重新执行或验证外部算式。输入或方法改变后，须重跑专门脚本，再更新同一底稿并重新导出。不要改原始 scope/basis，也不要把派生结果记为 reported。
+
+需要在结论中引用专门结果时，为该 quantitative 记录增加 `figures`，只声明已有数值的位置和明确口径，不再填一份 value。例如已有 `artifact.rows[0].result` 是以人民币百万元计的范围差额：
+
+```json
+"figures": [{
+  "id": "capital_scope_difference", "label": "会计至监管权益范围差额",
+  "row": 0, "field": "result",
+  "context": {"entity":"示例银行", "scope":"accounting_to_regulatory_bridge",
+    "start":null, "end":"2025-12-31", "aggregation":"instant",
+    "basis":"documented CAS-to-regulatory bridge", "measure":"money",
+    "currency":"CNY", "scale":"1000000"}
+}]
+```
+
+`row` 是 `artifact.rows` 从0开始的行索引，`field` 是该行已有字段的准确名称；调整行顺序时同步更新索引。该字段必须是有限数字或十进制字符串，缺失结果用显式 `null`，引用显示“未计算 / unavailable”；不存在的行、字段或 ID 报错。context 由分析者说明结果口径和单位，导出器不从字段名或算式猜测。`{{capital_scope_difference}}`、findings 的证据与反证、procedures 的证据和 sections.figures 均可引用该 ID；证据追溯保留 quantitative 证据及输入事实/计算的原文证据。它不是基础 calculations、reconciliations 或其他 quantitative.input_refs 的输入，不绕过基础运算的口径检查。
+
 Excel 中 Facts 的原值和倍数分别保留，基础单位值和指标为公式并含计算缓存。修改数值可供研判；修改主体/币种/期间或方法要重跑脚本，Excel 本身不重新执行语义检查。缺失或被判定不适用的结果用 `#N/A`，不能给正常数值外观。
 
 情景表对数字输入执行与脚本一致的非负、税率区间及正数日数/单位检查（利率允许负数）；清空或填入无效驱动时显示 `invalid_numeric_inputs`，不把空白当零。缺失契约阈值不测试，缺失回收分项不计算合计，缺失或不适用的同业指标不参与自身排名。日期、来源、期间和样本选择仍须重跑相应脚本，不能仅靠Excel编辑重新证明其适用性。

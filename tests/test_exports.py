@@ -9,7 +9,7 @@ from zipfile import ZipFile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'skills/annual-report-analysis/scripts'))
 from calculate import evaluate
-from export import display, prepare, word, workbook
+from export import display, export, prepare, word, workbook
 from recovery import RecoveryInput, calculate_recovery
 import scenarios
 from test_quantitative import manufacturing_case
@@ -18,6 +18,57 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_custom_snapshot_and_numeric_reference_reach_all_deliverables(self):
+        context = dict(entity='Example issuer', scope='documented_bridge', end='2025-12-31',
+                       aggregation='instant', basis='Constructed', measure='money', currency='CNY')
+        raw = {
+            'mandate': dict(title='Snapshot export', entity='Example issuer', industry='example',
+                            purpose='Constructed snapshot display test', period_start='2025-01-01',
+                            period_end='2025-12-31', cutoff='2026-10-03', accounting_basis='Constructed',
+                            scope='single entity', version='1'),
+            'sources': [dict(id='source', title='Constructed inputs', url='example-source', published='2025-12-31')],
+            'evidence': [dict(id='bridge_evidence', source='source', locator='Example workpaper',
+                             observation='Inputs 12 and 8', reliability='Constructed test only')],
+            'facts': [],
+            'findings': [dict(id='finding', title='Bridge', question='What is the snapshot result?',
+                              conclusion='Bridge {{bridge_value}}', mechanism='Displayed source value.',
+                              status='conditional', evidence=['bridge_value'], alternatives=[], changes_if='Rerun inputs.')],
+            'sections': [dict(title='Bridge result', findings=['finding'], figures=['bridge_value'])],
+            'quantitative': [dict(id='bridge', label='Custom bridge', method='custom_bridge_v1', as_of='2025-12-31',
+                                  input_refs=[], evidence=['bridge_evidence'], assumptions=['Constructed inputs only'],
+                                  limitations=['Snapshot display is not recalculation'],
+                                  artifact={'input_snapshot': {'left': '12', 'right': '8'},
+                                            'rows': [{'metric': 'Computed bridge', 'formula': '12 - 8', 'result': '4', 'unit': 'CNY'}]},
+                                  figures=[dict(id='bridge_value', label='Computed bridge', row=0, field='result', context=context)])],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for value, expected in [('4', '4.00 元人民币'), ('5', '5.00 元人民币'), (None, '未计算 / unavailable')]:
+                with self.subTest(value=value):
+                    raw['quantitative'][0]['artifact']['rows'][0]['result'] = value
+                    input_path = root/'input.json'
+                    input_path.write_text(json.dumps(raw, ensure_ascii=False), encoding='utf-8')
+                    export(input_path, root/'output')
+                    for filename, prefix in [('report.docx', 'word/document'),
+                                             ('workbook.xlsx', 'xl/sharedStrings'),
+                                             ('presentation.pptx', 'ppt/slides/slide')]:
+                        with ZipFile(root/'output'/filename) as archive:
+                            text = ''.join(''.join(ET.fromstring(archive.read(name)).itertext())
+                                           for name in archive.namelist() if name.startswith(prefix) and name.endswith('.xml'))
+                        text = ''.join(text.split())
+                        for required in [expected, 'Computed bridge', '12 - 8', 'CNY', 'bridge_evidence',
+                                         'Constructed inputs only', 'Snapshot display is not recalculation']:
+                            self.assertIn(''.join(required.split()), text, filename)
+                        if value != '4':
+                            self.assertNotIn('4.00元人民币', text, filename)
+        raw['findings'][0]['conclusion'] = '{{unknown_result}}'
+        w = Workpaper.model_validate(raw)
+        with self.assertRaisesRegex(ValueError, 'unknown numeric token'):
+            prepare(w, evaluate(w))
+        raw['quantitative'][0]['figures'][0]['field'] = 'unknown_field'
+        with self.assertRaisesRegex(ValueError, 'unknown artifact row or field'):
+            Workpaper.model_validate(raw)
+
     def test_methods_and_evidence_status_remain_visible_in_all_deliverables(self):
         method = 'Example corporate methodology 2026-10-03'
         for status in ('conditional', 'unresolved'):

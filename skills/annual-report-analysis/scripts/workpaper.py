@@ -3,7 +3,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, TypeAdapter, model_validator
 
 
 class Record(BaseModel):
@@ -170,6 +170,14 @@ class Section(Record):
     figures: list[str] = Field(default_factory=list)
 
 
+class QuantitativeFigure(Record):
+    id: str
+    label: str
+    row: int = Field(ge=0)
+    field: str
+    context: Context
+
+
 class QuantitativeResult(Record):
     id: str
     label: str
@@ -180,6 +188,20 @@ class QuantitativeResult(Record):
     assumptions: list[str]
     limitations: list[str]
     artifact: dict
+    figures: list[QuantitativeFigure] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def figure_values(self):
+        if self.figures and not self.artifact.get("input_snapshot"):
+            raise ValueError("quantitative figures require an input_snapshot")
+        rows = self.artifact.get("rows", [])
+        for figure in self.figures:
+            if figure.row >= len(rows) or figure.field not in rows[figure.row]:
+                raise ValueError(f"{figure.id}: unknown artifact row or field")
+            value = rows[figure.row][figure.field]
+            if value is not None and not TypeAdapter(Decimal).validate_python(value).is_finite():
+                raise ValueError(f"{figure.id}: result must be finite or null")
+        return self
 
 
 class Workpaper(Record):
@@ -200,12 +222,14 @@ class Workpaper(Record):
         groups = [self.sources, self.evidence, self.facts, self.calculations,
                   self.reconciliations, self.findings, self.procedures, self.requests, self.quantitative]
         ids = [item.id for group in groups for item in group]
+        ids.extend(f.id for q in self.quantitative for f in q.figures)
         if len(ids) != len(set(ids)):
             raise ValueError("record identifiers must be globally unique")
         sources = {s.id: s for s in self.sources}
         evidence = {e.id: e for e in self.evidence}
         numbers = {f.id for f in self.facts} | {c.id for c in self.calculations}
-        support = set(evidence) | numbers
+        figures = {f.id for q in self.quantitative for f in q.figures}
+        support = set(evidence) | numbers | figures
         findings = {f.id for f in self.findings}
 
         def require(refs, allowed, label):
@@ -236,7 +260,7 @@ class Workpaper(Record):
             require([r.finding], findings, r.id)
         for s in self.sections:
             require(s.findings, findings, s.title)
-            require(s.figures, numbers, s.title)
+            require(s.figures, numbers | figures, s.title)
         for q in self.quantitative:
             require(q.input_refs, numbers, q.id)
             require(q.evidence, evidence, q.id)

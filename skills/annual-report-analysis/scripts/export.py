@@ -63,6 +63,13 @@ def prepare(w, result):
         figures[c.id] = {"id": c.id, "label": c.label, "value": r["value"],
                          "display": display(r["value"], c.context), "context": c.context.model_dump(mode="json"),
                          "evidence": evidence, "note": r["reason"] or c.interpretation}
+    for q in w.quantitative:
+        evidence = sorted(set(q.evidence) | {e for ref in q.input_refs for e in figures[ref]["evidence"]})
+        for f in q.figures:
+            value = q.artifact["rows"][f.row][f.field]
+            figures[f.id] = {"id": f.id, "label": f.label, "value": str(value) if value is not None else None,
+                             "display": display(value, f.context), "context": f.context.model_dump(mode="json"),
+                             "evidence": evidence, "note": f"{q.id} artifact.rows[{f.row}].{f.field}；已运行结果快照，导出未重新计算或校验"}
 
     def resolve(text):
         def replace(match):
@@ -234,9 +241,13 @@ def workbook(w, data, path):
                         ws.write_formula(i-1, 6, f"=IF(AND(COUNT(B{i},E{i})=2,B{i}>0),E{i}/B{i},NA())", percent,
                                          float(r["recovery_rate"]) if r["recovery_rate"] is not None else "#N/A")
                     ws.merge_range(len(totals)+3, 0, len(totals)+4, 6, "回收分配是已运行结果快照；这里只联动合计、未偿和比例。修改估值、债权或顺位后，重跑 recovery.py 与 export.py，不在本表重新分配。", wrap)
-            sheet(f"Quant{index}Notes", ["field", "value"], [["method", q.method], ["as_of", str(q.as_of)],
+            sheet(f"Quant{index}Notes", ["field", "value"], [["id", q.id], ["method", q.method], ["as_of", str(q.as_of)],
+                  ["evidence", ", ".join(q.evidence)],
                   ["input references", ", ".join(q.input_refs)], ["assumptions", "\n".join(data["quantitative"][index-1]["assumptions"])],
-                  ["limitations", "\n".join(data["quantitative"][index-1]["limitations"])], ["reproduction", f"See quantitative-{q.id}.json input_snapshot and method version"]], [28,110])
+                  ["limitations", "\n".join(data["quantitative"][index-1]["limitations"])], ["reproduction", f"See quantitative-{q.id}.json input_snapshot and method version"],
+                  *([["execution", "已运行专门结果快照；本次导出未重新计算或校验。输入或方法改变后须重跑专门脚本并重新导出。"]]
+                    if q.method not in ("operating_cash_scenario_v2", "pit_margin_persistence_v1", "single_entity_recovery_waterfall") else []),
+                  *[[f.id, f"{f.label}；artifact.rows[{f.row}].{f.field}；{f.context.model_dump_json()}"] for f in q.figures]], [28,110])
 
 
 def scenario_sheets(book, sheet, artifact, prefix, number):
@@ -541,6 +552,15 @@ def word(data, path):
                 if r["kind"] in ("cost", "estate_residual", "reconciliation"):
                     doc.add_paragraph(f"{r['kind']} / {r['pool']}：{r['result']}；{r['formula']}；输入 {r['raw_input']}。")
             doc.add_paragraph("分配顺位、估值、抵押池或债权改变必须重跑 recovery.py。工作簿只对已分配回收的合计、未偿与比例提供联动公式，不重新决定法律顺位。")
+        else:
+            doc.add_paragraph("已运行专门结果快照；本次导出未重新计算或校验。输入或方法改变后须重跑专门脚本并重新导出。")
+            for row_index, row in enumerate(rows):
+                doc.add_heading(f"结果行 {row_index}", 2)
+                table(["字段", "值"], [[key, "null" if value is None else
+                      json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list)) else str(value)]
+                      for key, value in row.items()])
+            if not rows:
+                doc.add_paragraph("未提供 artifact.rows 结果行。")
         doc.add_paragraph("证据记录："+", ".join(q["evidence"]))
         doc.add_heading("假设与适用限制", 2)
         for text in q["assumptions"]+q["limitations"]:

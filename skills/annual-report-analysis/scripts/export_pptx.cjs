@@ -197,6 +197,25 @@ async function main() {
       qtext(s, `未成熟结果 ${a.pending_outcomes.length} 条\n其他排除 ${a.excluded_pairs.length} 条\n状态 ${model.validation_status || model.status}`, 7.8, 5.1, 4.8, 1, 15);
       qtext(s, '误差仅描述此样本；不是训练准确率、PD、投资收益或因果证据。真实用途还需行业周期和样本外代表性。', 0.65, 6.45, 12, 0.38, 12, '56646C');
       s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.training_pairs), `Evidence: ${q.evidence.join(', ')}`].join('\n'));
+    } else {
+      const value = item => item === null ? 'null' : typeof item === 'object' ? JSON.stringify(item) : String(item);
+      const rows = a.rows || [];
+      for (let index = 0; index < rows.length; index++) {
+        const text = Object.entries(rows[index]).map(([key, item]) => `${key}：${value(item)}`).join('\n\n');
+        for (const body of paragraphs(text, 12, 4.5, 16)) {
+          s = page(`${q.label}：结果行 ${index}`);
+          qtext(s, body, 0.65, 1.6, 12, 4.5, 16);
+          qtext(s, `证据 ${q.evidence.join(', ')}；已运行结果快照，导出未重新计算或校验。`, 0.65, 6.35, 12, 0.55, 11, '56646C');
+          s.addNotes(`${q.id}\n${q.method}\n截至 ${q.as_of}\n输入 ${q.input_refs.join(', ')}`);
+        }
+      }
+      const details = [`方法 ${q.method}；截至 ${q.as_of}`, '已运行专门结果快照；本次导出未重新计算或校验。输入或方法改变后须重跑专门脚本并重新导出。',
+        ...(!rows.length ? ['未提供 artifact.rows 结果行。'] : []), `输入记录 ${q.input_refs.join(', ')}`, `证据记录 ${q.evidence.join(', ')}`,
+        ...q.assumptions.map(text => `假设：${text}`), ...q.limitations.map(text => `限制：${text}`)];
+      for (const body of paragraphs(details.join('\n\n'), 12, 4.9, 16)) {
+        s = page(q.label + '：方法、假设与限制');
+        qtext(s, body, 0.65, 1.6, 12, 4.9, 16);
+      }
     }
   }
   for (let i = 0; i < d.requests.length; i += 3) {
