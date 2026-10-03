@@ -14,6 +14,8 @@ The deliverables share one JSON workpaper. Every fact retains its original value
 
 **0.1.0 is a public preview.** The Claude Code local smoke test passed; native ChatGPT and DeepSeek Harness runtime tests remain pending. [Download plugin and skill ZIPs](https://github.com/qingkongwanli0l/annual-report-analysis/releases/tag/v0.1.0).
 
+See the [Moutai 2024 example](examples/moutai-2024/README.md) for its source workpaper and editable Office files. Calculation JSON is generated locally.
+
 ## Install dependencies
 
 Requires Python 3.10+ and Node.js 18+. From the repository root:
@@ -23,7 +25,7 @@ python -m pip install -r skills/annual-report-analysis/requirements.txt
 npm install --prefix skills/annual-report-analysis
 ```
 
-Install the same `skills/annual-report-analysis` directory in your host's skill location, or load the supplied plugin. ChatGPT, Claude Code and DeepSeek harness use different discovery and execution mechanisms. Format support alone does not establish end-to-end runtime compatibility; see the recorded tests.
+Install the same `skills/annual-report-analysis` directory in your host's skill location, or load the supplied plugin. ChatGPT, Claude Code and DeepSeek harness use different discovery and execution mechanisms. Format support alone does not establish end-to-end runtime compatibility; see the scope in the [installation guide](docs/installation.md).
 
 ## Reproduce the public example without an AI call
 

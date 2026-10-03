@@ -19,6 +19,8 @@
 - `presentation.pptx`：汇报摘要与关键图表，引用与前两份文件共用同一底稿。
 - `calculated.json`：可复算的事实、计算、分析及证据记录。
 
+[贵州茅台 2024 年公开案例](examples/moutai-2024/README.md)提供原始底稿及可编辑的 [Word](examples/moutai-2024/report.docx)、[Excel](examples/moutai-2024/financials.xlsx)、[PPT](examples/moutai-2024/presentation.pptx)。计算 JSON 在本地导出时生成。
+
 ## 为什么需要这个 skill
 
 年报分析经常出错的地方是期间、单位、合并范围和附注，而不只是除法。这个项目保留四表与附注的关系，区分披露事实、管理层表述和分析推断；缺失不填零，重述不静默覆盖，异常不直接判定为舞弊。
@@ -27,7 +29,7 @@
 
 ## 安装与平台支持
 
-一份 `skills/annual-report-analysis` 同时用于 ChatGPT 插件、Claude Code 和 DeepSeek harness。[完整安装步骤与实测状态](docs/installation.md)。支持标准格式不等于所有聊天模式都能执行 Python/Node 或导出文件；请以验证记录为准。
+一份 `skills/annual-report-analysis` 同时用于 ChatGPT 插件、Claude Code 和 DeepSeek harness。[完整安装步骤与实测状态](docs/installation.md)。支持标准格式不等于所有聊天模式都能执行 Python/Node 或导出文件；请以安装说明中的能力范围为准。
 
 首发为 **0.1.0 公开预览**：Claude Code 本地冒烟已通过；ChatGPT 原生插件与 DeepSeek Harness 的运行实测尚未完成。[下载插件或独立 skill 包](https://github.com/qingkongwanli0l/annual-report-analysis/releases/tag/v0.1.0)。
 
@@ -74,6 +76,8 @@ python skills/annual-report-analysis/scripts/extract.py filing.html --output out
 python -m unittest discover -s tests -v
 python scripts/package.py
 ```
+
+打包结果写入忽略的 `dist/`，仅包含技能、插件清单和许可，不包含本地研究、过程材料或用户输出。
 
 ## 反馈和贡献
 

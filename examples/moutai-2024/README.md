@@ -2,6 +2,8 @@
 
 本例采用贵州茅台（600519）2024 年年度报告的合并报表、中国企业会计准则、人民币元。它是固定的历史验证材料，不是截至目前的投资报告。结构化事实和有出处的分析在 [workpaper.json](workpaper.json)。
 
+实际成果：[Word](report.docx) · [Excel](financials.xlsx) · [PPT](presentation.pptx)。计算 JSON 在本地运行计算及导出命令时生成。
+
 ## 来源与阅读范围
 
 - [巨潮资讯披露原文，2025-04-03](https://static.cninfo.com.cn/finalpage/2025-04-03/1222993920.PDF)；另有[公司官网原文](https://www.moutai.com.cn/mtgf/articleFileDir/2025-04/08/8055b7bed7db41bdbc617f4c9b9ec591.pdf)。本次实际下载并核验的是巨潮版本。
