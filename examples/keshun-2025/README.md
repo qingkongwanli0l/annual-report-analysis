@@ -38,6 +38,8 @@ node examples/keshun-2025/create-brief.cjs output/keshun/presentation-data.json 
 
 第二条命令要求当前Node环境能解析PptxGenJS；若仅按仓库安装依赖，可将`NODE_PATH`指向`skills/annual-report-analysis/node_modules`。Node不在PATH时，第一条命令可用`--node`指定解释器。
 
-完整输入快照随结果JSON保存；Excel基础计算可重算，但修改Excel不会同步改写报告叙述或外部专门模型。改变研究数据或假设后，应更新底稿、重新执行相关模型并统一导出，不能直接修改简报数字。
+专门结果的完整artifact及输入快照已保存在主底稿的`quantitative`中；导出命令会在`output/keshun/`生成完整JSON。Excel基础计算可重算，但修改Excel不会同步改写报告叙述或外部专门模型。改变研究数据或假设后，应更新底稿、重新执行相关模型并统一导出，不能直接修改简报数字。
 
-## 验证范围
+## 使用范围
+
+本例是作者汇编的实际研究示范，仍有内部数据和合同资料缺口，不是完整审计、评级委员会签批或生产验收。

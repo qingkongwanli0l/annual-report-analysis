@@ -1,12 +1,16 @@
 # HKEX2025：增长、公司资金与清算资源的独立研究示例
 
+共同底稿含94项事实、28项计算、13项勾稽及9项实质判断；这是一项专业会计研究辅助案例，不是对完整交易所风险或财务报表的鉴证。
+
+实际成果：[Word](deliverables/report.docx)、[Excel](deliverables/workbook.xlsx)、[PPT](deliverables/presentation.pptx)。[输入](workpaper.json)保留事实、计算定义与证据，[独立预期](expected.json)供复算核对。运行下方导出命令后，完整JSON结果及版本和文件哈希生成在`output/hkex/`。
+
 ## 来源与复现
 
 - [HKEX2025年报](https://www.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031600319.pdf)，240页，SHA256 `01f90f3b213f368e1ed66887ec6ec862f5129c74d5c89d3c11cf5b0fda8887ee`。
 - [FCA最终通知](https://www.fca.org.uk/publication/final-notices/london-metal-exchange-2025.pdf)，41页，SHA256 `8fee698e2f844433e57039749c3765b404b1309edc9229d21ea8b599a491b915`。
 - [HKEX2025可持续报告](https://www.hkexgroup.com/-/media/HKEX-Group-Site/ssd/Investor-Relations/Regulatory-Reports/documents/2026/260316sr_e.pdf)，76页，SHA256 `ea0deef0b3f3a0d31c01d7936d60a652e4a3b9a6dd41b7d5351a80fba6b4af5f`。
 
-不转载完整原件。具体来源、覆盖证据和剩余请求见共同底稿。底稿按HKFRS、HKD及集团/母公司/会员资金的实际口径保留，不能把人民币案例的数据字典直接套入。
+不转载完整原件。具体来源页码、公开补证和剩余请求见底稿。底稿按HKFRS、HKD及集团/母公司/会员资金的实际口径保留，不能把人民币案例的数据字典直接套入。
 
 在仓库根安装README依赖后：
 
@@ -32,6 +36,6 @@ python skills/annual-report-analysis/scripts/export.py examples/hkex-2025/workpa
 | 商誉 / 软件净额滚动 | 13,274 / 4,341 | p185—187；软件成本与累计摊销两条线分开 |
 | 主要经营现金减两项资产付款及归母股息 | 1,252 | p146、189—190、206；是明确的局部资金观察，不冒称完整自由现金流 |
 
-全部28项计算与先封存预期一致，13项勾稽零残差。真实Office16打开Word12页、PPT13页；Excel重算通过，并实际验证改税前利润后现金桥与残差联动、清空输入后不计算、混合母公司/集团范围被拒绝。全部公式通过并不替代会计政策、经济机制和原文复核。
+全部28项计算与独立预期一致，13项勾稽零残差。公式结果并不替代会计政策、经济机制和原文复核。
 
 尚未完成：CCP完整日内流动性与压力情景、CGU估值全模型、总部合同和逐笔支付、控制运行样本及气候模型原始数据。报告已把取得的公开补充材料写回底稿，未继续索取已经公开取得的整份报告。

@@ -2,7 +2,7 @@
 
 输入为[巨潮完整年报](https://static.cninfo.com.cn/finalpage/2026-03-10/1225002214.PDF)，232页，SHA256为`c15272977147dee7e6935a38ea0e4fd6855370aabb106f54cfe20f7cf6048ec9`。仓库不转载原PDF。使用报告明示的CAS、合并范围及人民币千元；母公司数据另列，不能替代合并数据。
 
-现成成果：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[PowerPoint讨论稿](deliverables/presentation.pptx)。共同输入为[workpaper.json](workpaper.json)，精确结果与脚本/环境/文件哈希保存在`deliverables/results.json`和`manifest.json`。
+现成成果：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[PowerPoint讨论稿](deliverables/presentation.pptx)。共同输入为[workpaper.json](workpaper.json)，保留事实、计算定义与证据；运行下方导出命令后，完整JSON结果及脚本、环境和文件哈希生成在`output/catl/`。
 
 在仓库根按README安装依赖后运行：
 
@@ -14,7 +14,7 @@ python skills/annual-report-analysis/scripts/export.py examples/catl-2025/workpa
 
 ## 原文核对要点
 
-以下是原页取证及独立AI复核的答案要点，不是持证会计师签审。金额均为人民币千元，除非另行说明；页码为PDF页码。
+以下是原页取证的核对要点，不是持证会计师签审。金额均为人民币千元，除非另行说明；页码为PDF页码。
 
 | 核对内容 | 答案 | 定位与解释 |
 |---|---:|---|

@@ -144,7 +144,7 @@ Debt_end = Debt_begin + drawdown - principal
 
 ### 历史版本边界
 
-历史v1中的Cost+ΔInventory不能证明一般制造企业的供应商采购，数值复算一致也不能证明经济口径正确。当前脚本仅实现v2，拒绝旧unit_variable_cost及缺少三项分解输入的任务；当前导出器拒绝v1现金artifact。
+`operating_cash_scenario_v1`的`Cost+ΔInventory`采购桥不能证明一般制造企业的供应商采购，算术或Excel重算一致也不能消除这个错误。当前脚本只实现v2，不提供自动兼容计算：旧`unit_variable_cost`输入与缺少三项分解的输入会被拒绝，当前导出器也拒绝v1现金artifact。应根据原始资料补齐成本分解后重新计算，不能只改方法版本标签。
 
 迁移时另建v2输入及结果，先补齐有来源的完整单位销售成本、营业成本内折旧摊销、内部生产现金投入和存货内含折旧摊销净变化，再复算。不得仅改method标识或把缺失分解填零；旧版与新版的假设及结果分别保留。
 

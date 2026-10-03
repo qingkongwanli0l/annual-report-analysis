@@ -1,8 +1,8 @@
-# 三宿主安装与实际能力
+# 安装与宿主能力
 
 同一份 `skills/annual-report-analysis` 目录包含入口、专业方法、脚本和依赖。无需金融数据订阅或本项目单独的模型 API Key；使用者仍需要对应宿主的正常模型访问权限。默认读取用户提供的年报，在线找报告需要宿主浏览能力。
 
-当前重建版尚未合并主分支。试用本版时明确取得开发分支，再按下述宿主方式安装：
+当前为开发版，尚未合并主分支、正式发布重建版或上架宿主公共目录。试用时取得开发分支：
 
 ```bash
 git clone --branch rebuild/annual-report-expert https://github.com/qingkongwanli0l/annual-report-analysis.git
@@ -11,25 +11,23 @@ cd annual-report-analysis
 
 ## Claude Code
 
-复制整个技能目录到项目 `.claude/skills/annual-report-analysis/` 或个人 `~/.claude/skills/annual-report-analysis/`，不要只复制SKILL.md。用 `/annual-report-analysis` 调用。也可在本仓库运行 `claude --plugin-dir .` 测试插件；插件技能的命名空间为 `/annual-report-analysis:annual-report-analysis`。本项目不修改用户全局权限，不安装MCP。
+复制整个技能目录到项目 `.claude/skills/annual-report-analysis/` 或个人 `~/.claude/skills/annual-report-analysis/`，不要只复制 `SKILL.md`。用 `/annual-report-analysis` 调用。也可在本仓库运行 `claude --plugin-dir .` 加载插件；插件技能的命名空间为 `/annual-report-analysis:annual-report-analysis`。本项目不修改用户全局权限，不安装 MCP。
 
-官方依据：[Skills](https://code.claude.com/docs/en/skills)、[插件清单](https://code.claude.com/docs/en/plugins-reference)。
+官方说明：[Skills](https://code.claude.com/docs/en/skills)、[插件清单](https://code.claude.com/docs/en/plugins-reference)。
 
 ## DeepSeek harness
 
-将技能目录复制到项目 `.agents/skills/annual-report-analysis/` 或 `.dsh/skills/annual-report-analysis/`。其本地发现器按项目 `.dsh`、项目 `.agents` 等优先级寻找直接子目录中的 SKILL.md；最近 `.git` 祖先决定项目根。不要把另一项目同名技能误当本包。
-
-这里指官方 [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) 及其[技能子系统](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.md)，不是任意接入DeepSeek模型的第三方聊天界面。模型提供者与工具执行配置由该宿主负责，本项目不读取其他应用OAuth凭据代替它的API凭据。
+将技能目录复制到项目 `.agents/skills/annual-report-analysis/` 或 `.dsh/skills/annual-report-analysis/`。这里指官方 [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)，不是任意接入 DeepSeek 模型的第三方聊天界面。技能发现方式见其[技能子系统说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.md)。模型访问与工具执行由宿主配置。
 
 ## ChatGPT 与 Codex
 
-仓库提供 `.codex-plugin/plugin.json` 的官方兼容布局，引用同一 `skills/`，不依赖MCP服务。通过支持本地插件源的ChatGPT桌面Work/Codex环境安装并验证；正式公共目录审核与GitHub发布分别记录。没有审核通过之前不宣称已上架。最新官方也支持根 `plugin.json` 的便携格式，兼容清单仍受支持。[打包说明](https://developers.openai.com/plugins/build/plugins)、[构建技能](https://learn.chatgpt.com/docs/build-skills)。
+仓库提供 `.codex-plugin/plugin.json`，引用同一 `skills/`，不依赖 MCP 服务。可在支持本地插件源的 ChatGPT 桌面 Work/Codex 环境中尝试安装；Codex 也可将整个技能目录放到支持的项目或个人技能位置。参考官方[打包说明](https://developers.openai.com/plugins/build/plugins)与[构建技能说明](https://learn.chatgpt.com/docs/build-skills)。
 
-能发现并读取技能，不等于当前模式能执行Python/Node或导出文件。完整三文件工作流需要文件读取、脚本执行和交付能力；在仅聊天模式准确标注不能执行的部分。Codex可将整个技能目录放到支持的项目或个人技能位置使用。
+完整三文件工作流需要宿主具备文件读取、Python/Node 脚本执行和文件交付能力。发现或读取技能本身不能证明这些能力可用；ChatGPT 原生完整工作流尚未完成实测。
 
 ## 依赖与运行
 
-Python 3.11+ 与 Node 18+。在任务环境安装技能目录的 `requirements.txt` 和 `package.json`；托管插件缓存不可写时，复制到用户工作目录或使用宿主现成依赖。三个宿主使用相同脚本及 JSON，没有独立维护三套提示词。
+需要 Python 3.11+ 与 Node 18+。在可写仓库副本中安装依赖；托管插件缓存不可写时，复制到用户工作目录或使用宿主现成依赖。
 
 ```bash
 python -m pip install -r skills/annual-report-analysis/requirements.txt
@@ -37,4 +35,17 @@ npm install --prefix skills/annual-report-analysis
 python skills/annual-report-analysis/scripts/export.py examples/catl-2025/workpaper.json --output output/catl
 ```
 
-以上命令应在仓库可写副本运行。`output` 可改成任务目录，脚本禁止输出到技能安装目录。具体底稿契约见技能的 `references/workpaper.md`。
+此命令导出已有的宁德时代示例底稿。分析另一家公司时，向宿主提供原始年报、企业及期间和分析目的，由其依照[全面分析程序](../skills/annual-report-analysis/references/analysis-program.md)取证、形成判断并建立共同底稿，再运行导出。分析范围依据完整披露及适用评级方法逐项确定。
+
+产物写入任务目录，不能写入技能安装目录。共同底稿格式及脚本用法见 [workpaper.md](../skills/annual-report-analysis/references/workpaper.md)。Excel 数值编辑可触发公式重算，但不会回写底稿或同步改写叙述、Word 和 PPT；正式更新应修订共同底稿并重新导出三份文件。
+
+## 已知能力与限制
+
+| 宿主 | 已有实测情况 |
+|---|---|
+| Claude Code | 已执行技能并生成三种文件；实测使用其已配置的 DeepSeek 模型，不代表 Anthropic 模型测试；全面分析初稿仍需专业核验 |
+| 官方 DeepSeek harness | 已执行技能并生成三种文件；全面分析初稿仍需专业核验 |
+| ChatGPT 原生入口 | 尚未完成安装、分析和导出的完整工作流实测 |
+| Codex CLI | 已执行并生成三种文件，但 PPT 存在数值裁切；不等同于 ChatGPT 原生入口验证 |
+
+已有执行结果中仍发现取数、财务口径和因果判断错误。文件可打开、公式可重算，不代表分析内容正确；实际使用应核对关键原文、计算和专业判断，并检查文件版式。本地依赖安装与导出已运行，但尚未证明所有操作系统或托管宿主的首次安装体验。
