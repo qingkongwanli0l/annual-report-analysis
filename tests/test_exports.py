@@ -8,7 +8,7 @@ from zipfile import ZipFile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'skills/annual-report-analysis/scripts'))
 from calculate import evaluate
-from export import prepare, word, workbook
+from export import display, prepare, word, workbook
 from recovery import RecoveryInput, calculate_recovery
 import scenarios
 from test_quantitative import manufacturing_case
@@ -17,6 +17,70 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_small_cny_and_direct_finding_numbers_keep_their_meaning(self):
+        raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
+        raw['findings'][0]['conclusion'] = 'Cash bridge {{cfo_bridge}}'
+        raw['findings'][0]['evidence'] = ['cfo_bridge']
+        w = Workpaper.model_validate(raw)
+        ctx = w.facts[0].context.model_copy(update={'currency':'CNY', 'measure':'money'})
+        for scale, expected in [(1000000, '2,500.00 万元人民币'), (1, '25.00 元人民币')]:
+            with self.subTest(scale=scale):
+                self.assertEqual(display(25, ctx.model_copy(update={'scale':scale})), expected)
+        self.assertEqual(prepare(w, evaluate(w))['findings'][0]['figure_refs'], ['cfo_bridge'])
+        self.assertEqual(w.findings[0].conclusion, 'Cash bridge {{cfo_bridge}}')
+
+    def test_cash_filter_and_print_view_include_both_periods(self):
+        source = manufacturing_case()
+        source['periods'].append({**source['periods'][0], 'start':'2026-01-01', 'end':'2026-12-31'})
+        artifact = scenarios.run(source)
+        w = Workpaper.model_validate({
+            'mandate': dict(title='Two periods', entity='Constructed', industry='manufacturing', purpose='Print cash path',
+                            period_start='2025-01-01', period_end='2026-12-31', cutoff='2024-12-31',
+                            accounting_basis='Constructed', scope='single entity', version='v2'),
+            'sources': [], 'evidence': [], 'facts': [], 'findings': [], 'sections': [],
+            'quantitative': [scenarios.to_workpaper_result(artifact, 'cash', 'Cash', [], [])],
+        })
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'workbook.xlsx'
+            workbook(w, prepare(w, evaluate(w)), path)
+            with ZipFile(path) as z:
+                ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                book = ET.fromstring(z.read('xl/workbook.xml'))
+                index = next(i for i, s in enumerate(book.find('x:sheets', ns), 1) if s.get('name') == 'Q1Cash')
+                xml = ET.fromstring(z.read(f'xl/worksheets/sheet{index}.xml'))
+                self.assertEqual(xml.find('x:autoFilter', ns).get('ref'), 'A1:AC3')
+                print_formula = [x.text for x in xml.findall('.//x:f', ns) if x.text in ('V2', 'V3')]
+                self.assertEqual(print_formula, ['V2', 'V3'])
+                for row, result in enumerate(artifact['rows'], 2):
+                    self.assertEqual(float(xml.find(f".//x:c[@r='V{row}']/x:v", ns).text), result['cash_end'])
+                area = next(x.text for x in book.findall('x:definedNames/x:definedName', ns)
+                            if x.get('name') == '_xlnm.Print_Area' and x.text.startswith('Q1Cash!'))
+                self.assertEqual(area, 'Q1Cash!$A$7:$C$35')
+
+    def test_explicit_times_and_default_percentage_are_distinct_formats(self):
+        raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
+        calc = next(c for c in raw['calculations'] if c['op'] == 'ratio')
+        calc['context']['physical_unit'] = 'times'
+        w = Workpaper.model_validate(raw)
+        c = next(c for c in w.calculations if c.id == calc['id'])
+        self.assertEqual(display('43.5978', c.context), '43.60 倍')
+        self.assertEqual(display('0.435978', c.context.model_copy(update={'physical_unit':None})), '43.60%')
+        result = evaluate(w)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'workbook.xlsx'
+            workbook(w, prepare(w, result), path)
+            with ZipFile(path) as z:
+                ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                xml = ET.fromstring(z.read('xl/worksheets/sheet3.xml'))
+                row = next(i for i, record in enumerate(w.calculations, 2) if record.id == c.id)
+                cell = xml.find(f".//x:c[@r='E{row}']", ns)
+                style = ET.fromstring(z.read('xl/styles.xml'))
+                numfmt = style.find('x:cellXfs', ns)[int(cell.get('s'))].get('numFmtId')
+                code = next(f.get('formatCode') for f in style.find('x:numFmts', ns) if f.get('numFmtId') == numfmt)
+                self.assertIn('" 倍"', code)
+                self.assertNotIn('%', code)
+                self.assertEqual(float(cell.find('x:v', ns).text), float(result['calculations'][row-2]['value']))
+
     def test_historical_cash_artifact_cannot_be_relabelled_as_v2(self):
         raw = json.loads((Path(__file__).resolve().parents[1]/'tests/fixtures/legacy-scenario-workpaper.json').read_text(encoding='utf-8'))
         raw['quantitative'] = raw['quantitative'][:1]

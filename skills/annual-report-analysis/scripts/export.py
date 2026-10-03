@@ -23,7 +23,10 @@ from workpaper import Workpaper
 
 
 def unit(ctx):
-    measure = ctx.currency if ctx.measure == "money" else ctx.physical_unit if ctx.measure == "count" else ctx.measure
+    if ctx.measure == "ratio":
+        measure = "倍" if ctx.physical_unit == "times" else "%"
+    else:
+        measure = ctx.currency if ctx.measure == "money" else ctx.physical_unit if ctx.measure == "count" else ctx.measure
     return f"{measure} × {ctx.scale}" if ctx.scale != 1 else measure
 
 
@@ -31,8 +34,12 @@ def display(value, ctx):
     if value is None:
         return "未计算 / unavailable"
     value = Decimal(str(value))
-    if ctx.measure == "money" and ctx.currency == "CNY" and abs(value * ctx.scale) >= Decimal("1e8"):
-        return f"{value * ctx.scale / Decimal('1e8'):,.2f} 亿元人民币"
+    if ctx.measure == "ratio" and ctx.physical_unit == "times":
+        return f"{value*ctx.scale:,.2f} 倍"
+    if ctx.measure == "money" and ctx.currency == "CNY":
+        amount = value * ctx.scale
+        divisor, label = (Decimal("1e8"), "亿元人民币") if abs(amount) >= Decimal("1e8") else (Decimal("1e4"), "万元人民币") if abs(amount) >= Decimal("1e4") else (Decimal(1), "元人民币")
+        return f"{amount / divisor:,.2f} {label}"
     return f"{value*ctx.scale:.2%}" if ctx.measure == "ratio" else f"{value:,.2f} {unit(ctx)}"
 
 
@@ -78,6 +85,9 @@ def prepare(w, result):
     }
     for group, keys in narrative_fields.items():
         for record in data[group]:
+            if group == "findings":
+                tokens = re.findall(r"\{\{([^{}]+)\}\}", "\n".join(x for key in keys for x in (record[key] if isinstance(record[key], list) else [record[key]])))
+                record["figure_refs"] = list(dict.fromkeys([*tokens, *(ref for ref in record["evidence"] if ref in figures)]))
             for key in keys:
                 value = record[key]
                 record[key] = [resolve(x) for x in value] if isinstance(value, list) else resolve(value)
@@ -96,6 +106,7 @@ def workbook(w, data, path):
         wrap = book.add_format({"text_wrap": True, "valign": "top"})
         number = book.add_format({"num_format": "#,##0.00;[Red](#,##0.00)"})
         percent = book.add_format({"num_format": "0.00%;[Red](0.00%)"})
+        times = book.add_format({"num_format": '#,##0.00" 倍";[Red](#,##0.00" 倍")'})
 
         def sheet(name, headers, rows, widths=None):
             ws = book.add_worksheet(name)
@@ -158,7 +169,7 @@ def workbook(w, data, path):
             ws.write_string(i-1, 2, expr, wrap)
             if not context_error(c, [records[t.ref] for t in c.terms]):
                 ws.write_formula(i-1, 3, expr, number, float(r["normalized"]) if r["normalized"] is not None else "#N/A")
-                ws.write_formula(i-1, 4, f"=D{i}/K{i}", percent if c.context.measure == "ratio" else number,
+                ws.write_formula(i-1, 4, f"=D{i}/K{i}", (times if c.context.physical_unit == "times" else percent) if c.context.measure == "ratio" else number,
                                  float(r["value"]) if r["value"] is not None else "#N/A")
                 ws.write_formula(i-1, 5, f'=IF(ISNUMBER(D{i}),"calculated","not_calculated")', wrap, r["status"])
                 ws.write_formula(i-1, 6, f'=IF(ISNUMBER(D{i}),"","检查缺失值、分母与输入；口径变更须重跑Python")', wrap,
@@ -249,11 +260,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             "capex", "drawdown", "principal", "dividends", "cash_begin", "cash_end", "debt_begin", "debt_end",
             "cash_headroom", "funding_needed_to_floor", "interest_coverage", "debt_to_ebitda", "status"]
     cash = sheet(prefix+"Cash", keys, [])
-    cash.set_landscape()
-    cash.set_paper(9)
-    cash.repeat_rows(0)
-    cash.repeat_columns(0)
-    cash.print_area(0, 0, len(snapshot["periods"]), len(keys)-1)
+    cash.autofilter(0, 0, len(snapshot["periods"]), len(keys)-1)
     cash.set_header(f"&L{prefix}Cash&R{snapshot['currency']} × {snapshot['amount_scale']:g}")
     output = {r["period_end"]: r for r in artifact["rows"]}
     for i, period in enumerate(snapshot["periods"], 2):
@@ -287,6 +294,30 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             cash.write_formula(i-1, col, "="+formula, number, value if value is not None else "#N/A")
         cash.write_formula(i-1, 28, f'=IF(NOT({valid}),"invalid_numeric_inputs",IFERROR(IF(V{i}<0,"unfunded_cash_shortfall",IF(V{i}<{inputs}B5,"below_cash_floor","conditional")),"not_projected"))',
                            None, row.get("status", "not_projected"))
+    print_start = len(snapshot["periods"])+4
+    print_row = print_start
+    label_format = book.add_format({"bold": True, "text_wrap": True, "valign": "top"})
+    print_number = book.add_format({"num_format": "#,##0.00;[Red](#,##0.00)", "valign": "top"})
+    for offset in range(0, len(snapshot["periods"]), 4):
+        periods = snapshot["periods"][offset:offset+4]
+        cash.write(print_row, 0, "现金路径打印视图 / Cash path", label_format)
+        cash.set_row(print_row, 30)
+        cash.write_row(print_row, 1, [p["end"] for p in periods], label_format)
+        for k, key in enumerate(keys[1:], print_row+1):
+            cash.write(k, 0, key, label_format)
+            cash.set_row(k, 20)
+            for column, period in enumerate(periods, 1):
+                value = output.get(period["end"], {}).get(key, "not_projected" if key == "status" else "#N/A")
+                cash.write_formula(k, column, f"={xl_col_to_name(keys.index(key))}{offset+column+1}",
+                                   label_format if key == "status" else print_number, value if value is not None else "#N/A")
+        print_row += len(keys)+2
+    cash.set_paper(9 if len(snapshot["periods"]) <= 2 else 8)
+    if len(snapshot["periods"]) > 2:
+        cash.set_landscape()
+    cash.set_margins(left=0.25, right=0.25, top=0.6, bottom=0.35)
+    cash.fit_to_pages(1, 0)
+    cash.print_area(print_start, 0, print_row-3, min(4, len(snapshot["periods"])))
+    cash.set_h_pagebreaks(list(range(print_start+len(keys)+2, print_row, len(keys)+2)))
     contracts = artifact.get("contracts", [])
     ws = sheet(prefix+"Contracts", ["条件", "日期", "指标", "关系", "阈值", "计算值", "结果", "定义", "依据"],
                [[c["label"], c["test_date"], c["metric"], c["relation"], c["threshold"], c["value"], c["status"], c["definition"], c["source"]] for c in contracts])

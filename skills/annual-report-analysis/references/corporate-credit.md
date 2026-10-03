@@ -260,10 +260,12 @@
 | Fitch | [Corporate Rating Criteria](https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=corporate-finance/corporate-rating-criteria-09-01-2026)，2026-01-09；2025-04-08混合资本及2026-02-20国家回收相关正文已读，定位见第3、8、10节；全部Sector Navigators、完整母子连接/回收参数仍未验证 | 2026 CRT/Navigator 不混旧版；SCP、连接与国别分层；FCF/现金定义单列；主方法仍引用旧国家回收文献，须用可核验后继版，不能以阅读相关段落宣称完整参数复现 |
 | Morningstar DBRS | [Global Corporate Criteria](https://dbrs.morningstar.com/methodologies/470156/morningstar-dbrs-global-corporate-criteria)，2025-12-19，目录及 2026 应用核验，全文未取得 | 已知涵盖控股/母子/担保/回收/财务调整；不能宣称参数级复现 |
 | KBRA | [General Corporate Global](https://www.kbra.com/publications/mKVDZjkt/corporates-general-corporate-global-rating-methodology?format=web)，2025-08-06，目录/范围已读，完整报告须登录未获取 | 成长、法域、财务政策、国别/兑换、支持、债项和跟踪均有任务；缺正文时只采用有依据的独立分析，不自造机构打分 |
+| Scope | [General Corporate Rating Methodology](https://scoperatings-web-backend.scoperatings.com/api/document/288180ad-b908-4f1b-872b-40617a2da901)，2026-04-24正式版，41页；已读目录及p4–11、22–23、29–34、38–39相关段落，未逐页通读 | 较弱因素和行业例外影响判断，无统一固定权重；流动性连接反向保理撤销及契约加速，FOCF另核租赁本金，不能把一般FCF换名为机构指标 |
+| Nordic Credit Rating | [Corporate Rating Methodology](https://nordiccreditrating.com/uploads/2023-05/Nordic%20Credit%20Rating%20-%20Corporate%20Rating%20Methodology.pdf)，现行目录及2026应用仍指2023-05-08；26页中已读目录及p3–6。2026-09-23[补充征求意见](https://nordiccreditrating.com/article/nordic-credit-rating-invites-comments-revised-corporate-rating-methodology-proposal?language_content_entity=en)截至2026-10-23，公告已读、提案全文未读 | 通用框架排除项目融资和企业证券化，投资控股另选法；2026提案的公用事业、混合工具和债项变更不能拼入2023正式方法。其余正文/参数未完成验证 |
 
 机构尺度、主体与债项方法、全球与国内序列、业务风险与财务口径不得按同名字母机械映射；未经实证校准不把内部百分制转成 AAA 或 PD。访问限制应落实为缺少哪项规则、能完成什么、暂不能支持什么，而不是停止已有证据足以完成的经营、现金、条款和条件性建议。
 
-新增特殊结构的来源状态见 `special-credit-structures.md`。S&P的2026-07-29非控股权益及2026-08-13部分信用支持列于官方[征求意见目录](https://www.spglobal.com/ratings/en/regulatory/ratings-criteria/-/articles/criteria/requests-for-comment/filter/all)，不当正式规则；KBRA同题同日债项文件有不同状态，也须核在用文件ID。所列机构不构成全球方法全集。操作参考和来源依据不代替真实发行人的取证与模型验证，脚本功能以各自文档为准。
+新增特殊结构的来源状态见 `special-credit-structures.md`。S&P的2026-07-29非控股权益及2026-08-13部分信用支持列于官方[征求意见目录](https://www.spglobal.com/ratings/en/regulatory/ratings-criteria/-/articles/criteria/requests-for-comment/filter/all)，不当正式规则；KBRA同题同日债项文件有不同状态，也须核在用文件ID。以上国际机构仍是已研究样本，不是全球全集。这些操作参考和来源依据尚未经真实发行人全流程验证，不扩大脚本支持范围。
 
 ## 13. 交付前做一次针对结论的复核
 

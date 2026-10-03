@@ -70,20 +70,24 @@ async function main() {
     const selected = section.findings.map(id => findings[id]);
     const allFigures = section.figures.map(id => d.figures[id]);
     if (!selected.length && !allFigures.length) continue;
-    const width = allFigures.length ? 7.65 : 12;
-    const chunks = selected.flatMap(f => {
+    const shown = new Set();
+    const pages = selected.flatMap(f => {
+      const figures = allFigures.filter(v => (f.figure_refs || []).includes(v.id));
+      figures.forEach(v => shown.add(v.id));
+      const width = figures.length ? 7.65 : 12;
       const text = `${f.conclusion}\n\n判断改变条件\n${f.changes_if}`;
       const body = fitted(text, width, 3.35, 18);
-      return body.size >= 16 ? [{f,body:body.text,size:body.size}]
-        : paragraphs(text, width, 3.35, 18).map(body => ({f,body,size:18}));
+      const chunks = body.size >= 16 ? [{body:body.text,size:body.size}]
+        : paragraphs(text, width, 3.35, 18).map(body => ({body,size:18}));
+      return Array.from({length: Math.max(chunks.length, Math.ceil(figures.length / 4))}, (_, index) =>
+        ({f, width, ...(chunks[index] || {body:'', size:18}), figures:figures.slice(index * 4, index * 4 + 4)}));
     });
-    const figurePages = [];
-    for (let i = 0; i < allFigures.length; i += 6) figurePages.push(allFigures.slice(i, i + 6));
-    const count = Math.max(chunks.length, figurePages.length);
-    for (let index = 0; index < count; index++) {
-      const chunk = chunks[index] || {};
-      const figures = figurePages[Math.min(index, figurePages.length - 1)] || [];
-      s = page(section.title + (count > 1 ? ` ${index + 1}` : ''));
+    const independent = allFigures.filter(v => !shown.has(v.id));
+    for (let i = 0; i < independent.length; i += 6) pages.push({figures:independent.slice(i, i + 6)});
+    for (let index = 0; index < pages.length; index++) {
+      const chunk = pages[index];
+      const figures = chunk.figures, width = chunk.width;
+      s = page(section.title + (chunk.f ? '' : '：章节指标') + (pages.length > 1 ? ` ${index + 1}` : ''));
       const f = chunk.f;
       if (f) {
         const heading = fitted(f.title, width, 1.1, 22);
