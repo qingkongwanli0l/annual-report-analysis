@@ -324,10 +324,10 @@
     },
     {
       "id": "ks_r_application",
-      "title": "2026科顺跟踪报告的方法适用性与通用等级定义页",
+      "title": "科顺防水科技股份有限公司可转换公司债券2026年跟踪评级报告",
       "url": "https://www.lhratings.com/reports/B010330-P61284-2021-GZ2026.pdf",
       "published": "2026-06-23",
-      "availability_note": "仅使用PDF6、8的方法适用性及23的通用等级/展望定义。发行人既有等级、机构因素得分和预测未作本案输入或校准目标。",
+      "availability_note": "使用PDF6、8的方法适用性、17（印刷14）的授信及经销商融资事实陈述、23的通用等级/展望定义。外部机构评级、因素得分、预测及评价结论未用作本案输入或校准目标；读取其公开陈述不等于重复执行其银行征信或合同核查。",
       "sha256": "846ba87096506c375195e9d1fe772781316c30a5f3e54239d54b31faea4fec41"
     },
     {
@@ -361,6 +361,22 @@
       "published": "2025-07-18",
       "availability_note": "发布日期由证监会原栏目正文核实：https://www.csrc.gov.cn/csrc/c100038/c7572064/content.shtml；仅采用附件第8—9页5-8。",
       "sha256": "83d97d3b1ce1a7fa3c17bb317a2d1b5fafdb79a87af64e7a24b0818bbd2f5a1b"
+    },
+    {
+      "id": "ks_credit_s_guarantee_q1",
+      "title": "科顺股份关于为全资子公司提供担保的公告（2026-016）",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225172711.PDF",
+      "published": "2026-04-24",
+      "availability_note": "分别记录截至2026-03-31实际担保余额与2026-04-23新增审批额度；公告未附逐笔解除或截至六月的担保台账。",
+      "sha256": "2e0c63c5e1d7ef7845853b8c918bba7b5b6a0ed4ae7441a269c17614c120b506"
+    },
+    {
+      "id": "ks_credit_s_sponsor",
+      "title": "国泰君安证券关于科顺股份对外担保的核查意见",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-08-28/1221008879.PDF",
+      "published": "2024-08-28",
+      "availability_note": "使用PDF2—3披露的经销商保证安排、资金用途和反担保要求；只证明公开安排，不证明每笔贷款已按约执行或反担保可回收。",
+      "sha256": "94c0b47a9c3839e3c9b180d134f7a70675b91dfd400005c6997b363ddf99645f"
     }
   ],
   "evidence": [
@@ -1602,6 +1618,55 @@
       "locator": "PDF/印刷第8—9页，5-8发行可转换债券的递延所得税会计处理",
       "observation": "可转债为复合工具且负债计税基础等于票面金额并产生应税暂时性差异时，该差异来自权益成分，不满足DTL豁免条件，初始税影响计入权益；后续负债折价摊销的相关DTL变动计入损益。",
       "reliability": "证监会官方监管指引；提供准则执行口径，不能替代发行人当期分录及过渡处理披露。"
+    },
+    {
+      "id": "ks_earn_e_nonrec",
+      "source": "ks_a_s_25",
+      "locator": "PDF第11—12页非经常性损益表（元）；第10、108、244页归母净利及扣非勾稽",
+      "observation": "原表依次为项目、2025年金额、2024年金额、2023年金额、说明。仅取前两期非空金额；2025资金占用费栏及2024同控合并栏为空，不填零。2025少数股东影响额为负数，按减项保留原符号。金融资产项目同时含公允价值和处置损益，不等同利润表公允价值变动科目。",
+      "reliability": "完整官方年报；两期表头及金额列已回看原页"
+    },
+    {
+      "id": "ks_credit_e_facilities",
+      "source": "ks_r_application",
+      "locator": "PDF17/印刷14，偿债指标变化后授信段；截至2025年底，亿元",
+      "observation": "跟踪报告披露银行授信总额73.00、未使用47.00；同一时点年报PDF218披露未用银行借款额度108,000.00万元。用词不同不能解释或消除金额冲突，尚无按法人、银行、品种、已用/未用的逐项桥。",
+      "reliability": "外部评级机构的公开事实陈述；不是银行确认。其额度、信用调查和风险判断未由本次重新验证，且不采用其评级或得分作校准。"
+    },
+    {
+      "id": "ks_credit_e_dealer_schedule",
+      "source": "ks_a_s_25",
+      "locator": "PDF/印刷227—228，担保明细跨页表；2025-12-31，元",
+      "observation": "表头依次为被担保单位名称、担保事项、担保借款金额、担保到期日、备注。前十名逐笔有日期，余29家仅列总额且日期栏空白。全部为最高额连带责任保证；不将表列担保到期日改作基础贷款到期、实际代偿或法律责任已终止日期。",
+      "reliability": "本次对原页跨页表头、金额及日期列视觉核对；匿名名称保持原样。未取得合同或银行解除证明。"
+    },
+    {
+      "id": "ks_credit_e_guarantee_q1",
+      "source": "ks_credit_s_guarantee_q1",
+      "locator": "PDF3—4，第五节；截至2026-03-31，万元",
+      "observation": "公告披露实际担保总额19,710.32，集团内12,055.21，集团外经销商7,655.11；并声明无逾期、涉诉担保或因担保判决败诉承担损失。日期为三月末，未说明年末前十笔分别解除、展期或代偿情况，也未披露六月存续余额。",
+      "reliability": "公司期后公告，未按逐笔合同验证。总额下降是正面反证，不能据此宣称全部担保已解除或截至六月无代偿。"
+    },
+    {
+      "id": "ks_credit_e_guarantee_approval",
+      "source": "ks_credit_s_guarantee_q1",
+      "locator": "PDF1—3，第一、三节；2026-04-23审批，万元",
+      "observation": "重庆科顺供应链与广东顺采易新增审批担保额度分别30,000及6,000，合计36,000；公告说明尚未签担保协议，具体金额和期限待与金融机构协商签署。",
+      "reliability": "审批额度与截至三月末实际余额的时点和性质不同；不是已发生新增义务或已落实融资，也不与并表债务重复加总。"
+    },
+    {
+      "id": "ks_credit_e_dealer_use",
+      "source": "ks_credit_s_sponsor",
+      "locator": "PDF2—3，第四及第五节",
+      "observation": "经销商贷款的合同安排要求融资后将货款汇入公司指定账户；披露贷款专用于支付公司货款、公司连带保证及反担保要求。",
+      "reliability": "本次读取历史公开安排；未逐笔查银行放款、客户付款、原始销售及反担保执行，不冒记保荐人的核查为本次执行。"
+    },
+    {
+      "id": "ks_credit_e_yearend_settlement",
+      "source": "ks_r_application",
+      "locator": "PDF17/印刷14，授信段后经销商担保段",
+      "observation": "报告说明经销商被担保融资主要用于年底前结清其对公司应付货款。公司收现可能因此与对客户银行债务的或有风险同时存在；年末保证余额不是本年度保证支持的收款流量。",
+      "reliability": "外部机构公开陈述，尚未核对逐笔借款及收现。其“或有负债风险较为可控”评价不作为本次已验证结论。"
     }
   ],
   "facts": [
@@ -12913,21 +12978,21 @@
       "value": "160098145.60",
       "context": {
         "entity": "科顺防水科技股份有限公司",
-        "scope": "合并",
+        "scope": "公司保证义务披露（集团内外分列）",
         "start": null,
         "end": "2025-12-31",
         "aggregation": "instant",
-        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "basis": "公司担保原始披露；非会计债务加总",
         "measure": "money",
         "currency": "CNY",
         "scale": "1",
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_related"
+        "ks_credit_e_dealer_schedule"
       ],
       "state": "reported",
-      "note": ""
+      "note": "2025年末集团外经销商担保借款金额；不是已代偿金额。"
     },
     {
       "id": "ks_a_guaranteeletters",
@@ -12954,16 +13019,16 @@
     },
     {
       "id": "ks_a_undrawn",
-      "label": "未使用银行授信",
+      "label": "年报未使用银行借款额度",
       "concept": "undrawn",
       "value": "108000.00",
       "context": {
         "entity": "科顺防水科技股份有限公司",
-        "scope": "合并",
+        "scope": "公司银行额度披露（法人及品种待核）",
         "start": null,
         "end": "2025-12-31",
         "aggregation": "instant",
-        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "basis": "公开银行额度披露；两来源口径未调齐",
         "measure": "money",
         "currency": "CNY",
         "scale": "10000",
@@ -12973,7 +13038,7 @@
         "ks_a_e_maturity"
       ],
       "state": "reported",
-      "note": "原文单位万元；保留原单位值，以scale=10000换算，不将万元当元。"
+      "note": "原文单位万元，保留108,000.00及scale=10000；不同于跟踪报告未用授信47亿元，差额原因未核，均未计作已落实现金。"
     },
     {
       "id": "ks_a_maturity_1y",
@@ -21191,6 +21256,857 @@
       ],
       "state": "reported",
       "note": "附注23（1）—（2）；期末或同控重述期初余额。期初列为空白，不填零；此事实只表示期末余额，不表示当期直接权益税流量。"
+    },
+    {
+      "id": "ks_earn_disposal_2025",
+      "label": "非流动资产处置损益",
+      "concept": "nonrec_disposal",
+      "value": "-8726704.30",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_disposal_2024",
+      "label": "非流动资产处置损益",
+      "concept": "nonrec_disposal",
+      "value": "-2960952.87",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_grant_2025",
+      "label": "非经常政府补助",
+      "concept": "nonrec_grant",
+      "value": "10228833.70",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_grant_2024",
+      "label": "非经常政府补助",
+      "concept": "nonrec_grant",
+      "value": "9600852.88",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_financial_2025",
+      "label": "金融资产负债公允价值及处置损益",
+      "concept": "nonrec_financial",
+      "value": "2034052.35",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_financial_2024",
+      "label": "金融资产负债公允价值及处置损益",
+      "concept": "nonrec_financial",
+      "value": "177197562.45",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_funding_2024",
+      "label": "向非金融企业收取资金占用费",
+      "concept": "nonrec_funding",
+      "value": "2276929.62",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_reversal_2025",
+      "label": "单项应收减值准备转回",
+      "concept": "nonrec_reversal",
+      "value": "79870768.92",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_reversal_2024",
+      "label": "单项应收减值准备转回",
+      "concept": "nonrec_reversal",
+      "value": "137484626.46",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_common_control_2025",
+      "label": "同控子公司期初至合并日净损益",
+      "concept": "nonrec_common_control",
+      "value": "-302696.79",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_restructuring_2025",
+      "label": "债务重组损益",
+      "concept": "nonrec_restructuring",
+      "value": "-8691371.36",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_restructuring_2024",
+      "label": "债务重组损益",
+      "concept": "nonrec_restructuring",
+      "value": "5467512.30",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_other_2025",
+      "label": "其他非经常营业外收支",
+      "concept": "nonrec_other",
+      "value": "-7674762.50",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_other_2024",
+      "label": "其他非经常营业外收支",
+      "concept": "nonrec_other",
+      "value": "24216579.82",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_tax_2025",
+      "label": "非经常损益所得税影响额",
+      "concept": "nonrec_tax",
+      "value": "12827799.34",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_tax_2024",
+      "label": "非经常损益所得税影响额",
+      "concept": "nonrec_tax",
+      "value": "53310050.92",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_minority_2025",
+      "label": "非经常损益少数股东影响额（税后）",
+      "concept": "nonrec_minority",
+      "value": "-531957.68",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_minority_2024",
+      "label": "非经常损益少数股东影响额（税后）",
+      "concept": "nonrec_minority",
+      "value": "2903643.75",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_total_2025",
+      "label": "公司披露归母非经常损益",
+      "concept": "nonrec_total",
+      "value": "54442278.36",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2025年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_earn_total_2024",
+      "label": "公司披露归母非经常损益",
+      "concept": "nonrec_total",
+      "value": "297069415.99",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_earn_e_nonrec"
+      ],
+      "state": "reported",
+      "note": "非经常性损益原表2024年金额列；税、少数股东影响是原表减项，其他保留原符号。"
+    },
+    {
+      "id": "ks_credit_facility_total",
+      "label": "跟踪报告银行授信总额",
+      "concept": "facility_total",
+      "value": "73.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司银行额度披露（法人及品种待核）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公开银行额度披露；两来源口径未调齐",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "100000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_facilities"
+      ],
+      "state": "reported",
+      "note": "截至2025年底；未取得银行分户及产品明细。"
+    },
+    {
+      "id": "ks_credit_facility_undrawn",
+      "label": "跟踪报告未使用银行授信",
+      "concept": "facility_undrawn",
+      "value": "47.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司银行额度披露（法人及品种待核）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公开银行额度披露；两来源口径未调齐",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "100000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_facilities"
+      ],
+      "state": "reported",
+      "note": "不证明47亿元与10.8亿元可相加、同时可用，亦未证明其覆盖法人、产品及撤销条款相同。"
+    },
+    {
+      "id": "ks_credit_dealer_01",
+      "label": "第一名担保借款金额（担保到期2026-06-24）",
+      "concept": "dealer_01",
+      "value": "28000000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-24，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_02",
+      "label": "第二名担保借款金额（担保到期2026-06-30）",
+      "concept": "dealer_02",
+      "value": "19214238.46",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-30，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_03",
+      "label": "第三名担保借款金额（担保到期2026-06-26）",
+      "concept": "dealer_03",
+      "value": "17940000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-26，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_04",
+      "label": "第四名担保借款金额（担保到期2026-06-29）",
+      "concept": "dealer_04",
+      "value": "14980000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-29，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_05",
+      "label": "第五名担保借款金额（担保到期2026-06-08）",
+      "concept": "dealer_05",
+      "value": "14980000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-08，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_06",
+      "label": "第六名担保借款金额（担保到期2026-04-27）",
+      "concept": "dealer_06",
+      "value": "10000000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-04-27，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_07",
+      "label": "第七名担保借款金额（担保到期2026-05-18）",
+      "concept": "dealer_07",
+      "value": "6000000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-05-18，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_08",
+      "label": "第八名担保借款金额（担保到期2026-06-19）",
+      "concept": "dealer_08",
+      "value": "5000000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-19，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_09",
+      "label": "第九名担保借款金额（担保到期2026-03-21）",
+      "concept": "dealer_09",
+      "value": "3787923.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-03-21，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_10",
+      "label": "第十名担保借款金额（担保到期2026-06-17）",
+      "concept": "dealer_10",
+      "value": "3499906.80",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "期末余额2025-12-31；原表担保到期日为2026-06-17，不是代偿日；当前存续/解除/展期未取得逐笔证据。"
+    },
+    {
+      "id": "ks_credit_dealer_other",
+      "label": "其他29家经销商担保借款金额",
+      "concept": "dealer_other",
+      "value": "36696077.34",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_dealer_schedule"
+      ],
+      "state": "reported",
+      "note": "原表未列到期日，留作未知；不得由前十名结果外推。"
+    },
+    {
+      "id": "ks_credit_guarantee_external_q1",
+      "label": "三月末集团外经销商实际担保",
+      "concept": "guarantee_external_q1",
+      "value": "7655.11",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_guarantee_q1"
+      ],
+      "state": "reported",
+      "note": "原单位万元，scale=10000；集团内与外分列，实际余额与审批额度分开。"
+    },
+    {
+      "id": "ks_credit_guarantee_internal_q1",
+      "label": "三月末集团内实际担保",
+      "concept": "guarantee_internal_q1",
+      "value": "12055.21",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_guarantee_q1"
+      ],
+      "state": "reported",
+      "note": "原单位万元，scale=10000；集团内与外分列，实际余额与审批额度分开。"
+    },
+    {
+      "id": "ks_credit_guarantee_total_q1",
+      "label": "三月末实际担保总额",
+      "concept": "guarantee_total_q1",
+      "value": "19710.32",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_guarantee_q1"
+      ],
+      "state": "reported",
+      "note": "原单位万元，scale=10000；集团内与外分列，实际余额与审批额度分开。"
+    },
+    {
+      "id": "ks_credit_guarantee_new_approval",
+      "label": "新增子公司担保审批额度（协议尚未签署）",
+      "concept": "guarantee_approved_limit",
+      "value": "36000.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-04-23",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "10000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_credit_e_guarantee_approval"
+      ],
+      "state": "reported",
+      "note": "董事会审批时点2026-04-23，万元；不是已发生担保余额、并表新增本金或已落实可提款融资。"
     }
   ],
   "calculations": [
@@ -31413,6 +32329,964 @@
       "period_rule": "same",
       "denominator": "positive",
       "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_gross_2024",
+      "label": "已列非经常损益税及少数调整前合计",
+      "concept": "earn_gross_2024",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_disposal_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_grant_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_financial_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_funding_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_reversal_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_restructuring_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_other_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "仅加总原表该年度非空项目，原表空白不补零；同控行按其原列示净损益口径保留。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_net_2024",
+      "label": "非经常损益税与少数股东桥",
+      "concept": "earn_net_2024",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_gross_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_tax_2024",
+          "weight": "-1"
+        },
+        {
+          "ref": "ks_earn_minority_2024",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "已列项目合计减所得税影响、减少数股东税后影响；负少数影响减去负数。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_deducted_2024",
+      "label": "归母净利至公司扣非净利桥",
+      "concept": "earn_deducted_2024",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_total_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "归母净利润减公司披露归母非经常损益，不用合并净利润混算。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_two_gains_2024",
+      "label": "金融资产损益与单项应收转回合计",
+      "concept": "earn_two_gains_2024",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_financial_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_reversal_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "两个已识别损益项目的税前金额合计；不等于归母非经常净额。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_ebitda_sensitivity_2024",
+      "label": "仅扣两项收益的EBITDA敏感性",
+      "concept": "earn_ebitda_sensitivity_2024",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_two_gains_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "原会计EBITDA仅减金融资产损益及单项应收转回；两期对称演示，不是完整正常化或官方评级指标。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_pbt_sensitivity_2024",
+      "label": "仅扣两项收益的税前利润敏感性",
+      "concept": "earn_pbt_sensitivity_2024",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_pbt_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_two_gains_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "合并利润总额仅减两项税前收益，不减税后归母非经常净额。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_gross_2025",
+      "label": "已列非经常损益税及少数调整前合计",
+      "concept": "earn_gross_2025",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_disposal_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_grant_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_financial_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_reversal_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_common_control_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_restructuring_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_other_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "仅加总原表该年度非空项目，原表空白不补零；同控行按其原列示净损益口径保留。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_net_2025",
+      "label": "非经常损益税与少数股东桥",
+      "concept": "earn_net_2025",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_gross_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_tax_2025",
+          "weight": "-1"
+        },
+        {
+          "ref": "ks_earn_minority_2025",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "已列项目合计减所得税影响、减少数股东税后影响；负少数影响减去负数。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_deducted_2025",
+      "label": "归母净利至公司扣非净利桥",
+      "concept": "earn_deducted_2025",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_total_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "归母净利润减公司披露归母非经常损益，不用合并净利润混算。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_two_gains_2025",
+      "label": "金融资产损益与单项应收转回合计",
+      "concept": "earn_two_gains_2025",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_financial_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_reversal_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "两个已识别损益项目的税前金额合计；不等于归母非经常净额。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_ebitda_sensitivity_2025",
+      "label": "仅扣两项收益的EBITDA敏感性",
+      "concept": "earn_ebitda_sensitivity_2025",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_two_gains_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "原会计EBITDA仅减金融资产损益及单项应收转回；两期对称演示，不是完整正常化或官方评级指标。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_pbt_sensitivity_2025",
+      "label": "仅扣两项收益的税前利润敏感性",
+      "concept": "earn_pbt_sensitivity_2025",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_pbt_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_two_gains_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "合并利润总额仅减两项税前收益，不减税后归母非经常净额。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_parent_decline",
+      "label": "归母利润减少额",
+      "concept": "earn_parent_decline",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_parentincome_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "本期减上期再取反，表达亏损扩大金额，不算负基数增长率。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_earn_nonrec_decline",
+      "label": "归母非经常支持减少额",
+      "concept": "earn_nonrec_decline",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_earn_total_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_total_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同一披露范围的归母非经常净额减少。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_earn_deducted_decline",
+      "label": "扣非归母利润减少额",
+      "concept": "earn_deducted_decline",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_adjustedni",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_adjustedni_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "两期公司披露扣非归母金额之差取反，不推断全部为现金变化。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_earn_decline_bridge",
+      "label": "归母利润变化分解合计",
+      "concept": "earn_decline_bridge",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_earn_nonrec_decline",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_deducted_decline",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "非经常支持减少与扣非恶化加总，核对归母利润下降。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_nonrec_contribution",
+      "label": "非经常支持减少占归母利润下降",
+      "concept": "earn_nonrec_contribution",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_earn_nonrec_decline",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_earn_parent_decline",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "两项均为同范围税后归母减少额；是损益变化分解，不是现金贡献。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_earn_two_gains_share_2024",
+      "label": "两项税前收益占2024会计EBITDA",
+      "concept": "earn_two_gains_share_2024",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_earn_two_gains_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_ebitda_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "度量历史EBITDA对两项收益的依赖；不等同其现金贡献。",
+      "interpretation": "损益分类与现金、债务及机构口径分别核对，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_facility_gap",
+      "label": "两来源未用额度名义差额（口径未调齐）",
+      "concept": "facility_gap",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_credit_facility_undrawn",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_undrawn",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司银行额度披露（法人及品种待核）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公开银行额度披露；两来源口径未调齐",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "仅计算47亿元减10.8亿元的披露数差距，以确定核查重要性；不是新增可提款金额或已完成调整桥。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_dealer_top10",
+      "label": "年末前十笔经销担保合计",
+      "concept": "dealer_top10",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_credit_dealer_01",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_02",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_03",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_04",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_05",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_06",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_07",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_08",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_09",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_10",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "逐笔加总年末前十名担保借款金额，保留原表匿名标识和日期。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_dealer_all",
+      "label": "年末39户经销担保明细合计",
+      "concept": "dealer_all",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_credit_dealer_top10",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_other",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "前十笔与其他29家合计，核对原表总额；余29家无逐笔到期资料。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_dealer_june",
+      "label": "原表七笔六月担保到期金额",
+      "concept": "dealer_june",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_credit_dealer_01",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_02",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_03",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_04",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_05",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_08",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_dealer_10",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "仅按年报原表担保到期日选取七笔金额；该日期集中不等于六月确定现金付款，也不证明截至研究日仍存续。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_dealer_top10_share",
+      "label": "前十笔占年末经销担保",
+      "concept": "dealer_top10_share",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_credit_dealer_top10",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_guarantees_external",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "按年末存量计算核查集中度，不是统计抽样覆盖结论。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_guarantee_q1_sum",
+      "label": "三月末内外实际担保加总",
+      "concept": "guarantee_q1_sum",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_credit_guarantee_internal_q1",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_credit_guarantee_external_q1",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "内外分组勾稽公告实际总额；不将集团内担保再次计入合并本金。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_credit_guarantee_external_change",
+      "label": "经销担保披露余额季度减少额",
+      "concept": "guarantee_external_change",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_credit_guarantee_external_q1",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_guarantees_external",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "两时点披露余额之差取反；不等同逐户解除金额，新增/续期/偿还/解除/代偿滚动仍缺。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_credit_guarantee_external_decline",
+      "label": "经销担保披露余额季度降幅",
+      "concept": "guarantee_external_decline",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "ks_credit_guarantee_external_q1",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_guarantees_external",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "公司保证义务披露（集团内外分列）",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "ratio",
+        "basis": "公司担保原始披露；非会计债务加总",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "按两时点已披露余额计算减少比例，未据此认定任何特定客户已解除；原公告万元四舍五入。",
+      "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "-1"
     }
   ],
   "reconciliations": [
@@ -32263,6 +34137,62 @@
       "expected": "ks_tax_candidate_closing",
       "tolerance": "0.02",
       "basis": "元、分披露下少量加减的显示精度比较，实际残差保留。期末可转债权益DTL仅作候选金额，未取得当期权益税分录，算术接近不证明桥已完整。"
+    },
+    {
+      "id": "ks_earn_r_net_2024",
+      "label": "2024年归母非经常损益原表重算",
+      "actual": "ks_earn_total_2024",
+      "expected": "ks_earn_net_2024",
+      "tolerance": "0",
+      "basis": "按元、分原值精确运算；加总闭合不证明分类或空白项目均已取得交易证据。"
+    },
+    {
+      "id": "ks_earn_r_deducted_2024",
+      "label": "2024年归母净利与公司扣非调节",
+      "actual": "ks_a_adjustedni_2024",
+      "expected": "ks_earn_deducted_2024",
+      "tolerance": "0",
+      "basis": "按元、分原值精确运算；加总闭合不证明分类或空白项目均已取得交易证据。"
+    },
+    {
+      "id": "ks_earn_r_net_2025",
+      "label": "2025年归母非经常损益原表重算",
+      "actual": "ks_earn_total_2025",
+      "expected": "ks_earn_net_2025",
+      "tolerance": "0",
+      "basis": "按元、分原值精确运算；加总闭合不证明分类或空白项目均已取得交易证据。"
+    },
+    {
+      "id": "ks_earn_r_deducted_2025",
+      "label": "2025年归母净利与公司扣非调节",
+      "actual": "ks_a_adjustedni",
+      "expected": "ks_earn_deducted_2025",
+      "tolerance": "0",
+      "basis": "按元、分原值精确运算；加总闭合不证明分类或空白项目均已取得交易证据。"
+    },
+    {
+      "id": "ks_earn_r_decline",
+      "label": "归母利润变化两部分桥",
+      "actual": "ks_earn_parent_decline",
+      "expected": "ks_earn_decline_bridge",
+      "tolerance": "0",
+      "basis": "同范围两期差额精确分解，不解释为现金或因果贡献。"
+    },
+    {
+      "id": "ks_credit_r_dealer_total",
+      "label": "年末经销担保逐项加总",
+      "actual": "ks_a_guarantees_external",
+      "expected": "ks_credit_dealer_all",
+      "tolerance": "0.01",
+      "basis": "原表元金额，加总前十名及其他29家；不是逐笔合同核验"
+    },
+    {
+      "id": "ks_credit_r_guarantee_q1",
+      "label": "三月末内外实际担保勾稽",
+      "actual": "ks_credit_guarantee_total_q1",
+      "expected": "ks_credit_guarantee_q1_sum",
+      "tolerance": "0.01",
+      "basis": "同一公告的万元金额按原单位转元加总；不证明到期或解除"
     }
   ],
   "findings": [
@@ -32271,7 +34201,7 @@
       "title": "条件研究建议：主体与科顺转债BBB+、负面；现金范围桥待核",
       "question": "所选境内方法下，证据如何形成具体建议？",
       "conclusion": "现金季节锚的范围桥尚未闭合；以下数字仅为Δ_A=Δ_H=Γ=0条件参照。以信息截止日的公开证据和明示判断，基准建议主体及科顺转债为BBB+、负面展望。经营C、财务F4的指示单元格为a-/bbb+，选择bbb+；不计可证实的额外支持增益，普通无担保直接债项暂同级。建议以常态融资渠道仍运行、未证实到期不支付，且实际付款日前资金与用途安排足以覆盖为条件。母公司可调度资金和持续承诺后果未核实，不能作为无条件正式评级发布。",
-      "mechanism": "环境{{ks_r_environment_score}}、自身竞争力{{ks_r_competitive_score}}。年度同定义指标先30/70加权后分档的财务代表值{{ks_r_financial_score}}落F4；先权会计金额得{{ks_r_financial_score_alternative}}，本案档位相同。固定现有定性判断，量化档内合成范围从{{ks_r_financial_lower}}（含）至{{ks_r_financial_upper}}（不含），跨F5/F4，不能声称BBB+是唯一可推结果。C/F4选较弱端基于最新负EBITDA、母公司负经营现金、第四季回款依赖及用途约束；已进基础因素的弱项不重复扣档。 一年资金容量结果另见ks_horizon_find_horizon：未核还本和用途参数不能填零，融资截距不等于已落实来源。若付款日前所需发行人资源无法落实，建议的资金前提失效，须重新定级。 现金容量还须完成H1/年报版本桥及持续经营范围校正；原数字为Δ_H=Δ_A=0条件分支，不能充作已验证资金覆盖或据此固定评级。",
+      "mechanism": "环境{{ks_r_environment_score}}、自身竞争力{{ks_r_competitive_score}}。年度同定义指标先30/70加权后分档的财务代表值{{ks_r_financial_score}}落F4；先权会计金额得{{ks_r_financial_score_alternative}}，本案档位相同。固定现有定性判断，量化档内合成范围从{{ks_r_financial_lower}}（含）至{{ks_r_financial_upper}}（不含），跨F5/F4，不能声称BBB+是唯一可推结果。C/F4选较弱端基于最新负EBITDA、母公司负经营现金、第四季回款依赖及用途约束；已进基础因素的弱项不重复扣档。 一年资金容量结果另见ks_horizon_find_horizon：未核还本和用途参数不能填零，融资截距不等于已落实来源。若付款日前所需发行人资源无法落实，建议的资金前提失效，须重新定级。 现金容量还须完成H1/年报版本桥及持续经营范围校正；原数字为Δ_H=Δ_A=0条件分支，不能充作已验证资金覆盖或据此固定评级。 年报未用银行借款10.8亿元与跟踪报告未用授信47亿元的冲突另见ks_credit_find_facilities，尚未形成银行合同桥；不能以额度披露或现有再融资4.65研究分证明付款资金已落实。",
       "status": "conditional",
       "evidence": [
         "ks_r_e_business",
@@ -32282,7 +34212,8 @@
         "ks_horizon_base_peak_funding_intercept_U650",
         "ks_horizon_collection_delay_5pct_peak_funding_intercept_U650",
         "ks_horizon_e_ar_scope",
-        "ks_horizon_e_decontrol_scope"
+        "ks_horizon_e_decontrol_scope",
+        "ks_credit_e_facilities"
       ],
       "counterevidence": [
         "ks_a_e_q1",
@@ -32299,7 +34230,7 @@
       "title": "季度现金压力决定跟踪顺序",
       "question": "年末正现金是否掩盖更早缺口？",
       "conclusion": "现金季节锚的范围桥尚未闭合；以下数字仅为Δ_A=Δ_H=Γ=0条件参照。从三月末实际集团现金接续的无新增融资模型中，基准季度低点{{ks_r_base_cash_min}}，恶化低点{{ks_r_worse_cash_min}}；基准再少收{{ks_r_base_receipt_boundary}}客户现金即触及季度末零现金。基准另预留用途资金后低点{{ks_r_base_reserve650}}。这些是条件值，不能替代六月实际数或月内、母公司支付证明。",
-      "mechanism": "经营采购和票据结算在CFO内只扣一次；融资本金和现金利息另扣，未把非现金AP转借款再扣为现金。募集金恢复用途是现金限制敏感性，不是新增外部债本金。负数后续行只显示未融资缺口，晚收款不能抹去先前支付失败。 2027-01-09用途恢复另有静态事件桥；一年展望的季节性延伸见ks_horizon_q_base及回款延期分支。它们单列未知D/X/P/U、营运缓冲及发行人资金条件，不与原用途预留叠扣，也不证明实际连续付款覆盖。",
+      "mechanism": "经营采购和票据结算在CFO内只扣一次；融资本金和现金利息另扣，未把非现金AP转借款再扣为现金。募集金恢复用途是现金限制敏感性，不是新增外部债本金。负数后续行只显示未融资缺口，晚收款不能抹去先前支付失败。 2027-01-09用途恢复另有静态事件桥；一年展望的季节性延伸见ks_horizon_q_base及回款延期分支。它们单列未知D/X/P/U、营运缓冲及发行人资金条件，不与原用途预留叠扣，也不证明实际连续付款覆盖。 年报未用银行借款10.8亿元与跟踪报告未用授信47亿元的冲突另见ks_credit_find_facilities，尚未形成银行合同桥；不能以额度披露或现有再融资4.65研究分证明付款资金已落实。",
       "status": "conditional",
       "evidence": [
         "ks_d_l_e_cash_actual",
@@ -32308,7 +34239,8 @@
         "ks_r_worse_cash_min",
         "ks_d_e_fund_new",
         "ks_horizon_e_ar_scope",
-        "ks_horizon_e_decontrol_scope"
+        "ks_horizon_e_decontrol_scope",
+        "ks_credit_e_facilities"
       ],
       "counterevidence": [
         "ks_a_e_q1",
@@ -32394,7 +34326,7 @@
       "title": "展望与后续评级行动有明确决定边界",
       "question": "哪些变化真正改变建议，而不只是更新比率？",
       "conclusion": "负面展望反映未来约一年中的行业需求、回收、用途约束与融资压力。经营D/F4对应BB+，C/F5对应BBB-，D/F5对应BB；持续改善达到C/F3且资金及承诺问题解决时才讨论A分支。当前固定定性判断的量化档内范围跨F5/F4，已显示下行择分敏感性；没有由本次区间上端支持F3。",
-      "mechanism": "跟踪先更新月度银行现金、实际用途占用、母公司到期表和持续承诺解释，再更新半年度/年度亏损、应收回收、订单及融资。三年完整重述和更可靠预测会改变加权依据；对应结果应重算而非沿用此次分数。没有设置后台监控、没有真实委员会投票。 临时补流按2027-01-09十二个月边界及更早项目需要核查；延伸至2027年6月的条件资金容量须代入实际还本、其他净用途、项目耗用和用途占用，再检验发行人可调度资金及可落实融资。",
+      "mechanism": "跟踪先更新月度银行现金、实际用途占用、母公司到期表和持续承诺解释，再更新半年度/年度亏损、应收回收、订单及融资。三年完整重述和更可靠预测会改变加权依据；对应结果应重算而非沿用此次分数。没有设置后台监控、没有真实委员会投票。 临时补流按2027-01-09十二个月边界及更早项目需要核查；延伸至2027年6月的条件资金容量须代入实际还本、其他净用途、项目耗用和用途占用，再检验发行人可调度资金及可落实融资。 优先关闭10.8/47亿元额度冲突、年末39户保证至三月及六月的存续滚动，并核保证支持的实际收现和期后追偿。",
       "status": "conditional",
       "evidence": [
         "ks_r_e_definitions",
@@ -32403,7 +34335,10 @@
         "ks_r_financial_upper",
         "ks_d_e_commitment",
         "ks_d_e_fund_new",
-        "ks_project_e_schedule"
+        "ks_project_e_schedule",
+        "ks_credit_e_facilities",
+        "ks_credit_e_dealer_schedule",
+        "ks_credit_e_guarantee_q1"
       ],
       "counterevidence": [
         "ks_a_e_q1"
@@ -32461,22 +34396,32 @@
       "id": "ks_a_find_earnings",
       "title": "减值与盈利质量",
       "question": "是否把信用损失全部作为一次性剔除？",
-      "conclusion": "净亏损{{ks_a_netincome_2025}}，信用与资产损失合计{{ks_a_cf_imp_2025}}，会计EBITDA{{ks_a_ebitda_2025}}。信用损失连续多年存在，不在基础偿债收益中自动全额加回；上期公允价值及补偿收益影响亦需保留。",
-      "mechanism": "经营利润、非现金重估、债务重组、税务利益与现金各不相同。会计EBITDA加入折旧及利息但保留资产质量成本，不以减值前利润替代可持续现金。",
+      "conclusion": "净亏损{{ks_a_netincome_2025}}，信用与资产损失合计{{ks_a_cf_imp_2025}}，会计EBITDA{{ks_a_ebitda_2025}}。归母利润较2024年减少{{ks_earn_parent_decline}}，其中扣非恶化{{ks_earn_deducted_decline}}、非经常支持减少{{ks_earn_nonrec_decline}}，后者占{{ks_earn_nonrec_contribution}}；不能把恶化全部归于当期一次性损失。",
+      "mechanism": "公司归母非经常损益从{{ks_earn_total_2024}}降至{{ks_earn_total_2025}}，逐项保留税与少数股东影响；扣非归母从{{ks_a_adjustedni_2024}}恶化至{{ks_a_adjustedni}}。金融资产公允价值及处置损益从{{ks_earn_financial_2024}}降至{{ks_earn_financial_2025}}，单项应收转回从{{ks_earn_reversal_2024}}降至{{ks_earn_reversal_2025}}。前者不等同公允价值变动科目，后者须核现金回收、抵债或估计变更，非经常分类本身不证明现金收回。两项2024税前收益合计占原会计EBITDA{{ks_earn_two_gains_share_2024}}；仅对称扣除这两项，2024/2025 EBITDA为{{ks_earn_ebitda_sensitivity_2024}}/{{ks_earn_ebitda_sensitivity_2025}}，税前利润为{{ks_earn_pbt_sensitivity_2024}}/{{ks_earn_pbt_sensitivity_2025}}。这是局部依赖敏感性，并未对政府补助、处置损失、重组和其他项目逐项作经济正常化，也未替换官方评级指标；已列负项不因只挑正收益而被忽略。",
       "status": "supported",
       "evidence": [
         "ks_a_e_is",
         "ks_a_e_revenue",
         "ks_a_e_debtassets",
         "ks_a_ebitda_2025",
-        "ks_a_perf_fv_2024"
+        "ks_a_perf_fv_2024",
+        "ks_earn_e_nonrec",
+        "ks_earn_nonrec_contribution",
+        "ks_earn_two_gains_share_2024",
+        "ks_earn_ebitda_sensitivity_2024",
+        "ks_earn_ebitda_sensitivity_2025"
       ],
-      "counterevidence": [],
+      "counterevidence": [
+        "ks_earn_reversal_2025",
+        "ks_earn_disposal_2025",
+        "ks_earn_restructuring_2025"
+      ],
       "alternatives": [
-        "集中确认历史客户损失可使当期亏损高于近期经营现金消耗，但损失对应的现金不可回收并不会因非现金性质消失。",
-        "非经常重估或补偿收益可能短期抵销主营亏损，必须观察对应资产变现和后续冲回。"
+        "集中确认历史客户损失会使当期亏损高于现金支出，但持续发生的信用成本不能自动全额加回。",
+        "应收转回可能来自真实收款，也可能来自抵债及估计变化；须逐笔对应现金、资产接收和准备滚动后判断。",
+        "资产处置及债务重组损失也应按经济性质对称审查；公司扣非口径、分析者正常化和机构偿债收益定义分别保留。"
       ],
-      "changes_if": "按客户和年度拆分新增信用损失、已计提损失与实际回收，并证明常态业务现金足以覆盖利息及必要投入后，才调整可持续盈利判断。"
+      "changes_if": "按客户和年度拆分新增损失、实际回收及转回依据；把金融资产损益对应到处置现金与剩余估值敞口，对持续补助和负向非经常项目作同等核查。证明常态经营收益和现金覆盖利息及必要投入后再改善盈利判断；仅观察2024正EBITDA或2025转回收益不足以成立。"
     },
     {
       "id": "ks_a_find_ar",
@@ -32584,21 +34529,25 @@
       "title": "现金质量、季节性及分红",
       "question": "正经营现金能覆盖投入和分配吗？",
       "conclusion": "全年CFO{{ks_a_cfo_2025}}，扣现金资本开支后{{ks_a_fcf_2025}}，再扣已分红后{{ks_a_fcf_after_div}}。末季贡献{{ks_a_quarter4_cfo}}，期间现金波动明显。",
-      "mechanism": "间接桥中大额非现金减值并不产生现金；经营性应付项目合计形成正向调节，但其贡献同比减少。尚未取得组成、结算、非现金及范围变动的分解，不能将该合计或保证金收付直接归因为供应商融资或客户押金提供现金。全年正值仍须结合前三季流出和融资依赖判断。",
+      "mechanism": "间接桥中大额非现金减值并不产生现金；经营性应付项目合计形成正向调节，但其贡献同比减少。尚未取得组成、结算、非现金及范围变动的分解，不能将该合计或保证金收付直接归因为供应商融资或客户押金提供现金。全年正值仍须结合前三季流出和融资依赖判断。 经销商被担保贷款按公开安排用于付公司货款，跟踪报告称主要用于年底前结清应付；需核真实保证支持收现流量及可持续性。年末担保余额不是年度收现流量，不能直接扣减CFO。",
       "status": "supported",
       "evidence": [
         "ks_a_e_cf",
         "ks_a_e_indirect",
         "ks_a_e_summary",
         "ks_a_e_equity",
-        "ks_a_indirect_cfo_2025"
+        "ks_a_indirect_cfo_2025",
+        "ks_credit_e_dealer_use",
+        "ks_credit_e_yearend_settlement"
       ],
-      "counterevidence": [],
+      "counterevidence": [
+        "ks_credit_e_guarantee_q1"
+      ],
       "alternatives": [
         "利润至经营现金的改善可能由非现金信用损失加回形成，不能把加回项目视为经营盈利恢复。",
         "应收净额下降也可能由核销和抵债形成；年末集中收款与下一季现金流出并存时，全年正经营现金不能证明期内无缺口。"
       ],
-      "changes_if": "取得按客户的季度及月度银行收现、非现金重组和供应商付款桥，并证明现金覆盖利息、必要资本投入和分红后仍有余量，才提高现金生成质量判断。"
+      "changes_if": "取得按客户的季度及月度银行收现、非现金重组和供应商付款桥，并证明现金覆盖利息、必要资本投入和分红后仍有余量，才提高现金生成质量判断。 将经销银行放款与本公司收款逐笔匹配，并与保证余额滚动/逾期情况联查，才能辨别可持续经营回款和依赖保证续作的收现。"
     },
     {
       "id": "ks_a_find_debt",
@@ -32752,21 +34701,26 @@
       "id": "ks_a_find_contingent",
       "title": "保证、诉讼、质量与关联支持",
       "question": "表外及或有负担是否被财务比率遗漏？",
-      "conclusion": "外部经销商保证余额{{ks_a_guarantees_external}}、保函{{ks_a_guaranteeletters}}及产品质量预计负债需逐项追踪。集团内部保证不得与已并表基础债务重复加总。",
-      "mechanism": "诉讼/质保支出和经销商代偿可能与客户弱化同时出现；控制人保证、持股及银行未用授信不等于无条件现金支持。",
+      "conclusion": "年末集团外经销担保{{ks_a_guarantees_external}}；前十笔{{ks_credit_dealer_top10}}、占{{ks_credit_dealer_top10_share}}，其中原表七笔六月担保到期金额{{ks_credit_dealer_june}}。三月末公告实际集团外余额降至{{ks_credit_guarantee_external_q1}}，降幅{{ks_credit_guarantee_external_decline}}；集团内{{ks_credit_guarantee_internal_q1}}另列。余额下降是反证，不证明前十笔已逐笔解除或截至六月仍无风险。",
+      "mechanism": "原表“担保到期日”不是公司代偿日；39户需从年末经新增、续期、偿还、解除和代偿分别桥至三月末及六月。经销贷款按披露用于付公司货款，年底结清应付可能改善收现却留下保证责任：同一客户压力可同时削弱销售/收款并触发代偿。不得将年末存量直接从CFO扣除。2026-016新增审批{{ks_credit_guarantee_new_approval}}但协议未签，不是已发生义务或确定融资。已开保函{{ks_a_guaranteeletters}}、诉讼及质保义务仍单列；集团内保证与并表基础债务去重。",
       "status": "conditional",
       "evidence": [
-        "ks_a_e_related",
+        "ks_credit_e_dealer_schedule",
+        "ks_credit_e_guarantee_q1",
+        "ks_credit_e_guarantee_approval",
+        "ks_credit_e_dealer_use",
+        "ks_credit_e_yearend_settlement",
         "ks_a_e_liabs",
-        "ks_a_e_governance",
-        "ks_a_e_maturity"
+        "ks_a_e_related"
       ],
-      "counterevidence": [],
+      "counterevidence": [
+        "ks_credit_e_guarantee_q1"
+      ],
       "alternatives": [
-        "经销商保证有反担保并不消除共同下行时的代偿压力；反担保资产可实现价值须单独核验。",
-        "集团内保证对应已并表债务时主要改变追索和现金所在法人，并非额外一份合并本金。"
+        "三月末实际余额下降且公司声明无逾期、涉诉及败诉代偿，有利于风险判断；它未说明逐户变化原因或六月状态。",
+        "反担保可能有回收价值，但需核权属、顺位、可执行性及时间；先列发行人毛付款，再列有依据的追偿，不能抵销当天现金。"
       ],
-      "changes_if": "取得债权人、被担保人、已提款余额、追索顺位、反担保资产及触发事件后，按同一经济义务去重并重算或有现金和回收。"
+      "changes_if": "全查原表前十笔及新增、展期、逾期、追偿和代偿事项；取得其余29户完整台账并核全量滚动，不能外推。把贷款放款—客户付款—发票/应收结算和实际保证状态逐户连接，区分新销售、旧款回收、预收与借新还旧；将净增或有损失与实际现金时点分别进入资产/现金质量、融资及个体调整，消除与回款和已并表债务重复计算。"
     },
     {
       "id": "ks_a_find_controls",
@@ -32957,7 +34911,7 @@
       "title": "现金分配和长期认缴约束留存资金",
       "question": "资本配置是否有利于信用缓冲？",
       "conclusion": "现金分配高于同期经营净现金，另有长期基金认缴及经销担保；在回款修复阶段削弱现金余量，属于信用审慎性问题，不直接构成侵占或违约。",
-      "mechanism": "现金分红{{ks_b_dividends25}}，为经营净现金{{ks_b_cfo25}}的{{ks_b_dividend_cfo_ratio}}；基金认缴{{ks_b_fund_commitment}}、拟存续{{ks_b_fund_duration}}，经销商等对外担保余额{{ks_b_external_guarantee}}。认缴不等于当年已付现金，反担保不消除保证责任。",
+      "mechanism": "现金分红{{ks_b_dividends25}}，为经营净现金{{ks_b_cfo25}}的{{ks_b_dividend_cfo_ratio}}；基金认缴{{ks_b_fund_commitment}}、拟存续{{ks_b_fund_duration}}，经销商等对外担保余额{{ks_b_external_guarantee}}。认缴不等于当年已付现金，反担保不消除保证责任。 上述经销担保为年末数；三月末集团外实际余额降至{{ks_credit_guarantee_external_q1}}，不沿用年末存量代表六月。",
       "status": "supported",
       "evidence": [
         "ks_b_e_distribution",
@@ -32967,7 +34921,8 @@
       ],
       "counterevidence": [
         "ks_b_e_2026_dividend",
-        "ks_b_e_fund_return"
+        "ks_b_e_fund_return",
+        "ks_credit_e_guarantee_q1"
       ],
       "alternatives": [
         "自有资金投资可带来未来增量能力，但尚无项目盈利与现金退出记录验证；合法审批不等于风险低。"
@@ -33451,6 +35406,27 @@
         "候选余额接近差额不能证明税项流量已全部归属；也不能据此认定报表重大错报或CFO应调整。"
       ],
       "changes_if": "取得当期权益税额、期初至期末DTL滚动和转股分录，并与现金流其他项税拆分核对后，可明确精确归属；剩余差额按真实来源解释。资产可实现性另按重大DTA余额评价，不因微小尾差未解释而改变信用判断。"
+    },
+    {
+      "id": "ks_credit_find_facilities",
+      "title": "未用借款与授信披露冲突，融资落实条件待核",
+      "question": "年末披露额度能否支持付款日的再融资假设？",
+      "conclusion": "年报未用银行借款额度{{ks_a_undrawn}}，跟踪报告同称2025年底的银行授信总额{{ks_credit_facility_total}}、未用{{ks_credit_facility_undrawn}}。未用披露名义差额{{ks_credit_facility_gap}}，尚未解释。两来源用词不同只是待核线索，不能据此称口径已对齐，任何一项也未作为已落实现金计入。",
+      "mechanism": "按同一法人、银行及产品对应总额、已用、未用、共享或循环额度，核抵质押、保证金、财务约束、提款前提、撤销权和有效期，再将真正可用金额匹配付款日。综合授信可能包含票据、保函或其他产品，年报借款额度也可能有不同总体；这些是候选解释，不是已查明原因。现有再融资研究分5.0/4.5及加权4.65仅保留为原条件分支，金额冲突未关闭前不能证明这一赋值或BBB+资金前提充分，也不因缺资料任意另给分。",
+      "status": "unresolved",
+      "evidence": [
+        "ks_a_e_maturity",
+        "ks_credit_e_facilities",
+        "ks_credit_facility_gap"
+      ],
+      "counterevidence": [
+        "ks_a_e_q1"
+      ],
+      "alternatives": [
+        "一季度实际新增借款证明当季有融资发生，但不能证明六月以后的未用额度、提款条件或母公司付款能力。",
+        "若合同总体差异完整解释差额且足额资源可按时提用，可支持融资能力；若主要是可撤销、受限或非现金产品，则应降低可依赖融资并重新评估因素和资金前提。"
+      ],
+      "changes_if": "取得两个披露总体的逐项桥及银行直接证据，列明每个付款日已承诺可提金额、条件满足状态和现金所在法人；仍未解释部分排除已落实来源。以核实结果更新再融资因素及资金情景；先检查付款前提是否失效，再决定等级和展望，不沿用4.65作为已证实结论。"
     }
   ],
   "procedures": [
@@ -33797,21 +35773,33 @@
     {
       "id": "ks_a_pending_contingent",
       "finding": "ks_a_find_contingent",
-      "purpose": "底层事实进一步核验",
+      "purpose": "经销保证完整性、存续状态与回款—代偿联动核验",
       "assertions": [
-        "存在性",
         "完整性",
+        "权利义务",
         "计价",
-        "权利义务"
+        "准确性",
+        "范围与截止"
       ],
-      "population": "对应底层余额、合同、交易和期后事项",
-      "selection": "尚未取得总体，不预称已抽样",
+      "population": "年末39户/160,098,145.60元经销保证，滚动至2026-03-31披露7,655.11万元及2026-06-30；集团内担保、保函、诉讼及质保分别成表，合同总体尚未取得",
+      "selection": "前十笔按金额及三月至六月到期集中全查，同时全查新增、展期、逾期、争议、追偿和代偿；取得剩余29户总体后按金额与风险决定进一步取证，不由前十笔外推",
       "steps": [
-        "银行授信合同可提条件、保证/保函对手清单和代偿历史、诉讼律师意见、产品质量预计负债测算。"
+        "取得担保台账、基础借款和保证合同、展期及解除文件、银行直接证据，与董事会/授信清单、总账和法务台账双向核完整性。",
+        "按户分别列期初、新增、续期、偿还、解除、被追偿及实际代偿，桥接年末—三月—六月；前十名匿名披露须有受控对应表，不能猜测客户身份。",
+        "核基础贷款实际偿还、余额及逾期，保证期间、索赔与法律责任终止；区分担保到期日、基础贷款到期日、付款要求日和实际代偿日。",
+        "逐户匹配银行放款、客户付科顺货款及发票/应收结算，拆新销售、旧款清收、预收和贷款周转；汇总本期实际保证支持收现，不以存量余额替代。",
+        "对代偿及预期信用损失核反担保权属、顺位、执行、变现净额与时间；先列毛付款，再列可证明的追偿，不用抵押估值抵销即期现金。",
+        "合并同一客户回款延迟、销售变化及代偿现金情景并去重；集团内保证与已并表基础债务仅列一次，核真正付款法人和资金来源。",
+        "另核保函索赔、重大诉讼律师证据及质保预计负债；输出逐项已核/未决及剩余总体，分别更新损失计量、现金资源、融资和未覆盖的评级调整。"
       ],
       "status": "awaiting_data",
-      "result": "未实施；公开资料不足以替代函证、凭证、合同或现场验证。",
-      "evidence": [],
+      "result": "公开期限表、季度分组余额和用途机制已读并复算，详见ks_credit_proc_public；本程序所列银行/客户/合同及法律证据仍未取得，未实施逐户解除和现金链测试。",
+      "evidence": [
+        "ks_credit_e_dealer_schedule",
+        "ks_credit_e_guarantee_q1",
+        "ks_credit_e_dealer_use",
+        "ks_credit_e_yearend_settlement"
+      ],
       "performed_by": null,
       "performed_on": null
     },
@@ -33992,6 +35980,63 @@
       ],
       "performed_by": "Codex：公开证据研究与十进制复算",
       "performed_on": "2026-10-03"
+    },
+    {
+      "id": "ks_credit_proc_public",
+      "finding": "ks_a_find_contingent",
+      "purpose": "公开披露金额、期限列和最新余额复核",
+      "assertions": [
+        "准确性",
+        "范围与截止",
+        "列报"
+      ],
+      "population": "2025年报PDF218、227—228；2026跟踪报告PDF17；2026-016 PDF1—4；2024保荐核查意见PDF2—3",
+      "selection": "完整核对所列原页，逐项抄取年末前十笔和其他29户合计，并读取期后公告；不是合同总体抽样",
+      "steps": [
+        "核跨页表头、原单位、时点及担保到期日；保留匿名标识和缺失的其他29户日期。",
+        "以calculate复算前十笔、六月七笔、全部39户总额及占比；按万元转元勾稽三月内外实际余额及季度变化。",
+        "对照同称年末的10.8/47亿元未用披露，保留名义差额，不自行解释或填入可用现金。",
+        "读取被担保贷款付公司货款及年末清款机制，区分公司、保荐人和原评级机构的陈述与本次实际工作。"
+      ],
+      "status": "performed",
+      "result": "已核原页列位和披露时点；年末明细及三月内外分组加总残差均为零。已识别授信披露冲突、期限集中及三月余额下降反证；未执行银行函证、合同测试、逐户解除核验或原评级师信用调查。",
+      "evidence": [
+        "ks_credit_e_facilities",
+        "ks_credit_e_dealer_schedule",
+        "ks_credit_e_guarantee_q1",
+        "ks_credit_e_guarantee_approval",
+        "ks_credit_e_dealer_use",
+        "ks_credit_e_yearend_settlement"
+      ],
+      "performed_by": "公开资料研究分析",
+      "performed_on": "2026-10-03"
+    },
+    {
+      "id": "ks_credit_pending_facilities",
+      "finding": "ks_credit_find_facilities",
+      "purpose": "解决授信披露冲突并核付款日前可用融资",
+      "assertions": [
+        "完整性",
+        "准确性",
+        "权利义务",
+        "范围与截止"
+      ],
+      "population": "两个截至2025-12-31的银行额度披露所涉全部法人、银行、品种及协议，延伸至2026-06-30和展望期逐笔到期/提款计划；总体尚未取得",
+      "selection": "对构成36.2亿元差额的所有项目全量桥接；逐笔核所有拟用于覆盖付款缺口的融资，另检查共享额度、撤销/到期、违约交叉及受限产品",
+      "steps": [
+        "分别取得年报10.8亿元及跟踪报告47亿元的编制明细，按法人—银行—合同—产品匹配总额、已用、未用；列重复、范围差异及未解释项。",
+        "核银行直接证明、签署合同及修订，分可撤销/承诺、借款/票据/保函、循环/共享额度；核抵质押、保证金、财务约束、提款先决条件及有效期。",
+        "将每笔已证实可提款金额、币种、可到款日和收款法人，与同日到期债务及用途限制对应，不能以子公司额度替代母公司已可调用资金。",
+        "用实际期后提款、偿还及协议变化更新可用余额；剔除未落实和重复资源，重算现金时点和融资能力，再判断原4.65条件分支能否保留。"
+      ],
+      "status": "awaiting_data",
+      "result": "仅完成公开披露对照；未取得完整合同总体、银行直接确认或逐笔付款资源表。金额冲突及评级资金前提尚未关闭。",
+      "evidence": [
+        "ks_a_e_maturity",
+        "ks_credit_e_facilities"
+      ],
+      "performed_by": null,
+      "performed_on": null
     }
   ],
   "requests": [
@@ -34078,10 +36123,10 @@
     {
       "id": "ks_a_req_contingent",
       "finding": "ks_a_find_contingent",
-      "request": "银行授信合同可提条件、保证/保函对手清单和代偿历史、诉讼律师意见、产品质量预计负债测算。",
-      "reason": "表外及或有负担是否被财务比率遗漏？ 所需资料用于检验该判断的金额、期限或执行依据。",
+      "request": "提供39户保证的年末至三月及六月逐户滚动、前十名受控身份对应、基础借款/保证/展期/解除合同与银行确认；经销贷款到账—付本公司货款—发票/应收结算配对；追偿/代偿历史及反担保权属顺位和现金时点。集团内担保、保函、诉讼及质保资料单列。",
+      "reason": "核原表六月七笔到期集中与三月余额下降能否对应实际解除，检验保证支持收现的持续性及同一客户压力下的现金/损失传导。",
       "owner_role": "发行人财务/法务及独立核查方",
-      "close_when": "取得债权人、被担保人、已提款余额、追索顺位、反担保资产及触发事件后，按同一经济义务去重并重算或有现金和回收。"
+      "close_when": "全量滚动闭合到最新时点，重点逐户状态由直接证据支持；剩余总体和未决明确，回款、毛代偿、追偿及并表债务去重后进入现金和评级分析，不能只以余额下降或公司声明关闭。"
     },
     {
       "id": "ks_a_req_proceeds",
@@ -34186,6 +36231,14 @@
       "reason": "确认损益税收益与余额变动差额的实际归属，避免把期末DTL余额当作当期权益流量或重复调整现金流。",
       "owner_role": "发行人财务与税务负责人",
       "close_when": "分录金额、期间、科目与附注及现金流补充资料一致；残差据实际来源说明，不能倒挤其他或把空白填零。"
+    },
+    {
+      "id": "ks_credit_req_facilities",
+      "finding": "ks_credit_find_facilities",
+      "request": "提供年报10.8亿元及跟踪报告47亿元未用额度的分别编制明细、73亿元总额对应表，按法人/银行/合同/产品列已用未用、共享额、抵质押/保证金、提款条件、撤销条款、有效期及期后实际提款；附银行直接证明和逐日付款资源表。",
+      "reason": "同称年末但相差36.2亿元，尚未解释；不能据任一披露或再融资4.65研究分证明付款日前资金可得。",
+      "owner_role": "发行人资金部门、相关银行及独立核查方",
+      "close_when": "两来源总体差额逐项有证据解释，所有拟用于覆盖缺口的资金已核法人、时点、条件与金额；未落实部分排除后重算融资因素、现金及评级条件。"
     }
   ],
   "sections": [
@@ -34254,6 +36307,7 @@
       "title": "现金、债务及资本资源",
       "findings": [
         "ks_a_find_cash",
+        "ks_credit_find_facilities",
         "ks_a_find_cfo",
         "ks_a_find_debt",
         "ks_a_find_supplier",
@@ -34289,7 +36343,13 @@
         "ks_a_operating_margin_2024",
         "ks_a_operating_margin_2025",
         "ks_a_noc360_2024",
-        "ks_a_noc360_2025"
+        "ks_a_noc360_2025",
+        "ks_a_undrawn",
+        "ks_credit_facility_undrawn",
+        "ks_credit_facility_gap",
+        "ks_credit_dealer_top10",
+        "ks_credit_dealer_june",
+        "ks_credit_guarantee_external_q1"
       ]
     },
     {
@@ -36436,14 +38496,18 @@
         "ks_a_trading_2025",
         "ks_a_undrawn",
         "ks_a_equity_2023",
-        "ks_a_cash_2023"
+        "ks_a_cash_2023",
+        "ks_credit_facility_total",
+        "ks_credit_facility_undrawn",
+        "ks_credit_facility_gap"
       ],
       "evidence": [
         "ks_r_e_finance",
         "ks_r_e_history",
         "ks_a_e_is",
         "ks_a_e_cash",
-        "ks_a_e_ar"
+        "ks_a_e_ar",
+        "ks_credit_e_facilities"
       ],
       "assumptions": [
         "仅记录本企业财务因子的研究赋值，不产生最终发行人等级、机构认证或违约概率。",
@@ -36459,7 +38523,8 @@
         "完整同控重述2023财务明细及2022期初不足，不能无标识运用标准三年20/30/50。",
         "原2023资本化全部利息缺失，精确利息倍数不计算；负EBITDA最低档由符号确定。",
         "资产权属、抵债实际成交/ECL回收参数、DTA按主体盈利、募集金用途及可提款授信条件未获底层验证。资产质量和再融资分值为明确研究判断；本次量化区间边界固定这些定性分值，不伪装成全部判断的穷尽范围。",
-        "数据先加权再赋分更贴近PDF26文字；公开原文未唯一指定对年度比率先加权还是对会计金额先加权再求比率。本案两路并列。档内中点是研究代表值，不是官方插值函数；年度分数先加权不再作为决定依据。"
+        "数据先加权再赋分更贴近PDF26文字；公开原文未唯一指定对年度比率先加权还是对会计金额先加权再求比率。本案两路并列。档内中点是研究代表值，不是官方插值函数；年度分数先加权不再作为决定依据。",
+        "年报未用银行借款10.8亿元与跟踪报告未用授信47亿元尚未对齐。原2024/2025再融资5.0/4.5及加权4.65仅保留为条件分支，不能因额度总数或一季度有借款就视为已验证；差额原因和可提款条件须核，未用额度未计入已落实现金。"
       ],
       "artifact": {
         "rows": [
@@ -36599,9 +38664,9 @@
             "unit": "定性研究分值",
             "selected_2024": "5.0",
             "selected_2025": "4.5",
-            "locator": "PDF29—30资产质量或PDF31再融资能力；PDF27表8权重",
+            "locator": "方法PDF31再融资能力及PDF27表8权重；年报PDF218与跟踪报告PDF17/印刷14的未用额度冲突待核",
             "weighted_input": null,
-            "weighted_input_formula": "现有年度定性研究判断按30/70合成；不冒充公开量化阈值",
+            "weighted_input_formula": "原年度定性研究判断30/70合成的条件分支；10.8/47亿元披露冲突未关闭，4.65并非已验证融资结论",
             "score_range": null,
             "selected_score": "4.65",
             "contribution": "0.581250"
@@ -40782,16 +42847,16 @@
             {
               "record": {
                 "id": "ks_a_undrawn",
-                "label": "未使用银行授信",
+                "label": "年报未使用银行借款额度",
                 "concept": "undrawn",
                 "value": "108000.00",
                 "context": {
                   "entity": "科顺防水科技股份有限公司",
-                  "scope": "合并",
+                  "scope": "公司银行额度披露（法人及品种待核）",
                   "start": null,
                   "end": "2025-12-31",
                   "aggregation": "instant",
-                  "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+                  "basis": "公开银行额度披露；两来源口径未调齐",
                   "measure": "money",
                   "currency": "CNY",
                   "scale": "10000",
@@ -40801,9 +42866,97 @@
                   "ks_a_e_maturity"
                 ],
                 "state": "reported",
-                "note": "原文单位万元；保留原单位值，以scale=10000换算，不将万元当元。"
+                "note": "原文单位万元，保留108,000.00及scale=10000；不同于跟踪报告未用授信47亿元，差额原因未核，均未计作已落实现金。"
               },
               "normalized_value": "1080000000.00"
+            },
+            {
+              "record": {
+                "id": "ks_credit_facility_total",
+                "label": "跟踪报告银行授信总额",
+                "concept": "facility_total",
+                "value": "73.00",
+                "context": {
+                  "entity": "科顺防水科技股份有限公司",
+                  "scope": "公司银行额度披露（法人及品种待核）",
+                  "start": null,
+                  "end": "2025-12-31",
+                  "aggregation": "instant",
+                  "basis": "公开银行额度披露；两来源口径未调齐",
+                  "measure": "money",
+                  "currency": "CNY",
+                  "scale": "100000000",
+                  "physical_unit": null
+                },
+                "evidence": [
+                  "ks_credit_e_facilities"
+                ],
+                "state": "reported",
+                "note": "截至2025年底；未取得银行分户及产品明细。"
+              },
+              "normalized_value": "7300000000.00"
+            },
+            {
+              "record": {
+                "id": "ks_credit_facility_undrawn",
+                "label": "跟踪报告未使用银行授信",
+                "concept": "facility_undrawn",
+                "value": "47.00",
+                "context": {
+                  "entity": "科顺防水科技股份有限公司",
+                  "scope": "公司银行额度披露（法人及品种待核）",
+                  "start": null,
+                  "end": "2025-12-31",
+                  "aggregation": "instant",
+                  "basis": "公开银行额度披露；两来源口径未调齐",
+                  "measure": "money",
+                  "currency": "CNY",
+                  "scale": "100000000",
+                  "physical_unit": null
+                },
+                "evidence": [
+                  "ks_credit_e_facilities"
+                ],
+                "state": "reported",
+                "note": "不证明47亿元与10.8亿元可相加、同时可用，亦未证明其覆盖法人、产品及撤销条款相同。"
+              },
+              "normalized_value": "4700000000.00"
+            },
+            {
+              "record": {
+                "id": "ks_credit_facility_gap",
+                "label": "两来源未用额度名义差额（口径未调齐）",
+                "concept": "facility_gap",
+                "op": "difference",
+                "terms": [
+                  {
+                    "ref": "ks_credit_facility_undrawn",
+                    "weight": "1"
+                  },
+                  {
+                    "ref": "ks_a_undrawn",
+                    "weight": "1"
+                  }
+                ],
+                "context": {
+                  "entity": "科顺防水科技股份有限公司",
+                  "scope": "公司银行额度披露（法人及品种待核）",
+                  "start": null,
+                  "end": "2025-12-31",
+                  "aggregation": "instant",
+                  "basis": "公开银行额度披露；两来源口径未调齐",
+                  "measure": "money",
+                  "currency": "CNY",
+                  "scale": "1",
+                  "physical_unit": null
+                },
+                "definition": "仅计算47亿元减10.8亿元的披露数差距，以确定核查重要性；不是新增可提款金额或已完成调整桥。",
+                "interpretation": "仅为已披露金额的复算；未证明合同可提款、责任解除或现金已付，不直接映射评级。",
+                "period_rule": "same",
+                "denominator": "positive",
+                "multiplier": "1"
+              },
+              "normalized_value": "3620000000.00"
             }
           ],
           "evidence": [
@@ -40960,6 +43113,13 @@
               "locator": "PDF26历史权重与赋值说明、32局限",
               "observation": "一般所用数据为近三年加权平均值，权重20/30/50；仅存在近2年合并报表及母公司报表数据时用30/70。原文未按企业存续年限定义此条件。已发布三年以上报表却缺重述细项，不据此当然套用两年例外；本案保留适配及输入顺序敏感性。",
               "reliability": "正式方法/定义原件；证明公开规则，不证明本案判断已经由原机构确认。"
+            },
+            {
+              "id": "ks_credit_e_facilities",
+              "source": "ks_r_application",
+              "locator": "PDF17/印刷14，偿债指标变化后授信段；截至2025年底，亿元",
+              "observation": "跟踪报告披露银行授信总额73.00、未使用47.00；同一时点年报PDF218披露未用银行借款额度108,000.00万元。用词不同不能解释或消除金额冲突，尚无按法人、银行、品种、已用/未用的逐项桥。",
+              "reliability": "外部评级机构的公开事实陈述；不是银行确认。其额度、信用调查和风险判断未由本次重新验证，且不采用其评级或得分作校准。"
             }
           ],
           "sources": [
@@ -41010,6 +43170,14 @@
               "published": "2026-06-09",
               "availability_note": "公开目录及正文确认发布即生效。原件PDF2–33已有逐页视觉研究；原文参数与本案研究选择分别记录。",
               "sha256": "958d18f68933123770332153692406ceca1e111e76edacce16043c9d5489cb43"
+            },
+            {
+              "id": "ks_r_application",
+              "title": "科顺防水科技股份有限公司可转换公司债券2026年跟踪评级报告",
+              "url": "https://www.lhratings.com/reports/B010330-P61284-2021-GZ2026.pdf",
+              "published": "2026-06-23",
+              "availability_note": "使用PDF6、8的方法适用性、17（印刷14）的授信及经销商融资事实陈述、23的通用等级/展望定义。外部机构评级、因素得分、预测及评价结论未用作本案输入或校准目标；读取其公开陈述不等于重复执行其银行征信或合同核查。",
+              "sha256": "846ba87096506c375195e9d1fe772781316c30a5f3e54239d54b31faea4fec41"
             }
           ],
           "historical_weights": {
@@ -41154,9 +43322,9 @@
               "unit": "定性研究分值",
               "selected_2024": "5.0",
               "selected_2025": "4.5",
-              "locator": "PDF29—30资产质量或PDF31再融资能力；PDF27表8权重",
+              "locator": "方法PDF31再融资能力及PDF27表8权重；年报PDF218与跟踪报告PDF17/印刷14的未用额度冲突待核",
               "weighted_input": null,
-              "weighted_input_formula": "现有年度定性研究判断按30/70合成；不冒充公开量化阈值",
+              "weighted_input_formula": "原年度定性研究判断30/70合成的条件分支；10.8/47亿元披露冲突未关闭，4.65并非已验证融资结论",
               "score_range": null,
               "selected_score": "4.65",
               "contribution": "0.581250"

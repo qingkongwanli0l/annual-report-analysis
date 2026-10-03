@@ -54,7 +54,7 @@ async function main() {
   card(s, 0.6, 1.5, 3.8, '2025收入', value('ks_a_revenue_2025'), `同比 ${value('ks_a_revenue_growth_2025')}`);
   card(s, 4.65, 1.5, 3.8, '2025毛利率', value('ks_a_grossmargin_2025'), `2024 ${value('ks_a_grossmargin_2024')}`);
   card(s, 8.7, 1.5, 4.0, '2025 EBITDA', value('ks_a_ebitda_2025'), '保留信用及资产减值影响', red);
-  text(s, '渠道、产品及成本变化要连接销量、售价和回款。收入类别或毛利率的变化，不能在缺少数量与价格桥时直接命名为有机增长或提价。', 0.6, 3.82, 12.1, 1.0, 22);
+  text(s, `归母利润减少 ${amount('ks_earn_parent_decline').toFixed(2)} 亿元：扣非恶化 ${amount('ks_earn_deducted_decline').toFixed(2)} 亿元，非经常支持减少 ${amount('ks_earn_nonrec_decline').toFixed(2)} 亿元。金融资产损益及应收转回分别核对，不能把恶化全部归于一次性减值。`, 0.6, 3.82, 12.1, 1.0, 22);
   text(s, `递延税收益 ${value('ks_tax_deferred_benefit')} 缓冲当期亏损，未形成现金流入；DTA可实现性仍须按纳税主体核验。季度改善和无保留审计意见不能单独排除旧应收损失或付款风险。`, 0.6, 5.12, 12.1, 1.0, 18);
 
   s = page('同行比较显示差异，也保留集团业务边界', ['ks_r_peer_finding']);
@@ -64,12 +64,12 @@ async function main() {
   text(s, '科顺的利润、杠杆及账面周转压力不能只用行业下行解释。北新含重要石膏板/涂料业务，两家同行并购贡献未全年化重构；样本不构成行业均值或定级标尺。', 0.6, 4.18, 12.1, 1.08, 21);
   text(s, '同行简式融资口径和费用化利息倍数仅供比较，不能替代本案评级方法的全部债务与全部利息。', 0.6, 5.62, 12.1, 0.55, 17, red);
 
-  s = page('现金质量取决于形成过程与季节性', ['ks_a_find_cfo','ks_a_find_q1','ks_a_e_indirect']);
+  s = page('现金质量取决于形成过程与季节性', ['ks_a_find_cfo','ks_a_find_q1','ks_a_e_indirect','ks_a_find_contingent']);
   card(s, 0.6, 1.5, 3.8, '全年经营净现金', value('ks_a_cfo_2025'), '正现金不等于正EBITDA');
   card(s, 4.65, 1.5, 3.8, '扣现金资本开支后', value('ks_a_fcf_2025'), '尚未扣并购、分配及其他投资');
   card(s, 8.7, 1.5, 4.0, '第四季CFO', value('ks_a_quarter4_cfo'), '不能掩盖前三季净流出');
   text(s, '非现金减值加回不会创造经营盈利。应收净额下降还可能来自准备、核销、抵债及范围变化，未完成滚动桥前不能直接视为客户多付现金。', 0.6, 3.85, 12.1, 1.0, 22);
-  text(s, `未经审计的一季度CFO仍为 ${value('ks_a_q1_cfo')}。年度、季度及重述比较范围分开；不以一季乘四取代全年预测。`, 0.6, 5.18, 12.1, 0.85, 19);
+  text(s, `经销贷款用于支付公司货款，同时保留公司保证责任；不以担保存量扣CFO。三月末集团外担保 ${amount('ks_credit_guarantee_external_q1').toFixed(2)} 亿元，下降 ${value('ks_credit_guarantee_external_decline')}，未证明六月逐笔解除。一季度CFO ${value('ks_a_q1_cfo')}。`, 0.6, 5.18, 12.1, 0.95, 18);
 
   s = page('一年条件资金容量：范围调整仍须补证', ['ks_horizon_find_horizon','ks_horizon_find_stress']);
   const dates = ['2026-06-30','2026-09-30','2026-12-31','2027-03-31','2027-06-30'];
@@ -101,11 +101,11 @@ async function main() {
   text(s, '两项滚动差异均回看原页后保留；另有债券期限表与固定本金合同时间轴的差额。均需解释，不能擅改原符号或直接推断整体报表失实。', 0.6, 3.61, 12.1, 1.0, 21);
   text(s, `债券账面余额/净资产 ${value('ks_d_c_book_ratio')} 与持续承诺存在待解释关系。发行条件、持续承诺、会议触发和实际加速后果分别核验，不能直接认定已违约或已获豁免。`, 0.6, 4.94, 12.1, 1.05, 20, red);
 
-  s = page('跟踪应改变决定，而不只是更新比率', ['ks_r_followup','ks_r_rating_chain'], true);
+  s = page('跟踪应改变决定，而不只是更新比率', ['ks_r_followup','ks_r_rating_chain','ks_credit_find_facilities'], true);
   table(s, [['重算后成立的条件','条件建议','行动边界'],
     ...chain.slice(2,5).map(r => [r.business+'/'+r.finance,r.issuer,'其他调整、支持及付款条件不变']),
     ['证实近期无法按约付款','退出常态矩阵','确认合同事件并立即重新定级']], 1.6, [4.2,2.2,5.7], 17);
-  text(s, '补齐跨版本现金分项与合并范围桥、银行现金与用途对账、母公司付款日、持续承诺后果和可执行融资，再重算资金边界与评级条件。改善须由完整期间和后续证据支持。', 0.6, 4.65, 12.1, 1.22, 21, 'FFFFFF');
+  text(s, `同一时点未用银行借款 ${amount('ks_a_undrawn').toFixed(1)} 亿元与未用授信 ${amount('ks_credit_facility_undrawn').toFixed(1)} 亿元尚未对齐，均不当作现金。逐项核提款条件、发行人付款日、用途及担保解除，再重算融资判断、资金边界与评级条件。`, 0.6, 4.65, 12.1, 1.22, 21, 'FFFFFF');
   await p.writeFile({ fileName: output });
   console.log(JSON.stringify({ slides: n, input, output }));
 }
