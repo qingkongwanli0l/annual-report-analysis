@@ -57,12 +57,21 @@ class ExportTests(unittest.TestCase):
                             text = ''.join(''.join(ET.fromstring(archive.read(name)).itertext())
                                            for name in archive.namelist() if name.startswith(prefix) and name.endswith('.xml'))
                         text = ''.join(text.split())
-                        for required in [expected, 'Computed bridge', '12 - 8', 'CNY', 'bridge_evidence',
-                                         'Constructed inputs only', 'Snapshot display is not recalculation',
-                                         '{"收入":"12","支出":"8"}', '["核实",null]']:
+                        required_text = [expected, 'Computed bridge', 'bridge_evidence',
+                                         'Constructed inputs only', 'Snapshot display is not recalculation']
+                        if filename == 'workbook.xlsx':
+                            required_text += ['12 - 8', 'CNY', '{"收入":"12","支出":"8"}', '["核实",null]']
+                        else:
+                            self.assertNotIn('components', text, filename)
+                            summary = text.split('Custombridge', 1)[1]
+                            self.assertIn('Computedbridge', summary, filename)
+                            self.assertIn(''.join(expected.split()), summary, filename)
+                        for required in required_text:
                             self.assertIn(''.join(required.split()), text, filename)
                         if value != '4':
                             self.assertNotIn('4.00元人民币', text, filename)
+                    artifact = json.loads((root/'output'/'quantitative-bridge.json').read_text(encoding='utf-8'))
+                    self.assertEqual(artifact, raw['quantitative'][0]['artifact'])
         raw['findings'][0]['conclusion'] = '{{unknown_result}}'
         w = Workpaper.model_validate(raw)
         with self.assertRaisesRegex(ValueError, 'unknown numeric token'):

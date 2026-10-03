@@ -12,6 +12,8 @@ The Python scripts use maintained libraries for PDF extraction, validation, nume
 
 ## Reproduce a public example
 
+The [Keshun issuer and convertible-bond case](examples/keshun-2025/README.md) connects original disclosures, applicable methods, factor judgments, cash stress, adjustments and support to conditional issuer/debt recommendations. Start with its [10-slide briefing](examples/keshun-2025/deliverables/research-brief.pptx), then inspect the shared Word, Excel and full presentation. Research adaptations, unresolved differences and missing evidence remain explicit; this is not a rating-agency action.
+
 The [CATL 2025 workpaper](examples/catl-2025/workpaper.json) has source references and actual financial calculations. [Word](examples/catl-2025/deliverables/report.docx), [Excel](examples/catl-2025/deliverables/workbook.xlsx) and [PowerPoint](examples/catl-2025/deliverables/presentation.pptx) are generated from that same workpaper.
 
 The [example guide](examples/catl-2025/README.md) provides the source checksum, page references, expected figures and retained reconciliation differences.

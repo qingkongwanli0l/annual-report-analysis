@@ -554,11 +554,16 @@ def word(data, path):
             doc.add_paragraph("分配顺位、估值、抵押池或债权改变必须重跑 recovery.py。工作簿只对已分配回收的合计、未偿与比例提供联动公式，不重新决定法律顺位。")
         else:
             doc.add_paragraph("已运行专门结果快照；本次导出未重新计算或校验。输入或方法改变后须重跑专门脚本并重新导出。")
-            for row_index, row in enumerate(rows):
-                doc.add_heading(f"结果行 {row_index}", 2)
-                table(["字段", "值"], [[key, "null" if value is None else
-                      json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list)) else str(value)]
-                      for key, value in row.items()])
+            if q["figures"]:
+                table(["指标", "结果及单位", "底稿引用"],
+                      [[f["label"], data["figures"][f["id"]]["display"], f["id"]] for f in q["figures"]])
+                doc.add_paragraph("此处仅汇总声明的指标；全部结果行、公式和未舍入值保留在工作簿及结果JSON。")
+            else:
+                for row_index, row in enumerate(rows):
+                    doc.add_heading(f"结果行 {row_index}", 2)
+                    table(["字段", "值"], [[key, "null" if value is None else
+                          json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list)) else str(value)]
+                          for key, value in row.items()])
             if not rows:
                 doc.add_paragraph("未提供 artifact.rows 结果行。")
         doc.add_paragraph("证据记录："+", ".join(q["evidence"]))

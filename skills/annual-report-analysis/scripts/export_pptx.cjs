@@ -200,13 +200,16 @@ async function main() {
     } else {
       const value = item => item === null ? 'null' : typeof item === 'object' ? JSON.stringify(item) : String(item);
       const rows = a.rows || [];
-      for (let index = 0; index < rows.length; index++) {
-        const text = Object.entries(rows[index]).map(([key, item]) => `${key}：${value(item)}`).join('\n\n');
+      const figures = q.figures.map(f => d.figures[f.id]);
+      const summaries = figures.length ? [figures.map(f => `${f.label}：${f.display}`).join('\n\n')]
+        : rows.map(row => Object.entries(row).map(([key, item]) => `${key}：${value(item)}`).join('\n\n'));
+      for (let index = 0; index < summaries.length; index++) {
+        const text = summaries[index];
         for (const body of paragraphs(text, 12, 4.5, 16)) {
-          s = page(`${q.label}：结果行 ${index}`);
+          s = page(`${q.label}：${figures.length ? '指标摘要' : '结果行 '+index}`);
           qtext(s, body, 0.65, 1.6, 12, 4.5, 16);
-          qtext(s, `证据 ${q.evidence.join(', ')}；已运行结果快照，导出未重新计算或校验。`, 0.65, 6.35, 12, 0.55, 11, '56646C');
-          s.addNotes(`${q.id}\n${q.method}\n截至 ${q.as_of}\n输入 ${q.input_refs.join(', ')}`);
+          qtext(s, `证据 ${q.evidence.join(', ')}；计算快照。全量结果、公式与精度见Excel/JSON；本次未复算。`, 0.65, 6.35, 12, 0.55, 11, '56646C');
+          s.addNotes(`${q.id}\n${q.method}\n截至 ${q.as_of}\n输入 ${q.input_refs.join(', ')}\n指标 ${figures.map(f => f.id).join(', ')}`);
         }
       }
       const details = [`方法 ${q.method}；截至 ${q.as_of}`, '已运行专门结果快照；本次导出未重新计算或校验。输入或方法改变后须重跑专门脚本并重新导出。',

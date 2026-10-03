@@ -10,6 +10,8 @@
 
 ## 看一个真实案例
 
+[科顺股份及科顺转债完整研究](examples/keshun-2025/README.md)从原件事实连接适用方法、因素判断、现金压力、调整支持和主体/债项建议；保留研究适配、待解释差异和资料条件。可先看[10页简报](examples/keshun-2025/deliverables/research-brief.pptx)，再查同源Word、Excel及完整讨论材料。该条件研究不是机构评级行动。
+
 [宁德时代2025年底稿](examples/catl-2025/workpaper.json)以官方年报为输入，复算利润现金、融资负债、权益、供应商融资和现金口径。示例成果：[Word](examples/catl-2025/deliverables/report.docx)、[Excel](examples/catl-2025/deliverables/workbook.xlsx)、[PPT](examples/catl-2025/deliverables/presentation.pptx)。这是限定范围研究示范，不是完整审计或正式评级。
 
 [复现说明与原文核对要点](examples/catl-2025/README.md)列出输入校验值、关键事实页码、预期计算及保留的差额。
