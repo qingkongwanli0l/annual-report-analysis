@@ -73,6 +73,39 @@ def panel_case():
 
 
 class ScenarioTests(unittest.TestCase):
+    def test_turnover_proxies_cannot_create_negative_cash_receipts_or_payments(self):
+        data = cash_case()
+        data.update(amount_scale=1, payables_denominator="purchases")
+        data["opening"].update(cash=20, receivables=0, inventory=0, payables=0, debt=0)
+        data["minimum_cash"]["value"] = 0
+        data["periods"][0].update(end="2025-03-31", volume=100, unit_price=1,
+            unit_cost_of_sales=.6, fixed_cash_cost=0, depreciation=0, capex=0, tax_rate=0,
+            dso=90, dio=0, dpo=90, interest_rate=0, principal=0, dividends=0)
+        for denominator in ("purchases", "cost_of_sales"):
+            invalid = deepcopy(data)
+            invalid["payables_denominator"] = denominator
+            invalid["periods"][0]["dpo"] = 120
+            with self.assertRaisesRegex(ValueError, "negative implied supplier payments"):
+                scenarios.run(invalid)
+        invalid = deepcopy(data)
+        invalid["periods"][0]["dso"] = 120
+        with self.assertRaisesRegex(ValueError, "negative implied customer collections"):
+            scenarios.run(invalid)
+        first = scenarios.run(data)["rows"][0]
+        self.assertEqual((first["customer_collections"], first["supplier_payments"], first["cfo"]), (0, 0, 0))
+        data["periods"].append({**data["periods"][0], "start": "2025-04-01", "end": "2025-06-30", "dso": 0, "dpo": 0})
+        second = scenarios.run(data)["rows"][1]
+        self.assertEqual((second["customer_collections"], second["supplier_payments"], second["cfo"]), (200, 120, 80))
+
+    def test_unpaid_turnover_boundary_allows_only_floating_point_noise(self):
+        data = cash_case()
+        data["opening"].update(receivables=0, inventory=0, payables=0, debt=0)
+        data["periods"][0].update(end="2025-04-01", volume=1, unit_price=.43,
+            unit_cost_of_sales=.43, fixed_cash_cost=0, depreciation=0, capex=0, tax_rate=0,
+            dso=91, dio=0, dpo=91, principal=0, dividends=0)
+        row = scenarios.run(data)["rows"][0]
+        self.assertEqual((row["customer_collections"], row["supplier_payments"]), (0, 0))
+
     def test_independent_base_and_downside_cash_bridge(self):
         data = cash_case()
         base = scenarios.run(data)["rows"][0]
@@ -163,6 +196,8 @@ class ScenarioTests(unittest.TestCase):
             scenarios.run(data)
         data["periods"][1]["inventory_depreciation_change"] = 10
         self.assertEqual(len(scenarios.run(data)["rows"]), 2)
+        self.assertEqual([(r["inventory_depreciation_lower"], r["inventory_depreciation_upper"])
+                          for r in scenarios.run(data)["rows"]], [(40, 50), (50, 50)])
 
     def test_decomposition_is_required_and_legacy_input_is_not_migrated(self):
         for field in ("depreciation_in_cost_of_sales", "inventory_cash_conversion", "inventory_depreciation_change"):
@@ -218,6 +253,56 @@ class ScenarioTests(unittest.TestCase):
         self.assertGreater(scenarios.run(data)["rows"][0]["cash_end"], 20)
         data["periods"][0]["dso"] = 41.1
         self.assertLess(scenarios.run(data)["rows"][0]["cash_end"], 20)
+
+    def test_reverse_precision_distinguishes_flat_cash_and_real_roots_in_any_units(self):
+        for scale in (1e-9, 1, 1e9):
+            scaled = cash_case()
+            scaled["amount_scale"] /= scale
+            for key in ("cash", "receivables", "inventory", "payables", "debt"):
+                scaled["opening"][key] *= scale
+            scaled["minimum_cash"]["value"] *= scale
+            for key in ("unit_price", "unit_cost_of_sales", "fixed_cash_cost", "depreciation", "capex",
+                        "depreciation_in_cost_of_sales", "inventory_cash_conversion", "inventory_depreciation_change",
+                        "drawdown", "principal", "dividends"):
+                scaled["periods"][0][key] *= scale
+            term = dict(period_index=0, driver="dso", bounds=[1, 2], test_date="2026-12-31",
+                        target_cash=0, definition="Constructed terminal cash", source="Constructed input",
+                        available_at="2024-12-31")
+            for target in (0, 38.75):
+                with self.subTest(scale=scale, target=target, kind="flat"):
+                    data = deepcopy(scaled)
+                    data["periods"].append({**data["periods"][0], "start": "2026-01-01", "end": "2026-12-31",
+                                            "principal": 50*scale, "dividends": (58.75-target)*scale})
+                    # First-year collection delays fully reverse when second-year ending AR is fixed.
+                    residuals = []
+                    for dso in term["bounds"]:
+                        data["periods"][0]["dso"] = dso
+                        residuals.append(scenarios.run(data)["rows"][-1]["cash_end"] - target*scale)
+                    data["reverse"] = {**term, "target_cash": target*scale}
+                    reverse = scenarios.run(data)["reverse"]
+                    self.assertEqual(reverse["status"], "not_identified")
+                    self.assertEqual(reverse["endpoint_cash_residuals"], residuals)
+                    # A real cash difference must not be swallowed by a financial/materiality tolerance.
+                    data["reverse"]["target_cash"] += 1e-8*scale
+                    self.assertEqual(scenarios.run(data)["reverse"]["status"], "not_bracketed")
+            for target, root in ((0, 48.3625), (20, 41.0625)):
+                for bounds in ([root-1e-6, root+1e-6], [root, root+1]):
+                    with self.subTest(scale=scale, target=target, kind="real_root", bounds=bounds):
+                        data = deepcopy(scaled)
+                        data["reverse"] = {**term, "test_date": "2025-12-31", "target_cash": target*scale,
+                                           "bounds": bounds}
+                        reverse = scenarios.run(data)["reverse"]
+                        self.assertEqual(reverse["status"], "converged")
+                        self.assertAlmostEqual(reverse["driver_value"], root)
+                        self.assertEqual(reverse["cash_residual"], reverse["rows"][0]["cash_end"] - target*scale)
+            data = deepcopy(scaled)
+            data["reverse"] = {**term, "driver": "unit_price", "test_date": "2025-12-31",
+                               "target_cash": 20*scale, "bounds": [(51/52-1e-4)*scale, (51/52+1e-4)*scale]}
+            reverse = scenarios.run(data)["reverse"]
+            # Cash = 650 * price - 617.5 in the unscaled unit, so the price boundary is 51/52.
+            self.assertEqual(reverse["status"], "converged")
+            self.assertAlmostEqual(reverse["driver_value"]/scale, 51/52, places=12)
+            self.assertLess(abs(reverse["cash_residual"]/scale), 1e-10)
 
     def test_input_dated_thresholds_and_future_assumption(self):
         data = cash_case()

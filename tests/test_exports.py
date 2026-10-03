@@ -224,14 +224,16 @@ class ExportTests(unittest.TestCase):
                 book = ET.fromstring(z.read('xl/workbook.xml'))
                 index = next(i for i, s in enumerate(book.find('x:sheets', ns), 1) if s.get('name') == 'Q1Cash')
                 xml = ET.fromstring(z.read(f'xl/worksheets/sheet{index}.xml'))
-                self.assertEqual(xml.find('x:autoFilter', ns).get('ref'), 'A1:AC3')
+                self.assertEqual(xml.find('x:autoFilter', ns).get('ref'), 'A1:AG3')
                 print_formula = [x.text for x in xml.findall('.//x:f', ns) if x.text in ('V2', 'V3')]
                 self.assertEqual(print_formula, ['V2', 'V3'])
                 for row, result in enumerate(artifact['rows'], 2):
                     self.assertEqual(float(xml.find(f".//x:c[@r='V{row}']/x:v", ns).text), result['cash_end'])
+                    for col, expected in [('AD', 200), ('AE', 90 if row == 2 else 94), ('AF', 0), ('AG', 50)]:
+                        self.assertEqual(float(xml.find(f".//x:c[@r='{col}{row}']/x:v", ns).text), expected)
                 area = next(x.text for x in book.findall('x:definedNames/x:definedName', ns)
                             if x.get('name') == '_xlnm.Print_Area' and x.text.startswith('Q1Cash!'))
-                self.assertEqual(area, 'Q1Cash!$A$7:$C$35')
+                self.assertEqual(area, 'Q1Cash!$A$7:$C$39')
 
     def test_explicit_times_and_default_percentage_are_distinct_formats(self):
         raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))

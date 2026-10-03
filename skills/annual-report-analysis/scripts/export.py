@@ -281,11 +281,23 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
     keys = ["period_end", "revenue", "cost_of_sales", "ebitda", "depreciation", "ebit", "cash_interest", "cash_taxes", "net_income",
             "receivables_end", "inventory_end", "implied_purchases", "payables_end", "nwc_end", "delta_nwc", "cfo",
             "capex", "drawdown", "principal", "dividends", "cash_begin", "cash_end", "debt_begin", "debt_end",
-            "cash_headroom", "funding_needed_to_floor", "interest_coverage", "debt_to_ebitda", "status"]
+            "cash_headroom", "funding_needed_to_floor", "interest_coverage", "debt_to_ebitda", "status",
+            "customer_collections", "supplier_payments", "inventory_depreciation_lower", "inventory_depreciation_upper"]
     cash = sheet(prefix+"Cash", keys, [])
     cash.autofilter(0, 0, len(snapshot["periods"]), len(keys)-1)
     cash.set_header(f"&L{prefix}Cash&R{snapshot['currency']} × {snapshot['amount_scale']:g}")
-    output = {r["period_end"]: r for r in artifact["rows"]}
+    output = {r["period_end"]: dict(r) for r in artifact["rows"]}
+    ar, ap, low, high = opening["receivables"], opening["payables"], 0, opening["inventory"]
+    for period in snapshot["periods"]:
+        row = output.get(period["end"])
+        if row is None:
+            break
+        low = max(0, low + period["inventory_depreciation_change"])
+        high = min(row["inventory_end"], high + period["inventory_depreciation_change"])
+        row.update(customer_collections=max(0, ar + row["revenue"] - row["receivables_end"]),
+                   supplier_payments=max(0, ap + row["implied_purchases"] - row["payables_end"]),
+                   inventory_depreciation_lower=low, inventory_depreciation_upper=high)
+        ar, ap = row["receivables_end"], row["payables_end"]
     for i, period in enumerate(snapshot["periods"], 2):
         d = lambda col: f"'{prefix}Drivers'!{col}{i}"
         valid = (f"IFERROR(AND(COUNT({inputs}B2:B3,{inputs}B5:B10)=8,{inputs}B2>0,{inputs}B3>0,"
@@ -298,24 +310,34 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
         previous_debt = f"X{prev}" if i > 2 else inputs+"B10"
         previous_inventory = f"K{prev}" if i > 2 else inputs+"B8"
         previous_nwc = f"N{prev}" if i > 2 else f"({inputs}B7+{inputs}B8-{inputs}B9)"
+        previous_ar = f"J{prev}" if i > 2 else inputs+"B7"
+        previous_ap = f"M{prev}" if i > 2 else inputs+"B9"
+        previous_low = f"AF{prev}" if i > 2 else "0"
+        previous_high = f"AG{prev}" if i > 2 else inputs+"B8"
+        collectible, payable = f"({previous_ar}+B{i})", f"({previous_ap}+L{i})"
+        feasible = f"AND(COUNT(AD{i}:AG{i})=4,AF{i}<=AG{i})"
         formulas = [f"{d('D')}*{d('E')}", f"{d('D')}*{d('F')}", f"B{i}-C{i}+{d('R')}-{d('G')}", d('H'),
                     f"D{i}-E{i}", f"W{i}*{d('N')}*{d('C')}/{inputs}B3", f"MAX(F{i}-G{i},0)*{d('J')}",
                     f"F{i}-G{i}-H{i}", f"B{i}*{d('K')}/{d('C')}", f"C{i}*{d('L')}/{d('C')}",
                     f"C{i}+K{i}-{previous_inventory}-{d('S')}-{d('R')}-{d('T')}",
                     f'IF(L{i}<0,NA(),IF({inputs}B4="purchases",L{i},C{i}))*{d("M")}/{d("C")}',
-                    f"J{i}+K{i}-M{i}", f"N{i}-{previous_nwc}", f"I{i}+E{i}+{d('T')}-O{i}", d('I'), d('O'), d('P'), d('Q'),
+                    f"IF({feasible},J{i}+K{i}-M{i},NA())", f"N{i}-{previous_nwc}", f"I{i}+E{i}+{d('T')}-O{i}", d('I'), d('O'), d('P'), d('Q'),
                     previous_cash, f"IF(ISNUMBER(X{i}),U{i}+P{i}-Q{i}+R{i}-S{i}-T{i},NA())", previous_debt,
                     f"IF(W{i}+R{i}-S{i}<0,NA(),W{i}+R{i}-S{i})", f"V{i}-{inputs}B5", f"MAX({inputs}B5-V{i},0)",
                     f"IF(G{i}>0,F{i}/G{i},NA())", f"IF(D{i}>0,X{i}/D{i},NA())"]
+        flow_formulas = [
+            f"IF(J{i}-{collectible}>1E-14*MAX(ABS(J{i}),ABS({collectible})),NA(),MAX(0,{collectible}-J{i}))",
+            f"IF(M{i}-{payable}>1E-14*MAX(ABS(M{i}),ABS({payable})),NA(),MAX(0,{payable}-M{i}))",
+            f"MAX(0,{previous_low}+{d('T')})", f"MIN(K{i},{previous_high}+{d('T')})"]
         row = output.get(period["end"], {})
         cash.write(i-1, 0, period["end"])
-        for col, formula in enumerate(formulas, 1):
+        for col, formula in [*enumerate(formulas, 1), *enumerate(flow_formulas, 29)]:
             if i > 2:
                 formula = f"IF({previous_cash}<0,NA(),{formula})"
             formula = f"IF({valid},{formula},NA())"
             value = row.get(keys[col])
             cash.write_formula(i-1, col, "="+formula, number, value if value is not None else "#N/A")
-        cash.write_formula(i-1, 28, f'=IF(NOT({valid}),"invalid_numeric_inputs",IFERROR(IF(V{i}<0,"unfunded_cash_shortfall",IF(V{i}<{inputs}B5,"below_cash_floor","conditional")),"not_projected"))',
+        cash.write_formula(i-1, 28, f'=IF(NOT({valid}),"invalid_numeric_inputs",IF(IFERROR({previous_cash}>=0,FALSE),IF(IFERROR({feasible},FALSE),IFERROR(IF(V{i}<0,"unfunded_cash_shortfall",IF(V{i}<{inputs}B5,"below_cash_floor","conditional")),"not_projected"),"infeasible_cash_path"),"not_projected"))',
                            None, row.get("status", "not_projected"))
     print_start = len(snapshot["periods"])+4
     print_row = print_start

@@ -345,6 +345,22 @@
       "published": "2025-04-25",
       "availability_note": "正式公开日在研究截止日前；PDF10–11页，合并现金流量表本期列",
       "sha256": "3c4a158b474797521b37f7de58d578a364c2759f5b9c2b065e6f91dbe80fe907"
+    },
+    {
+      "id": "ks_tax_s_cas18",
+      "title": "企业会计准则第18号——所得税",
+      "url": "https://kjs.mof.gov.cn/zt/kjzzss/kuaijizhunzeshishi/200806/t20080618_46230.htm",
+      "published": "2006-03-09",
+      "availability_note": "财政部官方原文发布日期；本案例采用第13、15、17、20—22条有关可实现性、计量和损益/权益归属规定，不以2006原文代替后续全部准则解释。",
+      "sha256": null
+    },
+    {
+      "id": "ks_tax_s_csrc5",
+      "title": "监管规则适用指引——会计类第5号",
+      "url": "https://www.csrc.gov.cn/csrc/c105942/c7572064/7572064/files/%E9%99%84%E4%BB%B61%EF%BC%9A%E3%80%8A%E7%9B%91%E7%AE%A1%E8%A7%84%E5%88%99%E9%80%82%E7%94%A8%E6%8C%87%E5%BC%95%E2%80%94%E2%80%94%E4%BC%9A%E8%AE%A1%E7%B1%BB%E7%AC%AC5%E5%8F%B7%E3%80%8B.pdf",
+      "published": "2025-07-18",
+      "availability_note": "发布日期由证监会原栏目正文核实：https://www.csrc.gov.cn/csrc/c100038/c7572064/content.shtml；仅采用附件第8—9页5-8。",
+      "sha256": "83d97d3b1ce1a7fa3c17bb317a2d1b5fafdb79a87af64e7a24b0818bbd2f5a1b"
     }
   ],
   "evidence": [
@@ -1551,6 +1567,41 @@
       "locator": "PDF214–216页处置子公司及其他范围变动；209页处置子公司现金影响",
       "observation": "顺控保理公司2025-11-30处置10%股权，价款21239320元，因无法控制生产经营而丧失控制权，留存40%股权。其他变更包括印尼科顺2025-11-17设立、邵阳科顺砂粉2025-09-11注销；原H1还列17项新设及2项注销，年报另列新设/注销及名称、出资额、注销净资产差异，未取得逐主体勾稽。 H1第153页未列江苏科顺铂盾，年报第215页列其于2025-05-07设立、出资900万元、51%权益；上海长城注销净资产H1列20495.50元、年报第216页列−1458504.50元，须说明范围/金额版本变更，不能自行择一作持续范围调整。",
       "reliability": "不能假设2025全年经营现金与2026持续经营范围完全一致；处置带出净现金115259825.20元不等于股权售价，不能替代剔除该子公司经营流量的调整。"
+    },
+    {
+      "id": "ks_tax_e_balance",
+      "source": "ks_a_s_25",
+      "locator": "PDF/印刷第188—189页，附注23（1）—（4）；2025-12-31期末/2024-12-31重述期初，元",
+      "observation": "DTA表四列依次为期末可抵扣差异、期末DTA、期初差异、期初DTA；资产减值准备DTA为358,583,441.98和285,562,435.83，可抵扣亏损DTA为71,461,169.87和33,735,429.18，期末亏损税基442,209,585.98。投资款公允价值变动DTA24,455,146.02在期初列，期末空白。DTL表可转换债券权益部分42,884,732.38和6,432,709.86在期末两列，期初空白。互抵金额期末33,969,328.50、期初34,893,714.42，同时冲减DTA与DTL。",
+      "reliability": "发行人正式披露，原页列位可核；余额附注未单列当期直接权益税流量。"
+    },
+    {
+      "id": "ks_tax_e_equity",
+      "source": "ks_a_s_25",
+      "locator": "PDF/印刷第160—161、195—196页；附注36、40—41，元",
+      "observation": "可转债2023年发行，2025本期发行列空白；其他权益工具期初42,885,077.75，本期减少6,433,022.74，期末36,452,055.01。本年转股金额17,700.00，增加股本2,597.00、资本溢价14,968.63。重要会计政策、估计变更及首次执行调整均列不适用。未单列权益税分录及其过渡处理，不据此认定政策变更或前期差错。",
+      "reliability": "发行人正式披露；本期减少不能全额自动当作所得税流量。"
+    },
+    {
+      "id": "ks_tax_e_pl_cash",
+      "source": "ks_a_s_25",
+      "locator": "PDF/印刷第205—206、208—209页，附注62、64；2025年度，元",
+      "observation": "当期所得税58,386,629.64，递延所得税费用-102,785,620.65，合计-44,398,991.01。现金流补充资料递延所得税资产减少-93,797,042.60、递延所得税负债增加-2,555,900.67、其他17,311,949.79；其他项未提供税项拆分。",
+      "reliability": "发行人正式披露；不能以余额变动代替完整损益税项调整，亦不能将未解释差额倒填其他或擅自修改报告CFO。"
+    },
+    {
+      "id": "ks_tax_e_cas18",
+      "source": "ks_tax_s_cas18",
+      "locator": "第13、15、17、20—22条",
+      "observation": "DTA确认以很可能取得的可抵扣应税所得额为限，按预计转回适用税率计量并逐期复核可实现性；权益交易的相关所得税计入权益，损益与企业合并税项另按其归属处理。",
+      "reliability": "财政部准则原文；适用条文与交易事实仍须对应。"
+    },
+    {
+      "id": "ks_tax_e_csrc5",
+      "source": "ks_tax_s_csrc5",
+      "locator": "PDF/印刷第8—9页，5-8发行可转换债券的递延所得税会计处理",
+      "observation": "可转债为复合工具且负债计税基础等于票面金额并产生应税暂时性差异时，该差异来自权益成分，不满足DTL豁免条件，初始税影响计入权益；后续负债折价摊销的相关DTL变动计入损益。",
+      "reliability": "证监会官方监管指引；提供准则执行口径，不能替代发行人当期分录及过渡处理披露。"
     }
   ],
   "facts": [
@@ -2568,7 +2619,7 @@
     },
     {
       "id": "ks_a_dta_2025",
-      "label": "递延所得税资产净额",
+      "label": "列报递延所得税资产（抵销后）",
       "concept": "dta",
       "value": "502848041.87",
       "context": {
@@ -2584,14 +2635,15 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_bs"
+        "ks_a_e_bs",
+        "ks_tax_e_balance"
       ],
       "state": "reported",
-      "note": "原表行名：递延所得税资产净额；列：本期/期末"
+      "note": "原表行名：递延所得税资产；附注23（3）为各纳税主体满足条件后的抵销列报；不等于集团DTA减DTL的净税资产。"
     },
     {
       "id": "ks_a_dta_2024",
-      "label": "递延所得税资产净额",
+      "label": "列报递延所得税资产（抵销后）",
       "concept": "dta",
       "value": "409050999.27",
       "context": {
@@ -2607,10 +2659,11 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_bs"
+        "ks_a_e_bs",
+        "ks_tax_e_balance"
       ],
       "state": "restated",
-      "note": "原表行名：递延所得税资产净额；列：上期/期初；同控比较口径"
+      "note": "原表行名：递延所得税资产；附注23（3）为各纳税主体满足条件后的抵销列报；不等于集团DTA减DTL的净税资产。"
     },
     {
       "id": "ks_a_othernoncurrent_2025",
@@ -3442,7 +3495,7 @@
     },
     {
       "id": "ks_a_dtl_2025",
-      "label": "递延所得税负债净额",
+      "label": "列报递延所得税负债（抵销后）",
       "concept": "dtl",
       "value": "36508115.85",
       "context": {
@@ -3458,14 +3511,15 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_bs"
+        "ks_a_e_bs",
+        "ks_tax_e_balance"
       ],
       "state": "reported",
-      "note": "原表行名：递延所得税负债净额；列：本期/期末"
+      "note": "原表行名：递延所得税负债；附注23（3）为各纳税主体满足条件后的抵销列报；不等于集团DTA减DTL的净税资产。"
     },
     {
       "id": "ks_a_dtl_2024",
-      "label": "递延所得税负债净额",
+      "label": "列报递延所得税负债（抵销后）",
       "concept": "dtl",
       "value": "39064016.52",
       "context": {
@@ -3481,10 +3535,11 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_bs"
+        "ks_a_e_bs",
+        "ks_tax_e_balance"
       ],
       "state": "restated",
-      "note": "原表行名：递延所得税负债净额；列：上期/期初；同控比较口径"
+      "note": "原表行名：递延所得税负债；附注23（3）为各纳税主体满足条件后的抵销列报；不等于集团DTA减DTL的净税资产。"
     },
     {
       "id": "ks_a_noncurrentliab_2025",
@@ -9070,7 +9125,8 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_fixed"
+        "ks_a_e_fixed",
+        "ks_tax_e_balance"
       ],
       "state": "reported",
       "note": "原表行名：递延所得税资产抵销前；列：本期/期末"
@@ -9093,7 +9149,8 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_fixed"
+        "ks_a_e_fixed",
+        "ks_tax_e_balance"
       ],
       "state": "restated",
       "note": "原表行名：递延所得税资产抵销前；列：上期/期初；同控比较口径"
@@ -12244,7 +12301,8 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_tax"
+        "ks_a_e_tax",
+        "ks_tax_e_balance"
       ],
       "state": "reported",
       "note": ""
@@ -12267,7 +12325,8 @@
         "physical_unit": null
       },
       "evidence": [
-        "ks_a_e_tax"
+        "ks_a_e_tax",
+        "ks_tax_e_balance"
       ],
       "state": "reported",
       "note": ""
@@ -12293,7 +12352,7 @@
         "ks_a_e_tax"
       ],
       "state": "reported",
-      "note": ""
+      "note": "金额是未确认递延所得税资产的可抵扣差异及亏损税基，不是DTA金额，不能直接作为权益减记。"
     },
     {
       "id": "ks_a_taxcurrent",
@@ -21040,6 +21099,98 @@
       ],
       "state": "reported",
       "note": "保留各原披露时点及版本；不同日期或期间金额差不能直接解释为经营现金调整。"
+    },
+    {
+      "id": "ks_tax_dta_impairment_2025",
+      "label": "资产减值准备对应递延所得税资产",
+      "concept": "dta_impairment",
+      "value": "358583441.98",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_tax_e_balance"
+      ],
+      "state": "reported",
+      "note": "附注23（1）—（2）；期末或同控重述期初余额。"
+    },
+    {
+      "id": "ks_tax_dta_impairment_2024",
+      "label": "资产减值准备对应递延所得税资产",
+      "concept": "dta_impairment",
+      "value": "285562435.83",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_tax_e_balance"
+      ],
+      "state": "restated",
+      "note": "附注23（1）—（2）；期末或同控重述期初余额。"
+    },
+    {
+      "id": "ks_tax_dta_loss_2024",
+      "label": "亏损相关递延所得税资产",
+      "concept": "dtaloss",
+      "value": "33735429.18",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_tax_e_balance"
+      ],
+      "state": "restated",
+      "note": "附注23（1）—（2）；期末或同控重述期初余额。"
+    },
+    {
+      "id": "ks_tax_cb_dtl_2025",
+      "label": "可转换债券权益部分递延所得税负债",
+      "concept": "cb_equity_dtl",
+      "value": "6432709.86",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_tax_e_balance"
+      ],
+      "state": "reported",
+      "note": "附注23（1）—（2）；期末或同控重述期初余额。期初列为空白，不填零；此事实只表示期末余额，不表示当期直接权益税流量。"
     }
   ],
   "calculations": [
@@ -26997,7 +27148,7 @@
     },
     {
       "id": "ks_a_dta_equity",
-      "label": "净DTA/权益",
+      "label": "列报DTA（抵销后）/总权益",
       "concept": "dta",
       "op": "ratio",
       "terms": [
@@ -27022,8 +27173,8 @@
         "scale": "1",
         "physical_unit": null
       },
-      "definition": "净DTA/权益",
-      "interpretation": "仅按列明财务口径运算；不单独决定信用等级。",
+      "definition": "资产负债表抵销后列报递延所得税资产除以合并总权益",
+      "interpretation": "分子为列报DTA，未再减列报DTL；不同于DTA-DTL净税资产占权益，亦非流动性指标。",
       "period_rule": "same",
       "denominator": "positive",
       "multiplier": "1"
@@ -30602,6 +30753,666 @@
       "period_rule": "same",
       "denominator": "positive",
       "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_netasset_2024",
+      "label": "DTA减DTL净税资产",
+      "concept": "netasset_2024",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_dta_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_dtl_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同日列报DTA减列报DTL",
+      "interpretation": "仅为集团分析净额，不改变各纳税主体抵销条件，也不是可用现金。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_netasset_2025",
+      "label": "DTA减DTL净税资产",
+      "concept": "netasset_2025",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_dta_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_dtl_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同日列报DTA减列报DTL",
+      "interpretation": "仅为集团分析净额，不改变各纳税主体抵销条件，也不是可用现金。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_netasset_increase",
+      "label": "DTA减DTL净税资产增加",
+      "concept": "netasset_increase",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_tax_netasset_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_netasset_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期末净税资产减同控重述期初净税资产",
+      "interpretation": "余额增量包括损益及直接权益等可能来源，不能自动当损益收益。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_deferred_benefit",
+      "label": "损益递延所得税收益",
+      "concept": "deferred_benefit",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_a_taxdeferred",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "递延所得税费用取相反数展示本年收益",
+      "interpretation": "非现金税项；来源含DTA与DTL变动，不能全部归于亏损DTA。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_balance_pl_gap",
+      "label": "损益递延税收益与净税资产增量之差",
+      "concept": "balance_pl_gap",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_tax_deferred_benefit",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_netasset_increase",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "损益递延税收益减净税资产增加",
+      "interpretation": "待与直接权益、范围及汇兑等税项流量对应。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_candidate_closing",
+      "label": "扣期末可转债权益DTL的候选净税资产桥",
+      "concept": "candidate_closing",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_tax_netasset_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_deferred_benefit",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_cb_dtl_2025",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期初净税资产加损益税收益，减期末可转债权益相关DTL余额作为候选解释金额",
+      "interpretation": "期末DTL是余额，不是已证实当期权益流量；期初空白未填零。此运算只检验候选解释后的差额，不能关闭完整桥。",
+      "period_rule": "rollforward",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_candidate_residual",
+      "label": "候选权益税桥未解释差额",
+      "concept": "candidate_residual",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_tax_netasset_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_candidate_closing",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "实际期末净税资产减候选桥期末金额",
+      "interpretation": "保留精确差额；不擅定为舍入、转股、汇兑或错报，其微小量级本身不构成重大信用风险。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_equitytool_decrease",
+      "label": "其他权益工具本期减少",
+      "concept": "equitytool_decrease",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_a_otherequity_2025",
+          "weight": "-1"
+        },
+        {
+          "ref": "ks_a_otherequity_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期初其他权益工具减期末其他权益工具",
+      "interpretation": "对应附注41本期减少；含转股等可能成分，不能全额认作权益税项。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_gross_dta_increase",
+      "label": "抵销前DTA增加",
+      "concept": "gross_dta_increase",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_dtacross_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_dtacross_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期末抵销前DTA减期初抵销前DTA",
+      "interpretation": "与列报DTA增量不同，互抵变化不产生集团净税资产变化。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_impairment_increase",
+      "label": "减值准备DTA增加",
+      "concept": "impairment_increase",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_tax_dta_impairment_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_dta_impairment_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期末减值准备DTA减期初",
+      "interpretation": "为余额类别变化，不冒充该类当期损益税收益。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_loss_increase",
+      "label": "亏损DTA增加",
+      "concept": "loss_increase",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_a_dtaloss",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_dta_loss_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期末亏损DTA减期初",
+      "interpretation": "依赖各纳税主体可利用的未来应税利润及抵扣期限。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_key_increase",
+      "label": "减值与亏损DTA合计增加",
+      "concept": "key_increase",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_tax_impairment_increase",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_loss_increase",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "两类DTA余额增加之和",
+      "interpretation": "不能据增量认定已经现金兑现。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_other_increase",
+      "label": "其余类别DTA净变化",
+      "concept": "other_increase",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_tax_gross_dta_increase",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_tax_key_increase",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "抵销前DTA总增量扣已列两类增量",
+      "interpretation": "确定性的其余类别合计，不是为平衡余额—损益桥而虚构的其他流量。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_key_dta",
+      "label": "减值与亏损DTA合计",
+      "concept": "key_dta",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_tax_dta_impairment_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_dtaloss",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "期末两类DTA加总",
+      "interpretation": "关注资产减值税前扣除条件及亏损利用能力。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_key_share",
+      "label": "减值与亏损DTA/抵销前DTA",
+      "concept": "key_share",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_tax_key_dta",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_dtacross_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同日减值及亏损DTA占抵销前总DTA",
+      "interpretation": "不将两类毛额与抵销后DTA作分母混比。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_netasset_equity",
+      "label": "DTA减DTL净税资产/总权益",
+      "concept": "netasset_equity",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_tax_netasset_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_equity_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "同日集团净税资产除合并总权益",
+      "interpretation": "与列报DTA占总权益不同；不能无证据直接转化为评级资本扣减。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_loss_equity",
+      "label": "亏损DTA/总权益",
+      "concept": "loss_equity",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_dtaloss",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_equity_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "已确认亏损DTA占合并总权益",
+      "interpretation": "表明该类可实现性判断涉及的资本规模；不是认定应全额减记。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_income_without_deferred",
+      "label": "剔除递延税收益后的合并净利润展示",
+      "concept": "income_without_deferred",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_a_netincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_taxdeferred",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "报告合并净利润加递延税费用，保留当期所得税费用",
+      "interpretation": "仅展示非现金税项对亏损的缓冲，不是审定利润更正或现金税。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_cf_adjustment",
+      "label": "现金流补充资料递延税调整合计",
+      "concept": "cf_adjustment",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_a_cf_dta_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_cf_dtl_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "补充资料两项递延税调整按原符号相加",
+      "interpretation": "不直接等于损益递延税费用，需核直接权益及其他非现金归属。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_tax_cf_pl_gap",
+      "label": "现金流递延税调整与损益税费差",
+      "concept": "cf_pl_gap",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ks_tax_cf_adjustment",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_taxdeferred",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "补充资料税项调整合计减损益递延税费用",
+      "interpretation": "未披露其他项税拆分，不能倒填或据此直接改动CFO。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
     }
   ],
   "reconciliations": [
@@ -31444,6 +32255,14 @@
       "expected": "ks_d_c_fund_balance_receipts",
       "tolerance": "0",
       "basis": "以已披露十进制数精确相加减；本项未以容差掩盖差额，零残差不证明所有账户无遗漏。"
+    },
+    {
+      "id": "ks_tax_r_candidate",
+      "label": "余额—损益—候选权益税桥（未证实权益流量）",
+      "actual": "ks_tax_netasset_2025",
+      "expected": "ks_tax_candidate_closing",
+      "tolerance": "0.02",
+      "basis": "元、分披露下少量加减的显示精度比较，实际残差保留。期末可转债权益DTL仅作候选金额，未取得当期权益税分录，算术接近不证明桥已完整。"
     }
   ],
   "findings": [
@@ -31863,22 +32682,33 @@
     },
     {
       "id": "ks_a_find_tax",
-      "title": "递延税及税收优惠",
-      "question": "税务资产是否能直接支持偿债？",
-      "conclusion": "净DTA{{ks_a_dta_2025}}、占权益{{ks_a_dta_equity}}，亏损相关DTA{{ks_a_dtaloss}}。递延税收益缓冲当年亏损，但并非当年现金流入。",
-      "mechanism": "未来盈利需按纳税主体、适用税率、亏损到期及可利用差异验证；现有未确认亏损并不能证明已确认部分无风险。",
+      "title": "递延税可实现性、利润缓冲与资本质量",
+      "question": "递延税资产对亏损和资本的支撑能否兑现为偿债能力？",
+      "conclusion": "列报DTA（抵销后）{{ks_a_dta_2025}}占总权益{{ks_a_dta_equity}}；DTA减DTL净税资产{{ks_tax_netasset_2025}}占总权益{{ks_tax_netasset_equity}}，两种口径不能混用。减值及亏损DTA占抵销前DTA{{ks_tax_key_share}}。当期递延税收益{{ks_tax_deferred_benefit}}缓冲亏损；仅剔除该收益并保留当期税费，合并净利润展示为{{ks_tax_income_without_deferred}}，不代表现金流入。",
+      "mechanism": "减值DTA增加{{ks_tax_impairment_increase}}、亏损DTA增加{{ks_tax_loss_increase}}，合计{{ks_tax_key_increase}}，加其余类别净变化{{ks_tax_other_increase}}形成抵销前DTA增加{{ks_tax_gross_dta_increase}}。两类期末DTA合计{{ks_tax_key_dta}}；已确认亏损DTA{{ks_a_dtaloss}}对应亏损税基{{ks_a_taxlossbasis}}。CAS18要求按纳税主体可用应税利润、期限及适用税率确认和复核。未确认差异与亏损{{ks_a_unrecognizeddta}}是税基，不能直接当DTA减记额；年报第189—190页的到期表仅列未确认亏损，不能替代已确认亏损期限。损益递延税收益含多类DTA与DTL变动，不能全部归于亏损DTA。",
       "status": "conditional",
       "evidence": [
         "ks_a_e_tax",
+        "ks_tax_e_balance",
+        "ks_tax_e_cas18",
+        "ks_tax_e_pl_cash",
         "ks_a_taxroll",
-        "ks_a_dta_equity"
+        "ks_tax_gross_dta_increase",
+        "ks_tax_key_share",
+        "ks_a_dta_equity",
+        "ks_tax_netasset_equity",
+        "ks_tax_loss_equity",
+        "ks_tax_income_without_deferred"
       ],
-      "counterevidence": [],
+      "counterevidence": [
+        "ks_a_taxcurrent",
+        "ks_a_unrecognizeddta"
+      ],
       "alternatives": [
-        "亏损和减值形成可抵扣差异不一定失效，盈利子公司未来应税利润可能支持部分回收。",
-        "合并层面的预计盈利不能自动抵销各纳税主体亏损或延长亏损结转期限。"
+        "部分可抵扣差异可由同一纳税主体未来应税利润及应税暂时性差异转回支持；合并亏损本身不证明全部DTA失效。",
+        "集团内其他主体盈利不能未经税法依据抵扣亏损，同一未来应税利润不能在多类DTA中重复使用。"
       ],
-      "changes_if": "按主体税率、优惠期限和亏损到期核验盈利预测，若不足覆盖转回则降低DTA及权益。"
+      "changes_if": "取得分主体、税区、亏损发生及到期年度、差异转回和抵扣限制后，若可用应税利润不足，则重估相关DTA；亏损DTA占总权益{{ks_tax_loss_equity}}。经证实需减记时相应降低损益和权益，不再追加一次假定税盾；按选用信用方法评价资本缓冲，并与减值情景去重。未落实的税资产不进入可调度现金，不能据税收益上调偿债能力。"
     },
     {
       "id": "ks_a_find_parent",
@@ -32596,6 +33426,31 @@
         "可执行替代是保留年报直接披露的季度净CFO为事实，毛额仅给出Δ_H=Δ_A=0的明示条件分支及未知调整传播；不得把机械差额升级为真实季度现金。"
       ],
       "changes_if": "取得截至2026-06-30已可形成的按季度、主体及抵销项目的重述桥，并解释两个合并日及金额差异后，方可关闭相应范围分支；若仅提供净CFO对账，毛额分支仍开放。"
+    },
+    {
+      "id": "ks_tax_find_bridge",
+      "title": "递延税余额—损益—候选权益桥",
+      "question": "递延税净资产增量为何小于损益税收益，能否据此重算现金流？",
+      "conclusion": "净税资产增加{{ks_tax_netasset_increase}}，损益递延税收益{{ks_tax_deferred_benefit}}，相差{{ks_tax_balance_pl_gap}}。可转债权益相关DTL期末余额{{ks_tax_cb_dtl_2025}}支持候选权益解释，尚不是已证实当期权益流量；候选桥剩余{{ks_tax_candidate_residual}}未关闭，该微小差额本身不构成重大信用风险。",
+      "mechanism": "期初DTA减DTL为{{ks_tax_netasset_2024}}，期末为{{ks_tax_netasset_2025}}。按期初加损益税收益、减期末可转债权益DTL余额作候选比较，得到{{ks_tax_candidate_closing}}。第189页该DTL期初栏为空白，不填零；第196页其他权益工具减少{{ks_tax_equitytool_decrease}}含转股等可能成分，不全额视为税项。CAS18第21—22条及CSRC会计类第5号5-8支持权益相关初始税项计权益、后续折价摊销税项计损益；可转债2023年发行，公开披露未说明本期新增列示DTL的过渡分录，不定性为新发行、政策变更或前期差错。现金流补充资料税调整{{ks_tax_cf_adjustment}}与损益递延税费用相差{{ks_tax_cf_pl_gap}}；其他{{ks_a_cf_other_2025}}无税项拆分，不能倒填差额或直接改动报告CFO。",
+      "status": "unresolved",
+      "evidence": [
+        "ks_tax_e_balance",
+        "ks_tax_e_equity",
+        "ks_tax_e_pl_cash",
+        "ks_tax_e_cas18",
+        "ks_tax_e_csrc5",
+        "ks_tax_candidate_residual",
+        "ks_tax_cf_pl_gap"
+      ],
+      "counterevidence": [
+        "ks_tax_equitytool_decrease"
+      ],
+      "alternatives": [
+        "权益相关税项是有公开金额和规则支持的主要候选解释；完整流量还需核转股、合并范围和外币折算等实际分录。",
+        "候选余额接近差额不能证明税项流量已全部归属；也不能据此认定报表重大错报或CFO应调整。"
+      ],
+      "changes_if": "取得当期权益税额、期初至期末DTL滚动和转股分录，并与现金流其他项税拆分核对后，可明确精确归属；剩余差额按真实来源解释。资产可实现性另按重大DTA余额评价，不因微小尾差未解释而改变信用判断。"
     }
   ],
   "procedures": [
@@ -33207,10 +34062,10 @@
     {
       "id": "ks_a_req_tax",
       "finding": "ks_a_find_tax",
-      "request": "按纳税主体未来应税利润预算、亏损到期表、可抵扣差异转回时点及优惠资格持续性。",
-      "reason": "税务资产是否能直接支持偿债？ 所需资料用于检验该判断的金额、期限或执行依据。",
-      "owner_role": "发行人财务/法务及独立核查方",
-      "close_when": "按主体税率、优惠期限和亏损到期核验盈利预测，若不足覆盖转回则降低DTA及权益。"
+      "request": "提供已确认DTA按纳税主体和税区的明细、已确认亏损发生年度与到期表、税前扣除条件及限制、差异转回计划和预计适用税率；将未来应税利润预算与订单/经营预测、应税暂时性差异转回逐项对应，标明优惠资格及有效期。",
+      "reason": "减值及亏损DTA构成主要税务资产，未确认亏损的期限表和集团利润不足以支持已确认部分可实现性；需要检验利润缓冲及资本质量。",
+      "owner_role": "发行人财务与税务负责人",
+      "close_when": "在同一纳税主体、税区和可用期间内证明可抵扣额，排除重复使用未来应税利润；按结果确定可实现DTA及资本影响，无法证实的部分保留不确定性，不机械全额减记。"
     },
     {
       "id": "ks_a_req_parent",
@@ -33323,6 +34178,14 @@
       "reason": "Δ_H与Δ_A分别未知；期初833421.24元存量差和季度净CFO一致不能识别毛额调整。范围调整会改变2026三情景及2027H1现金容量和融资需求。 Δ_A、Δ_H和Γ必须分离，H版净额约束中的κ_H2另行核实；实际全路径融资需要仍为null。",
       "owner_role": "发行人财务合并报表团队及年审会计师/资金部",
       "close_when": "在形成资金覆盖结论前完成版本桥；按2026-08-04付息窗口、2027-01-09最迟恢复用途窗口及2027-06-30观察期分配影响，逐项重算并以真实可得资金覆盖核实付款日。未取得毛额或抵销明细时保持开放，不以净额勾稽代替。 重跑三条2026路径、两条2027延伸及用途恢复静态观察，连同毛付款决定的M和各时点max融资需求；净CFO相符本身不能关闭。"
+    },
+    {
+      "id": "ks_tax_req_bridge",
+      "finding": "ks_tax_find_bridge",
+      "request": "提供可转债权益相关递延税期初至期末滚动、2025年当期直接权益税分录、转股及后续摊销分录、首次列示的会计处理依据，并拆出范围/汇兑等实际变动及现金流补充资料其他项中的税影响；解释候选桥差额{{ks_tax_candidate_residual}}。",
+      "reason": "确认损益税收益与余额变动差额的实际归属，避免把期末DTL余额当作当期权益流量或重复调整现金流。",
+      "owner_role": "发行人财务与税务负责人",
+      "close_when": "分录金额、期间、科目与附注及现金流补充资料一致；残差据实际来源说明，不能倒挤其他或把空白填零。"
     }
   ],
   "sections": [
@@ -33382,6 +34245,7 @@
         "ks_a_find_fixed",
         "ks_a_find_cip",
         "ks_a_find_tax",
+        "ks_tax_find_bridge",
         "ks_a_find_ar_sign"
       ],
       "figures": []

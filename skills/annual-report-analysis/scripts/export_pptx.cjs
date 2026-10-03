@@ -36,9 +36,19 @@ async function main() {
   };
   const paragraphs = (text, width, height, size) => {
     const wrapped = lines(text, width, size), capacity = Math.max(1, Math.floor(height * 72 / (size * 1.3)));
-    const count = Math.ceil(wrapped.length / Math.ceil(wrapped.length / capacity));
     const result = [];
-    for (let i = 0; i < wrapped.length; i += count) result.push(wrapped.slice(i, i + count).join('\n'));
+    for (let start = 0; start < wrapped.length;) {
+      while (start < wrapped.length && !wrapped[start].trim()) start++;
+      if (start === wrapped.length) break;
+      let end = Math.min(start + capacity, wrapped.length);
+      if (end < wrapped.length) {
+        for (let boundary = end; boundary > start; boundary--) {
+          if (!wrapped[boundary].trim()) {end = boundary; break;}
+        }
+      }
+      result.push(wrapped.slice(start, end).join('\n').trimEnd());
+      start = end;
+    }
     return result;
   };
   let n = 0;

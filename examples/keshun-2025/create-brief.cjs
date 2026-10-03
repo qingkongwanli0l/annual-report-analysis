@@ -50,12 +50,12 @@ async function main() {
   text(s, '取较弱端：最新负EBITDA、母公司负经营现金、末季回款依赖与用途限制。基础因素已反映的事项不重复扣档；未计入未经证实的支持增益。', 0.6, 3.75, 12.1, 1.0, 22);
   text(s, `同定义年度指标先30/70加权、再分档；缺完整三年重述，仍属研究适配。固定现有定性分值的量化档内范围为[${Number(q('ks_r_finance')[10].lower).toFixed(5)}, ${Number(q('ks_r_finance')[10].upper_supremum).toFixed(5)})，跨F5/F4，不能把代表值当唯一结果。`, 0.6, 5.1, 12.1, 0.95, 18, red);
 
-  s = page('收入收缩与毛利修复，并未转成盈利恢复', ['ks_a_e_is','ks_b_market_position','ks_a_find_earnings']);
+  s = page('收入收缩与毛利修复，并未转成盈利恢复', ['ks_a_e_is','ks_b_market_position','ks_a_find_earnings','ks_a_find_tax']);
   card(s, 0.6, 1.5, 3.8, '2025收入', value('ks_a_revenue_2025'), `同比 ${value('ks_a_revenue_growth_2025')}`);
   card(s, 4.65, 1.5, 3.8, '2025毛利率', value('ks_a_grossmargin_2025'), `2024 ${value('ks_a_grossmargin_2024')}`);
   card(s, 8.7, 1.5, 4.0, '2025 EBITDA', value('ks_a_ebitda_2025'), '保留信用及资产减值影响', red);
   text(s, '渠道、产品及成本变化要连接销量、售价和回款。收入类别或毛利率的变化，不能在缺少数量与价格桥时直接命名为有机增长或提价。', 0.6, 3.82, 12.1, 1.0, 22);
-  text(s, '反证保留：季度收入及利润初步改善、无保留审计意见；它们不能单独排除旧应收损失、资金限制或短期付款风险。', 0.6, 5.12, 12.1, 0.85, 19);
+  text(s, `递延税收益 ${value('ks_tax_deferred_benefit')} 缓冲当期亏损，未形成现金流入；DTA可实现性仍须按纳税主体核验。季度改善和无保留审计意见不能单独排除旧应收损失或付款风险。`, 0.6, 5.12, 12.1, 1.0, 18);
 
   s = page('同行比较显示差异，也保留集团业务边界', ['ks_r_peer_finding']);
   const peer = q('ks_r_peers');
@@ -96,7 +96,7 @@ async function main() {
   text(s, `115%已含末息。旧项目末年净现金中${value('ks_project_c_terminal_share')}依赖终期回收，不能列为已落实偿债资金。四项建设募集投入${value('ks_project_c_project_ratio')}、均延至2028年末；还须证明现金可调度至发行人。`, 0.6, 5.25, 12.1, 0.9, 19);
 
   s = page('会计与合同疑点保留原值，不倒挤为零', ['ks_a_e_ar','ks_a_e_fixed','ks_d_n_covenant','ks_r_bond_bucket_finding','ks_project_n_put']);
-  const unresolved = d.results.reconciliations.filter(r => r.status === 'unexplained_difference');
+  const unresolved = d.results.reconciliations.filter(r => ['ks_a_r_arres','ks_a_r_chuzhou'].includes(r.id) && r.status === 'unexplained_difference');
   table(s, [['需解释的原表勾稽','精确残差：人民币元'], ...unresolved.map(r => [d.reconciliations.find(x => x.id === r.id).label, Number(r.residual).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})])], 1.55, [8.6,3.5]);
   text(s, '两项滚动差异均回看原页后保留；另有债券期限表与固定本金合同时间轴的差额。均需解释，不能擅改原符号或直接推断整体报表失实。', 0.6, 3.61, 12.1, 1.0, 21);
   text(s, `债券账面余额/净资产 ${value('ks_d_c_book_ratio')} 与持续承诺存在待解释关系。发行条件、持续承诺、会议触发和实际加速后果分别核验，不能直接认定已违约或已获豁免。`, 0.6, 4.94, 12.1, 1.05, 20, red);

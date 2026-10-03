@@ -3,6 +3,7 @@ import argparse
 from copy import deepcopy
 from datetime import date, timedelta
 import json
+from math import isclose, ulp
 from pathlib import Path
 from typing import Literal
 
@@ -115,6 +116,7 @@ class Scenario(Input):
 
 def _project(s):
     cash, debt = s.opening.cash, s.opening.debt
+    receivables, payables = s.opening.receivables, s.opening.payables
     inventory = s.opening.inventory
     inventory_depreciation_low, inventory_depreciation_high = 0, inventory
     nwc = s.opening.receivables + inventory - s.opening.payables
@@ -144,6 +146,12 @@ def _project(s):
             raise ValueError("negative implied purchases: supplied inventory path is not feasible")
         ap_base = cost if s.payables_denominator == "cost_of_sales" else purchases
         ap_end = ap_base * p.dpo / days
+        collectible = receivables + revenue
+        payable = payables + purchases
+        if ar_end > collectible and not isclose(ar_end, collectible, rel_tol=1e-14):
+            raise ValueError("negative implied customer collections: receivable-days path exceeds opening receivables plus sales")
+        if ap_end > payable and not isclose(ap_end, payable, rel_tol=1e-14):
+            raise ValueError("negative implied supplier payments: payable-days path exceeds opening payables plus purchases")
         nwc_end = ar_end + inv_end - ap_end
         delta_nwc = nwc_end - nwc
         cfo = profit + p.depreciation + p.inventory_depreciation_change - delta_nwc
@@ -157,7 +165,11 @@ def _project(s):
             "depreciation": p.depreciation, "production_depreciation": production_depreciation,
             "cash_interest": interest, "cash_taxes": taxes, "net_income": profit,
             "receivables_end": ar_end, "inventory_end": inv_end, "implied_purchases": purchases,
+            "inventory_depreciation_lower": inventory_depreciation_low,
+            "inventory_depreciation_upper": inventory_depreciation_high,
             "payables_end": ap_end, "nwc_end": nwc_end, "delta_nwc": delta_nwc,
+            "customer_collections": max(0, collectible - ar_end),
+            "supplier_payments": max(0, payable - ap_end),
             "cfo": cfo, "capex": p.capex, "drawdown": p.drawdown,
             "principal": p.principal, "dividends": p.dividends,
             "cash_begin": cash, "cash_end": cash_end, "debt_begin": debt, "debt_end": debt_end,
@@ -169,6 +181,7 @@ def _project(s):
             "assumption_source": p.source,
         })
         cash, debt, inventory, nwc = cash_end, debt_end, inv_end, nwc_end
+        receivables, payables = ar_end, ap_end
         if cash < 0:
             break
     contract_results = []
@@ -199,26 +212,38 @@ def _reverse(s):
         row = next((r for r in rows if r["period_end"] == target.test_date.isoformat()), None)
         if row is None:
             raise ValueError("an earlier unfunded period prevents projection at reverse test_date")
-        return row["cash_end"] - target.target_cash
+        # Use monetary-operation precision, including cancellation at a zero cash target.
+        roundoff = sum(ulp(x) for x in (target.target_cash, s.opening.cash,
+                       s.opening.receivables, s.opening.inventory, s.opening.payables))
+        roundoff += sum(ulp(r[key]) for r in rows if r["period_end"] <= row["period_end"]
+                        for key in ("revenue", "cost_of_sales", "ebitda", "depreciation",
+                                    "cash_interest", "cash_taxes", "nwc_end", "delta_nwc", "cfo",
+                                    "cash_begin", "capex", "drawdown", "principal", "dividends"))
+        return row["cash_end"] - target.target_cash, 8 * roundoff
 
     low, high = target.bounds
-    a, b = objective(low), objective(high)
-    if a == 0 and b == 0:
+    (a, a_roundoff), (b, b_roundoff) = objective(low), objective(high)
+    a_zero, b_zero = abs(a) <= a_roundoff, abs(b) <= b_roundoff
+    if a_zero and b_zero:
         return {"status": "not_identified", "definition": target.definition,
                 "bounds": [low, high], "endpoint_cash_residuals": [a, b],
-                "reason": "both bounds already meet the cash target; no unique driver boundary established"}
-    if a * b > 0:
+                "reason": "both bounds meet the cash target within floating-point precision; no unique driver boundary established"}
+    if not (a_zero or b_zero) and (a > 0) == (b > 0):
         return {"status": "not_bracketed", "definition": target.definition,
                 "bounds": [low, high], "endpoint_cash_residuals": [a, b],
                 "reason": "no sign change within supplied bounds; no failure boundary established"}
-    solution = root_scalar(objective, bracket=(low, high), method="brentq")
+    if a_zero or b_zero:
+        root, converged = (low if a_zero else high), True
+    else:
+        solution = root_scalar(lambda value: objective(value)[0], bracket=(low, high), method="brentq", xtol=ulp(0.0))
+        root, converged = float(solution.root), solution.converged
     changed = deepcopy(snapshot)
-    changed["periods"][target.period_index][target.driver] = float(solution.root)
+    changed["periods"][target.period_index][target.driver] = root
     rows, contracts = _project(Scenario.model_validate(changed))
-    return {"status": "converged" if solution.converged else "not_converged",
+    return {"status": "converged" if converged else "not_converged",
             "driver": target.driver, "period_index": target.period_index,
-            "driver_value": float(solution.root), "test_date": target.test_date.isoformat(),
-            "target_cash": target.target_cash, "cash_residual": objective(solution.root),
+            "driver_value": root, "test_date": target.test_date.isoformat(),
+            "target_cash": target.target_cash, "cash_residual": objective(root)[0],
             "bounds": [low, high], "endpoint_cash_residuals": [a, b],
             "definition": target.definition, "source": target.source,
             "rows": rows, "contracts": contracts,

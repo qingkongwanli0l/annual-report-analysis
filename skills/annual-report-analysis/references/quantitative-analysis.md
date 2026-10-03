@@ -117,6 +117,8 @@ Inventory_end = Cost × DIO / D
 Production_depreciation = depreciation_in_cost_of_sales + inventory_depreciation_change
 Purchases = Cost + Inventory_end - Inventory_begin - inventory_cash_conversion - Production_depreciation
 AP_end = selected_payables_denominator × DPO / D
+Customer_collections = AR_begin + Revenue - AR_end
+Supplier_payments = AP_begin + Purchases - AP_end
 NWC_end = AR_end + Inventory_end - AP_end
 CFO = Net_income + depreciation + inventory_depreciation_change - (NWC_end - NWC_begin)
 Cash_end = Cash_begin + CFO - capex + drawdown - principal - dividends
@@ -129,7 +131,13 @@ Debt_end = Debt_begin + drawdown - principal
 
 内部生产现金投入在本期支付，无应付薪酬变化；存货无折旧摊销以外的非现金变化。供应商采购和应付只涵盖存货投入，无增值税、预付款、资本性应付及供应商非现金结算。若实际企业不满足这些简化，先补相应明细桥，不能将混合应付余额直接塞入DPO。营业成本内折旧摊销不得超过营业成本或损益总折旧摊销；推导的本期生产折旧摊销和供应商采购不得为负。
 
+在这些简化下，模型客户收款和供应商付款均不能为负：期末应收不得超过期初应收加本期收入，期末应付不得超过期初应付加供应商采购，即使用营业成本作为DPO代理分母也一样。逐期保留两项收付款以核对直接现金桥；逆向求解的区间也须满足这些条件。脚本仅容纳浮点运算的微小误差，不将不可能的应付增长解释成融资来源，也不默默压低周转天数。真实退款、退货、预收预付或非现金变动需要另建明细桥，不能用本模型的负收付款代替。
+
+**构造反例。** 90天内收入100、供应商采购60，期初应收和应付均为零；DSO=0、DPO=120会推得应付80和付款−20，错误地使CFO变成120。该路径不成立，延迟全部60采购款也只能保留100销售收款。改为DSO=DPO=90时，两项收付款均为零；下一期还须承接应收100、应付60，不能每期重新使用零期初。
+
 存货内含折旧摊销余额的可行区间从`[0,期初总存货]`开始，每期加上`inventory_depreciation_change`后与`[0,期末总存货]`取交集，并沿期间保留；空集即拒绝该路径。这只是必要可行性条件，不识别实际期初折旧摊销余额，也不证明全部存货成本构成真实。
+
+Excel现金表同时列出客户收款、供应商付款和存货内含折旧摊销的可行区间。修改数字驱动后，负收付款或跨期区间为空会使现金路径返回`#N/A`及`infeasible_cash_path`，相关合同指标不再判为通过；恢复合法输入后可重新计算。金额只是浮点尾差时采用与脚本相同的数值处理，不把机器精度容差解释为财务重要性。
 
 模型只使用输入的融资金额，绝不自动补现金。`cash_end<0`代表未融资缺口，该期保留计算，后续期停止并计入`unprojected_periods`；必须先解释资金方案才能继续。`funding_needed_to_floor`只表示补到输入最低现金需要的金额，不表示可取得的授信。已经低于最低运营现金但仍非负的期间会继续计算，并明确标记`below_cash_floor`。
 
@@ -140,6 +148,8 @@ Debt_end = Debt_begin + drawdown - principal
 逆向压力只解决一个有经济含义的标量问题：在指定期间改变`volume/unit_price/unit_cost_of_sales/fixed_cash_cost/dso/dio/dpo`之一，使指定期末现金等于输入目标。调用SciPy的Brent求根，需提供经济可行的上下界；无异号时返回`not_bracketed`，不扩大边界到任意数值求出答案。若更早现金断裂导致目标期不可预测，不能继续假定正常经营求根。[SciPy求根要求](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html)
 
 逆向结果保存根、现金残差、区间端点残差和根处的整条现金/债务路径。它是条件边界，不是违约概率、置信区间或“最可能”情景。
+
+两端现金都在货币运算的浮点精度内达到目标时，返回`not_identified`并保留原始残差，不能把尾差异号当作唯一压力边界。求解金额型驱动时，Brent的绝对终止容差取最小正浮点数，避免仅换金额单位就提前停在错误端点；相对精度仍按求根库处理。数值精度不替代最低运营现金、财务重要性或经济可行性判断。[SciPy终止条件](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brentq.html)
 
 ### 独立复算基准
 
