@@ -122,7 +122,7 @@ def workbook(w, data, path):
             ws.set_row(0, 32)
             for rowno, row in enumerate(rows, 1):
                 for col, item in enumerate(row):
-                    ws.write(rowno, col, item, wrap)
+                    ws.write(rowno, col, json.dumps(item, ensure_ascii=False) if isinstance(item, (dict, list)) else item, wrap)
                 if name == "Readme":
                     lines = max(sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // (widths[col]-2)
                                     for line in str(item).split("\n")) for col, item in enumerate(row))

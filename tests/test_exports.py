@@ -38,7 +38,8 @@ class ExportTests(unittest.TestCase):
                                   input_refs=[], evidence=['bridge_evidence'], assumptions=['Constructed inputs only'],
                                   limitations=['Snapshot display is not recalculation'],
                                   artifact={'input_snapshot': {'left': '12', 'right': '8'},
-                                            'rows': [{'metric': 'Computed bridge', 'formula': '12 - 8', 'result': '4', 'unit': 'CNY'}]},
+                                            'rows': [{'metric': 'Computed bridge', 'formula': '12 - 8', 'result': '4', 'unit': 'CNY',
+                                                      'components': {'收入': '12', '支出': '8'}, 'conditions': ['核实', None]}]},
                                   figures=[dict(id='bridge_value', label='Computed bridge', row=0, field='result', context=context)])],
         }
         with tempfile.TemporaryDirectory() as directory:
@@ -57,7 +58,8 @@ class ExportTests(unittest.TestCase):
                                            for name in archive.namelist() if name.startswith(prefix) and name.endswith('.xml'))
                         text = ''.join(text.split())
                         for required in [expected, 'Computed bridge', '12 - 8', 'CNY', 'bridge_evidence',
-                                         'Constructed inputs only', 'Snapshot display is not recalculation']:
+                                         'Constructed inputs only', 'Snapshot display is not recalculation',
+                                         '{"收入":"12","支出":"8"}', '["核实",null]']:
                             self.assertIn(''.join(required.split()), text, filename)
                         if value != '4':
                             self.assertNotIn('4.00元人民币', text, filename)
