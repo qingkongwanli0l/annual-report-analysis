@@ -116,6 +116,10 @@ def workbook(w, data, path):
             for rowno, row in enumerate(rows, 1):
                 for col, item in enumerate(row):
                     ws.write(rowno, col, item, wrap)
+                if name == "Readme":
+                    lines = max(sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // (widths[col]-2)
+                                    for line in str(item).split("\n")) for col, item in enumerate(row))
+                    ws.set_row(rowno, 15 * lines + 3)
             ws.autofilter(0, 0, max(1, len(rows)), len(headers)-1)
             for col in range(len(headers)):
                 ws.set_column(col, col, widths[col] if widths else 28)
@@ -131,6 +135,7 @@ def workbook(w, data, path):
         sheet("Readme", ["字段 / field", "内容 / value"], [
             ["任务", data["mandate"]["title"]], ["版本", w.mandate.version], ["信息截止", str(w.mandate.cutoff)],
             ["范围", w.mandate.scope], ["准则", w.mandate.accounting_basis],
+            *[["方法与适用范围", text] for text in data["mandate"]["methods"]],
             ["单位", "Facts D=原始值，E=倍数，F=基础单位。Calculations D=基础单位，E=展示值。"],
             ["复算", "数值公式可编辑；修改主体、期间、币种、规则或资料后须重跑 export.py 复核口径。"],
             ["勾稽精度", "金额残差按本次Decimal输入/计算保留的小数位ROUND，消除Excel二进制尾差，不改变业务容差；提高输入小数精度后须重跑导出。"],
@@ -156,7 +161,7 @@ def workbook(w, data, path):
                      c.context.entity, c.context.scope, str(c.context.start or ""), str(c.context.end)] for c in w.calculations]
         ws = sheet("Calculations", ["ID", "指标或桥", "基础单位公式", "基础单位结果", "展示结果", "状态", "不计算原因",
                                     "定义", "解释边界", "展示单位", "倍数", "实体", "范围", "开始", "结束"], calcrows,
-                   [14, 20, 20, 24, 24, 13, 18, 22, 24, 12, 8, 16, 10, 11, 11])
+                   [14, 20, 44, 24, 24, 13, 18, 22, 24, 12, 8, 16, 10, 11, 11])
         for i, c in enumerate(w.calculations, 2):
             r = rs[c.id]
             expr = excel_expression(c, cells) if len(c.terms) == 2 or c.op == "sum" else "=NA()"
@@ -452,11 +457,13 @@ def word(data, path):
     doc.add_paragraph(m["title"], "Title")
     doc.add_paragraph(f"{m['period_start']} — {m['period_end']}　资料截止 {m['cutoff']}　底稿 {m['version']}")
     doc.add_paragraph(m["purpose"])
+    for text in m["methods"]:
+        doc.add_paragraph("方法与适用范围："+text)
     findings = {f["id"]: f for f in data["findings"]}
     if data["findings"]:
         doc.add_heading("核心判断", 1)
     for f in data["findings"][:3]:
-        doc.add_paragraph(f"{f['conclusion']} [{f['id']}; {', '.join(f['evidence'])}]")
+        doc.add_paragraph(f"[{f['status']}] {f['conclusion']} [{f['id']}; {', '.join(f['evidence'])}]")
     doc.add_paragraph(f"范围：{m['scope']}。会计基础：{m['accounting_basis']}。")
     for text in m["limitations"]:
         doc.add_paragraph(text)
@@ -468,7 +475,7 @@ def word(data, path):
                     ", ".join(data['figures'][ref]['evidence'])] for ref in s["figures"]])
         for ref in s["findings"]:
             f = findings[ref]
-            doc.add_heading(f["title"]+f" [{ref}]", 2)
+            doc.add_heading(f["title"]+f" [{ref}; {f['status']}]", 2)
             for text in (f["conclusion"], f["mechanism"], "证据："+", ".join(f["evidence"]),
                          "反证："+(", ".join(f["counterevidence"]) or "尚无足以排除其他解释的额外证据"),
                          "其他解释："+"；".join(f["alternatives"]), "判断改变条件："+f["changes_if"]):

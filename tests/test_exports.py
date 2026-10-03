@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -17,6 +18,38 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_methods_and_evidence_status_remain_visible_in_all_deliverables(self):
+        method = 'Example corporate methodology 2026-10-03'
+        for status in ('conditional', 'unresolved'):
+            w = Workpaper.model_validate({
+                'mandate': dict(title='Issuer credit review', entity='Example issuer', industry='manufacturing',
+                                purpose='Issuer credit recommendation', period_start='2025-01-01',
+                                period_end='2025-12-31', cutoff='2026-10-03', accounting_basis='CAS',
+                                scope='consolidated', version='1', methods=[method]),
+                'sources': [], 'evidence': [], 'facts': [],
+                'findings': [dict(id='rating', title='Credit recommendation', question='What supports the recommendation?',
+                                  conclusion='The recommendation depends on financing evidence.', mechanism='Funding availability.',
+                                  status=status, evidence=[], alternatives=[], changes_if='Reassess if financing is withdrawn.')],
+                'sections': [dict(title='Credit recommendation', findings=['rating'])],
+            })
+            with tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                data = prepare(w, evaluate(w))
+                word(data, root/'report.docx')
+                workbook(w, data, root/'workbook.xlsx')
+                (root/'presentation-data.json').write_text(json.dumps(data, ensure_ascii=False), encoding='utf-8')
+                script = Path(__file__).resolve().parents[1]/'skills/annual-report-analysis/scripts/export_pptx.cjs'
+                subprocess.run(['node', str(script), str(root/'presentation-data.json'), str(root/'presentation.pptx')], check=True)
+                for filename, members in [('report.docx', ['word/document.xml']),
+                                          ('workbook.xlsx', ['xl/sharedStrings.xml']),
+                                          ('presentation.pptx', None)]:
+                    with self.subTest(status=status, file=filename), ZipFile(root/filename) as archive:
+                        visible = members or [name for name in archive.namelist()
+                                              if name.startswith('ppt/slides/slide') and name.endswith('.xml')]
+                        text = '\n'.join(''.join(ET.fromstring(archive.read(name)).itertext()) for name in visible)
+                        self.assertIn(method, text)
+                        self.assertIn(status, text)
+
     def test_small_cny_and_direct_finding_numbers_keep_their_meaning(self):
         raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
         raw['findings'][0]['conclusion'] = 'Cash bridge {{cfo_bridge}}'

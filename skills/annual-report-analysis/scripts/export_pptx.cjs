@@ -59,6 +59,12 @@ async function main() {
   const unknownDates = d.sources.filter(source => source.published === null).map(source => source.id);
   if (unknownDates.length) s.addText(`来源 ${unknownDates.join(', ')} 公布日期未核验。不得将当前内容分析称为历史时点可用性验证。`,
     {x:0.7,y:5.35,w:11.8,h:0.95,fontSize:16,color:'FFFFFF',margin:0,fit:'shrink'});
+  if (d.mandate.methods.length) {
+    for (const body of paragraphs(d.mandate.methods.join('\n\n'), 12, 4.9, 16)) {
+      s = page('采用方法与适用范围');
+      s.addText(body, {x:0.65,y:1.6,w:12,h:4.9,fontSize:16,color:ink,margin:0,valign:'top',lineSpacingMultiple:1});
+    }
+  }
   if (d.mandate.limitations.length) {
     for (const body of paragraphs(d.mandate.limitations.join('\n\n'), 12, 4.9, 16)) {
       s = page('分析范围与限制');
@@ -90,10 +96,10 @@ async function main() {
       s = page(section.title + (chunk.f ? '' : '：章节指标') + (pages.length > 1 ? ` ${index + 1}` : ''));
       const f = chunk.f;
       if (f) {
-        const heading = fitted(f.title, width, 1.1, 22);
+        const heading = fitted(`[${f.status}] ${f.title}`, width, 1.1, 22);
         s.addText(heading.text, { x: 0.65, y: 1.58, w: width, h: 1.1, fontSize: heading.size, color: dark, bold: true, margin: 0, valign:'top', lineSpacingMultiple:1 });
         s.addText(chunk.body, { x: 0.65, y: 2.87, w: width, h: 3.35, fontSize: chunk.size, color: ink, margin: 0, valign:'top', lineSpacingMultiple:1 });
-        s.addNotes([f.id, f.question, f.mechanism, ...f.alternatives, `Evidence: ${f.evidence.join(', ')}`, `Counterevidence: ${f.counterevidence.join(', ')}`].join('\n'));
+        s.addNotes([f.id, `Status: ${f.status}`, f.question, f.mechanism, ...f.alternatives, `Evidence: ${f.evidence.join(', ')}`, `Counterevidence: ${f.counterevidence.join(', ')}`].join('\n'));
       }
       figures.forEach((v, i) => {
         const scale = f ? Math.min(1, 4 / figures.length) : 1;
