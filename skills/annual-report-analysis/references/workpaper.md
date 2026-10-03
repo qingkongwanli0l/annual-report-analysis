@@ -30,7 +30,7 @@ PDF提取默认保留页码与文本。`--tables`另外给出候选表的边界�
 | mandate | 标题、实体、行业、目的、期间、资料截止日、准则、范围、语言、版本、方法版本和任务限制 |
 | sources | 文件/网页 ID、标题、正式 URL 或上传文件路径、公布日期（未核验填 null）、availability_note 时间依据与限制，PDF 的 SHA256 |
 | evidence | 来源 ID、PDF 页码及印刷页/附注/表/行、实际观察与可靠性限制；文字事实也在此保存 |
-| facts | 原始科目、统一概念名、原值、context、证据 IDs；reported/restated/assumption/missing 状态和调整或缺失说明 |
+| facts | 原始科目、统一概念名、原值、context、证据 IDs；reported/restated/assumption/missing 状态和调整或缺失说明。自行汇总或调整的金额保存为计算记录，不能标作原文 reported 值 |
 | calculations | 引用事实或前序计算的确定性运算、结果口径、定义、经济解释边界；禁止直接提供计算结果 |
 | reconciliations | 实际与目标的引用、基础单位容差及其来源；残差始终公开 |
 | findings | 决策问题、结论、机制、支持证据和反证、竞争解释、结论改变条件；supported/conditional/unresolved |
@@ -95,7 +95,7 @@ PDF提取默认保留页码与文本。`--tables`另外给出候选表的边界�
 
 原始余额事实仍用 `instant, start=null`。滚动计算需要单独记录运算窗口：例如 `cash_end_rebuilt` 使用 `sum` 引用期初现金及本期经营、投资、筹资、汇率等实际变动，`period_rule=rollforward`，计算 context 为 `aggregation=instant, start=2025-01-01, end=2025-12-31`；这里 start 表示桥的运算窗口，结果仍是期末余额。可将其与 `instant, start=null, end=2025-12-31` 的已披露期末现金勾稽。不要为配合计算去改原始余额事实。
 
-由前序计算得到的余额，可填写 `calculations.concept`（例如 `adjusted_invested_capital`），期初和期末定义必须相同，再用 `average_balance` 引用两项计算。不能把已算出的金额重新标为 reported 事实；concept 只是明确口径，不会证明调整在经济上正确。
+由前序计算得到的余额，可填写 `calculations.concept`（例如 `adjusted_invested_capital`），期初和期末定义必须相同，再用 `average_balance` 引用两项计算。concept 只是明确口径，不会证明调整在经济上正确；因分母非正而停止计算前，也须保留实际分母算式，不能从净现金或资产构成直接推定其符号。
 
 金额按 `原值 × scale` 统一到基础单位后计算，结果再除以输出 scale。币种、主体、范围或准则不一致时不计算。跨准则或主体调整先给完整对照及证据；不要为通过脚本擅自改 context。
 
