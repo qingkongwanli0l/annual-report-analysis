@@ -116,6 +116,7 @@ class Scenario(Input):
 def _project(s):
     cash, debt = s.opening.cash, s.opening.debt
     inventory = s.opening.inventory
+    inventory_depreciation_low, inventory_depreciation_high = 0, inventory
     nwc = s.opening.receivables + inventory - s.opening.payables
     rows = []
     for p in s.periods:
@@ -134,6 +135,10 @@ def _project(s):
         profit = ebit - interest - taxes
         ar_end = revenue * p.dso / days
         inv_end = cost * p.dio / days
+        inventory_depreciation_low = max(0, inventory_depreciation_low + p.inventory_depreciation_change)
+        inventory_depreciation_high = min(inv_end, inventory_depreciation_high + p.inventory_depreciation_change)
+        if inventory_depreciation_low > inventory_depreciation_high:
+            raise ValueError("inventory depreciation balance cannot fit within total inventory across forecast periods")
         purchases = cost + inv_end - inventory - p.inventory_cash_conversion - production_depreciation
         if purchases < 0:
             raise ValueError("negative implied purchases: supplied inventory path is not feasible")

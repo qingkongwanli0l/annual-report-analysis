@@ -128,7 +128,7 @@ Excel 金额残差按两端 Decimal 基础单位结果保留的小数位计算 R
 }]
 ```
 
-`row` 是 `artifact.rows` 从0开始的行索引，`field` 是该行已有字段的准确名称；调整行顺序时同步更新索引。该字段必须是有限数字或十进制字符串，缺失结果用显式 `null`，引用显示“未计算 / unavailable”；不存在的行、字段或 ID 报错。context 由分析者说明结果口径和单位，导出器不从字段名或算式猜测。`{{capital_scope_difference}}`、findings 的证据与反证、procedures 的证据和 sections.figures 均可引用该 ID；证据追溯保留 quantitative 证据及输入事实/计算的原文证据。它不是基础 calculations、reconciliations 或其他 quantitative.input_refs 的输入，不绕过基础运算的口径检查。
+`row` 是 `artifact.rows` 从0开始的行索引，`field` 是该行已有字段的准确名称；调整行顺序时同步更新索引。该字段必须是有限数字或十进制字符串，缺失结果用显式 `null`，引用显示“未计算 / unavailable”；不存在的行、字段或 ID 报错。context 由分析者说明结果口径和单位，导出器不从字段名或算式猜测。`{{capital_scope_difference}}`、findings 的证据与反证、procedures 的证据和 sections.figures 均可引用该 ID；证据追溯保留 quantitative 证据及输入事实/计算的原文证据。后置 quantitative.input_refs 可引用此前 quantitative.figures，证据沿链传递；前向、自身和循环引用拒绝，前置模型as_of不得晚于引用者（双方有时间戳时按可比较时区精确比较，否则按日期精度）。它仍不是基础 calculations 或 reconciliations 的输入，不绕过基础运算的口径检查；后置结果也是已运行快照，导出不自动重算模型。
 
 Excel 中 Facts 的原值和倍数分别保留，基础单位值和指标为公式并含计算缓存。修改数值可供研判；修改主体/币种/期间或方法要重跑脚本，Excel 本身不重新执行语义检查。缺失或被判定不适用的结果用 `#N/A`，不能给正常数值外观。
 

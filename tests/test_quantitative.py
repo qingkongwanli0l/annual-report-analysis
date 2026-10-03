@@ -138,6 +138,32 @@ class ScenarioTests(unittest.TestCase):
                                       "implied_purchases": 100, "payables_end": 40, "cfo": 90, "cash_end": 110}.items():
                     self.assertAlmostEqual(row[key], expected)
 
+    def test_inventory_depreciation_cannot_exceed_available_inventory(self):
+        for change, depreciation in [(100, 30), (-60, 70)]:
+            with self.subTest(inventory_depreciation_change=change):
+                data = manufacturing_case()
+                data["periods"][0].update(depreciation=depreciation, depreciation_in_cost_of_sales=depreciation,
+                    inventory_cash_conversion=20, inventory_depreciation_change=change, dio=273.75, dpo=0)
+                # Opening inventory is 50 and ending inventory is 90: neither +100 nor -60 is possible.
+                with self.assertRaisesRegex(ValueError, "inventory depreciation balance"):
+                    scenarios.run(data)
+
+    def test_inventory_depreciation_feasibility_carries_across_periods(self):
+        data = manufacturing_case()
+        data["periods"][0].update(depreciation=30, depreciation_in_cost_of_sales=30,
+            inventory_cash_conversion=20, inventory_depreciation_change=40, dio=50*365/120, dpo=0)
+        self.assertEqual(len(scenarios.run(data)["rows"]), 1)
+        independent_second = deepcopy(data)
+        independent_second["periods"][0]["inventory_depreciation_change"] = 20
+        self.assertEqual(len(scenarios.run(independent_second)["rows"]), 1)
+        data["periods"].append({**data["periods"][0], "start": "2026-01-01", "end": "2026-12-31",
+                                "inventory_depreciation_change": 20})
+        # First ending embedded depreciation is [40,50]; another +20 cannot fit in inventory of 50.
+        with self.assertRaisesRegex(ValueError, "inventory depreciation balance"):
+            scenarios.run(data)
+        data["periods"][1]["inventory_depreciation_change"] = 10
+        self.assertEqual(len(scenarios.run(data)["rows"]), 2)
+
     def test_decomposition_is_required_and_legacy_input_is_not_migrated(self):
         for field in ("depreciation_in_cost_of_sales", "inventory_cash_conversion", "inventory_depreciation_change"):
             data = manufacturing_case()

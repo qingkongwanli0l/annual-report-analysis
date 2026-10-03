@@ -24,6 +24,49 @@ class WorkpaperTests(unittest.TestCase):
     def fact(self, id):
         return next(f for f in self.data['facts'] if f['id'] == id)
 
+    def quantitative_chain(self):
+        self.data['quantitative'] = [dict(
+            id=f'model_{i}', label='Constructed model snapshot', method='constructed_snapshot', as_of='2026-03-10',
+            input_refs=['gross_profit' if i == 0 else f'model_figure_{i-1}'],
+            evidence=['E_BS'] if i == 0 else ['E_CF'] if i == 1 else [],
+            assumptions=['Constructed supplied result, not recomputed during export'], limitations=[],
+            artifact={'input_snapshot': {'input': 'constructed'}, 'rows': [{'result': str(i+1)}]},
+            figures=[dict(id=f'model_figure_{i}', label='Stored model result', row=0, field='result',
+                          context=self.fact('revenue')['context'])]) for i in range(3)]
+        return self.data['quantitative']
+
+    def test_chained_model_figures_preserve_values_and_transitive_evidence(self):
+        self.quantitative_chain()
+        w = Workpaper.model_validate(self.data)
+        data = prepare(w, evaluate(w))
+        self.assertEqual(data['figures']['model_figure_2']['value'], '3')
+        self.assertEqual(data['figures']['model_figure_2']['evidence'], ['E_BS', 'E_CF', 'E_PL'])
+        self.assertEqual(data['quantitative'][2]['input_refs'], ['model_figure_1'])
+
+    def test_model_figure_inputs_reject_forward_self_and_circular_references(self):
+        for variant in ['reordered', 'self', 'cycle']:
+            with self.subTest(variant=variant):
+                chain = self.quantitative_chain()
+                if variant == 'reordered':
+                    chain[0], chain[1] = chain[1], chain[0]
+                else:
+                    chain[0]['input_refs'] = ['model_figure_0' if variant == 'self' else 'model_figure_2']
+                with self.assertRaisesRegex(ValidationError, 'unknown references'):
+                    Workpaper.model_validate(self.data)
+
+    def test_model_figure_inputs_reject_later_model_cutoffs(self):
+        for previous, current in [('2026-03-10', '2026-03-09'),
+                                  ('2026-03-10T16:00:00+08:00', '2026-03-10T10:00:00+08:00'),
+                                  ('2026-03-10T10:00:00', '2026-03-10T10:00:00+08:00')]:
+            with self.subTest(previous=previous):
+                chain = self.quantitative_chain()
+                chain[0]['as_of'], chain[1]['as_of'] = previous, current
+                with self.assertRaisesRegex(ValidationError, 'input model cutoff'):
+                    Workpaper.model_validate(self.data)
+        chain = self.quantitative_chain()
+        chain[0]['as_of'], chain[1]['as_of'] = '2026-03-10T12:00:00+08:00', '2026-03-10T05:00:00+00:00'
+        Workpaper.model_validate(self.data)
+
     def test_source_recalculation_and_rounding_are_not_zeroed(self):
         c, r = self.evaluate()
         self.assertEqual(Decimal(c['cfo_bridge']['value']), Decimal(133219980))

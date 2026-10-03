@@ -261,10 +261,23 @@ class Workpaper(Record):
         for s in self.sections:
             require(s.findings, findings, s.title)
             require(s.figures, numbers | figures, s.title)
+        model_cutoffs = {}
         for q in self.quantitative:
-            require(q.input_refs, numbers, q.id)
+            require(q.input_refs, available, q.id)
             require(q.evidence, evidence, q.id)
             cutoff = q.as_of.date() if isinstance(q.as_of, datetime) else q.as_of
             if cutoff > self.mandate.cutoff:
                 raise ValueError(f"{q.id}: result cutoff exceeds mandate cutoff")
+            for ref in set(q.input_refs) & model_cutoffs.keys():
+                previous = model_cutoffs[ref]
+                if isinstance(previous, datetime) and isinstance(q.as_of, datetime):
+                    if (previous.utcoffset() is None) != (q.as_of.utcoffset() is None):
+                        raise ValueError(f"{q.id}: input model cutoff has incompatible timezone precision: {ref}")
+                    later = previous > q.as_of
+                else:
+                    later = (previous.date() if isinstance(previous, datetime) else previous) > cutoff
+                if later:
+                    raise ValueError(f"{q.id}: input model cutoff exceeds result cutoff: {ref}")
+            available.update(f.id for f in q.figures)
+            model_cutoffs.update((f.id, q.as_of) for f in q.figures)
         return self
