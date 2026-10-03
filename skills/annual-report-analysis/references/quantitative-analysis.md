@@ -17,7 +17,7 @@
 
 ## 2. 可复算的经营现金情景
 
-调用 `scripts/scenarios.py`，或在Python中调用 `scenarios.run(input_dict)`。各情景分别传入完整输入；结果保存原始输入快照、方法版本、假设来源、限制和每期中间金额。改变业务驱动后必须重新运行同一个计算函数。
+调用 `scripts/scenarios.py`，或在Python中调用 `scenarios.run(input_dict)`。当前方法为`operating_cash_scenario_v2`。各情景分别传入完整输入；结果保存原始输入快照、方法版本、假设来源、限制和每期中间金额。改变业务驱动后必须重新运行同一个计算函数。
 
 ```text
 python scripts/scenarios.py scenario-input.json --output scenario-result.json
@@ -27,7 +27,7 @@ python scripts/scenarios.py scenario-input.json --output scenario-result.json
 
 ### 完整的构造输入示例
 
-以下数据只用于解释和复算，不能充当真实企业证据。金额单位为百万元；单位售价和单位变动成本同样按百万元/数量单位填写。`source`须写可定位的实际资料/假设说明，`available_at`为该资料当时可得日期，不能填成今天的下载日来替代历史公开日。
+以下数据只用于解释和复算，不能充当真实企业证据。金额单位为百万元；单位售价和单位完整销售成本同样按百万元/数量单位填写。`source`须写可定位的实际资料/假设说明，`available_at`为该资料当时可得日期，不能填成今天的下载日来替代历史公开日。
 
 ```json
 {
@@ -49,11 +49,13 @@ python scripts/scenarios.py scenario-input.json --output scenario-result.json
   },
   "periods": [{
     "start": "2025-01-01", "end": "2025-12-31",
-    "volume": 1000, "unit_price": 1, "unit_variable_cost": 0.6,
+    "volume": 1000, "unit_price": 1, "unit_cost_of_sales": 0.6,
     "fixed_cash_cost": 250, "depreciation": 30, "capex": 40,
+    "depreciation_in_cost_of_sales": 0,
+    "inventory_cash_conversion": 0, "inventory_depreciation_change": 0,
     "tax_rate": 0.25, "dso": 36.5, "dio": 36.5, "dpo": 36.5,
     "interest_rate": 0.05, "drawdown": 0, "principal": 100, "dividends": 20,
-    "source": "构造年度预算；实际假设逐项在底稿解释",
+    "source": "构造预算：存货全由供应商投入形成，无内部生产现金投入、存货内折旧摊销；30折旧摊销全为营业成本外期间费用。实际假设逐项在底稿解释",
     "available_at": "2024-12-31"
   }],
   "contracts": [{
@@ -74,31 +76,36 @@ python scripts/scenarios.py scenario-input.json --output scenario-result.json
 
 `contracts`及`reverse`可以省略。其他模型输入不得用缺失值静默补零。零融资、零分红和零资本开支都是明确输入假设。相邻预测期间必须连续，且紧接期初日；此模型接受自定义期间，但利率按实际天数计息。
 
+`unit_cost_of_sales`是含分配折旧摊销的完整单位销售成本，不是单位变动成本；`fixed_cash_cost`只包括未进入营业成本的其他固定现金期间费用。`depreciation`为损益确认的总折旧摊销，`depreciation_in_cost_of_sales`为其中已经计入营业成本的部分，不能再次扣减利润。`inventory_cash_conversion`为本期加入存货的内部生产人工等现金投入；外购加工仍属供应商采购。`inventory_depreciation_change`为期末存货内含折旧摊销减期初内含金额，允许负值。后三项分解均必填，零必须有明确假设；不得以现金目标反推补平，也不能从资料缺失推定为零。
+
 ### 方程、时序和口径
 
 对每一期，以实际包含的日历天数D计算：
 
 ```text
 Revenue = volume × unit_price
-Cost = volume × unit_variable_cost
-EBITDA = Revenue - Cost - fixed_cash_cost
+Cost = volume × unit_cost_of_sales
+EBITDA = Revenue - Cost + depreciation_in_cost_of_sales - fixed_cash_cost
 EBIT = EBITDA - depreciation
 Interest = opening_debt × interest_rate × D / interest_basis_days
 Cash_tax = max(EBIT - Interest, 0) × tax_rate
 Net_income = EBIT - Interest - Cash_tax
 AR_end = Revenue × DSO / D
 Inventory_end = Cost × DIO / D
-Purchases = Cost + Inventory_end - Inventory_begin
+Production_depreciation = depreciation_in_cost_of_sales + inventory_depreciation_change
+Purchases = Cost + Inventory_end - Inventory_begin - inventory_cash_conversion - Production_depreciation
 AP_end = selected_payables_denominator × DPO / D
 NWC_end = AR_end + Inventory_end - AP_end
-CFO = Net_income + depreciation - (NWC_end - NWC_begin)
+CFO = Net_income + depreciation + inventory_depreciation_change - (NWC_end - NWC_begin)
 Cash_end = Cash_begin + CFO - capex + drawdown - principal - dividends
 Debt_end = Debt_begin + drawdown - principal
 ```
 
-`payables_denominator`必须明确选`cost_of_sales`（成本代理）或`purchases`（由库存滚动得到的采购）；两种口径不能无说明混用。`dso/dio/dpo`是期末余额代理天数，不是平均余额周转天数。CFO已经扣了利息和现金税，现金瀑布不得再次扣息。
+`payables_denominator`必须明确选`cost_of_sales`（完整营业成本代理，不等于采购）或`purchases`（库存滚动剔除内部现金投入及本期生产折旧摊销后的供应商采购）。存货余额由完整营业成本与DIO预测；应付余额则使用另行选定的分母与DPO，两者不能混作同一种周转假设。`dso/dio/dpo`是期末余额代理天数，不是平均余额周转天数。CFO加回库存内含折旧摊销的净变化，以免非现金资本化进入现金耗用；它已经扣了利息和现金税，现金瀑布不得再次扣息。
 
 明确的简化是：全部模型收入使用应收天数代理；利息按期初债务在整期计息，提款和偿还本金在期末发生；无递延税、亏损结转、即时亏损退税、并购、汇兑、资产出售或季节性。需要这些因素时，先用单独有证据的工作底稿扩展经济模型，不能在输入中塞入一个无定义的补平额。该脚本不是完整资产负债表预测。
+
+内部生产现金投入在本期支付，无应付薪酬变化；存货无折旧摊销以外的非现金变化。供应商采购和应付只涵盖存货投入，无增值税、预付款、资本性应付及供应商非现金结算。若实际企业不满足这些简化，先补相应明细桥，不能将混合应付余额直接塞入DPO。营业成本内折旧摊销不得超过营业成本或损益总折旧摊销；推导的本期生产折旧摊销和供应商采购不得为负。
 
 模型只使用输入的融资金额，绝不自动补现金。`cash_end<0`代表未融资缺口，该期保留计算，后续期停止并计入`unprojected_periods`；必须先解释资金方案才能继续。`funding_needed_to_floor`只表示补到输入最低现金需要的金额，不表示可取得的授信。已经低于最低运营现金但仍非负的期间会继续计算，并明确标记`below_cash_floor`。
 
@@ -106,7 +113,7 @@ Debt_end = Debt_begin + drawdown - principal
 
 合同条件包含自己的定义、来源、日期、指标、关系和阈值；没有默认行业或评级阈值。可测试`cash_end/debt_end/ebitda/interest_coverage/debt_to_ebitda`，其中利息覆盖=`EBIT/Interest`，杠杆=`期末Debt/本期EBITDA`，分别要求利息或EBITDA为正。必须确认这恰好是合同定义；若合同使用不同允许加回或净债务定义，不得冒称完成合同测试。测试日没有预测值时为`not_tested`；结果`outside_input_threshold`本身不等于法律违约。
 
-逆向压力只解决一个有经济含义的标量问题：在指定期间改变`volume/unit_price/unit_variable_cost/fixed_cash_cost/dso/dio/dpo`之一，使指定期末现金等于输入目标。调用SciPy的Brent求根，需提供经济可行的上下界；无异号时返回`not_bracketed`，不扩大边界到任意数值求出答案。若更早现金断裂导致目标期不可预测，不能继续假定正常经营求根。[SciPy求根要求](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html)
+逆向压力只解决一个有经济含义的标量问题：在指定期间改变`volume/unit_price/unit_cost_of_sales/fixed_cash_cost/dso/dio/dpo`之一，使指定期末现金等于输入目标。调用SciPy的Brent求根，需提供经济可行的上下界；无异号时返回`not_bracketed`，不扩大边界到任意数值求出答案。若更早现金断裂导致目标期不可预测，不能继续假定正常经营求根。[SciPy求根要求](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html)
 
 逆向结果保存根、现金残差、区间端点残差和根处的整条现金/债务路径。它是条件边界，不是违约概率、置信区间或“最可能”情景。
 
@@ -115,6 +122,16 @@ Debt_end = Debt_begin + drawdown - principal
 上述构造数据得EBITDA150、净利润82.5、CFO112.5、期末现金32.5和债务100。仅将`volume`改为900、`dso`改为46.5，采用成本代理DPO时，净利润仍为52.5，但现金为−12.157534，需要32.157534才能达到最低现金20。若改为采购口径DPO，应付为53.4而非54，现金进一步变为−12.757534；这是口径差异的实际现金影响。
 
 保持其他驱动不变，DSO增加到41.0625天时现金恰好为20；略高应低于目标，略低应高于目标。两期例子还需检查第二期利息基于第一期期末债务，而不是每年重复使用初始债务。
+
+制造人工反例：期初库存50+供应商采购100+内部生产工资30−营业成本120=期末60。全年销售收现200，期初应付30，采购口径DPO146天，则期末应付40、供应商付款90；直接CFO=200−90−30=80，期初现金20得到期末100。`Cost+ΔInventory=130`是生产总投入，不能叫采购。改用相同天数的完整成本代理会得到应付48、现金108，必须明确这是另一项代理假设。
+
+含折旧摊销的制造反例：完整营业成本120含损益折旧摊销30，无其他损益折旧摊销；供应商采购100、内部生产现金投入20、期初库存50。若存货内含折旧摊销净增加10，则本期生产折旧摊销40、期末库存90；若净减少10，则本期生产折旧摊销20、期末库存70。两例销售收现200、期初/期末应付30/40，均应得到EBITDA110、净利润80、CFO90和期末现金110，等于直接法`200−90−20`；不能在完整营业成本之后再重复扣其中的30。
+
+### 历史版本边界
+
+历史v1中的Cost+ΔInventory不能证明一般制造企业的供应商采购，数值复算一致也不能证明经济口径正确。当前脚本仅实现v2，拒绝旧unit_variable_cost及缺少三项分解输入的任务；当前导出器拒绝v1现金artifact。
+
+迁移时另建v2输入及结果，先补齐有来源的完整单位销售成本、营业成本内折旧摊销、内部生产现金投入和存货内含折旧摊销净变化，再复算。不得仅改method标识或把缺失分解填零；旧版与新版的假设及结果分别保留。
 
 ## 3. 点时同业及一项样本外预测
 

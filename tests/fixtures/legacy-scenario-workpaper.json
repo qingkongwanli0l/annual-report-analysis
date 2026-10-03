@@ -1,0 +1,150 @@
+{
+  "mandate": {
+    "title": "Legacy cash scenario fixture",
+    "entity": "Constructed industrial company",
+    "industry": "industrial",
+    "purpose": "Regression fixture for rejection of the v1 cash model and incomplete v2 cost decomposition.",
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31",
+    "cutoff": "2026-10-02",
+    "accounting_basis": "明确假设的数学试验",
+    "scope": "single constructed entity",
+    "version": "constructed-v1"
+  },
+  "sources": [
+    {
+      "id": "EXAMPLE_SOURCE",
+      "title": "Constructed legacy cash input",
+      "url": "tests/fixtures/legacy-scenario-input.json",
+      "published": "2026-10-02"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EXAMPLE",
+      "source": "EXAMPLE_SOURCE",
+      "locator": "legacy-scenario-input.json",
+      "observation": "Constructed opening balances and one period using the legacy unit_variable_cost field.",
+      "reliability": "不是企业披露或审计证据，不支持外部投资信用判断。"
+    }
+  ],
+  "facts": [
+    {
+      "id": "cash",
+      "label": "构造期初现金",
+      "concept": "cash",
+      "value": "80",
+      "context": {
+        "entity": "假想工业企业",
+        "scope": "单体构造试验",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "构造试验非财务报告准则",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "EXAMPLE"
+      ],
+      "state": "assumption",
+      "note": "明确构造的数学试验起点，不是报表原始事实。"
+    },
+    {
+      "id": "debt",
+      "label": "构造期初债务",
+      "concept": "debt",
+      "value": "200",
+      "context": {
+        "entity": "假想工业企业",
+        "scope": "单体构造试验",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "构造试验非财务报告准则",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "EXAMPLE"
+      ],
+      "state": "assumption",
+      "note": "明确构造的数学试验起点，不是报表原始事实。"
+    }
+  ],
+  "findings": [],
+  "sections": [],
+  "quantitative": [
+    {
+      "id": "base",
+      "label": "构造基准现金情景",
+      "method": "operating_cash_scenario_v1",
+      "as_of": "2024-12-31",
+      "input_refs": [
+        "cash",
+        "debt"
+      ],
+      "evidence": [
+        "EXAMPLE"
+      ],
+      "assumptions": [
+        "Constructed input, not an issuer disclosure."
+      ],
+      "limitations": [
+        "Legacy interface fixture, not a usable cash projection."
+      ],
+      "artifact": {
+        "method": "operating_cash_scenario_v1",
+        "input_snapshot": {
+          "entity": "假想工业企业 非真实公司预测",
+          "as_of": "2024-12-31",
+          "currency": "CNY",
+          "amount_scale": 1000000,
+          "interest_basis_days": 365,
+          "payables_denominator": "cost_of_sales",
+          "opening": {
+            "source": "Constructed analytical example, not an issuer disclosure",
+            "available_at": "2024-12-31",
+            "date": "2024-12-31",
+            "cash": 80,
+            "receivables": 100,
+            "inventory": 60,
+            "payables": 60,
+            "debt": 200
+          },
+          "minimum_cash": {
+            "source": "Constructed analytical example, not an issuer disclosure",
+            "available_at": "2024-12-31",
+            "value": 20
+          },
+          "periods": [
+            {
+              "source": "Constructed analytical example, not an issuer disclosure",
+              "available_at": "2024-12-31",
+              "start": "2025-01-01",
+              "end": "2025-12-31",
+              "volume": 1000,
+              "unit_price": 1,
+              "unit_variable_cost": 0.6,
+              "fixed_cash_cost": 250,
+              "depreciation": 30,
+              "capex": 40,
+              "tax_rate": 0.25,
+              "dso": 36.5,
+              "dio": 36.5,
+              "dpo": 36.5,
+              "interest_rate": 0.05,
+              "drawdown": 0,
+              "principal": 100,
+              "dividends": 20
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

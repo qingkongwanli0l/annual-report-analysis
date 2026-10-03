@@ -18,6 +18,7 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 from calculate import context_error, evaluate, excel_expression, reconciliation_matches
+from scenarios import Scenario
 from workpaper import Workpaper
 
 
@@ -36,6 +37,13 @@ def display(value, ctx):
 
 
 def prepare(w, result):
+    if any(q.method == "operating_cash_scenario_v1" for q in w.quantitative):
+        raise ValueError("operating_cash_scenario_v1 is a historical model; replay/export it with its frozen code version or supply documented v2 cost decomposition")
+    for q in w.quantitative:
+        if q.method == "operating_cash_scenario_v2":
+            if q.artifact.get("method") != q.method:
+                raise ValueError("cash artifact method must match its workpaper method")
+            Scenario.model_validate(q.artifact["input_snapshot"])
     figures = {}
     for f in w.facts:
         figures[f.id] = {"id": f.id, "label": f.label, "value": str(f.value) if f.value is not None else None,
@@ -100,6 +108,13 @@ def workbook(w, data, path):
             ws.autofilter(0, 0, max(1, len(rows)), len(headers)-1)
             for col in range(len(headers)):
                 ws.set_column(col, col, widths[col] if widths else 28)
+            if name in ("Readme", "Calculations", "Reconciliations"):
+                ws.set_landscape()
+                ws.set_paper(9 if name == "Readme" else 8)
+                ws.fit_to_pages(1, 0)
+                ws.repeat_rows(0)
+                if name != "Readme":
+                    ws.set_margins(left=0.25, right=0.25)
             return ws
 
         sheet("Readme", ["字段 / field", "内容 / value"], [
@@ -129,7 +144,8 @@ def workbook(w, data, path):
                      c.definition, c.interpretation, unit(c.context), float(c.context.scale),
                      c.context.entity, c.context.scope, str(c.context.start or ""), str(c.context.end)] for c in w.calculations]
         ws = sheet("Calculations", ["ID", "指标或桥", "基础单位公式", "基础单位结果", "展示结果", "状态", "不计算原因",
-                                    "定义", "解释边界", "展示单位", "倍数", "实体", "范围", "开始", "结束"], calcrows)
+                                    "定义", "解释边界", "展示单位", "倍数", "实体", "范围", "开始", "结束"], calcrows,
+                   [14, 20, 20, 24, 24, 13, 18, 22, 24, 12, 8, 16, 10, 11, 11])
         for i, c in enumerate(w.calculations, 2):
             r = rs[c.id]
             expr = excel_expression(c, cells) if len(c.terms) == 2 or c.op == "sum" else "=NA()"
@@ -155,7 +171,8 @@ def workbook(w, data, path):
         normalized = {f.id: f.value*f.context.scale if f.value is not None else None for f in w.facts}
         normalized.update({key: Decimal(r["normalized"]) if r["normalized"] is not None else None for key, r in rs.items()})
         rows = [[r.id, r.label, r.actual, r.expected, None, float(r.tolerance), checks[r.id]["status"], r.basis, checks[r.id]["reason"]] for r in w.reconciliations]
-        ws = sheet("Reconciliations", ["ID", "勾稽", "实际", "目标", "残差 基础单位", "容差 基础单位", "状态", "容差依据", "未测试原因", "金额残差小数位"], rows)
+        ws = sheet("Reconciliations", ["ID", "勾稽", "实际", "目标", "残差 基础单位", "容差 基础单位", "状态", "容差依据", "未测试原因", "金额残差小数位"], rows,
+                   [18, 30, 22, 22, 24, 24, 25, 38, 28, 12])
         for i, r in enumerate(w.reconciliations, 2):
             value = checks[r.id]["residual"]
             if reconciliation_matches(records[r.actual], records[r.expected]):
@@ -181,7 +198,7 @@ def workbook(w, data, path):
         sheet("Requests", ["ID", "事项", "所需资料", "影响", "责任角色", "关闭条件"],
               [[r["id"], r["finding"], r["request"], r["reason"], r["owner_role"], r["close_when"]] for r in data["requests"]], [18,18,75,70,30,75])
         for index, q in enumerate(w.quantitative, 1):
-            if q.method == "operating_cash_scenario_v1":
+            if q.method == "operating_cash_scenario_v2":
                 scenario_sheets(book, sheet, q.artifact, f"Q{index}", number)
             elif q.method == "pit_margin_persistence_v1":
                 panel_sheets(sheet, q.artifact, f"Q{index}", number, percent)
@@ -217,8 +234,9 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
         *[[key, opening[key], opening["source"]] for key in ("cash", "receivables", "inventory", "payables", "debt")],
         ["复算边界", "编辑合法数字驱动可重算；缺失、非数字或越界驱动为#N/A。日期/来源/口径/期间或逆向目标改变须重跑脚本", "负现金后续期间为#N/A；不自动融资"]], [32,55,85])
     inputs = f"'{prefix}Inputs'!"
-    driver_keys = ["start", "end", "days", "volume", "unit_price", "unit_variable_cost", "fixed_cash_cost",
-                   "depreciation", "capex", "tax_rate", "dso", "dio", "dpo", "interest_rate", "drawdown", "principal", "dividends", "source", "available_at"]
+    driver_keys = ["start", "end", "days", "volume", "unit_price", "unit_cost_of_sales", "fixed_cash_cost",
+                   "depreciation", "capex", "tax_rate", "dso", "dio", "dpo", "interest_rate", "drawdown", "principal", "dividends",
+                   "depreciation_in_cost_of_sales", "inventory_cash_conversion", "inventory_depreciation_change", "source", "available_at"]
     drivers = sheet(prefix+"Drivers", driver_keys, [[p.get(k, "") for k in driver_keys] for p in snapshot["periods"]])
     datefmt = book.add_format({"num_format": "yyyy-mm-dd"})
     for i, period in enumerate(snapshot["periods"], 2):
@@ -242,19 +260,20 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
         d = lambda col: f"'{prefix}Drivers'!{col}{i}"
         valid = (f"IFERROR(AND(COUNT({inputs}B2:B3,{inputs}B5:B10)=8,{inputs}B2>0,{inputs}B3>0,"
                  f"MIN({inputs}B5:B10)>=0,OR({inputs}B4=\"purchases\",{inputs}B4=\"cost_of_sales\"),"
-                 f"COUNT('{prefix}Drivers'!A{i}:Q{i})=17,{d('C')}>0,"
-                 f"MIN('{prefix}Drivers'!D{i}:M{i},'{prefix}Drivers'!O{i}:Q{i})>=0,{d('J')}<=1),FALSE)")
+                 f"COUNT('{prefix}Drivers'!A{i}:T{i})=20,{d('C')}>0,"
+                 f"MIN('{prefix}Drivers'!D{i}:M{i},'{prefix}Drivers'!O{i}:S{i})>=0,{d('J')}<=1,"
+                 f"{d('R')}<=MIN({d('H')},{d('D')}*{d('F')}),{d('R')}+{d('T')}>=0),FALSE)")
         prev = i-1
         previous_cash = f"V{prev}" if i > 2 else inputs+"B6"
         previous_debt = f"X{prev}" if i > 2 else inputs+"B10"
         previous_inventory = f"K{prev}" if i > 2 else inputs+"B8"
         previous_nwc = f"N{prev}" if i > 2 else f"({inputs}B7+{inputs}B8-{inputs}B9)"
-        formulas = [f"{d('D')}*{d('E')}", f"{d('D')}*{d('F')}", f"B{i}-C{i}-{d('G')}", d('H'),
+        formulas = [f"{d('D')}*{d('E')}", f"{d('D')}*{d('F')}", f"B{i}-C{i}+{d('R')}-{d('G')}", d('H'),
                     f"D{i}-E{i}", f"W{i}*{d('N')}*{d('C')}/{inputs}B3", f"MAX(F{i}-G{i},0)*{d('J')}",
                     f"F{i}-G{i}-H{i}", f"B{i}*{d('K')}/{d('C')}", f"C{i}*{d('L')}/{d('C')}",
-                    f"C{i}+K{i}-{previous_inventory}",
+                    f"C{i}+K{i}-{previous_inventory}-{d('S')}-{d('R')}-{d('T')}",
                     f'IF(L{i}<0,NA(),IF({inputs}B4="purchases",L{i},C{i}))*{d("M")}/{d("C")}',
-                    f"J{i}+K{i}-M{i}", f"N{i}-{previous_nwc}", f"I{i}+E{i}-O{i}", d('I'), d('O'), d('P'), d('Q'),
+                    f"J{i}+K{i}-M{i}", f"N{i}-{previous_nwc}", f"I{i}+E{i}+{d('T')}-O{i}", d('I'), d('O'), d('P'), d('Q'),
                     previous_cash, f"IF(ISNUMBER(X{i}),U{i}+P{i}-Q{i}+R{i}-S{i}-T{i},NA())", previous_debt,
                     f"IF(W{i}+R{i}-S{i}<0,NA(),W{i}+R{i}-S{i})", f"V{i}-{inputs}B5", f"MAX({inputs}B5-V{i},0)",
                     f"IF(G{i}>0,F{i}/G{i},NA())", f"IF(D{i}>0,X{i}/D{i},NA())"]
@@ -264,7 +283,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             if i > 2:
                 formula = f"IF({previous_cash}<0,NA(),{formula})"
             formula = f"IF({valid},{formula},NA())"
-            value = period["depreciation"] if keys[col] == "depreciation" and row else row.get(keys[col])
+            value = row.get(keys[col])
             cash.write_formula(i-1, col, "="+formula, number, value if value is not None else "#N/A")
         cash.write_formula(i-1, 28, f'=IF(NOT({valid}),"invalid_numeric_inputs",IFERROR(IF(V{i}<0,"unfunded_cash_shortfall",IF(V{i}<{inputs}B5,"below_cash_floor","conditional")),"not_projected"))',
                            None, row.get("status", "not_projected"))
@@ -435,7 +454,7 @@ def word(data, path):
         artifact = q["artifact"]
         rows = artifact.get("rows", [])
         fmt = lambda value: "未计算" if value is None else f"{value:,.4f}" if isinstance(value, (int, float)) else str(value)
-        if q["method"] == "operating_cash_scenario_v1":
+        if q["method"] == "operating_cash_scenario_v2":
             minimum = min(rows, key=lambda row: row["cash_end"])
             doc.add_paragraph(f"金额单位 {artifact['currency']} × {artifact['amount_scale']:g}。最低期末现金 {minimum['cash_end']:,.4f}，发生在 {minimum['period_end']}；补至输入最低现金所需资金 {minimum['funding_needed_to_floor']:,.4f}。未自动补融资。")
             table(["期间", "收入", "净利润", "CFO", "期末现金", "期末债务"],

@@ -2,7 +2,7 @@
 
 Turn official annual reports into source-linked research, reproducible financial workpapers and editable Word, Excel and PowerPoint deliverables. A-share first, with accounting-basis-aware support for Hong Kong and US disclosures.
 
-One skill covers business and growth drivers, accounting policies and estimates, earnings-to-cash bridges, audit-support procedures, corporate credit adjustments, liquidity, conditional recovery and quantitative scenarios. Banks, insurers, securities firms and clearing institutions use separate methods.
+The [comprehensive analysis program](skills/annual-report-analysis/references/analysis-program.md) starts with the actual report, business, transactions and legal structure. Strategy, resources, governance, capital allocation, financial statements, credit and external conditions are connected. Business drivers, accounting, audit support, credit and quantitative scenarios are examples, not an exhaustive scope boundary. Financial and other specialized businesses need applicable methods.
 
 Facts retain their original value, unit, entity, scope, period, accounting basis and source location. Calculations reference those facts. Findings retain competing explanations and the evidence that could change them. Missing values remain missing; unperformed procedures never become completed audit evidence.
 

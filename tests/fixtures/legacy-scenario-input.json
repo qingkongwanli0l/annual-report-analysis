@@ -1,0 +1,45 @@
+{
+  "entity": "假想工业企业 非真实公司预测",
+  "as_of": "2024-12-31",
+  "currency": "CNY",
+  "amount_scale": 1000000,
+  "interest_basis_days": 365,
+  "payables_denominator": "cost_of_sales",
+  "opening": {
+    "source": "Constructed analytical example, not an issuer disclosure",
+    "available_at": "2024-12-31",
+    "date": "2024-12-31",
+    "cash": 80,
+    "receivables": 100,
+    "inventory": 60,
+    "payables": 60,
+    "debt": 200
+  },
+  "minimum_cash": {
+    "source": "Constructed analytical example, not an issuer disclosure",
+    "available_at": "2024-12-31",
+    "value": 20
+  },
+  "periods": [
+    {
+      "source": "Constructed analytical example, not an issuer disclosure",
+      "available_at": "2024-12-31",
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "volume": 1000,
+      "unit_price": 1,
+      "unit_variable_cost": 0.6,
+      "fixed_cash_cost": 250,
+      "depreciation": 30,
+      "capex": 40,
+      "tax_rate": 0.25,
+      "dso": 36.5,
+      "dio": 36.5,
+      "dpo": 36.5,
+      "interest_rate": 0.05,
+      "drawdown": 0,
+      "principal": 100,
+      "dividends": 20
+    }
+  ]
+}

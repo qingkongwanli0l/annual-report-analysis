@@ -9,7 +9,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
-METHOD = "operating_cash_scenario_v1"
+METHOD = "operating_cash_scenario_v2"
 
 
 class Input(BaseModel):
@@ -39,9 +39,12 @@ class Period(Sourced):
     end: date
     volume: float = Field(ge=0)
     unit_price: float = Field(ge=0)
-    unit_variable_cost: float = Field(ge=0)
+    unit_cost_of_sales: float = Field(ge=0)
     fixed_cash_cost: float = Field(ge=0)
     depreciation: float = Field(ge=0)
+    depreciation_in_cost_of_sales: float = Field(ge=0)
+    inventory_cash_conversion: float = Field(ge=0)
+    inventory_depreciation_change: float
     capex: float = Field(ge=0)
     tax_rate: float = Field(ge=0, le=1)
     dso: float = Field(ge=0)
@@ -64,7 +67,7 @@ class Contract(Sourced):
 
 class Reverse(Sourced):
     period_index: int = Field(ge=0)
-    driver: Literal["volume", "unit_price", "unit_variable_cost", "fixed_cash_cost", "dso", "dio", "dpo"]
+    driver: Literal["volume", "unit_price", "unit_cost_of_sales", "fixed_cash_cost", "dso", "dio", "dpo"]
     bounds: tuple[float, float]
     test_date: date
     target_cash: float = Field(ge=0)
@@ -118,22 +121,27 @@ def _project(s):
     for p in s.periods:
         days = (p.end - p.start).days + 1
         revenue = p.volume * p.unit_price
-        cost = p.volume * p.unit_variable_cost
-        ebitda = revenue - cost - p.fixed_cash_cost
+        cost = p.volume * p.unit_cost_of_sales
+        if p.depreciation_in_cost_of_sales > min(p.depreciation, cost):
+            raise ValueError("cost-of-sales depreciation exceeds total P&L depreciation or cost of sales")
+        production_depreciation = p.depreciation_in_cost_of_sales + p.inventory_depreciation_change
+        if production_depreciation < 0:
+            raise ValueError("negative production depreciation: supplied inventory depreciation path is not feasible")
+        ebitda = revenue - cost + p.depreciation_in_cost_of_sales - p.fixed_cash_cost
         ebit = ebitda - p.depreciation
         interest = debt * p.interest_rate * days / s.interest_basis_days
         taxes = max(ebit - interest, 0) * p.tax_rate
         profit = ebit - interest - taxes
         ar_end = revenue * p.dso / days
         inv_end = cost * p.dio / days
-        purchases = cost + inv_end - inventory
+        purchases = cost + inv_end - inventory - p.inventory_cash_conversion - production_depreciation
         if purchases < 0:
             raise ValueError("negative implied purchases: supplied inventory path is not feasible")
         ap_base = cost if s.payables_denominator == "cost_of_sales" else purchases
         ap_end = ap_base * p.dpo / days
         nwc_end = ar_end + inv_end - ap_end
         delta_nwc = nwc_end - nwc
-        cfo = profit + p.depreciation - delta_nwc
+        cfo = profit + p.depreciation + p.inventory_depreciation_change - delta_nwc
         debt_end = debt + p.drawdown - p.principal
         if debt_end < 0:
             raise ValueError("principal exceeds opening debt plus explicit drawdown")
@@ -141,6 +149,7 @@ def _project(s):
         rows.append({
             "period_start": p.start.isoformat(), "period_end": p.end.isoformat(), "days": days,
             "revenue": revenue, "cost_of_sales": cost, "ebitda": ebitda, "ebit": ebit,
+            "depreciation": p.depreciation, "production_depreciation": production_depreciation,
             "cash_interest": interest, "cash_taxes": taxes, "net_income": profit,
             "receivables_end": ar_end, "inventory_end": inv_end, "implied_purchases": purchases,
             "payables_end": ap_end, "nwc_end": nwc_end, "delta_nwc": delta_nwc,
@@ -222,16 +231,21 @@ def run(input_dict):
             f"Opening balances: {s.opening.source} (available {s.opening.available_at}).",
             f"Minimum operating cash {s.minimum_cash.value}: {s.minimum_cash.source} (available {s.minimum_cash.available_at}).",
             "All sales use the supplied receivable-days proxy; inventory uses cost-of-sales days.",
-            f"Payables use the explicitly selected {s.payables_denominator} denominator.",
+            "Cost of sales includes its allocated depreciation and amortization; fixed_cash_cost excludes all costs already in cost of sales.",
+            "Depreciation is total P&L depreciation and amortization; its cost-of-sales portion is added back once for EBITDA.",
+            "Supplier purchases exclude internal production cash conversion and current production depreciation; inventory depreciation change is ending less opening embedded depreciation and amortization.",
+            f"Payables use the explicitly selected {s.payables_denominator} denominator; cost_of_sales is a cost proxy, not supplier purchases.",
             "Interest uses opening debt for actual period days; explicit borrowing and principal payments occur at period end.",
             "Cash tax equals max(EBIT minus cash interest, 0) times the supplied rate; no immediate loss refund.",
-            "CFO includes interest and cash tax; cash distributions and borrowing are financing flows.",
+            "CFO adds back P&L depreciation and the net change of depreciation in inventory; it includes interest and cash tax.",
             *[f"{p.start}/{p.end}: {p.source} (available {p.available_at})" for p in s.periods],
         ],
         "limitations": [
             "Industrial operating-cash model; not a bank or insurer model and not a complete balance-sheet forecast.",
             "End-period turnover proxies do not measure intra-period liquidity or seasonality.",
             "No automatic refinancing, unused-facility draw, asset sale, tax loss carryforward, FX or acquisition effects.",
+            "Internal production cash conversion is paid in-period; no payroll payable changes or noncash inventory movements other than depreciation and amortization.",
+            "Supplier purchases and payables cover inventory inputs only, with no VAT, prepayments, capital payables or noncash supplier settlements.",
             "Negative cash denotes an unfunded gap; subsequent periods are not projected until a funding plan is supplied.",
             "A threshold result uses the supplied definition and test date; it is not a legal default conclusion.",
         ],

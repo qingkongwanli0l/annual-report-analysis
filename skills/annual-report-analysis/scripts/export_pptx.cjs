@@ -35,7 +35,8 @@ async function main() {
     return {text:lines(text, width, size).join('\n'), size};
   };
   const paragraphs = (text, width, height, size) => {
-    const wrapped = lines(text, width, size), count = Math.max(1, Math.floor(height * 72 / (size * 1.3)));
+    const wrapped = lines(text, width, size), capacity = Math.max(1, Math.floor(height * 72 / (size * 1.3)));
+    const count = Math.ceil(wrapped.length / Math.ceil(wrapped.length / capacity));
     const result = [];
     for (let i = 0; i < wrapped.length; i += count) result.push(wrapped.slice(i, i + count).join('\n'));
     return result;
@@ -67,25 +68,37 @@ async function main() {
   const findings = Object.fromEntries(d.findings.map(f => [f.id, f]));
   for (const section of d.sections) {
     const selected = section.findings.map(id => findings[id]);
-    const figures = section.figures.slice(0, 4).map(id => d.figures[id]);
-    if (!selected.length && !figures.length) continue;
-    const width = figures.length ? 7.65 : 12;
-    const chunks = selected.length ? selected.flatMap(f => paragraphs(`${f.conclusion}\n\n判断改变条件\n${f.changes_if}`, width, 3.35, 18).map(body => ({f,body}))) : [{}];
-    for (const [index, chunk] of chunks.entries()) {
-      s = page(section.title + (chunks.length > 1 ? ` ${index + 1}` : ''));
+    const allFigures = section.figures.map(id => d.figures[id]);
+    if (!selected.length && !allFigures.length) continue;
+    const width = allFigures.length ? 7.65 : 12;
+    const chunks = selected.flatMap(f => {
+      const text = `${f.conclusion}\n\n判断改变条件\n${f.changes_if}`;
+      const body = fitted(text, width, 3.35, 18);
+      return body.size >= 16 ? [{f,body:body.text,size:body.size}]
+        : paragraphs(text, width, 3.35, 18).map(body => ({f,body,size:18}));
+    });
+    const figurePages = [];
+    for (let i = 0; i < allFigures.length; i += 6) figurePages.push(allFigures.slice(i, i + 6));
+    const count = Math.max(chunks.length, figurePages.length);
+    for (let index = 0; index < count; index++) {
+      const chunk = chunks[index] || {};
+      const figures = figurePages[Math.min(index, figurePages.length - 1)] || [];
+      s = page(section.title + (count > 1 ? ` ${index + 1}` : ''));
       const f = chunk.f;
       if (f) {
         const heading = fitted(f.title, width, 1.1, 22);
         s.addText(heading.text, { x: 0.65, y: 1.58, w: width, h: 1.1, fontSize: heading.size, color: dark, bold: true, margin: 0, valign:'top', lineSpacingMultiple:1 });
-        s.addText(chunk.body, { x: 0.65, y: 2.87, w: width, h: 3.35, fontSize: 18, color: ink, margin: 0, valign:'top', lineSpacingMultiple:1 });
+        s.addText(chunk.body, { x: 0.65, y: 2.87, w: width, h: 3.35, fontSize: chunk.size, color: ink, margin: 0, valign:'top', lineSpacingMultiple:1 });
         s.addNotes([f.id, f.question, f.mechanism, ...f.alternatives, `Evidence: ${f.evidence.join(', ')}`, `Counterevidence: ${f.counterevidence.join(', ')}`].join('\n'));
       }
       figures.forEach((v, i) => {
-        const y = 1.65 + i * 1.18;
-        s.addShape(pptx.ShapeType.rect, { x: 8.7, y, w: 4, h: 1.04, fill: { color: 'E6EFEC' }, line: { color: 'E6EFEC' } });
-        const label = fitted(v.label, 3.6, 0.3, 12), value = fitted(v.display, 3.6, 0.43, 18);
-        s.addText(label.text, { x: 8.9, y: y + 0.09, w: 3.6, h: 0.3, fontSize: label.size, color: dark, margin: 0, valign:'top', lineSpacingMultiple:1 });
-        s.addText(value.text, { x: 8.9, y: y + 0.49, w: 3.6, h: 0.43, fontSize: value.size, bold: true, color: green, margin: 0, valign:'top', lineSpacingMultiple:1 });
+        const scale = f ? Math.min(1, 4 / figures.length) : 1;
+        const x = f ? 8.7 : 0.65 + i % 2 * 6.1, y = f ? 1.65 + i * 1.18 * scale : 1.65 + Math.floor(i / 2) * 1.7;
+        const w = f ? 4 : 5.9;
+        s.addShape(pptx.ShapeType.rect, { x, y, w, h: 1.04 * scale, fill: { color: 'E6EFEC' }, line: { color: 'E6EFEC' } });
+        const label = fitted(v.label, w - 0.4, 0.3 * scale, 12), value = fitted(v.display, w - 0.4, 0.43 * scale, 18);
+        s.addText(label.text, { x: x + 0.2, y: y + 0.09 * scale, w: w - 0.4, h: 0.3 * scale, fontSize: label.size, color: dark, margin: 0, valign:'top', lineSpacingMultiple:1 });
+        s.addText(value.text, { x: x + 0.2, y: y + 0.49 * scale, w: w - 0.4, h: 0.43 * scale, fontSize: value.size, bold: true, color: green, margin: 0, valign:'top', lineSpacingMultiple:1 });
       });
       const refs = [...new Set([...figures.flatMap(v => v.evidence), ...(f ? f.evidence : [])])];
       const sources = fitted(`来源记录 ${refs.slice(0,3).join(' / ')}${refs.length>3 ? ' 等' : ''}；全部来源及位置见报告、底稿与备注`, 12, 0.3, 9);
@@ -100,7 +113,8 @@ async function main() {
   const number = value => value === null || value === undefined ? '未计算' : Number(value).toLocaleString('en-US', { maximumFractionDigits: 4 });
   for (const q of d.quantitative || []) {
     const a = q.artifact;
-    if (q.method === 'operating_cash_scenario_v1') {
+    if (q.method === 'operating_cash_scenario_v1') throw new Error('Historical operating_cash_scenario_v1 requires its frozen exporter or documented v2 cost decomposition');
+    if (q.method === 'operating_cash_scenario_v2') {
       s = page(q.label, false, true);
       const low = a.rows.reduce((best, row) => row.cash_end < best.cash_end ? row : best);
       qtext(s, `最低期末现金  ${number(low.cash_end)}`, 0.65, 1.45, 7.8, 0.6, 29, low.cash_end < 0 ? 'A13D35' : green, true);

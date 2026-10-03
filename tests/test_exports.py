@@ -10,11 +10,64 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'skills/annual-repo
 from calculate import evaluate
 from export import prepare, word, workbook
 from recovery import RecoveryInput, calculate_recovery
+import scenarios
+from test_quantitative import manufacturing_case
 from test_recovery import example
 from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_historical_cash_artifact_cannot_be_relabelled_as_v2(self):
+        raw = json.loads((Path(__file__).resolve().parents[1]/'tests/fixtures/legacy-scenario-workpaper.json').read_text(encoding='utf-8'))
+        raw['quantitative'] = raw['quantitative'][:1]
+        w = Workpaper.model_validate(raw)
+        with self.assertRaisesRegex(ValueError, 'historical model'):
+            prepare(w, evaluate(w))
+        raw['quantitative'][0]['method'] = 'operating_cash_scenario_v2'
+        raw['quantitative'][0]['artifact']['method'] = 'operating_cash_scenario_v2'
+        w = Workpaper.model_validate(raw)
+        with self.assertRaisesRegex(ValueError, 'unit_cost_of_sales'):
+            prepare(w, evaluate(w))
+
+    def test_manufacturing_cost_decomposition_reaches_cash_formulas(self):
+        for inventory_change, ending_inventory, cash in [(0, 60, 100), (10, 90, 110), (-10, 70, 110)]:
+            with self.subTest(inventory_depreciation_change=inventory_change):
+                source = manufacturing_case()
+                if inventory_change:
+                    source['periods'][0].update(depreciation=30, depreciation_in_cost_of_sales=30,
+                        inventory_cash_conversion=20, inventory_depreciation_change=inventory_change,
+                        dio=ending_inventory*365/120, source='Constructed manufacturing D&A and payroll cash bridge')
+                artifact = scenarios.run(source)
+                w = Workpaper.model_validate({
+                    'mandate': dict(title='Manufacturing cash', entity='Constructed', industry='manufacturing',
+                                    purpose='Independent direct cash bridge', period_start='2025-01-01',
+                                    period_end='2025-12-31', cutoff='2024-12-31', accounting_basis='Constructed',
+                                    scope='single entity', version='v2'),
+                    'sources': [], 'evidence': [], 'facts': [], 'findings': [], 'sections': [],
+                    'quantitative': [scenarios.to_workpaper_result(artifact, 'manufacturing', 'Manufacturing', [], [])],
+                })
+                with tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    data = prepare(w, evaluate(w))
+                    workbook(w, data, root/'workbook.xlsx')
+                    word(data, root/'report.docx')
+                    with ZipFile(root/'workbook.xlsx') as z:
+                        ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                        sheets = ET.fromstring(z.read('xl/workbook.xml')).find('x:sheets', ns)
+                        index = next(i for i, s in enumerate(sheets, 1) if s.get('name') == 'Q1Cash')
+                        xml = ET.fromstring(z.read(f'xl/worksheets/sheet{index}.xml'))
+                    for ref, expected in [('L2', 100), ('M2', 40), ('V2', cash)]:
+                        self.assertAlmostEqual(float(xml.find(f".//x:c[@r='{ref}']/x:v", ns).text), expected)
+                    for ref, formula in [('D2', "B2-C2+'Q1Drivers'!R2-'Q1Drivers'!G2"),
+                                         ('L2', "C2+K2-'Q1Inputs'!B8-'Q1Drivers'!S2-'Q1Drivers'!R2-'Q1Drivers'!T2"),
+                                         ('P2', "I2+E2+'Q1Drivers'!T2-O2")]:
+                        self.assertIn(formula, xml.find(f".//x:c[@r='{ref}']/x:f", ns).text)
+                    self.assertIn("COUNT('Q1Drivers'!A2:T2)=20", xml.find(".//x:c[@r='V2']/x:f", ns).text)
+                    with ZipFile(root/'report.docx') as z:
+                        text = ' '.join(ET.fromstring(z.read('word/document.xml')).itertext())
+                    self.assertIn(f'{cash:,.4f}', text)
+                    self.assertIn('Supplier purchases exclude internal production cash conversion', text)
+
     def test_incomplete_ratio_or_growth_remains_unavailable_in_workbook(self):
         for operation in ('ratio', 'growth'):
             with self.subTest(operation=operation):

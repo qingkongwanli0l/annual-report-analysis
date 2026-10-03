@@ -19,6 +19,8 @@ description: Analyze annual reports and related disclosures for accounting, audi
 
 ## 取证和分析
 
+全面年报分析先读 [analysis-program.md](references/analysis-program.md)，按实际报告、业务、交易和法律结构建立覆盖范围，再确定重大事项的深度。下列领域和加载入口不是内容上限；不能把一项现金桥、少数财务比率或一个行业模板的完成称为全面分析。专项任务可聚焦，成果明确其范围。
+
 1. 建立章节与实际读取范围：业务/分部和管理层讨论、审计报告、四张基本报表、会计政策、重要附注、治理/关联方/承诺/期后事项。记录未读取或不可读部分，不称全文覆盖。用 `scripts/extract_pdf.py` 保留 PDF 页码；跨页/多层表头使用 `--tables --render 用户任务图像目录`，同时选取表头页和目标行页。候选矩阵与原页相互核对，先在 evidence 中保存完整表头、目标行和列位再取数；不能按纯文本数字顺序猜列。扫描页使用宿主已有 OCR/视觉能力，无法确认就留缺口。
 2. 依据政策原文确认 CAS、IFRS、HKFRS 或 US GAAP 与实际采用版本，不按上市地猜测。原始、重述、分析调整分别保留；合并利润、归母利润和母公司利润不互换。比较期间、币种、范围和平均/期末余额先对齐。
 3. 沿经济链解释：产品/客户/地区与量价结构 → 收入及利润 → 应收/存货/合同/供应商资金 → CFO → 投资/资本配置 → 债务、流动性与回报。逐项量化主因、替代解释和未解释残差；并购/处置/汇率不能算作未经证明的有机增长。
@@ -29,12 +31,15 @@ description: Analyze annual reports and related disclosures for accounting, audi
 
 ## 按任务加载方法
 
-不要一次载入所有参考。完整企业研究涉及多个方向时分别读取并形成相互一致的底稿。
+不要一次载入所有参考。先做全面范围识别，再依实际业务和事项读取方法，形成相互一致的底稿；不因某参考未列出特殊交易就忽略它。
 
 - **会计与审计支持**：读 [accounting-and-audit.md](references/accounting-and-audit.md)。执行政策/交易/估计分析、盈利质量和现金桥；审计任务落到认定、总体、选取、程序、实际证据、例外、错报与追加取证。年报中原审计师做过的程序不算本次执行。内部资料足够时继续复算与细节检查，缺资料则给可交接请求和关闭条件。
 - **企业信用、风险和成长**：读 [corporate-credit.md](references/corporate-credit.md)。做行业竞争、调整桥、法人债务/可用现金、分期到期与资金、契约、支持/约束、债项顺位、回收、建议和跟踪；给具体判断与反方，不以“资料有限”替代能做的分析。只使用已取得、适用的机构方法；自建分析不冒称官方评级。
+- **国内评级方法对标**：读 [domestic-credit-methods.md](references/domestic-credit-methods.md)。依主体、主业和条款区分通用工商、企业集团、投资控股及行业方法；不同机构的预测/历史权重、现金和支持定义各自保留，不能把国内字母、国际序列和内部分析分数互换。
+- **行业经济机制**：读 [sector-analysis.md](references/sector-analysis.md)。从实际业务而非股票行业标签分流，覆盖开发/工程/项目、资源/材料、能源公用、运输、消费、制造科技医疗等不同经营与现金路径。通用工业情景不能仅换参数就用于预售、CFADS、监管回报、资源递减或租赁残值。
+- **集团、投资控股和特殊融资结构**：读 [special-credit-structures.md](references/special-credit-structures.md)。区分经营集团和投资组合、母子及非控股权益、结构化JV、PIK/股东融资、产业金融、封闭SPV与特殊债项；逐层连接价值、现金、控制和追索。
 - **量化、驱动预测、压力、同业面板**：读 [quantitative-analysis.md](references/quantitative-analysis.md)。单企业用可复算桥与联动场景，多企业按真实可用时点和标签成熟日期验证。未提供真实面板不得编造回测、校准 PD 或预测准确率。
-- **银行、保险、证券/资管、交易所/清算机构**：读 [financial-institutions.md](references/financial-institutions.md)。按资本、资产风险、合同/准备、资金权属和监管口径分析；不套工业企业现金循环或统一健康分。监管阈值只在核实主体、口径、时点与有效规则后使用。
+- **银行、保险、证券/资管、交易所/清算及其他非银业务**：读 [financial-institutions.md](references/financial-institutions.md)。按资本、资产风险、合同/准备、资金权属和监管口径分析，分别处理放贷、融资/经营租赁、AMC、担保与信托/平台；不套工业企业现金循环或统一健康分。监管阈值只在核实主体、口径、时点与有效规则后使用。
 - **准则适用与官方报告查找**：读 [sources-and-standards.md](references/sources-and-standards.md)。按期间核验生效及提前采用，正文未取得就写明，不能用更新目录冒充全文验证。
 
 ## 形成和复算底稿

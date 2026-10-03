@@ -24,11 +24,26 @@ def cash_case():
                     "inventory": 60, "payables": 60, "debt": 200},
         "minimum_cash": {**source, "value": 20},
         "periods": [{**source, "start": "2025-01-01", "end": "2025-12-31",
-                     "volume": 1000, "unit_price": 1, "unit_variable_cost": .6,
+                     "volume": 1000, "unit_price": 1, "unit_cost_of_sales": .6,
                      "fixed_cash_cost": 250, "depreciation": 30, "capex": 40,
+                     "depreciation_in_cost_of_sales": 0, "inventory_cash_conversion": 0, "inventory_depreciation_change": 0,
                      "tax_rate": .25, "dso": 36.5, "dio": 36.5, "dpo": 36.5,
-                     "interest_rate": .05, "drawdown": 0, "principal": 100, "dividends": 20}],
+                     "interest_rate": .05, "drawdown": 0, "principal": 100, "dividends": 20,
+                     "source": "Constructed budget: no internal production cash conversion or inventory D&A; all D&A is a period expense outside cost of sales"}],
     }
+
+
+def manufacturing_case():
+    data = cash_case()
+    data.update(entity="Constructed manufacturing payroll example", amount_scale=1, payables_denominator="purchases")
+    data["opening"].update(cash=20, receivables=0, inventory=50, payables=30, debt=0)
+    data["minimum_cash"]["value"] = 0
+    data["periods"][0].update(
+        volume=10, unit_price=20, unit_cost_of_sales=12, fixed_cash_cost=0, depreciation=0,
+        inventory_cash_conversion=30, capex=0, tax_rate=0, dso=0, dio=182.5, dpo=146,
+        interest_rate=0, principal=0, dividends=0,
+        source="Constructed: inventory 50 + supplier purchases 100 + internal payroll paid 30 - full cost 120 = 60; no D&A or other flows")
+    return data
 
 
 def annual_record(entity, year, margin, published, version="original"):
@@ -98,12 +113,53 @@ class ScenarioTests(unittest.TestCase):
         self.assertAlmostEqual(row["payables_end"], 53.4)
         self.assertAlmostEqual(row["cash_end"], -12.75753424657534)
 
+    def test_manufacturing_payroll_is_not_supplier_purchases(self):
+        data = manufacturing_case()
+        row = scenarios.run(data)["rows"][0]
+        # Supplier cash = 30 + 100 - 40 = 90; CFO = 200 - 90 - 30 = 80.
+        for key, expected in {"implied_purchases": 100, "payables_end": 40, "cfo": 80, "cash_end": 100}.items():
+            self.assertAlmostEqual(row[key], expected)
+        data["payables_denominator"] = "cost_of_sales"
+        proxy = scenarios.run(data)["rows"][0]
+        self.assertEqual(proxy["implied_purchases"], 100)
+        self.assertEqual(proxy["payables_end"], 48)
+        self.assertEqual(proxy["cash_end"], 108)
+
+    def test_manufacturing_inventory_depreciation_matches_direct_cash(self):
+        for change, inventory, production in [(10, 90, 40), (-10, 70, 20)]:
+            with self.subTest(inventory_depreciation_change=change):
+                data = manufacturing_case()
+                data["periods"][0].update(depreciation=30, depreciation_in_cost_of_sales=30,
+                    inventory_cash_conversion=20, inventory_depreciation_change=change, dio=inventory*365/120,
+                    source="Constructed: full cost 120 includes D&A 30; inventory 50 + purchases 100 + payroll 20 + production D&A - cost 120; no other flows")
+                row = scenarios.run(data)["rows"][0]
+                # Direct CFO = collections 200 - supplier cash 90 - payroll cash 20 = 90.
+                for key, expected in {"ebitda": 110, "net_income": 80, "production_depreciation": production,
+                                      "implied_purchases": 100, "payables_end": 40, "cfo": 90, "cash_end": 110}.items():
+                    self.assertAlmostEqual(row[key], expected)
+
+    def test_decomposition_is_required_and_legacy_input_is_not_migrated(self):
+        for field in ("depreciation_in_cost_of_sales", "inventory_cash_conversion", "inventory_depreciation_change"):
+            data = manufacturing_case()
+            del data["periods"][0][field]
+            with self.assertRaisesRegex(ValueError, field):
+                scenarios.run(data)
+        legacy = json.loads((SCRIPTS.parents[2] / "tests/fixtures/legacy-scenario-input.json").read_text(encoding="utf-8"))
+        with self.assertRaisesRegex(ValueError, "unit_cost_of_sales"):
+            scenarios.run(legacy)
+        for change, message in [({"depreciation_in_cost_of_sales": 1}, "exceeds total P&L"),
+                                ({"inventory_depreciation_change": -1}, "negative production depreciation")]:
+            data = manufacturing_case()
+            data["periods"][0].update(change)
+            with self.assertRaisesRegex(ValueError, message):
+                scenarios.run(data)
+
     def test_negative_inventory_implied_purchases_are_not_cash_release(self):
         for denominator in ('cost_of_sales', 'purchases'):
             data = cash_case()
             data['payables_denominator'] = denominator
             data['opening']['inventory'] = 100
-            data['periods'][0].update(volume=100, unit_variable_cost=.2, dio=0)
+            data['periods'][0].update(volume=100, unit_cost_of_sales=.2, dio=0)
             with self.assertRaisesRegex(ValueError, 'negative implied purchases'):
                 scenarios.run(data)
 
