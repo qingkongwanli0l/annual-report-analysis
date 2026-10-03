@@ -379,7 +379,7 @@ Fitch困境交换须同时成立“条款实质减少债权人权益”和“为
 
 机构尺度、主体与债项方法、全球与国内序列、业务风险与财务口径不得按同名字母机械映射；未经实证校准不把内部百分制转成 AAA 或 PD。访问限制应落实为缺少哪项规则、能完成什么、暂不能支持什么，而不是停止已有证据足以完成的经营、现金、条款和条件性建议。
 
-新增特殊结构的来源状态见 `special-credit-structures.md`。S&P的2026-07-29非控股权益及2026-08-13部分信用支持列于官方[征求意见目录](https://www.spglobal.com/ratings/en/regulatory/ratings-criteria/-/articles/criteria/requests-for-comment/filter/all)，不当正式规则；KBRA同题同日债项文件有不同状态，也须核在用文件ID。以上国际机构仍是已研究样本，不是全球全集。这些操作参考和来源依据尚未经真实发行人全流程验证，不扩大脚本支持范围。
+新增特殊结构的来源状态见 `special-credit-structures.md`。S&P的2026-07-29非控股权益及2026-08-13部分信用支持列于官方[征求意见目录](https://www.spglobal.com/ratings/en/regulatory/ratings-criteria/-/articles/criteria/requests-for-comment/filter/all)，不当正式规则；KBRA同题同日债项文件有不同状态，也须核在用文件ID。以上国际机构仍是已研究样本，不是全球全集。操作规则和官方来源已列于本参考及国内方法正文。新增方法的真实发行人全流程验证仍未完成，脚本支持范围也未因此扩大。
 
 ## 13. 交付前做一次针对结论的复核
 

@@ -30,6 +30,6 @@ Requires Python 3.11+ and Node 18+. Run in a writable checkout or use the host's
 
 ChatGPT/Codex and Claude manifests reference the same core skill; DeepSeek harness can discover the folder under `.agents/skills` or `.dsh/skills`. Native end-to-end host results are tracked separately from packaging compatibility.
 
-Research records identify official sources, method versions and access limitations. Public methods do not supply all internal rating-agency data or parameters. Analysis and draft recommendations are distinct from statutory audit opinions, authorized ratings and calibrated default probabilities.
+The published skill retains its original analytical procedures and necessary official references. Public methods do not supply all internal rating-agency data or parameters. Analysis and draft recommendations are distinct from statutory audit opinions, authorized ratings and calibrated default probabilities.
 
 MIT license. Third-party standards and reports remain linked rather than republished in full. Contributions should include a reproducible task, source location, observed result and evidence for the correction.
