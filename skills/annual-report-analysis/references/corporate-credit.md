@@ -84,7 +84,7 @@
 
 对周期或重大并购，分别保留最近实际、预测期和周期常态指标及业务假设，不把高点利润长期外推。若选择Fitch 2026对标，已读通用方法p4以最近历史/第一预测年/第二预测年20%/40%/40%作为财务指标标准起点，允许有说明的调整；这不适用于其他机构，也不等于简单加权后即可产生SCP。尚未取得完整行业参数时只展示指标与选择理由。预测输入不足则保留条件范围，不能把`scenarios.py`的经营现金结果称作CRT或机构评分引擎。
 
-## 5. 法人现金可用与 12—24 个月支付能力
+## 5. 法人现金可用与分期支付能力
 
 ### 5.1 现金和授信必须按法人、币种、日期拆分
 
@@ -96,7 +96,7 @@
 
 ### 5.2 现金时点表与契约工作表
 
-原则上覆盖未来 12 个月，重大集中偿债、长建设周期或方法要求时延伸至 24 个月；按风险采用月度或季度，并把月内大额到期单独列出。每期：`期末现金 = 期初可用现金 + 实际可实现经营净流入 + 可提款融资 + 已验证处置/注资 − 本金 − 未包含的现金税息 − capex − 分红/回购 − 或有调用`。税息已在经营净流入中扣除则不再扣。保留最低运营现金、最早缺口、最低余额、峰值借款与可用额度。前瞻测算调用本 skill 的场景计算能力，不能把本参考的示例当预测。
+原则上覆盖未来 12 个月，重大集中偿债、长建设周期或方法要求时延伸至 24 个月或相关关键到期/完工日期；详细短期现金表之外，保留已知远期重大义务和再融资路径。按风险采用月度或季度，并把月内大额到期单独列出。每期：`期末现金 = 期初可用现金 + 实际可实现经营净流入 + 可提款融资 + 已验证处置/注资 − 本金 − 未包含的现金税息 − capex − 分红/回购 − 或有调用`。税息已在经营净流入中扣除则不再扣。保留最低运营现金、最早缺口、最低余额、峰值借款与可用额度。前瞻测算调用本 skill 的场景计算能力，不能把本参考的示例当预测。
 
 **例：** 初始可用现金 30、营运资本前且已付税息的现金 35、已承诺可提款 25，合计 90；增量营运资金 10、capex 35、本金 40、分红 5，合计 90。年末账面现金 0，但最低运营现金需要 10，因此融资缺口为 10。继续按到期日排布，即使年末余额为正，较早本金到期也可能先失败。取消分红仅补 5，需证明另外 5 的处置、延迟投资或新增资金确能及时到位。
 
@@ -261,7 +261,9 @@
 | Morningstar DBRS | [Global Corporate Criteria](https://dbrs.morningstar.com/methodologies/470156/morningstar-dbrs-global-corporate-criteria)，2025-12-19，目录及 2026 应用核验，全文未取得 | 已知涵盖控股/母子/担保/回收/财务调整；不能宣称参数级复现 |
 | KBRA | [General Corporate Global](https://www.kbra.com/publications/mKVDZjkt/corporates-general-corporate-global-rating-methodology?format=web)，2025-08-06，目录/范围已读，完整报告须登录未获取 | 成长、法域、财务政策、国别/兑换、支持、债项和跟踪均有任务；缺正文时只采用有依据的独立分析，不自造机构打分 |
 | Scope | [General Corporate Rating Methodology](https://scoperatings-web-backend.scoperatings.com/api/document/288180ad-b908-4f1b-872b-40617a2da901)，2026-04-24正式版，41页；已读目录及p4–11、22–23、29–34、38–39相关段落，未逐页通读 | 较弱因素和行业例外影响判断，无统一固定权重；流动性连接反向保理撤销及契约加速，FOCF另核租赁本金，不能把一般FCF换名为机构指标 |
-| Nordic Credit Rating | [Corporate Rating Methodology](https://nordiccreditrating.com/uploads/2023-05/Nordic%20Credit%20Rating%20-%20Corporate%20Rating%20Methodology.pdf)，现行目录及2026应用仍指2023-05-08；26页中已读目录及p3–6。2026-09-23[补充征求意见](https://nordiccreditrating.com/article/nordic-credit-rating-invites-comments-revised-corporate-rating-methodology-proposal?language_content_entity=en)截至2026-10-23，公告已读、提案全文未读 | 通用框架排除项目融资和企业证券化，投资控股另选法；2026提案的公用事业、混合工具和债项变更不能拼入2023正式方法。其余正文/参数未完成验证 |
+| Nordic Credit Rating | [Corporate Rating Methodology](https://nordiccreditrating.com/uploads/2023-05/Nordic%20Credit%20Rating%20-%20Corporate%20Rating%20Methodology.pdf)，现行目录及2026应用仍指2023-05-08；p1–26正文已读，矩阵未逐格核验。2026-09-23[补充征求意见](https://nordiccreditrating.com/article/nordic-credit-rating-invites-comments-revised-corporate-rating-methodology-proposal?language_content_entity=en)截至2026-10-23，公告已读、提案全文未读 | 独立预测、风险偏好及实际联营股利/现金税息桥按本方法定义；租赁不重复加债。通用框架排除项目融资和企业证券化，投资控股另选法；2026提案不拼入正式方法，支持/原则等依赖正文仍未完成 |
+| JCR | [通用方法2024-10-01](https://www.jcr.co.jp/en/pdf/general/JCR%27s_Rating_Methodology20241001_r2.pdf)15页正文、[控股2025-04-02](https://www.jcr.co.jp/en/pdf/general/HoldingCompany20250402_en.pdf)3页已读；[混合工具2022-12-01](https://www.jcr.co.jp/en/pdf/general/20221201_en.pdf)仅p1–3、9–12，矩阵未全核 | 主体违约与债项损失分开；控股集团能力另接本部现金、结构性次级及双重杠杆；负面担保保护对象与例外逐条取合同。观察期不截断已知远期大额到期，信用权益不等于会计权益 |
+| ICRA | [Corporate Credit Rating Methodology，2025-07](https://www.icra.in/Rating/GetRatingMethodologyFile/960~Corporate%20Credit%20Rating%20Methodology%2C%20Jul%202025.pdf)20页中已读p1、6–18，p2–5未完整阅读；后继版及依赖方法未穷尽 | 其FFO/CFO/FCF、资本和利息定义另建桥，不替换本项目同名指标。储备现金分别判断会计分类、到期可用性、方法净债务抵扣；经营周转排除资本性应付，股东质押连接控制变更/加速条款，不能只据担保物提高主体评级 |
 
 机构尺度、主体与债项方法、全球与国内序列、业务风险与财务口径不得按同名字母机械映射；未经实证校准不把内部百分制转成 AAA 或 PD。访问限制应落实为缺少哪项规则、能完成什么、暂不能支持什么，而不是停止已有证据足以完成的经营、现金、条款和条件性建议。
 
