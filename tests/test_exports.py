@@ -18,6 +18,58 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_percentage_point_change_is_distinct_from_relative_growth(self):
+        context = dict(entity='Example insurer', scope='consolidated', aggregation='ratio',
+                       basis='Constructed', measure='ratio')
+        current = {**context, 'end':'2026-06-30'}
+        raw = {
+            'mandate': dict(title='Ratio changes', entity='Example insurer', industry='insurance',
+                            purpose='Constructed comparison', period_start='2026-01-01', period_end='2026-06-30',
+                            cutoff='2026-09-30', accounting_basis='Constructed', scope='consolidated', version='1'),
+            'sources': [dict(id='source', title='Constructed ratios', url='example-source', published='2026-06-30')],
+            'evidence': [dict(id='e', source='source', locator='Constructed table',
+                             observation='Current 156.80%; previous 161.77%', reliability='Constructed example')],
+            'facts': [dict(id='now', label='Current ratio', concept='capital_ratio', value='1.568',
+                           context=current, evidence=['e']),
+                      dict(id='before', label='Previous ratio', concept='capital_ratio', value='1.6177',
+                           context={**context, 'end':'2025-12-31'}, evidence=['e'])],
+            'calculations': [dict(id='delta', label='Absolute ratio change', op='difference',
+                                  terms=[{'ref':'now'}, {'ref':'before'}],
+                                  context={**current, 'physical_unit':'percentage_points', 'scale':'0.01'},
+                                  definition='Current minus previous ratio', interpretation='Percentage points', period_rule='comparison'),
+                             dict(id='growth', label='Relative change', op='growth',
+                                  terms=[{'ref':'now'}, {'ref':'before'}], context={**current, 'scale':'0.01'},
+                                  definition='Change divided by previous ratio', interpretation='Relative growth', period_rule='comparison')],
+            'findings': [dict(id='change', title='Capital ratio change', question='How did the ratio change?',
+                              conclusion='Absolute {{delta}}; relative {{growth}}', mechanism='Two distinct comparisons.',
+                              status='supported', evidence=['delta', 'growth'], alternatives=[], changes_if='Update comparable inputs.')],
+            'sections': [dict(title='Capital', findings=['change'], figures=['delta', 'growth'])],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root/'input.json'
+            source.write_text(json.dumps(raw, ensure_ascii=False), encoding='utf-8')
+            export(source, root/'output')
+            for filename, prefix in [('report.docx', 'word/document'), ('presentation.pptx', 'ppt/slides/slide')]:
+                with ZipFile(root/'output'/filename) as archive:
+                    text = ''.join(''.join(ET.fromstring(archive.read(name)).itertext())
+                                   for name in archive.namelist() if name.startswith(prefix) and name.endswith('.xml'))
+                self.assertIn('-4.97个百分点', ''.join(text.split()), filename)
+                self.assertIn('-3.07%', ''.join(text.split()), filename)
+            with ZipFile(root/'output'/'workbook.xlsx') as archive:
+                ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                sheet = ET.fromstring(archive.read('xl/worksheets/sheet3.xml'))
+                self.assertAlmostEqual(float(sheet.find(".//x:c[@r='D2']/x:v", ns).text), -0.0497)
+                delta = sheet.find(".//x:c[@r='E2']", ns)
+                self.assertEqual(delta.find('x:f', ns).text, 'D2*100')
+                self.assertAlmostEqual(float(delta.find('x:v', ns).text), -4.97)
+                self.assertAlmostEqual(float(sheet.find(".//x:c[@r='E3']/x:v", ns).text), -0.0497/1.6177)
+                styles = ET.fromstring(archive.read('xl/styles.xml'))
+                fmt = styles.find('x:cellXfs', ns)[int(delta.get('s'))].get('numFmtId')
+                code = next(f.get('formatCode') for f in styles.find('x:numFmts', ns) if f.get('numFmtId') == fmt)
+                self.assertIn('个百分点', code)
+                self.assertNotIn('%', code)
+
     def test_custom_snapshot_and_numeric_reference_reach_all_deliverables(self):
         context = dict(entity='Example issuer', scope='documented_bridge', end='2025-12-31',
                        aggregation='instant', basis='Constructed', measure='money', currency='CNY')

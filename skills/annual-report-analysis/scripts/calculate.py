@@ -76,7 +76,9 @@ def context_error(c, inputs):
     dimensions = {(x.measure, x.currency, x.physical_unit) for x in ctx}
     if c.op != "product" and len(dimensions) != 1:
         return "incompatible measures or currencies"
-    if c.op in ("sum", "difference", "average_balance") and (out.measure, out.currency, out.physical_unit) != (ctx[0].measure, ctx[0].currency, ctx[0].physical_unit):
+    point_change = (c.op == "difference" and dimensions == {("ratio", None, None)}
+                    and (out.measure, out.currency, out.physical_unit) == ("ratio", None, "percentage_points"))
+    if c.op in ("sum", "difference", "average_balance") and not point_change and (out.measure, out.currency, out.physical_unit) != (ctx[0].measure, ctx[0].currency, ctx[0].physical_unit):
         return "output must retain input dimension"
     if c.op in ("ratio", "growth") and out.measure not in ("ratio", "days"):
         return "division output must be a ratio or explicitly defined turnover days"

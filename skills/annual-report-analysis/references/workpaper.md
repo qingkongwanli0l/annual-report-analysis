@@ -105,7 +105,7 @@ Excel 金额残差按两端 Decimal 基础单位结果保留的小数位计算 R
 
 结论、程序结果及步骤、资料请求等分析叙述中的动态数值写 `{{gross_profit}}`，导出时自动代入数值和单位；未知 ID 会报错。原文证据不做这种替换。记录 ID 保留在表格及证据链。重要数值不要在自由文本手工复制。各 `evidence`/`counterevidence` 可以引用 evidence、fact、calculation ID；沿计算输入追溯原文。
 
-数字引用自带单位，不再手工追加单位。比率默认显示为百分比；债务/EBITDA、利息覆盖等倍数必须在 `measure="ratio"` 的 context 显式填 `physical_unit="times"`，计算结果仍用 `scale=1`，例如43.5978显示为43.60倍，Word、PPT与Excel展示格式一致；脚本不从指标名称猜测倍数。比率之差不是相对增长率，正文须明确比较的是两个比率，不能把百分比差的显示误称为相对增长或在百分号后拼“百分点”。需要说明百分点变化时，可并列两期比率及其增减方向，底稿保留差值计算。
+数字引用自带单位，不再手工追加单位。比率默认显示为百分比；债务/EBITDA、利息覆盖等倍数必须在 `measure="ratio"` 的 context 显式填 `physical_unit="times"`，例如43.5978显示为43.60倍。比率的绝对变化使用 `op="difference"`，输出 context 显式填 `physical_unit="percentage_points"`；156.80%降至151.83%的底层差值为-0.0497，展示为-4.97个百分点。相对变化另用 `op="growth"`，不能将两者混称。计算输出建议 `scale=1`；底层仍保留小数比率，Word、PPT与Excel均按 `value × scale` 统一展示，百分点再乘100。Excel Calculations D保留基础单位，E展示百分比、倍数或百分点，不改变下游公式使用的D列。脚本不从指标名称猜测单位。
 
 ## 模型和复核
 

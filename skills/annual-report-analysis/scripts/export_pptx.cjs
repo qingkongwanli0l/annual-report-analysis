@@ -71,6 +71,17 @@ async function main() {
       s.addText(body, {x:0.65,y:1.6,w:12,h:4.9,fontSize:16,color:ink,margin:0,valign:'top',lineSpacingMultiple:1});
     }
   }
+  const evidence = Object.fromEntries(d.evidence.map(e => [e.id, e]));
+  const sourcesById = Object.fromEntries(d.sources.map(source => [source.id, source]));
+  const usedEvidence = new Set();
+  const sourceRefs = refs => [...new Set(refs.flatMap(ref => d.figures[ref] ? d.figures[ref].evidence : [ref]))];
+  const sourceNotes = refs => sourceRefs(refs).map(ref => {
+    usedEvidence.add(ref);
+    const e = evidence[ref], source = sourcesById[e.source];
+    return `[${ref}] ${source.title} | ${e.locator}\n${source.url}`;
+  }).join('\n');
+  const counterText = ref => d.figures[ref]
+    ? `[${ref}] ${d.figures[ref].label}：${d.figures[ref].display}` : `[${ref}] ${evidence[ref].observation}`;
   const findings = Object.fromEntries(d.findings.map(f => [f.id, f]));
   for (const section of d.sections) {
     const selected = section.findings.map(id => findings[id]);
@@ -81,7 +92,10 @@ async function main() {
       const figures = allFigures.filter(v => (f.figure_refs || []).includes(v.id));
       figures.forEach(v => shown.add(v.id));
       const width = figures.length ? 7.65 : 12;
-      const text = `${f.conclusion}\n\n判断改变条件\n${f.changes_if}`;
+      const text = [f.conclusion, `解释与依据\n${f.mechanism}`,
+        ...(f.alternatives.length ? [`其他解释\n${f.alternatives.join('\n')}`] : []),
+        ...(f.counterevidence.length ? [`反证\n${f.counterevidence.map(counterText).join('\n')}`] : []),
+        `判断改变条件\n${f.changes_if}`].join('\n\n');
       const body = fitted(text, width, 3.35, 18);
       const chunks = body.size >= 16 ? [{body:body.text,size:body.size}]
         : paragraphs(text, width, 3.35, 18).map(body => ({body,size:18}));
@@ -110,10 +124,10 @@ async function main() {
         s.addText(label.text, { x: x + 0.2, y: y + 0.09 * scale, w: w - 0.4, h: 0.3 * scale, fontSize: label.size, color: dark, margin: 0, valign:'top', lineSpacingMultiple:1 });
         s.addText(value.text, { x: x + 0.2, y: y + 0.49 * scale, w: w - 0.4, h: 0.43 * scale, fontSize: value.size, bold: true, color: green, margin: 0, valign:'top', lineSpacingMultiple:1 });
       });
-      const refs = [...new Set([...figures.flatMap(v => v.evidence), ...(f ? f.evidence : [])])];
-      const sources = fitted(`来源记录 ${refs.slice(0,3).join(' / ')}${refs.length>3 ? ' 等' : ''}；全部来源及位置见报告、底稿与备注`, 12, 0.3, 9);
+      const refs = sourceRefs([...figures.map(v => v.id), ...(f ? [...f.evidence, ...f.counterevidence, ...f.figure_refs] : [])]);
+      const sources = fitted(`来源记录 ${refs.slice(0,3).join(' / ')}${refs.length>3 ? ' 等' : ''}；完整原文与位置见本演示文稿来源附页及备注`, 12, 0.3, 9);
       s.addText(sources.text, { x: 0.65, y: 6.57, w: 12, h: 0.3, fontSize: sources.size, color: '586874', margin: 0, valign:'top', lineSpacingMultiple:1 });
-      s.addNotes(`All source records: ${refs.join(', ')}`);
+      s.addNotes(sourceNotes(refs));
     }
   }
   const qtext = (slide, text, x, y, w, h, size = 17, color = ink, bold = false) => {
@@ -123,6 +137,7 @@ async function main() {
   const number = value => value === null || value === undefined ? '未计算' : Number(value).toLocaleString('en-US', { maximumFractionDigits: 4 });
   for (const q of d.quantitative || []) {
     const a = q.artifact;
+    const originalSources = sourceNotes([...q.evidence, ...q.input_refs, ...q.figures.map(f => f.id)]);
     if (q.method === 'operating_cash_scenario_v1') throw new Error('Historical operating_cash_scenario_v1 requires its frozen exporter or documented v2 cost decomposition');
     if (q.method === 'operating_cash_scenario_v2') {
       s = page(q.label, false, true);
@@ -142,7 +157,7 @@ async function main() {
       qtext(s, '按期初债务计息；期末融资及还本。负现金后停止预测。逐期输入与证据见工作簿。', 8.88, 5.13, 3.55, 1, 12, '56646C');
       const contractText = (a.contracts || []).slice(0, 2).map(c => `${c.label} ${c.test_date}：${number(c.value)} / 阈值 ${number(c.threshold)}，${c.status}`).join('\n');
       qtext(s, contractText || '未输入合同条件；不推造行业门槛。', 0.65, 5.98, 7.65, 0.85, 11, '56646C');
-      s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.contracts), `Evidence: ${q.evidence.join(', ')}`].join('\n'));
+      s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.contracts), originalSources].join('\n'));
       if (a.reverse) {
         const r = a.reverse;
         s = page(q.label + ' 逆向现金边界', false, true);
@@ -158,7 +173,7 @@ async function main() {
           qtext(s, r.reason || '未取得收敛边界', 0.65, 3.8, 12, 1.0, 21);
         }
         qtext(s, '条件边界不表示发生概率。改变假设、区间或目标后须重跑SciPy求根；根处完整现金路径随artifact保存。', 0.65, 6.0, 12, 0.72, 15, '56646C');
-        s.addNotes([q.id, r.source || '', ...q.limitations, JSON.stringify(r.rows || [])].join('\n'));
+        s.addNotes([q.id, r.source || '', ...q.limitations, JSON.stringify(r.rows || []), originalSources].join('\n'));
       }
     } else if (q.method === 'single_entity_recovery_waterfall') {
       const totals = a.rows.filter(r => r.kind === 'claim_total');
@@ -174,7 +189,7 @@ async function main() {
         qtext(s, summary.raw_input.replaceAll('gross=', '总价值 ').replaceAll('costs_paid=', '实付费用 ').replaceAll('debt_paid=', '债权分配 ').replaceAll('residual=', '余值 ')+`\n价值守恒残差 ${summary.result}`, 0.65, 5.06, 12, 0.68, 14, dark);
         qtext(s, `估值基础：${a.input_snapshot.value_basis}\n顺位依据：${a.input_snapshot.priority_basis}`, 0.65, 5.85, 12, 0.6, 12, '56646C');
         qtext(s, '未折现条件回收，不是违约概率或官方回收评级；逐项轨迹见报告与工作簿。', 0.65, 6.58, 12, 0.3, 11, '56646C');
-        s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.rows), `Evidence: ${q.evidence.join(', ')}`].join('\n'));
+        s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.rows), originalSources].join('\n'));
       }
       for (const body of paragraphs([...q.assumptions, ...q.limitations].join('\n\n'), 12, 4.9, 16)) {
         s = page(q.label + '：适用条件');
@@ -196,12 +211,12 @@ async function main() {
       }
       qtext(s, `未成熟结果 ${a.pending_outcomes.length} 条\n其他排除 ${a.excluded_pairs.length} 条\n状态 ${model.validation_status || model.status}`, 7.8, 5.1, 4.8, 1, 15);
       qtext(s, '误差仅描述此样本；不是训练准确率、PD、投资收益或因果证据。真实用途还需行业周期和样本外代表性。', 0.65, 6.45, 12, 0.38, 12, '56646C');
-      s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.training_pairs), `Evidence: ${q.evidence.join(', ')}`].join('\n'));
+      s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.training_pairs), originalSources].join('\n'));
     } else {
       const value = item => item === null ? 'null' : typeof item === 'object' ? JSON.stringify(item) : String(item);
       const rows = a.rows || [];
       const figures = q.figures.map(f => d.figures[f.id]);
-      const trace = `${q.id}\n${q.method}\n截至 ${q.as_of}\n输入 ${q.input_refs.join(', ')}\n证据 ${q.evidence.join(', ')}\n指标 ${figures.map(f => f.id).join(', ')}`;
+      const trace = `${q.id}\n${q.method}\n截至 ${q.as_of}\n输入 ${q.input_refs.join(', ')}\n${originalSources}\n指标 ${figures.map(f => f.id).join(', ')}`;
       const summaries = figures.length ? [figures.map(f => `${f.label}：${f.display}`).join('\n\n')]
         : rows.map(row => Object.entries(row).map(([key, item]) => `${key}：${value(item)}`).join('\n\n'));
       for (let index = 0; index < summaries.length; index++) {
@@ -232,6 +247,26 @@ async function main() {
       s.addText(r.owner_role, { x: 1.8, y: 2.52 + j * 1.5, w: 10.6, h: 0.3, fontSize: 12, color: '586874', margin: 0 });
       s.addNotes(`${r.id}: ${r.reason}\nClose when: ${r.close_when}`);
     });
+  }
+  const sourcePages = [];
+  for (const source of d.sources) {
+    const records = d.evidence.filter(e => e.source === source.id && usedEvidence.has(e.id));
+    if (!records.length) continue;
+    const text = [`[${source.id}] ${source.title}`, source.url,
+      ...records.map(e => `[${e.id}] ${e.locator}`)].join('\n');
+    for (const body of paragraphs(text, 12, 4.9, 16)) {
+      const previous = sourcePages.at(-1), refs = records.map(e => e.id);
+      const combined = previous ? `${previous.body}\n\n${body}` : body;
+      if (previous && lines(combined, 12, 16).length * 16 * 1.3 <= 4.9 * 72) {
+        previous.body = combined;
+        previous.refs.push(...refs);
+      } else sourcePages.push({body, refs});
+    }
+  }
+  for (const sourcePage of sourcePages) {
+    s = page('原文来源与定位');
+    qtext(s, sourcePage.body, 0.65, 1.6, 12, 4.9, 16);
+    s.addNotes(sourceNotes(sourcePage.refs));
   }
   await pptx.writeFile({ fileName: output });
   console.log(JSON.stringify({node:process.version, pptxgenjs:pptx.version}));

@@ -24,7 +24,7 @@ from workpaper import Workpaper
 
 def unit(ctx):
     if ctx.measure == "ratio":
-        measure = "倍" if ctx.physical_unit == "times" else "%"
+        return "倍" if ctx.physical_unit == "times" else "个百分点" if ctx.physical_unit == "percentage_points" else "%"
     else:
         measure = ctx.currency if ctx.measure == "money" else ctx.physical_unit if ctx.measure == "count" else ctx.measure
     return f"{measure} × {ctx.scale}" if ctx.scale != 1 else measure
@@ -36,6 +36,8 @@ def display(value, ctx):
     value = Decimal(str(value))
     if ctx.measure == "ratio" and ctx.physical_unit == "times":
         return f"{value*ctx.scale:,.2f} 倍"
+    if ctx.measure == "ratio" and ctx.physical_unit == "percentage_points":
+        return f"{value*ctx.scale*100:,.2f} 个百分点"
     if ctx.measure == "money" and ctx.currency == "CNY":
         amount = value * ctx.scale
         divisor, label = (Decimal("1e8"), "亿元人民币") if abs(amount) >= Decimal("1e8") else (Decimal("1e4"), "万元人民币") if abs(amount) >= Decimal("1e4") else (Decimal(1), "元人民币")
@@ -114,6 +116,7 @@ def workbook(w, data, path):
         number = book.add_format({"num_format": "#,##0.00;[Red](#,##0.00)"})
         percent = book.add_format({"num_format": "0.00%;[Red](0.00%)"})
         times = book.add_format({"num_format": '#,##0.00" 倍";[Red](#,##0.00" 倍")'})
+        points = book.add_format({"num_format": '0.00" 个百分点";[Red](0.00" 个百分点")'})
 
         def sheet(name, headers, rows, widths=None):
             ws = book.add_worksheet(name)
@@ -181,8 +184,12 @@ def workbook(w, data, path):
             ws.write_string(i-1, 2, expr, wrap)
             if not context_error(c, [records[t.ref] for t in c.terms]):
                 ws.write_formula(i-1, 3, expr, number, float(r["normalized"]) if r["normalized"] is not None else "#N/A")
-                ws.write_formula(i-1, 4, f"=D{i}/K{i}", (times if c.context.physical_unit == "times" else percent) if c.context.measure == "ratio" else number,
-                                 float(r["value"]) if r["value"] is not None else "#N/A")
+                if c.context.measure == "ratio":
+                    is_points = c.context.physical_unit == "percentage_points"
+                    ws.write_formula(i-1, 4, f"=D{i}*100" if is_points else f"=D{i}", points if is_points else times if c.context.physical_unit == "times" else percent,
+                                     float(r["normalized"])*(100 if is_points else 1) if r["normalized"] is not None else "#N/A")
+                else:
+                    ws.write_formula(i-1, 4, f"=D{i}/K{i}", number, float(r["value"]) if r["value"] is not None else "#N/A")
                 ws.write_formula(i-1, 5, f'=IF(ISNUMBER(D{i}),"calculated","not_calculated")', wrap, r["status"])
                 ws.write_formula(i-1, 6, f'=IF(ISNUMBER(D{i}),"","检查缺失值、分母与输入；口径变更须重跑Python")', wrap,
                                  "" if r["normalized"] is not None else "检查缺失值、分母与输入；口径变更须重跑Python")
