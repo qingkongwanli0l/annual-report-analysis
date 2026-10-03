@@ -1,0 +1,3429 @@
+{
+  "mandate": {
+    "title": "港交所2025：经营增长、会计质量与资本现金连接",
+    "entity": "香港交易及结算所有限公司",
+    "industry": "交易所及中央对手方清算",
+    "purpose": "公开年报会计分析示例；供专业研究复核，不是审计意见或完整监管压力验证",
+    "period_start": "2025-01-01",
+    "period_end": "2025-12-31",
+    "cutoff": "2026-10-02",
+    "accounting_basis": "HKFRS",
+    "scope": "consolidated",
+    "version": "hkex-2025-example-v1",
+    "methods": [
+      "SKILL、analysis-program、accounting-and-audit、financial-institutions、workpaper契约"
+    ],
+    "limitations": [
+      "仅公开年报选定重大事项分析，不声称逐页全文或所有合同与控制已验证。",
+      "首次公告日未单独核验；批准报出日为2026-02-26。",
+      "未取得服务级规则簿、PFMI定量披露、日内付款数据、总部购置合同及CGU完整估值模型。",
+      "已取得FCA最终文书及独立可持续报告，并定向核读风险、治理及有限保证范围；未执行网络、气候模型或整改运行测试。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "annual",
+      "title": "HKEX Annual Report 2025",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0316/2026031600319.pdf",
+      "published": null,
+      "availability_note": "收到官方URL原件；PDF批准日2026-02-26，未以URL日期冒充首次公开日。",
+      "sha256": "01f90f3b213f368e1ed66887ec6ec862f5129c74d5c89d3c11cf5b0fda8887ee"
+    },
+    {
+      "id": "fca",
+      "title": "FCA Final Notice: London Metal Exchange",
+      "url": "https://www.fca.org.uk/publication/final-notices/london-metal-exchange-2025.pdf",
+      "published": "2025-03-20",
+      "availability_note": "最终文书日期2025-03-19；FCA官网新闻首发2025-03-20。已读取PDF1-3、6-8页。",
+      "sha256": "8fee698e2f844433e57039749c3765b404b1309edc9229d21ea8b599a491b915"
+    },
+    {
+      "id": "sr",
+      "title": "HKEX Sustainability Report 2025",
+      "url": "https://www.hkexgroup.com/-/media/HKEX-Group-Site/ssd/Investor-Relations/Regulatory-Reports/documents/2026/260316sr_e.pdf",
+      "published": null,
+      "availability_note": "已取得76页原件；读取PDF42-43、56-58、71-72页，首次公告日未单独核验。",
+      "sha256": "ea0deef0b3f3a0d31c01d7936d60a652e4a3b9a6dd41b7d5351a80fba6b4af5f"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e_scope",
+      "source": "annual",
+      "locator": "PDF物理页3、6、22-23、46-48、65、68、75-81、111-115、129、131、139-150、153-158、164-168、185-187、189-190、193-195、205-210、230-231",
+      "observation": "目录用于范围识别；上述章节中重点页全文阅读，业务、委员会及风险部分为定向读取；未声称未列页面和独立可持续报告已读。四张主表、现金附注、会员资源、商誉、总部与税务是本次重点。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_profit",
+      "source": "annual",
+      "locator": "PDF物理页143、153-154",
+      "observation": "合并损益两列为2025、2024；金额HKD百万元。2025收入23745、收入及其他收益29161、净投资收益5111、税前21158、税3321、净利润17837、归母17754。现金分部EBITDA13398，2024为8169；集团22796、16281。分部EBITDA为公司定义的non-HKFRS，不是审计准则指标。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_business",
+      "source": "annual",
+      "locator": "PDF物理页23、46-48、65、68、131、155-156",
+      "observation": "管理层称股票ADT为249.8十亿港元、同比90%；Stock Connect和衍生品增长有不同驱动；交易收费按成交日、部分清算收费按次日、上市费按服务期。经营牌照、网络与互联互通有价值；不能从成交量增幅直接推净费率不变。LME量、OTC名义清算额与股票金额不可直接混算。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_cf",
+      "source": "annual",
+      "locator": "PDF物理页147、205",
+      "observation": "已视觉核对PDF205两列表头2025/2024及所有带符号行；2025税前21158，依次调整-5111,+94,-76,+96,+1568,+361,-26,+1,-80198,+80386,-7073,+6866,-374,-196,-145,-11679,+13353=19005，再+7519-4626-510-1533=19855。147页外部基金赎回5772，CFO25627，CFI-5565，CFF-14635，汇兑16；期初13910、期末19353。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_cash",
+      "source": "annual",
+      "locator": "PDF物理页145、167-168",
+      "observation": "PDF167原页已视觉核：2025列按A股现金/Corporate/Margin/Clearing House/Total依次2549/20676/130052/29447/182724，单位HKD百万元。Corporate内1323仅支持清算基金用途；168页(c)说明这些用途限制款不进入现金流量表现金。19353仍是集团口径，并非母公司可任意分配金额。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_margin",
+      "source": "annual",
+      "locator": "PDF物理页78、190、193",
+      "observation": "2025保证金负债269243；资产现金130052、FVOCI48327、摊余成本69176、ChinaClear20867、SHCH799、会员应收22。分列资金用途。清算基金资产现金29447+FVOCI6361-其他负债12=35796；构成为会员33991+OTC资源156+基金储备1649。Corporate的Skin-in-the-Game及credits2276不应重复加为会员资产。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_equity",
+      "source": "annual",
+      "locator": "PDF物理页145-146、194-195、206",
+      "observation": "PDF146完整表头视觉核对：2025最右Total equity列期初54407、净利润17837、OCI369；直接权益行-6193,-7583,+34,-512,vesting合计零,+361,+9,储备转拨合计零,NCI dividend合计零；期末58729。最后一行NCI分红归母储备+59、NCI-59，总权益零，现金和看跌期权负债减少59另在147/195/206反映。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_bs",
+      "source": "annual",
+      "locator": "PDF物理页145",
+      "observation": "2025合并资产580775、负债522046、权益58729；归母58147、NCI582。金额HKD百万元，资产列Current/Non-current/Total，取Total列。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_estimate",
+      "source": "annual",
+      "locator": "PDF物理页185-187",
+      "observation": "PDF185完整列名Goodwill/Tradenames/Customer relationships/Software systems/Total已视觉核。商誉13297+汇兑32-减值55=13274；软件净额3860，成本增加1285、成本汇兑20、累计摊销汇兑13、摊销810、处置成本60及累计摊销59，期末4341。Data and Connectivity商誉55；减值来自BayConnect预期协同下降、深圳自有技术中心定位变化。Commodities商誉13219、商标894；未来五年EBITDA margin61%，折现8%、终值增长3%，管理层称合理可能变化不改变无减值判断，未给本次可独立验证完整模型。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_capital",
+      "source": "annual",
+      "locator": "PDF物理页79、147、189、206",
+      "observation": "总部购置总考虑6.3十亿港元；已确认土地ROU2332、物业ROU34、固定资产67，现金支付3148；未来分期至2027，承诺3424。资本承诺总5285中还有已签未拨备固定104/无形183及批准未签固定758/无形816。会计确认、现金、承诺不同计量和范围，不能用差额认定错报。租赁负债1294+112-312+41-251-41+8=851；ROU总部新增不能等同融资租赁负债新增。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_tax",
+      "source": "annual",
+      "locator": "PDF物理页164-165",
+      "observation": "2025税务桥3567-1082+121+14+701=3321；香港最低补足税701作为当期税额，原文称2025起适用；该额未等于本期现金支付。税费2024为1698，税前14853；英国当期多计拨回93有同额递延税费用抵消，不应全额当税收永久优惠。此处以公司披露为事实，不另给法律适用意见。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_governance",
+      "source": "annual",
+      "locator": "PDF物理页111-115、139-140、148-150、208-210",
+      "observation": "HKFRS无保留意见；KAM是收入IT系统及控制依赖，原审计师测试不等于本次已执行。集团称监管实体全年符合资本要求，不等于已验证压力充足。HKFRS18未提前采用，预计2027重分类公司投资收入与会员利息回拨，不改变归母利润；跨期营业利润要重建可比。关联方标准收费是公司声明，未验证单笔公允性。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_parent",
+      "source": "annual",
+      "locator": "PDF物理页230-231",
+      "observation": "母公司现金2870（2024为1615）、应收子公司11338（5441）、净流动资产8992（12092）、留存15303（13929）；未从集团现金推母公司现金上划自由，未从应收变化推真实现金流。",
+      "reliability": "原件公开披露；仅支持披露层结论，不是本次交易真实性或控制运行测试"
+    },
+    {
+      "id": "e_fca",
+      "source": "fca",
+      "locator": "PDF1-3、6-8页；段2.4-2.10、2.25-2.32",
+      "observation": "FCA说明历史压力期的价格带运行、培训及升级控制不足，OTC头寸可见性是重大驱动；交易暂停/追缴需求可同时打击收入、会员现金和信心。2.31-2.32亦说明每周OTC报告、行动计划和监管改革提供更强缓释。公告的最终事实及已采取措施不等于本次已测试2025运行有效。",
+      "reliability": "官方最终文书；本次定向读取，不延伸作所有诉讼或所有期间结论"
+    },
+    {
+      "id": "e_sr",
+      "source": "sr",
+      "locator": "PDF42-43、56-58、71-72；印刷40-41、54-56、69-70",
+      "observation": "披露网络独立专家验证、数据中心ISO27001、定期演练、2025第三方隐私复核；风灾期间交易结算正常是正面执行实例。气候评估覆盖17个自有及租用站点，比较NGFS路径并连接交易收入、资产损害/能源成本；存在公司表现不变及技术不变等假设。HKQAA声明为ISAE3000有限保证，非本次网络运行或气候模型验证。",
+      "reliability": "公司独立报告与第三方有限保证原件；管理层模型结果与保证范围均保留限制"
+    }
+  ],
+  "facts": [
+    {
+      "id": "rev25",
+      "label": "营业收入",
+      "concept": "rev",
+      "value": "23745",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "rev24",
+      "label": "营业收入",
+      "concept": "rev",
+      "value": "17346",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "total_income25",
+      "label": "收入及其他收益",
+      "concept": "total_income",
+      "value": "29161",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "total_income24",
+      "label": "收入及其他收益",
+      "concept": "total_income",
+      "value": "22374",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "ni25",
+      "label": "净投资收益",
+      "concept": "ni",
+      "value": "5111",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "ni24",
+      "label": "净投资收益",
+      "concept": "ni",
+      "value": "4927",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "pbt25",
+      "label": "税前利润",
+      "concept": "pbt",
+      "value": "21158",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "pbt24",
+      "label": "税前利润",
+      "concept": "pbt",
+      "value": "14853",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "tax25",
+      "label": "所得税费用",
+      "concept": "tax",
+      "value": "3321",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "tax24",
+      "label": "所得税费用",
+      "concept": "tax",
+      "value": "1698",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "profit25",
+      "label": "集团净利润",
+      "concept": "profit",
+      "value": "17837",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "profit24",
+      "label": "集团净利润",
+      "concept": "profit",
+      "value": "13155",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "cash_ebitda25",
+      "label": "现金分部EBITDA",
+      "concept": "cash_ebitda",
+      "value": "13398",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "cash_ebitda24",
+      "label": "现金分部EBITDA",
+      "concept": "cash_ebitda",
+      "value": "8169",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "ebitda25",
+      "label": "集团EBITDA",
+      "concept": "ebitda",
+      "value": "22796",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "ebitda24",
+      "label": "集团EBITDA",
+      "concept": "ebitda",
+      "value": "16281",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_profit"
+      ]
+    },
+    {
+      "id": "intadj",
+      "label": "净利息调整",
+      "concept": "intadj",
+      "value": "-5111",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "fairadj",
+      "label": "公允价值调整",
+      "concept": "fairadj",
+      "value": "94",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "leasegain",
+      "label": "租约修改收益调整",
+      "concept": "leasegain",
+      "value": "-76",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "finance",
+      "label": "财务成本调整",
+      "concept": "finance",
+      "value": "96",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "da",
+      "label": "折旧摊销减值",
+      "concept": "da",
+      "value": "1568",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "share",
+      "label": "股份支付",
+      "concept": "share",
+      "value": "361",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "jvadj",
+      "label": "联营合营损益调整",
+      "concept": "jvadj",
+      "value": "-26",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "othernoncash",
+      "label": "其他非现金调整",
+      "concept": "othernoncash",
+      "value": "1",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "mfasset",
+      "label": "保证金资产现金变动",
+      "concept": "mfasset",
+      "value": "-80198",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "mfliab",
+      "label": "保证金负债现金变动",
+      "concept": "mfliab",
+      "value": "80386",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "chasset",
+      "label": "清算基金资产现金变动",
+      "concept": "chasset",
+      "value": "-7073",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "chliab",
+      "label": "清算基金负债现金变动",
+      "concept": "chliab",
+      "value": "6866",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "asharechange",
+      "label": "A股预付款及抵押现金增加",
+      "concept": "asharechange",
+      "value": "-374",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "skinchange",
+      "label": "专用公司基金增加",
+      "concept": "skinchange",
+      "value": "-196",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "shchchange",
+      "label": "公司转SHCH保证金增加",
+      "concept": "shchchange",
+      "value": "-145",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "receivchange",
+      "label": "应收预付增加",
+      "concept": "receivchange",
+      "value": "-11679",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "otherliabchange",
+      "label": "其他负债增加",
+      "concept": "otherliabchange",
+      "value": "13353",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "netops",
+      "label": "主营运现金小计",
+      "concept": "netops",
+      "value": "19005",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "interestreceived",
+      "label": "已收利息",
+      "concept": "interestreceived",
+      "value": "7519",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "interestpaid",
+      "label": "付会员利息",
+      "concept": "interestpaid",
+      "value": "-4626",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "fxswaps",
+      "label": "外汇互换现金支付",
+      "concept": "fxswaps",
+      "value": "-510",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "taxpaid",
+      "label": "已付所得税",
+      "concept": "taxpaid",
+      "value": "-1533",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "principal",
+      "label": "主要经营现金流non-HKFRS",
+      "concept": "principal",
+      "value": "19855",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "redemption",
+      "label": "外部基金净赎回",
+      "concept": "redemption",
+      "value": "5772",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "cfo",
+      "label": "经营现金流HKAS7",
+      "concept": "cfo",
+      "value": "25627",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "cfi",
+      "label": "投资现金流",
+      "concept": "cfi",
+      "value": "-5565",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "cff",
+      "label": "融资现金流",
+      "concept": "cff",
+      "value": "-14635",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "fxcash",
+      "label": "现金汇兑",
+      "concept": "fxcash",
+      "value": "16",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "hqpay",
+      "label": "总部现金付款",
+      "concept": "hqpay",
+      "value": "3148",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "capexpay",
+      "label": "其他固定无形现金付款",
+      "concept": "capexpay",
+      "value": "1733",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "divpaid",
+      "label": "归母股息实付",
+      "concept": "divpaid",
+      "value": "13722",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cf"
+      ]
+    },
+    {
+      "id": "cfopen",
+      "label": "现金流期初现金",
+      "concept": "cfopen",
+      "value": "13910",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cfclose",
+      "label": "现金流期末现金",
+      "concept": "cfclose",
+      "value": "19353",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cash_bs",
+      "label": "资产负债表现金",
+      "concept": "cash_bs",
+      "value": "182724",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cash_a",
+      "label": "A股现金",
+      "concept": "cash_a",
+      "value": "2549",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cash_corp",
+      "label": "公司基金现金",
+      "concept": "cash_corp",
+      "value": "20676",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cash_margin",
+      "label": "保证金现金",
+      "concept": "cash_margin",
+      "value": "130052",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cash_clearing",
+      "label": "清算基金现金",
+      "concept": "cash_clearing",
+      "value": "29447",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "cash_skin",
+      "label": "公司专用现金",
+      "concept": "cash_skin",
+      "value": "1323",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_cash"
+      ]
+    },
+    {
+      "id": "margin_fvoci",
+      "label": "保证金FVOCI",
+      "concept": "margin_fvoci",
+      "value": "48327",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "margin_amort",
+      "label": "保证金摊余成本",
+      "concept": "margin_amort",
+      "value": "69176",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "margin_china",
+      "label": "ChinaClear持有",
+      "concept": "margin_china",
+      "value": "20867",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "margin_shch",
+      "label": "SHCH持有",
+      "concept": "margin_shch",
+      "value": "799",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "margin_recv",
+      "label": "会员保证金应收",
+      "concept": "margin_recv",
+      "value": "22",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "margin_total",
+      "label": "保证金负债",
+      "concept": "margin_total",
+      "value": "269243",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "clear_fvoci",
+      "label": "清算基金FVOCI",
+      "concept": "clear_fvoci",
+      "value": "6361",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "clear_other",
+      "label": "清算基金其他金融负债",
+      "concept": "clear_other",
+      "value": "12",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "clear_total",
+      "label": "清算基金总额",
+      "concept": "clear_total",
+      "value": "35796",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_margin"
+      ]
+    },
+    {
+      "id": "assets",
+      "label": "集团总资产",
+      "concept": "assets",
+      "value": "580775",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_bs"
+      ]
+    },
+    {
+      "id": "liabs",
+      "label": "集团总负债",
+      "concept": "liabs",
+      "value": "522046",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_bs"
+      ]
+    },
+    {
+      "id": "eqclose",
+      "label": "集团权益期末",
+      "concept": "eqclose",
+      "value": "58729",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_bs"
+      ]
+    },
+    {
+      "id": "eqopen",
+      "label": "集团权益期初",
+      "concept": "eqopen",
+      "value": "54407",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "oci",
+      "label": "其他综合收益",
+      "concept": "oci",
+      "value": "369",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "divdec1",
+      "label": "本期确认上年末次股息",
+      "concept": "divdec",
+      "value": "-6193",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "divdec2",
+      "label": "本期确认中期股息",
+      "concept": "divdec",
+      "value": "-7583",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "divforfeit",
+      "label": "未领股息没收权益",
+      "concept": "divforfeit",
+      "value": "34",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "awardpurchase",
+      "label": "奖励股份购买",
+      "concept": "awardpurchase",
+      "value": "-512",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "awardtax",
+      "label": "奖励税项权益",
+      "concept": "awardtax",
+      "value": "9",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "putinterest",
+      "label": "看跌期权利息",
+      "concept": "putinterest",
+      "value": "5",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "ncidiv",
+      "label": "子公司非控股分配",
+      "concept": "ncidiv",
+      "value": "59",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "putopen",
+      "label": "看跌期权债务期初",
+      "concept": "putopen",
+      "value": "452",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "putclose",
+      "label": "看跌期权债务期末",
+      "concept": "putclose",
+      "value": "398",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_equity"
+      ]
+    },
+    {
+      "id": "gwopen",
+      "label": "商誉期初",
+      "concept": "gwopen",
+      "value": "13297",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "gwclose",
+      "label": "商誉期末",
+      "concept": "gwclose",
+      "value": "13274",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "gwfx",
+      "label": "商誉汇兑",
+      "concept": "gwfx",
+      "value": "32",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "gwimp",
+      "label": "商誉减值",
+      "concept": "gwimp",
+      "value": "55",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swadd",
+      "label": "软件新增",
+      "concept": "swadd",
+      "value": "1285",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swfxcost",
+      "label": "软件成本汇兑",
+      "concept": "swfxcost",
+      "value": "20",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swfxacc",
+      "label": "软件累计摊销汇兑",
+      "concept": "swfxacc",
+      "value": "13",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swamort",
+      "label": "软件摊销",
+      "concept": "swamort",
+      "value": "810",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swdispcost",
+      "label": "软件处置成本",
+      "concept": "swdispcost",
+      "value": "60",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swdispacc",
+      "label": "软件处置累计摊销",
+      "concept": "swdispacc",
+      "value": "59",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "topup",
+      "label": "最低补足税",
+      "concept": "topup",
+      "value": "701",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_tax"
+      ]
+    },
+    {
+      "id": "swopen",
+      "label": "软件净值期初",
+      "concept": "swopen",
+      "value": "3860",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "swclose",
+      "label": "软件净值期末",
+      "concept": "swclose",
+      "value": "4341",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_estimate"
+      ]
+    },
+    {
+      "id": "hqcommit",
+      "label": "总部已签承诺",
+      "concept": "hqcommit",
+      "value": "3424",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_capital"
+      ]
+    },
+    {
+      "id": "allcommit",
+      "label": "资本承诺总额",
+      "concept": "allcommit",
+      "value": "5285",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_capital"
+      ]
+    },
+    {
+      "id": "parentcash",
+      "label": "母公司现金",
+      "concept": "parentcash",
+      "value": "2870",
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "parent",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "evidence": [
+        "e_parent"
+      ]
+    }
+  ],
+  "calculations": [
+    {
+      "id": "rev_growth",
+      "label": "rev同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "rev25"
+        },
+        {
+          "ref": "rev24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "同口径两年全年变化",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "profit_growth",
+      "label": "profit同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "profit25"
+        },
+        {
+          "ref": "profit24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "同口径两年全年变化",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "pbt_growth",
+      "label": "pbt同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "pbt25"
+        },
+        {
+          "ref": "pbt24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "同口径两年全年变化",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "ni_growth",
+      "label": "ni同比",
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "ni25"
+        },
+        {
+          "ref": "ni24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "同口径两年全年变化",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "revgain",
+      "label": "收入增量",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "rev25"
+        },
+        {
+          "ref": "rev24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "营业收入同比增量",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "totalgain",
+      "label": "收入及收益增量",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "total_income25"
+        },
+        {
+          "ref": "total_income24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "总收益增量",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "revgainshare",
+      "label": "收入对总增量比",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "revgain"
+        },
+        {
+          "ref": "totalgain"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "同口径增量占比",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "cashebitdagain",
+      "label": "现金分部EBITDA增量",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "cash_ebitda25"
+        },
+        {
+          "ref": "cash_ebitda24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "公司定义EBITDA增量",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "ebitdagain",
+      "label": "集团EBITDA增量",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "ebitda25"
+        },
+        {
+          "ref": "ebitda24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "公司定义EBITDA增量",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "cashgainshare",
+      "label": "现金分部占EBITDA增量比",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "cashebitdagain"
+        },
+        {
+          "ref": "ebitdagain"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "增长集中程度而非份额因果",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "ops_rebuilt",
+      "label": "税前利润至主营运现金复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "pbt25"
+        },
+        {
+          "ref": "intadj"
+        },
+        {
+          "ref": "fairadj"
+        },
+        {
+          "ref": "leasegain"
+        },
+        {
+          "ref": "finance"
+        },
+        {
+          "ref": "da"
+        },
+        {
+          "ref": "share"
+        },
+        {
+          "ref": "jvadj"
+        },
+        {
+          "ref": "othernoncash"
+        },
+        {
+          "ref": "mfasset"
+        },
+        {
+          "ref": "mfliab"
+        },
+        {
+          "ref": "chasset"
+        },
+        {
+          "ref": "chliab"
+        },
+        {
+          "ref": "asharechange"
+        },
+        {
+          "ref": "skinchange"
+        },
+        {
+          "ref": "shchchange"
+        },
+        {
+          "ref": "receivchange"
+        },
+        {
+          "ref": "otherliabchange"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "逐行使用附注47(a)带符号调整",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "principal_rebuilt",
+      "label": "主要经营现金复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ops_rebuilt"
+        },
+        {
+          "ref": "interestreceived"
+        },
+        {
+          "ref": "interestpaid"
+        },
+        {
+          "ref": "fxswaps"
+        },
+        {
+          "ref": "taxpaid"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "由主营运小计连接税息及互换现金",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "cfo_rebuilt",
+      "label": "CFO复算",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "principal_rebuilt"
+        },
+        {
+          "ref": "redemption"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "HKAS7 CFO含外部投资组合赎回",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "cash_rebuilt",
+      "label": "期末现金滚动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cfopen"
+        },
+        {
+          "ref": "cfo"
+        },
+        {
+          "ref": "cfi"
+        },
+        {
+          "ref": "cff"
+        },
+        {
+          "ref": "fxcash"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "仅现金流量表定义范围",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "cash_total_rebuilt",
+      "label": "报表现金分池",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cash_a"
+        },
+        {
+          "ref": "cash_corp"
+        },
+        {
+          "ref": "cash_margin"
+        },
+        {
+          "ref": "cash_clearing"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "四池相加",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "corp_cash_rebuilt",
+      "label": "公司非清算专用现金",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "cash_corp"
+        },
+        {
+          "ref": "cash_skin"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "公司基金扣披露专用现金，不证明母公司自由调拨",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "margin_rebuilt",
+      "label": "保证金资产义务桥",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cash_margin"
+        },
+        {
+          "ref": "margin_fvoci"
+        },
+        {
+          "ref": "margin_amort"
+        },
+        {
+          "ref": "margin_china"
+        },
+        {
+          "ref": "margin_shch"
+        },
+        {
+          "ref": "margin_recv"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "全列六项原披露资产",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "clear_rebuilt",
+      "label": "清算基金净资产",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "cash_clearing"
+        },
+        {
+          "ref": "clear_fvoci"
+        },
+        {
+          "ref": "clear_other",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "清算基金资产扣特定其他金融负债",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "eq_balance",
+      "label": "资产减负债",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "assets"
+        },
+        {
+          "ref": "liabs"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "集团总权益",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "eq_rebuilt",
+      "label": "全权益滚动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "eqopen"
+        },
+        {
+          "ref": "profit25"
+        },
+        {
+          "ref": "oci"
+        },
+        {
+          "ref": "divdec1"
+        },
+        {
+          "ref": "divdec2"
+        },
+        {
+          "ref": "divforfeit"
+        },
+        {
+          "ref": "awardpurchase"
+        },
+        {
+          "ref": "share"
+        },
+        {
+          "ref": "awardtax"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "完整Total equity列；储备转拨、股份归属与非控股分配的总权益净额为零，原列位另留证",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "put_rebuilt",
+      "label": "看跌期权负债滚动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "putopen"
+        },
+        {
+          "ref": "putinterest"
+        },
+        {
+          "ref": "ncidiv",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "分配减少负债并非本期集团权益减少",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "gw_rebuilt",
+      "label": "商誉滚动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "gwopen"
+        },
+        {
+          "ref": "gwfx"
+        },
+        {
+          "ref": "gwimp",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "汇兑与减值分开",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "sw_rebuilt",
+      "label": "软件净值滚动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "swopen"
+        },
+        {
+          "ref": "swadd"
+        },
+        {
+          "ref": "swfxcost"
+        },
+        {
+          "ref": "swfxacc",
+          "weight": "-1"
+        },
+        {
+          "ref": "swamort",
+          "weight": "-1"
+        },
+        {
+          "ref": "swdispcost",
+          "weight": "-1"
+        },
+        {
+          "ref": "swdispacc"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "成本和累计摊销分别读取后净额桥",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "selected_cash",
+      "label": "主要经营现金减长期经营资产现金付款",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "principal"
+        },
+        {
+          "ref": "hqpay",
+          "weight": "-1"
+        },
+        {
+          "ref": "capexpay",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "不含投资组合赎回；未扣其他投资、租赁、股息，不称FCFF",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "after_div",
+      "label": "上述现金指标减归母股息实付",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "selected_cash"
+        },
+        {
+          "ref": "divpaid"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "只作已列付款覆盖观察，不替代融资流动性预测",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "etr25",
+      "label": "本年有效税率",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "tax25"
+        },
+        {
+          "ref": "pbt25"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "合并所得税除税前利润",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    },
+    {
+      "id": "taxgain",
+      "label": "所得税增量",
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "tax25"
+        },
+        {
+          "ref": "tax24"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "HKFRS",
+        "measure": "money",
+        "currency": "HKD",
+        "scale": "1000000"
+      },
+      "definition": "同口径两年税额差",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "comparison"
+    },
+    {
+      "id": "topupshare",
+      "label": "补足税占税增量",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "topup"
+        },
+        {
+          "ref": "taxgain"
+        }
+      ],
+      "context": {
+        "entity": "香港交易及结算所有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "HKFRS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1"
+      },
+      "definition": "税额增量归因的一部分，不是整体ETR因果归因",
+      "interpretation": "仅证明所列口径的算式；经济实质和完整性另据原文及反证判断。",
+      "period_rule": "same"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "r_ops",
+      "label": "r_ops",
+      "actual": "ops_rebuilt",
+      "expected": "netops",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_principal",
+      "label": "r_principal",
+      "actual": "principal_rebuilt",
+      "expected": "principal",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_cfo",
+      "label": "r_cfo",
+      "actual": "cfo_rebuilt",
+      "expected": "cfo",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_cash",
+      "label": "r_cash",
+      "actual": "cash_rebuilt",
+      "expected": "cfclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_cash_total",
+      "label": "r_cash_total",
+      "actual": "cash_total_rebuilt",
+      "expected": "cash_bs",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_corp_cash",
+      "label": "r_corp_cash",
+      "actual": "corp_cash_rebuilt",
+      "expected": "cfclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_margin",
+      "label": "r_margin",
+      "actual": "margin_rebuilt",
+      "expected": "margin_total",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_clearing",
+      "label": "r_clearing",
+      "actual": "clear_rebuilt",
+      "expected": "clear_total",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_bs",
+      "label": "r_bs",
+      "actual": "eq_balance",
+      "expected": "eqclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_equity",
+      "label": "r_equity",
+      "actual": "eq_rebuilt",
+      "expected": "eqclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_put",
+      "label": "r_put",
+      "actual": "put_rebuilt",
+      "expected": "putclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_goodwill",
+      "label": "r_goodwill",
+      "actual": "gw_rebuilt",
+      "expected": "gwclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    },
+    {
+      "id": "r_software",
+      "label": "r_software",
+      "actual": "sw_rebuilt",
+      "expected": "swclose",
+      "tolerance": "0",
+      "basis": "本次选择的披露百万元整数可以精确闭合，未以审计重要性设容差。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "f_business",
+      "title": "增长主要来自收费业务，现金市场贡献集中",
+      "question": "盈利改善是否只来自利率和投资收益？",
+      "conclusion": "营业收入同比{{rev_growth}}，集团净利润同比{{profit_growth}}。营业收入增量{{revgain}}占收入及其他收益增量的{{revgainshare}}；现金分部占公司定义EBITDA增量{{cashgainshare}}。",
+      "mechanism": "牌照及互联互通网络将活跃交易转化为交易、清算和存管收入；量增同时扩大清算资源和IT容量需求。不能把所有收入机械乘股票ADT。",
+      "status": "supported",
+      "evidence": [
+        "e_profit",
+        "e_business"
+      ],
+      "counterevidence": [
+        "e_estimate"
+      ],
+      "alternatives": [
+        "市场整体行情与互联互通参与增加可能比公司特有定价更重要。",
+        "清算及交易费率、市场份额、交易产品组合未单独隔离。"
+      ],
+      "changes_if": "同口径份额或净费率下降、交易量回落或系统瓶颈，将削弱持续增长判断。"
+    },
+    {
+      "id": "f_cash",
+      "title": "利润有现金支持，但投资赎回不可当新增经营盈利",
+      "question": "CFO与会员资金能否直接解释为可分配现金？",
+      "conclusion": "逐行桥得到主要经营现金{{principal_rebuilt}}、HKAS7 CFO{{cfo_rebuilt}}；其中外部基金赎回为{{redemption}}。现金流量表现金{{corp_cash_rebuilt}}与资产负债表现金{{cash_bs}}是不同范围。",
+      "mechanism": "附注披露的会员配对资金通过经营现金桥但不可用于其他活动；清算与公司不同用途资源不能混用。其他负债增加与应收增加只能解释原合计行，未分解前不能称供应商占款。",
+      "status": "supported",
+      "evidence": [
+        "e_cf",
+        "e_cash",
+        "e_margin"
+      ],
+      "counterevidence": [
+        "e_parent"
+      ],
+      "alternatives": [
+        "高CFO部分来自外部资产赎回，而不是重复性收费现金。",
+        "期末资金池受市场保证金需求影响，不能用总额判断公司债务偿还能力。"
+      ],
+      "changes_if": "取得日内、分法人及币种的实际可调度资金和支付义务后可进一步判断压力现金。"
+    },
+    {
+      "id": "f_fmi",
+      "title": "保证金资产与义务对齐，但不是压力安全证明",
+      "question": "资源总额能否证明清算风险已覆盖？",
+      "conclusion": "保证金资产重建{{margin_rebuilt}}对应义务{{margin_total}}；清算基金净资产{{clear_rebuilt}}与披露一致。",
+      "mechanism": "资产用途、期限与服务级法律顺序决定可用性；非现金会员抵押并未上表，跨CCP及币种资金不能简单互抵；年度账面闭合不回答日内支付和极端平仓损失。",
+      "status": "conditional",
+      "evidence": [
+        "e_margin",
+        "e_cash"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "高质量投资和隔离账户是积极缓释，但仍有期限和时点错配。"
+      ],
+      "changes_if": "服务级同日损失、违约瀑布、成员份额和支付窗口证据才能支持覆盖结论。"
+    },
+    {
+      "id": "f_equity",
+      "title": "非控股看跌期权连接权益与债务现金",
+      "question": "股东分配能否只读现金流表？",
+      "conclusion": "全权益滚动{{eq_rebuilt}}、资产负债差{{eq_balance}}与集团权益{{eqclose}}一致；看跌期权债务重建{{put_rebuilt}}。",
+      "mechanism": "非控股分配{{ncidiv}}现金流出同时降低看跌期权负债，并在权益内把NCI转至归母储备，集团权益该行净零。宣告分配与实付股息另列，避免把权益增减全部理解成现金。",
+      "status": "supported",
+      "evidence": [
+        "e_equity",
+        "e_bs"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "权益转拨形式无集团净额但改变归属和少数股东权益。"
+      ],
+      "changes_if": "期权条款变化、分红对应的负债调整或范围差异会改变解释。"
+    },
+    {
+      "id": "f_estimate",
+      "title": "技术战略改变已传导至商誉减值",
+      "question": "资产估计是否与业务战略一致？",
+      "conclusion": "商誉重建{{gw_rebuilt}}，本年减值{{gwimp}}；软件净值重建{{sw_rebuilt}}。BayConnect协同预期下调已有会计后果，不能将减值全当无关紧要的非现金项目。",
+      "mechanism": "深圳技术中心定位改变降低BayConnect协同；LME等商品CGU仍承载主要商誉和商标，管理层提高利润率假设是增长解释，也是应挑战的估计输入。软件资本化与收入系统依赖连接未来摊销及运营韧性。",
+      "status": "conditional",
+      "evidence": [
+        "e_estimate",
+        "e_business",
+        "e_governance"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "商品市场盈利提升可以支持更高预测利润率。",
+        "未取得预测、资本开支和税/折现匹配，不能独立证明无减值或计算应调整额。"
+      ],
+      "changes_if": "实际利润/现金低于预测，开发项目不可用或关键假设恶化将触发重新估值。"
+    },
+    {
+      "id": "f_capital",
+      "title": "总部投资和高分配率需要按现金时点管理",
+      "question": "当年高经营现金是否足够说明资本配置无约束？",
+      "conclusion": "主要经营现金减总部和其他长期经营资产付款为{{selected_cash}}，再减归母股息实付剩{{after_div}}；尚有总部已签承诺{{hqcommit}}及其他资本安排。",
+      "mechanism": "该观察未扣联营投资、奖励股份、租赁和其他资金变动；总部ROU/固定资产确认与付款及未来承诺不同步，不能把会计新增当现金支出。母公司现金{{parentcash}}也不同于集团资金。",
+      "status": "conditional",
+      "evidence": [
+        "e_capital",
+        "e_cf",
+        "e_parent"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "现金余额和资本投资可支持未来容量与持续经营，不能仅凭本期付款增加评为负面。"
+      ],
+      "changes_if": "逐期投入收益、法人可分配与上划能力以及承诺付款时间表会改变分配余量判断。"
+    },
+    {
+      "id": "f_tax",
+      "title": "税负上升部分抵消税前增长",
+      "question": "税后增速与税前增长为何不同？",
+      "conclusion": "税前利润同比{{pbt_growth}}，净利润同比{{profit_growth}}；本年有效税率{{etr25}}。最低补足税{{topup}}占所得税费用增量{{topupshare}}。",
+      "mechanism": "最低税有明确本期税额；英国当期税抵扣与递延税相抵，不能只引用当期税利好。税费和实付税不同，未付税还影响未来现金。",
+      "status": "supported",
+      "evidence": [
+        "e_tax",
+        "e_profit"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "地区盈利结构、永久差异与递延项目也影响总税率，不能把差额全部归因最低税。"
+      ],
+      "changes_if": "按法域纳税及GloBE计算、支付时点和下一期暂时性差异变化会改变持续税负预测。"
+    },
+    {
+      "id": "f_governance",
+      "title": "控制证据、治理陈述与未来列报变更要分清",
+      "question": "无保留意见是否足以关闭收入与运营风险？",
+      "conclusion": "收入系统是原审计师关键审计事项；本次仅读取其程序与结论，没有执行系统控制测试。报告期仍按现行HKFRS列报，未来列报变更需要可比桥。",
+      "mechanism": "同一交易系统同时影响收费完整性、日内清算和业务连续性；委员会审阅是治理动作，不是独立运行证据。HKFRS18公司投资收益、会员利息回拨重分类将影响营业口径，不能误读为经济利润变化。",
+      "status": "conditional",
+      "evidence": [
+        "e_governance",
+        "e_business",
+        "e_fca"
+      ],
+      "counterevidence": [
+        "e_sr"
+      ],
+      "alternatives": [
+        "原审计意见与委员会监督提供积极公开证据。",
+        "官方FCA最终文书已取得；其同时记录历史控制不足与后续缓释，不支持将处罚结束解释为所有运营风险消失。"
+      ],
+      "changes_if": "进一步取得系统运行样本、日内升级日志及事件整改关闭测试后，更新对运行韧性与剩余风险的判断。"
+    },
+    {
+      "id": "f_resilience",
+      "title": "技术与气候风险有执行和有限保证证据",
+      "question": "治理叙述是否已经连接业务和会计后果？",
+      "conclusion": "补充公开报告已取得。风灾中交易结算正常、网络演练和第三方隐私复核为积极证据；极端天气和网络中断仍通过交易收入、清算付款及资产/运营成本传导。",
+      "mechanism": "可持续报告已把场景连接站点、收入与费用，不能重复请求整份公开报告。其模型的企业表现和技术不变假设需要挑战；有限保证不替代本次关键系统运行和模型复算。",
+      "status": "conditional",
+      "evidence": [
+        "e_sr",
+        "e_fca"
+      ],
+      "counterevidence": [
+        "e_governance"
+      ],
+      "alternatives": [
+        "已有防洪、业务连续性、保险及恶劣天气交易安排可以降低损失。",
+        "管理层无重大财务影响判断仍受预测和范围限制。"
+      ],
+      "changes_if": "未来停机、支付延迟、站点损害或模型假设变化，需同时更新收入、支出、资产估计和清算压力。"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "p_cash",
+      "finding": "f_cash",
+      "purpose": "验证所列原表关系和口径",
+      "assertions": [
+        "准确性及列报"
+      ],
+      "population": "原年报已列相关表与附注，不代表逐笔总体",
+      "selection": "本次自主选择的关键桥全部原披露行",
+      "steps": [
+        "从带表头原页定位并记录所选行。",
+        "逐项执行：{{ops_rebuilt}}、{{principal_rebuilt}}、{{cfo_rebuilt}}、{{cash_rebuilt}}"
+      ],
+      "status": "performed",
+      "result": "本次逐行复算，所列现金桥残差均为零；只完成算术和公开口径验证。",
+      "evidence": [
+        "ops_rebuilt",
+        "principal_rebuilt",
+        "cfo_rebuilt",
+        "cash_rebuilt"
+      ],
+      "performed_by": "AI公开资料会计分析",
+      "performed_on": "2026-10-02"
+    },
+    {
+      "id": "p_equity",
+      "finding": "f_equity",
+      "purpose": "验证所列原表关系和口径",
+      "assertions": [
+        "准确性及列报"
+      ],
+      "population": "原年报已列相关表与附注，不代表逐笔总体",
+      "selection": "本次自主选择的关键桥全部原披露行",
+      "steps": [
+        "从带表头原页定位并记录所选行。",
+        "逐项执行：{{eq_rebuilt}}、{{put_rebuilt}}、{{eq_balance}}"
+      ],
+      "status": "performed",
+      "result": "本次核对权益全列原页并复算，残差零；未执行权益和期权交易真实性测试。",
+      "evidence": [
+        "eq_rebuilt",
+        "put_rebuilt",
+        "eq_balance"
+      ],
+      "performed_by": "AI公开资料会计分析",
+      "performed_on": "2026-10-02"
+    },
+    {
+      "id": "p_estimate",
+      "finding": "f_estimate",
+      "purpose": "验证所列原表关系和口径",
+      "assertions": [
+        "准确性及列报"
+      ],
+      "population": "原年报已列相关表与附注，不代表逐笔总体",
+      "selection": "本次自主选择的关键桥全部原披露行",
+      "steps": [
+        "从带表头原页定位并记录所选行。",
+        "逐项执行：{{gw_rebuilt}}、{{sw_rebuilt}}"
+      ],
+      "status": "performed",
+      "result": "本次复算商誉、软件净值滚动，残差零；未执行CGU模型验证。",
+      "evidence": [
+        "gw_rebuilt",
+        "sw_rebuilt"
+      ],
+      "performed_by": "AI公开资料会计分析",
+      "performed_on": "2026-10-02"
+    },
+    {
+      "id": "p_fmi",
+      "finding": "f_fmi",
+      "purpose": "验证所列原表关系和口径",
+      "assertions": [
+        "准确性及列报"
+      ],
+      "population": "原年报已列相关表与附注，不代表逐笔总体",
+      "selection": "本次自主选择的关键桥全部原披露行",
+      "steps": [
+        "从带表头原页定位并记录所选行。",
+        "逐项执行：{{margin_rebuilt}}、{{clear_rebuilt}}"
+      ],
+      "status": "performed",
+      "result": "本次复算保证金及清算基金资产义务勾稽，残差零；未验证违约瀑布与日内压力。",
+      "evidence": [
+        "margin_rebuilt",
+        "clear_rebuilt"
+      ],
+      "performed_by": "AI公开资料会计分析",
+      "performed_on": "2026-10-02"
+    }
+  ],
+  "requests": [
+    {
+      "id": "q_fmi",
+      "finding": "f_fmi",
+      "request": "各CCP同日PFMI定量表、现行服务规则、压力损失、成员基金份额与币种时点支付数据",
+      "reason": "确定压力损失后的资源顺序和日内现金，不得由账面闭合推安全",
+      "owner_role": "风险与清算负责人",
+      "close_when": "逐服务核实重复计算、法律用途和可用时点，并重做至少一个压力路径"
+    },
+    {
+      "id": "q_estimate",
+      "finding": "f_estimate",
+      "request": "商品及BayConnect CGU完整估值模型、预算兑现及软件资本化/验收依据",
+      "reason": "检验利润率改善、资本开支、折现与开发可回收性",
+      "owner_role": "财务与技术负责人",
+      "close_when": "匹配模型口径后可独立重做关键敏感性及临界条件"
+    },
+    {
+      "id": "q_capital",
+      "finding": "f_capital",
+      "request": "总部合同付款与资产确认明细、集团法人资金上划及未来分配计划",
+      "reason": "确定确认与现金差异及承诺付款流动性",
+      "owner_role": "财务与资金负责人",
+      "close_when": "确认每笔口径与时点并完成逐期资本现金桥"
+    },
+    {
+      "id": "q_control",
+      "finding": "f_governance",
+      "request": "关键收费/清算系统控制运行样本、事故升级日志和整改关闭测试；已披露气候模型的站点假设及原始结果",
+      "reason": "FCA最终文书及独立可持续报告已经取得，剩余是运行与模型证据；不再请求公开报告本身。",
+      "owner_role": "技术风险与合规负责人",
+      "close_when": "用具体运行样本、整改结果与模型数据更新判断；保留第三方有限保证的范围边界。"
+    }
+  ],
+  "sections": [
+    {
+      "title": "经营增长与收益来源",
+      "findings": [
+        "f_business"
+      ],
+      "figures": [
+        "rev_growth",
+        "revgainshare",
+        "cashgainshare"
+      ]
+    },
+    {
+      "title": "公司现金与投资赎回",
+      "findings": [
+        "f_cash"
+      ],
+      "figures": [
+        "principal_rebuilt",
+        "cfo_rebuilt",
+        "corp_cash_rebuilt"
+      ]
+    },
+    {
+      "title": "会员资源及清算边界",
+      "findings": [
+        "f_fmi"
+      ],
+      "figures": [
+        "margin_rebuilt",
+        "clear_rebuilt"
+      ]
+    },
+    {
+      "title": "权益、债务与分配",
+      "findings": [
+        "f_equity"
+      ],
+      "figures": [
+        "eq_rebuilt",
+        "put_rebuilt"
+      ]
+    },
+    {
+      "title": "战略与资产估计",
+      "findings": [
+        "f_estimate"
+      ],
+      "figures": [
+        "gw_rebuilt",
+        "sw_rebuilt"
+      ]
+    },
+    {
+      "title": "资本配置及母公司",
+      "findings": [
+        "f_capital"
+      ],
+      "figures": [
+        "selected_cash",
+        "after_div"
+      ]
+    },
+    {
+      "title": "税负与现金时点",
+      "findings": [
+        "f_tax"
+      ],
+      "figures": [
+        "etr25",
+        "topupshare"
+      ]
+    },
+    {
+      "title": "治理及会计列报",
+      "findings": [
+        "f_governance"
+      ],
+      "figures": []
+    },
+    {
+      "title": "技术与气候风险的经济连接",
+      "findings": [
+        "f_resilience"
+      ],
+      "figures": []
+    }
+  ]
+}

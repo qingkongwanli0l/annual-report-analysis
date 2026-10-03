@@ -1,0 +1,45 @@
+{
+  "expected_display_values": {
+    "ops_rebuilt": "19005",
+    "principal_rebuilt": "19855",
+    "cfo_rebuilt": "25627",
+    "cash_rebuilt": "19353",
+    "cash_total_rebuilt": "182724",
+    "corp_cash_rebuilt": "19353",
+    "margin_rebuilt": "269243",
+    "clear_rebuilt": "35796",
+    "eq_balance": "58729",
+    "eq_rebuilt": "58729",
+    "put_rebuilt": "398",
+    "gw_rebuilt": "13274",
+    "sw_rebuilt": "4341",
+    "selected_cash": "14974",
+    "after_div": "1252",
+    "revgain": "6399",
+    "totalgain": "6787",
+    "cashebitdagain": "5229",
+    "ebitdagain": "6515",
+    "taxgain": "1623",
+    "rev_growth": "0.368903493600830162573503978",
+    "profit_growth": "0.355910300266058532877232991",
+    "pbt_growth": "0.424493368343095670908234027",
+    "ni_growth": "0.037345240511467424396184291",
+    "revgainshare": "0.9428318844850449388536908796",
+    "cashgainshare": "0.8026093630084420567920184190",
+    "etr25": "0.1569619056621608847717175536",
+    "topupshare": "0.4319162045594577942082563155"
+  },
+  "expected_reconciliation_residual_base_units": "All thirteen reconciliations exactly zero",
+  "expected_semantics": [
+    "不得以182724替代19353公司现金口径。",
+    "不得将NCI分配59再次扣总权益。",
+    "不得将5772资产赎回当收费业务盈利。",
+    "不得把商誉滚动正确当无减值模型已验证。",
+    "必须三份文件同源，Excel改单后关键桥更新，Word和PPT主要结论可读。"
+  ],
+  "independent_equations": [
+    "21158-5111+94-76+96+1568+361-26+1-80198+80386-7073+6866-374-196-145-11679+13353=19005",
+    "54407+17837+369-6193-7583+34-512+361+9=58729",
+    "3860+1285+20-13-810-60+59=4341"
+  ]
+}
