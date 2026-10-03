@@ -84,6 +84,15 @@ PDF提取默认保留页码与文本。`--tables`另外给出候选表的边界�
 
 `period_rule`：same 为相同期间；comparison 为本期与上期、相同统计方式和等长期间；rollforward 为期初/本期变动/期末；balance_flow 为同终点的余额及期间流量；forecast 用于显式假设驱动。平均余额专用 `average_balance`，要求同概念、真实期初前一天和期末。规则表示计算所需的关系，不能用 forecast 绕过缺失历史。
 
+结果的期间也须填写正确，不能因报告为年度报告就给所有比率填年初日期：
+
+| 运算 | 输入期间与顺序 | 结果 context |
+|---|---|---|
+| 2025年收入同比，`growth`、`comparison` | 2025全年收入在前，2024全年收入在后 | `start="2025-01-01", end="2025-12-31", aggregation="ratio"` |
+| 2025年末资本充足比率，`ratio`、`same` | 同范围、同日资本净额与风险加权资产，均为 `instant, start=null` | `start=null, end="2025-12-31", aggregation="ratio"` |
+
+比较仍按本期、上期顺序引用。若定义为“上期减本期的下降金额”，可用 `sum`、`comparison`，本期权重−1、上期权重+1；不要为改变正负方向而倒置比较期间。结果所用范围、准则、单位另按实际口径填写。
+
 原始余额事实仍用 `instant, start=null`。滚动计算需要单独记录运算窗口：例如 `cash_end_rebuilt` 使用 `sum` 引用期初现金及本期经营、投资、筹资、汇率等实际变动，`period_rule=rollforward`，计算 context 为 `aggregation=instant, start=2025-01-01, end=2025-12-31`；这里 start 表示桥的运算窗口，结果仍是期末余额。可将其与 `instant, start=null, end=2025-12-31` 的已披露期末现金勾稽。不要为配合计算去改原始余额事实。
 
 由前序计算得到的余额，可填写 `calculations.concept`（例如 `adjusted_invested_capital`），期初和期末定义必须相同，再用 `average_balance` 引用两项计算。不能把已算出的金额重新标为 reported 事实；concept 只是明确口径，不会证明调整在经济上正确。
