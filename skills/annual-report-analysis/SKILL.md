@@ -1,15 +1,15 @@
 ---
 name: annual-report-analysis
-description: Analyze annual reports and related disclosures for accounting, audit support, business growth, quantitative fundamentals and corporate credit research. Build source-linked financial workpapers, test competing explanations, calculate scenarios and export editable Word, Excel and PowerPoint deliverables. Use for annual reports, 10-K/20-F, financial statements and notes, accounting quality, credit reviews, or professional financial due diligence.
+description: Analyze annual reports and related disclosures to develop evidence-based issuer and debt credit rating recommendations. Trace applicable rating methodologies through accounting evidence, reproducible workpapers and editable Word, Excel and PowerPoint deliverables. Use for annual report, 10-K, 20-F and issuer credit analysis, including focused follow-up research.
 ---
 
 # 企业年报专业分析
 
-将原始披露转为可取证、可复算、可反驳且能指导下一步的研究成果。默认中文，按用户语言交付。先回答使用者的决策问题，随后给证据、计算和待核事项。不要用比率堆叠、红旗计数或无校准综合分替代判断。
+由完整披露建立评级判断及其证据链。默认中文，按用户语言交付。先回答使用者的决策问题，随后给证据、计算和待核事项。全面评级任务应形成具体评级建议、展望或观察状态与变动条件；证据不足以决定等级时说明哪一步未能完成。不要用比率堆叠、红旗计数或无校准综合分替代判断。
 
 ## 开始任务
 
-明确公司/法人、报告期间、信息截止日、合并或母公司范围及目的。用户已给出的内容不再询问；只有主体或年度的歧义会实质改变分析时才询问。未指定年度，查最新已公开的完整年报。需要历史时点研究时使用当时已公布的版本，不能以后来重述倒填历史。
+明确公司/法人、报告期间、信息截止日、合并或母公司范围及目的。用户已给出的内容不再询问；只有主体、期间或评级对象/尺度的歧义会实质改变结论且无法从任务确定时才询问。未指定年度，查最新已公开的完整年报。需要历史时点研究时使用当时已公布的版本，不能以后来重述倒填历史。
 
 接受上传 PDF/HTML 或公司代码。A 股优先巨潮、交易所、公司官网；港股优先披露易和公司官网；美股优先 SEC EDGAR 和公司官网。保留完整报告、公布日期、修订关系和 SHA256；摘要、演示和聚合数据用于核对和补充。没有金融终端或模型 API Key 也应能分析已上传的公开年报。
 
@@ -19,7 +19,7 @@ description: Analyze annual reports and related disclosures for accounting, audi
 
 ## 取证和分析
 
-全面年报分析先读 [analysis-program.md](references/analysis-program.md)，按实际报告、业务、交易和法律结构建立覆盖范围，再确定重大事项的深度。下列领域和加载入口不是内容上限；不能把一项现金桥、少数财务比率或一个行业模板的完成称为全面分析。专项任务可聚焦，成果明确其范围。
+全面年报分析先读 [analysis-program.md](references/analysis-program.md)。从完整披露和适用评级方法的原文章节建立覆盖底稿，逐项完成分析、解释和证据核验；不要先选几个专业领域再将材料装入该分类。现有参考目录只能帮助定位工作方法，不能代替范围核验。专项任务可聚焦，成果明确其范围。
 
 1. 建立章节与实际读取范围：业务/分部和管理层讨论、审计报告、四张基本报表、会计政策、重要附注、治理/关联方/承诺/期后事项。记录未读取或不可读部分，不称全文覆盖。用 `scripts/extract_pdf.py` 保留 PDF 页码；跨页/多层表头使用 `--tables --render 用户任务图像目录`，同时选取表头页和目标行页。候选矩阵与原页相互核对，先在 evidence 中保存完整表头、目标行和列位再取数；不能按纯文本数字顺序猜列。扫描页使用宿主已有 OCR/视觉能力，无法确认就留缺口。
 2. 依据政策原文确认 CAS、IFRS、HKFRS 或 US GAAP 与实际采用版本，不按上市地猜测。原始、重述、分析调整分别保留；合并利润、归母利润和母公司利润不互换。比较期间、币种、范围和平均/期末余额先对齐。
@@ -31,18 +31,15 @@ description: Analyze annual reports and related disclosures for accounting, audi
 
 ## 按任务加载方法
 
-不要一次载入所有参考。先做全面范围识别，再依实际业务和事项读取方法，形成相互一致的底稿；不因某参考未列出特殊交易就忽略它。
+先按全面程序核对该企业的完整披露及适用评级方法，再针对每项实际分析要求查阅所需参考。未取得或未读取的方法保持覆盖缺口，不能用另一机构的近似主题代替，也不能把当前参考文件集合当作全部要求。无需一次载入不适用正文，但不能漏掉适用内容。
 
 加载由实际分析动作触发，不由报告标题决定。全面任务涉及政策、估计、盈利或现金质量时，先读会计参考的对应章节；建立经营预测、压力或反向边界前，先读量化参考的模型适用范围和真实企业接入步骤。读取字段契约或脚本不替代方法参考；无需载入不适用的章节。
 
-- **会计与审计支持**：读 [accounting-and-audit.md](references/accounting-and-audit.md)。执行政策/交易/估计分析、盈利质量和现金桥；审计任务落到认定、总体、选取、程序、实际证据、例外、错报与追加取证。年报中原审计师做过的程序不算本次执行。内部资料足够时继续复算与细节检查，缺资料则给可交接请求和关闭条件。
-- **企业信用、风险和成长**：读 [corporate-credit.md](references/corporate-credit.md)。做行业竞争、调整桥、法人债务/可用现金、分期到期与资金、契约、支持/约束、债项顺位、回收、建议和跟踪；给具体判断与反方，不以“资料有限”替代能做的分析。只使用已取得、适用的机构方法；自建分析不冒称官方评级。
-- **国内评级方法对标**：读 [domestic-credit-methods.md](references/domestic-credit-methods.md)。依主体、主业和条款区分通用工商、企业集团、投资控股及行业方法；不同机构的预测/历史权重、现金和支持定义各自保留，不能把国内字母、国际序列和内部分析分数互换。
-- **行业经济机制**：读 [sector-analysis.md](references/sector-analysis.md)。从实际业务而非股票行业标签分流，覆盖开发/工程/项目、资源/材料、能源公用、运输、消费、制造科技医疗等不同经营与现金路径。通用工业情景不能仅换参数就用于预售、CFADS、监管回报、资源递减或租赁残值。
-- **集团、投资控股和特殊融资结构**：读 [special-credit-structures.md](references/special-credit-structures.md)。区分经营集团和投资组合、母子及非控股权益、结构化JV、PIK/股东融资、产业金融、封闭SPV与特殊债项；逐层连接价值、现金、控制和追索。
-- **量化、驱动预测、压力、同业面板**：读 [quantitative-analysis.md](references/quantitative-analysis.md)。单企业用可复算桥与联动场景，多企业按真实可用时点和标签成熟日期验证。未提供真实面板不得编造回测、校准 PD 或预测准确率。
-- **银行、保险、证券/资管、交易所/清算及其他非银业务**：读 [financial-institutions.md](references/financial-institutions.md)。按资本、资产风险、合同/准备、资金权属和监管口径分析，分别处理放贷、融资/经营租赁、AMC、担保与信托/平台；不套工业企业现金循环或统一健康分。监管阈值只在核实主体、口径、时点与有效规则后使用。
-- **准则适用与官方报告查找**：读 [sources-and-standards.md](references/sources-and-standards.md)。按期间核验生效及提前采用，正文未取得就写明，不能用更新目录冒充全文验证。
+现有方法资源可由 [accounting-and-audit.md](references/accounting-and-audit.md)、[corporate-credit.md](references/corporate-credit.md)、[domestic-credit-methods.md](references/domestic-credit-methods.md)、[sector-analysis.md](references/sector-analysis.md)、[special-credit-structures.md](references/special-credit-structures.md)、[quantitative-analysis.md](references/quantitative-analysis.md)、[financial-institutions.md](references/financial-institutions.md) 和 [sources-and-standards.md](references/sources-and-standards.md) 定位。这是资源索引，不是分析项目表；仍以覆盖底稿中适用原文的逐项要求决定执行内容。参考未承接的要求须补读原始方法并完成有依据的分析，缺少必要资料时保留具体未完成项，不以自造参数、近似名称或套用其他行业关闭。
+
+形成评级建议前，执行 [评级形成程序](references/corporate-credit.md#11-从证据形成评级建议敏感性和调整)，保存所选方法的实际决定链；金融机构使用该节的专门分支并衔接金融参考，不套工业企业矩阵。
+
+内部资料足够时继续相应细节检查；原审计师、评级机构或公司已经执行的工作不能冒记为本次执行。机构定义、阈值及调整规则只在核实主体、序列、期间、版本和适用条件后采用。不同机构的结果不能拼成一套评分，自建研究也不能冒称官方评级。缺真实样本时不编造回测、违约概率或预测准确率。
 
 ## 形成和复算底稿
 
@@ -60,6 +57,6 @@ description: Analyze annual reports and related disclosures for accounting, audi
 
 依照 `references/workpaper.md` 运行 `scripts/export.py 输入.json --output 用户任务输出目录`，生成 Word、含可见公式及缓存值的 Excel、可编辑 PPT，以及输入、结果和版本清单。模板/脚本相对本 skill 定位；产物写用户任务目录，不写安装缓存。宿主缺少文件执行能力时，交付可做的带证据分析和底稿，并准确说明哪种文件未生成。
 
-Word 首屏给结论与限制，正文保留驱动、会计/附注、现金/资产债务、审计治理、反方与待核；Excel 给原始事实、换算、公式、残差、来源和实际程序；PPT 面向讨论，突出决定、变化、压力与待核问题。按任务选择详细度，不为凑页数隐藏重要内容。
+Word 首屏给评级建议、对象、尺度、方法、信息截止日和限制，正文按实际决定结论的证据组织；Excel 保留原始事实、换算、公式、残差、来源、实际程序和结论形成过程；PPT 面向评级讨论，突出建议、关键争议、敏感性与变动条件。专项任务按其范围交付，不能将专项结论扩成完整评级。三份文件均区分本次建议和外部机构已公布的评级。
 
 交付前重新从原文抽查关键事实、计算输入、核心判断链和一个重要反例，实际打开/渲染三种文件检查可读性。取得补充公开报告或纠正数字后，先更新共同底稿中的证据、判断、程序结果及资料请求，撤回已解决或源于取数错误的请求，再统一导出三件；不让旧版“资料未取得”留在成果中。报告未能验证的环节、事实不足的影响及所需资料；只有实际执行才记录为通过。

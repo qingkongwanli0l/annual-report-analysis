@@ -1,8 +1,10 @@
 # Annual Report Analysis
 
-Turn official annual reports into source-linked research, reproducible financial workpapers and editable Word, Excel and PowerPoint deliverables. A-share first, with accounting-basis-aware support for Hong Kong and US disclosures.
+Develop credit rating recommendations from official annual reports and necessary supporting disclosures, with reproducible workpapers and editable Word, Excel and PowerPoint deliverables. A-share first, with accounting-basis-aware support for Hong Kong and US disclosures.
 
-The [comprehensive analysis program](skills/annual-report-analysis/references/analysis-program.md) starts with the actual report, business, transactions and legal structure. Strategy, resources, governance, capital allocation, financial statements, credit and external conditions are connected. Business drivers, accounting, audit support, credit and quantitative scenarios are examples, not an exhaustive scope boundary. Financial and other specialized businesses need applicable methods.
+The [comprehensive analysis program](skills/annual-report-analysis/references/analysis-program.md) examines the complete annual report and related disclosures against every requirement in the rating methodologies applicable to the company. Original sources and applicable methods determine the work; a predefined selection of topics, ratios or templates cannot substitute for that scope.
+
+Each applicable requirement leads to a source-backed judgment with evidence, calculations or reasoning, connected effects, counterevidence and next actions in the common workpaper and deliverables. A rating recommendation records its object, scale, method version, derivation and change conditions. Missing information or rules that prevent a grade decision are identified with the evidence needed to resolve them.
 
 Facts retain their original value, unit, entity, scope, period, accounting basis and source location. Calculations reference those facts. Findings retain competing explanations and the evidence that could change them. Missing values remain missing; unperformed procedures never become completed audit evidence.
 
