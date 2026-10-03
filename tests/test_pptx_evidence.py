@@ -47,7 +47,7 @@ class PresentationEvidenceTests(unittest.TestCase):
                               conclusion='The observed movement is conditional.',
                               mechanism='Reclassification changes the comparison basis. ' +
                                         'The transaction must be traced through each relevant account. '*15 +
-                                        'The remaining economic change is distinct.',
+                                        'The remaining economic change is distinct. ' + '权益调整后为-1,635.00百万USD。'*12,
                               evidence=['direct_e', 'total'], counterevidence=['counter_e', 'counter_number'],
                               alternatives=['Business mix may explain the remaining movement.'],
                               status='conditional', changes_if='Reassess after comparable figures are available.')],
@@ -102,6 +102,15 @@ class PresentationEvidenceTests(unittest.TestCase):
         self.assertNotIn('https://example.com/unused.pdf', self.visible)
         source_slides = [slide for slide in self.slides if '原文来源与定位' in ''.join(slide.itertext())]
         self.assertLessEqual(len(source_slides), 2)
+
+    def test_signed_amounts_do_not_lose_their_sign_at_a_line_break(self):
+        ns = {'a':'http://schemas.openxmlformats.org/drawingml/2006/main'}
+        paragraphs = [''.join('\n' if child.tag.endswith('}br') else ''.join(child.itertext())
+                              for child in paragraph)
+                      for slide in self.slides for paragraph in slide.findall('.//a:p', ns)]
+        visible = '\n'.join(paragraphs)
+        self.assertIn('-1,635.00', visible)
+        self.assertNotRegex(visible, r'-\s+1,635\.00')
 
 
 if __name__ == '__main__':

@@ -83,6 +83,9 @@ class ExportTests(unittest.TestCase):
                 with ZipFile(root/'output'/filename) as archive:
                     text = ''.join(''.join(ET.fromstring(archive.read(name)).itertext())
                                    for name in archive.namelist() if name.startswith(prefix) and name.endswith('.xml'))
+                if filename == 'report.docx':
+                    self.assertIn('\u20114.97', text)
+                    text = text.replace('\u2011', '-')
                 self.assertIn('-4.97个百分点', ''.join(text.split()), filename)
                 self.assertIn('-3.07%', ''.join(text.split()), filename)
             with ZipFile(root/'output'/'workbook.xlsx') as archive:
@@ -125,7 +128,7 @@ class ExportTests(unittest.TestCase):
         }
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            for value, expected in [('4', '4.00 元人民币'), ('5', '5.00 元人民币'), (None, '未计算 / unavailable')]:
+            for value, expected in [('4', '4.00 元人民币'), ('5', '5.00 元人民币'), (None, '未计算')]:
                 with self.subTest(value=value):
                     raw['quantitative'][0]['artifact']['rows'][0]['result'] = value
                     input_path = root/'input.json'
@@ -202,6 +205,7 @@ class ExportTests(unittest.TestCase):
         for scale, expected in [(1000000, '2,500.00 万元人民币'), (1, '25.00 元人民币')]:
             with self.subTest(scale=scale):
                 self.assertEqual(display(25, ctx.model_copy(update={'scale':scale})), expected)
+        self.assertEqual(display(-25, ctx.model_copy(update={'currency':'USD', 'scale':1000000})), '-25.00 百万USD')
         self.assertEqual(prepare(w, evaluate(w))['findings'][0]['figure_refs'], ['cfo_bridge'])
         self.assertEqual(w.findings[0].conclusion, 'Cash bridge {{cfo_bridge}}')
 

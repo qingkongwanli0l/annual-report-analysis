@@ -23,6 +23,8 @@ from workpaper import Workpaper
 
 
 def unit(ctx):
+    if ctx.measure == "money" and ctx.scale == 1000000:
+        return f"百万{ctx.currency}"
     if ctx.measure == "ratio":
         return "倍" if ctx.physical_unit == "times" else "个百分点" if ctx.physical_unit == "percentage_points" else "%"
     else:
@@ -32,7 +34,7 @@ def unit(ctx):
 
 def display(value, ctx):
     if value is None:
-        return "未计算 / unavailable"
+        return "未计算"
     value = Decimal(str(value))
     if ctx.measure == "ratio" and ctx.physical_unit == "times":
         return f"{value*ctx.scale:,.2f} 倍"
@@ -619,6 +621,8 @@ def word(data, path):
         doc.add_paragraph(f"[{e['id']}] {e['source']} {e['locator']}。{e['observation']} {e['reliability']}")
     for border in doc.element.xpath(".//w:pPr/w:pBdr"):
         border.getparent().remove(border)
+    for text_node in doc.element.iter(qn("w:t")):
+        text_node.text = re.sub(r"(?<![0-9A-Za-z_./])[−-](?=\d)", "\u2011", text_node.text)
     doc.save(path)
 
 

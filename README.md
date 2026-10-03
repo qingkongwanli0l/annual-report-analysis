@@ -21,6 +21,7 @@
 - [科顺股份及科顺转债研究](examples/keshun-2025/README.md)：从原件事实、适用方法和因素判断形成条件性主体及债项建议，可先看 [10 页简报](examples/keshun-2025/deliverables/research-brief.pptx)。
 - [宁德时代 2025 年案例](examples/catl-2025/README.md)：包含[共同底稿](examples/catl-2025/workpaper.json)及同源 [Word](examples/catl-2025/deliverables/report.docx)、[Excel](examples/catl-2025/deliverables/workbook.xlsx)、[PPT](examples/catl-2025/deliverables/presentation.pptx)，展示限定范围的财务研究。
 - [HKEX 2025 年案例](examples/hkex-2025/README.md)：展示港股与金融基础设施研究中的资金范围及会计口径。
+- [Crown Castle 2025 年报与 Fiber 出售案例](examples/crown-castle-2025/README.md)：连接减值、终止经营、实际交割、公开备考与信贷契约，保留原件差异和未取得的证据。
 - [四家 A 股电池企业案例](examples/a-share-battery-panel/README.md)：展示真实披露的跨公司、跨期研究及模型适用限制。
 
 在可写仓库副本中安装依赖并导出宁德时代案例：

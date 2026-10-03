@@ -18,8 +18,14 @@ async function main() {
   const lines = (text, width, size) => String(text).split('\n').flatMap(paragraph => {
     const count = Math.max(1, Math.floor(width * 72 / (size * 1.04)));
     const result = []; let line = '';
+    const tokens = [];
     for (const {segment} of segmenter.segment(paragraph)) {
-      const chars = Array.from(segment);
+      if (tokens.length && (/^[，。；：！？、）】”’]+$/.test(segment) ||
+          (/^\d/.test(segment) && /^[+−-]$/.test(tokens.at(-1))))) tokens[tokens.length - 1] += segment;
+      else tokens.push(segment);
+    }
+    for (const tokenPart of tokens) {
+      const chars = Array.from(tokenPart);
       for (let i = 0; i < chars.length; i += count) {
         const token = chars.slice(i, i + count).join('');
         if (Array.from(line + token).length > count) {result.push(line); line = '';}
@@ -91,7 +97,7 @@ async function main() {
     return `[${ref}] ${source.title} | ${e.locator}\n${source.url}`;
   }).join('\n');
   const counterText = ref => d.figures[ref]
-    ? `[${ref}] ${d.figures[ref].label}：${d.figures[ref].display}` : `[${ref}] ${evidence[ref].observation}`;
+    ? `${d.figures[ref].label}：${d.figures[ref].display}` : evidence[ref].observation;
   const findings = Object.fromEntries(d.findings.map(f => [f.id, f]));
   for (const section of d.sections) {
     const selected = section.findings.map(id => findings[id]);
