@@ -126,7 +126,7 @@ def workbook(w, data, path):
             for rowno, row in enumerate(rows, 1):
                 for col, item in enumerate(row):
                     ws.write(rowno, col, json.dumps(item, ensure_ascii=False) if isinstance(item, (dict, list)) else item, wrap)
-                if name == "Readme":
+                if name in ("Readme", "Reconciliations"):
                     lines = max(sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // (widths[col]-2)
                                     for line in str(item).split("\n")) for col, item in enumerate(row))
                     ws.set_row(rowno, 15 * lines + 3)
@@ -212,7 +212,7 @@ def workbook(w, data, path):
                     places = max(0, *(-v.as_tuple().exponent for v in amounts))
                     ws.write_number(i-1, 9, places)
                     expr = f"ROUND({expr},J{i})"
-                ws.write_formula(i-1, 4, "="+expr, number, float(value) if value is not None else "#N/A")
+                ws.write_formula(i-1, 4, "="+expr, wrap, float(value) if value is not None else "#N/A")
                 ws.write_formula(i-1, 6, f'=IF(COUNT(E{i},F{i})<2,"not_tested",IF(ABS(E{i})<=F{i},"within_input_tolerance","unexplained_difference"))', wrap, checks[r.id]["status"])
                 ws.write_formula(i-1, 8, f'=IF(ISNUMBER(E{i}),"","missing or unavailable input")', wrap, checks[r.id]["reason"])
         sheet("Sources", ["ID", "文件", "链接", "公布日期", "SHA256", "时间证据与限制"],

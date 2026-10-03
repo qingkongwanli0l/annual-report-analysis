@@ -18,6 +18,35 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_small_reconciliation_residuals_and_tolerance_remain_readable(self):
+        raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
+        context = {**raw['facts'][0]['context'], 'measure':'ratio', 'currency':None,
+                   'physical_unit':None, 'scale':'1', 'aggregation':'ratio', 'start':None}
+        for key, value in [('rounded_ratio', '1.568'), ('unrounded_ratio', '1.5680110721557214')]:
+            raw['facts'].append(dict(id=key, label='Constructed rounding example', concept='test_ratio',
+                                    value=value, context=context, evidence=[], state='assumption',
+                                    note='Constructed display check, not issuer data'))
+        for key, actual, expected in [('positive_residual', 'unrounded_ratio', 'rounded_ratio'),
+                                      ('negative_residual', 'rounded_ratio', 'unrounded_ratio')]:
+            raw['reconciliations'].append(dict(id=key, label='Constructed rounding comparison',
+                actual=actual, expected=expected, tolerance='0.00005',
+                basis='假设原披露到百分数两位，小数比率容差为0.00005；保留完整依据和真实非零残差。'))
+        w = Workpaper.model_validate(raw)
+        result = evaluate(w)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'workbook.xlsx'
+            workbook(w, prepare(w, result), path)
+            with ZipFile(path) as archive:
+                ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                sheet = ET.fromstring(archive.read('xl/worksheets/sheet4.xml'))
+                styles = ET.fromstring(archive.read('xl/styles.xml')).find('x:cellXfs', ns)
+                for row in [len(w.reconciliations), len(w.reconciliations)+1]:
+                    cell = sheet.find(f".//x:c[@r='E{row}']", ns)
+                    self.assertAlmostEqual(abs(float(cell.find('x:v', ns).text)), 0.0000110721557214)
+                    self.assertEqual(styles[int(cell.get('s'))].get('numFmtId'), '0')
+                    self.assertEqual(float(sheet.find(f".//x:c[@r='F{row}']/x:v", ns).text), 0.00005)
+                    self.assertGreater(float(sheet.find(f".//x:row[@r='{row}']", ns).get('ht', '15')), 15)
+
     def test_percentage_point_change_is_distinct_from_relative_growth(self):
         context = dict(entity='Example insurer', scope='consolidated', aggregation='ratio',
                        basis='Constructed', measure='ratio')
