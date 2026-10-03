@@ -10,8 +10,8 @@ output/
 *.tmp
 *.bak
 ~$*
-/tmp/
-/temp/
+tmp/
+temp/
 /docs/research/
 /docs/research.md
 /docs/reviews/
