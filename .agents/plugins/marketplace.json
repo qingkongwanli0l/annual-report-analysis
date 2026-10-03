@@ -1,0 +1,12 @@
+{
+  "name": "annual-report-analysis-local",
+  "interface": { "displayName": "企业年报分析（开发版）" },
+  "plugins": [
+    {
+      "name": "annual-report-analysis",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}
