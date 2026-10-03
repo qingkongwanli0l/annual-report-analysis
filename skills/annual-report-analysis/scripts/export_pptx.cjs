@@ -224,7 +224,7 @@ async function main() {
         for (const body of paragraphs(text, 12, 4.5, 16)) {
           s = page(`${q.label}：${figures.length ? '指标摘要' : '结果行 '+index}`);
           qtext(s, body, 0.65, 1.6, 12, 4.5, 16);
-          qtext(s, `证据 ${q.evidence.join(', ')}；已运行快照，导出器未重跑外部算式。全量结果、公式与精度见Excel/JSON。`, 0.65, 6.35, 12, 0.55, 11, '56646C');
+          qtext(s, `证据 ${q.evidence.slice(0,3).join(', ')}${q.evidence.length > 3 ? ' 等' : ''}；完整出处见来源附页及备注。已运行快照，全量结果与公式见Excel/JSON。`, 0.65, 6.35, 12, 0.55, 11, '56646C');
           s.addNotes(trace);
         }
       }
