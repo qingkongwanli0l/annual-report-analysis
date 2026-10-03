@@ -39,7 +39,7 @@ async function main() {
   const chain = q('ks_r_rating_chain');
   let s = page('科顺股份与科顺转债｜研究建议及条件', ['ks_r_recommendation','ks_r_liquidity'], true);
   text(s, `${chain[0].issuer} / ${chain[0].outlook}展望`, 0.7, 1.55, 11.7, 1.05, 49, 'FFFFFF', true);
-  text(s, '主体与普通无担保直接债项的基准研究建议', 0.7, 2.85, 11.7, 0.5, 23, 'D4E8E1');
+  text(s, '历史因素代表值下的主体与无担保债项条件分支', 0.7, 2.85, 11.7, 0.5, 23, 'D4E8E1');
   text(s, '以付款日前资金及用途安排足以覆盖为条件。历史毛现金流的范围调整、母公司未来资金及持续承诺后果尚待核实；模型数值尚不能证明实际付款覆盖。', 0.7, 3.65, 11.7, 1.28, 22, 'FFFFFF');
   text(s, '采用境内相对信用尺度及联合公开方法的明示研究适配；不是联合资信评级行动。完整研究及底稿另附，本汇报只提炼影响决定的事项。', 0.7, 5.35, 11.7, 0.7, 15, 'D4E8E1');
 
@@ -71,22 +71,30 @@ async function main() {
   text(s, '非现金减值加回不会创造经营盈利。应收净额下降还可能来自准备、核销、抵债及范围变化，未完成滚动桥前不能直接视为客户多付现金。', 0.6, 3.85, 12.1, 1.0, 22);
   text(s, `经销贷款用于支付公司货款，同时保留公司保证责任；不以担保存量扣CFO。三月末集团外担保 ${amount('ks_credit_guarantee_external_q1').toFixed(2)} 亿元，下降 ${value('ks_credit_guarantee_external_decline')}，未证明六月逐笔解除。一季度CFO ${value('ks_a_q1_cfo')}。`, 0.6, 5.18, 12.1, 0.95, 18);
 
-  s = page('一年条件资金容量：范围调整仍须补证', ['ks_horizon_find_horizon','ks_horizon_find_stress']);
-  const dates = ['2026-06-30','2026-09-30','2026-12-31','2027-03-31','2027-06-30'];
-  const cash = ['base','collection_delay_5pct'].map(id => ({ name: id === 'base' ? '基准' : '收款另延5%至窗后', labels: dates.map(d => d.slice(0,7)),
-    values: dates.map(date => Number(q('ks_horizon_q_'+id).find(r => r.date === date).group_pool_before_unknown_DX)/1e8) }));
-  s.addChart(p.ChartType.line, cash, { x: 0.6, y: 1.52, w: 7.9, h: 4.35, showLegend: false, chartColors: [green,red],
+  const economic = d.quantitative.find(x => x.id === 'ks_econ_q_chain').artifact;
+  const cases = economic.calculation.cases;
+  const base = cases.q1_0, stress = cases['q1_.05'];
+  s = page('材料成本经现金与利息传至评级因素', ['ks_econ_f_chain','ks_econ_f_qualitative','ks_econ_q_chain']);
+  text(s, '2026全年＝实际Q1＋后三季预测；收入为季节锚98%，Q1减值强度延续、公开当期税锚，金额单位亿元人民币。', 0.6, 1.5, 12.1, 0.8, 20);
+  table(s, [['材料情景','EBITDA','净利润','CFO','期末债务','财务分 / 档'],
+    ...economic.rows.slice(0,2).map((r,i) => [i ? '材料+5%' : '材料不涨价',
+      ...['ebitda','net_income','cfo','debt'].map(k => (Number(r[k])/1e8).toFixed(2)),
+      `${Number(r.financial_score).toFixed(5)} / ${r.financial_category}`])], 2.55, [2.2,1.5,1.5,1.5,1.8,3.6], 17);
+  const leverage = c => Number(c.forecast_rating.rows.find(r => r.factor === 'leverage').input).toFixed(2);
+  text(s, `同一材料冲击使加权债务/EBITDA由 ${leverage(base)} 倍升至 ${leverage(stress)} 倍，财务档由 ${base.forecast_rating.category} 至 ${stress.forecast_rating.category}。经营C、其他调整不变时，矩阵较弱端为 ${base.forecast_rating.matrix_weak_end} 与 ${stress.forecast_rating.matrix_weak_end}。`, 0.6, 4.25, 12.1, 0.95, 21);
+  text(s, '预测金额按20/30/50加权属于研究适配，另列年度比率路线。减值、税款、定性选分及融资仍有条件分支；这里的A不是实际上调结论，完整敏感性见底稿。', 0.6, 5.5, 12.1, 0.72, 17, red);
+
+  s = page('融资成本与融资上限必须进入同一现金链', ['ks_econ_f_funding','ks_project_n_restore_event','ks_econ_q_chain']);
+  const funding = [base,stress].map((c,i) => ({name:i ? '材料+5%' : '材料不涨价',
+    labels:c.rows.map(r => r.period_end.slice(0,7)), values:c.rows.map(r => Number(r.cumulative_new_draw)/1e8)}));
+  s.addChart(p.ChartType.line, funding, { x: 0.6, y: 1.52, w: 7.9, h: 3.85, showLegend: false, chartColors: [green,red],
     showValue: false, showDataTable: true, showDataTableKeys: true, dataTableFontSize: 11, dataTableFormatCode: '0.00', catAxisLabelFontSize: 13, valAxisLabelFontSize: 12, valAxisTitle: '亿元人民币', showValAxisTitle: true,
     showMarker: true, showBorder: false, valGridLine: { color: 'DCE4E0', width: 0.5 } });
-  text(s, `2027六月末资金池\n基准 ${value('ks_horizon_base_end_group_pool_before_unknown_DX')}\n\n延期分支\n${value('ks_horizon_collection_delay_5pct_end_group_pool_before_unknown_DX')}`, 8.95, 1.75, 3.72, 3.15, 22);
-  text(s, '图示固定两版历史调整ΔA=ΔH=0、持续范围调整Γ=0；实际未知。各线还须扣未核还本D、净用途X、营运缓冲及用途隔离；季度末余额不证明月内付款覆盖。', 0.6, 6.01, 12.1, 0.42, 13, red);
-
-  s = page('用途恢复与营运缓冲改变需要落实的融资', ['ks_d_n_funds','ks_project_n_restore_event','ks_horizon_find_horizon']);
-  card(s, 0.6, 1.55, 3.8, '基准：用途占用6.5亿元', value('ks_horizon_base_peak_funding_intercept_U650'), '累计融资截距；15日研究缓冲');
-  card(s, 4.65, 1.55, 3.8, '基准：用途占用13亿元', value('ks_horizon_base_peak_funding_intercept_U1300'), '参数敏感性；非实际占用', red);
-  card(s, 8.7, 1.55, 4.0, '另延5%：用途占用6.5亿元', value('ks_horizon_collection_delay_5pct_peak_funding_intercept_U650'), '未当作已承诺融资', red);
-  text(s, '临时补流须在2027-01-09十二个月边界及更早项目需要前恢复用途。归还专户是内部调度，须与已有用途预留去重；实际占用仍未知。', 0.6, 3.9, 12.1, 0.97, 22);
-  text(s, '截距固定ΔA=ΔH=Γ=D=X=P=0，实际参数未知。范围调整须同时改变经营收付与缓冲；还本、净用途及合格项目耗用须另核并去重。实际融资需求尚不能定值。', 0.6, 5.16, 12.1, 0.8, 19, red);
+  const failed = cases['q1_.05_finance_cap_500m'].rows.at(-1);
+  text(s, `累计新增贷款\n截至2027年六月\n\n材料+5%\n${value('ks_econ_fig_new_finance_h1_2027')}`, 8.95, 1.75, 3.72, 2.3, 21);
+  text(s, `若融资限5亿元\n${failed.period_end}\n缺口 ${(-Number(failed.headroom)/1e8).toFixed(2)} 亿元`, 8.95, 4.1, 3.72, 1.15, 19, red);
+  text(s, '新贷款季初到位并计息；15日经营底线、用途占用6.5亿元及1月9日前恢复预留均为条件。无法融资时停止后续完整评级，不自动填平缺口。', 0.6, 5.55, 12.1, 0.65, 17);
+  text(s, '集团池不等于发行人可用款；历史范围修正、合同还本、实际用途及提款仍待核。旧零调整现金截距另列，不与本图累计新贷款混用。', 0.6, 6.18, 12.1, 0.27, 11, red);
 
   s = page('偿债主体是发行人，不能直接动用全部集团余额', ['ks_r_parent_risk','ks_d_e_issue_coupon','ks_d_e_maturity_call','ks_project_n_model','ks_project_n_timing']);
   card(s, 0.6, 1.48, 5.9, '母公司2025末：现金减短期账面代理', value('ks_r_parent_screen'), '未扣全体经营、票据、股利及用途需求');

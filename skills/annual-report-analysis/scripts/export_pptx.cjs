@@ -51,6 +51,7 @@ async function main() {
         for (let boundary = end; boundary > start; boundary--) {
           if (!wrapped[boundary].trim()) {end = boundary; break;}
         }
+        if (wrapped[end].trim() && (end + 1 === wrapped.length || !wrapped[end + 1].trim()) && end - start > 1) end--;
       }
       result.push(wrapped.slice(start, end).join('\n').trimEnd());
       start = end;

@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from xml.etree import ElementTree as ET
 from zipfile import ZipFile
+from docx import Document
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'skills/annual-report-analysis/scripts'))
 from calculate import evaluate
@@ -134,6 +135,11 @@ class ExportTests(unittest.TestCase):
                     input_path = root/'input.json'
                     input_path.write_text(json.dumps(raw, ensure_ascii=False), encoding='utf-8')
                     export(input_path, root/'output')
+                    report = Document(root/'output'/'report.docx')
+                    source_cell = report.tables[0].cell(1, 2).text
+                    self.assertIn('bridge', source_cell)
+                    self.assertNotIn('bridge_evidence', source_cell)
+                    self.assertIn('Custom bridge [bridge]', [p.text for p in report.paragraphs])
                     for filename, prefix in [('report.docx', 'word/document'),
                                              ('workbook.xlsx', 'xl/sharedStrings'),
                                              ('presentation.pptx', 'ppt/slides/slide')]:

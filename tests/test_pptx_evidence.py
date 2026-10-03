@@ -23,7 +23,8 @@ class PresentationEvidenceTests(unittest.TestCase):
             'mandate': dict(title='Evidence review', entity='Example issuer', industry='example',
                             purpose='Constructed traceability example', period_start='2025-01-01',
                             period_end='2025-12-31', cutoff='2026-09-30', accounting_basis='Constructed',
-                            scope='consolidated', version='1'),
+                            scope='consolidated', version='1',
+                            limitations=['\n'.join(f'Continuation line {i}' for i in range(1, 18))]),
             'sources': [dict(id='report', title='Example original report',
                              url='https://example.com/annual-report.pdf', published='2026-03-31'),
                         dict(id='unused', title='Unused source', url='https://example.com/unused.pdf',
@@ -111,6 +112,12 @@ class PresentationEvidenceTests(unittest.TestCase):
         visible = '\n'.join(paragraphs)
         self.assertIn('-1,635.00', visible)
         self.assertNotRegex(visible, r'-\s+1,635\.00')
+
+    def test_paragraph_continuation_does_not_leave_a_single_line_on_its_own_slide(self):
+        continuation = [''.join(slide.itertext()) for slide in self.slides
+                        if 'Continuation line 17' in ''.join(slide.itertext())]
+        self.assertEqual(len(continuation), 1)
+        self.assertIn('Continuation line 16', continuation[0])
 
 
 if __name__ == '__main__':

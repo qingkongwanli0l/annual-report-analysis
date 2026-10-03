@@ -1,0 +1,23 @@
+{
+  "as_of": "2026-06-30",
+  "parameters": {
+    "revenue_factor": ".98",
+    "new_loan_rate": ".045",
+    "legacy_loan_rate": ".035",
+    "bond_effective_rate": ".0363",
+    "buffer_days": "15",
+    "U": "650000000",
+    "paid_same_quarter": ".80",
+    "redemption_book_budgets": [
+      "373000000",
+      "373000000",
+      "434000000",
+      "263617784.79",
+      "0"
+    ],
+    "opening_accrued_interest_proxy": "0",
+    "finance_capacity_case": "500000000",
+    "current_tax_multiplier": "1",
+    "current_tax_paid_same_quarter": "0"
+  }
+}

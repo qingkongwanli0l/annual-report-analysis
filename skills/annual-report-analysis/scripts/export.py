@@ -502,6 +502,7 @@ def word(data, path):
     for text in m["methods"]:
         doc.add_paragraph("方法与适用范围："+text)
     findings = {f["id"]: f for f in data["findings"]}
+    quantitative_origins = {f["id"]: q["id"] for q in data["quantitative"] for f in q["figures"]}
     if data["findings"]:
         doc.add_heading("核心判断", 1)
     for f in data["findings"][:3]:
@@ -514,7 +515,8 @@ def word(data, path):
         if s["figures"]:
             table(["项目及记录", "期间及数值", "证据"],
                   [[data['figures'][ref]['label']+f" [{ref}]", data['figures'][ref]['context']['end']+"\n"+data['figures'][ref]['display'],
-                    ", ".join(data['figures'][ref]['evidence'])] for ref in s["figures"]])
+                    "专门结果 "+quantitative_origins[ref]+"（输入与证据见该节）" if ref in quantitative_origins
+                    else ", ".join(data['figures'][ref]['evidence'])] for ref in s["figures"]])
         for ref in s["findings"]:
             f = findings[ref]
             doc.add_heading(f["title"]+f" [{ref}; {f['status']}]", 2)
@@ -529,7 +531,7 @@ def word(data, path):
         doc.add_paragraph(f"{r['label']} [{r['id']}]：{result['status']}；基础单位残差 {result['residual'] if result['residual'] is not None else '未计算'}。{result['reason']} {r['basis']}")
     for index, q in enumerate(data["quantitative"], 1):
         doc.add_page_break()
-        doc.add_heading(q["label"], 1)
+        doc.add_heading(q["label"]+f" [{q['id']}]", 1)
         doc.add_paragraph(f"{q['method']}；截至 {q['as_of']}。")
         artifact = q["artifact"]
         rows = artifact.get("rows", [])
