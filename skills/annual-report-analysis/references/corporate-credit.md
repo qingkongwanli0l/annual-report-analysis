@@ -22,6 +22,8 @@
 
 依次写清：终端需求与替代 → 新增供给/行业产能 → 定价及原材料传导时滞 → 企业量价、单位成本和资本占用 → 利润与偿债现金。规模、多元化、品牌、牌照、资源、技术、渠道只是待验证优势；逐项用客户留存、价格溢价、单位成本、认证时间或现金转换证明。客户和供应商集中分别计算，匿名前五客户不能据名字缺失推定关联方。
 
+规模和份额使用不同参照：前者比较所属行业，后者比较企业实际服务的细分市场；小规模但在细分市场领先的企业，不能仅因总收入低就判竞争力弱。另查其有限市场带来的集中风险。长建设周期项目把投资锁定、产能投放与需求/原料周期放在同一时间轴；投产落在下行期时，重算固定成本、利用率及债务承受力，不以历史高增长或规模扩张抵销压力。[ICRA 2025通用方法p2–5](https://www.icra.in/Rating/GetRatingMethodologyFile/960~Corporate%20Credit%20Rating%20Methodology%2C%20Jul%202025.pdf)为这两项区分提供依据，但未给统一规模扣分或周期杠杆阈值。
+
 **例：** 销量由 100 增至 110，单价由 10 降至 9.5，收入由 1,000 增至 1,045。按先量后价的明确次序，量效应 `(110−100)×10=100`，价效应 `110×(9.5−10)=−55`，合计 45。若单位现金成本从 8 降至 7.9，单位贡献由 2 降至 1.6；增长伴随贡献率下降。反证应查原材料回落、产品组合和主动清库存，而非直接称“失去定价权”。关闭：分产品量价成本能解释差额，未披露的组合残差保留，不硬归类。
 
 ### 2.2 成长与执行底稿
@@ -379,7 +381,7 @@ Fitch困境交换须同时成立“条款实质减少债权人权益”和“为
 | Scope | [General Corporate Rating Methodology](https://scoperatings-web-backend.scoperatings.com/api/document/288180ad-b908-4f1b-872b-40617a2da901)，2026-04-24正式版，41页可提取正文已全部补读，p7、10、13、16、20、22、27、30、33–40已核图；未独立复核每个表格单元 | 较弱因素和行业例外影响判断，无统一固定权重；流动性连接反向保理撤销及契约加速，FOCF另核租赁本金，不能把一般FCF换名为机构指标 |
 | Nordic Credit Rating | [Corporate Rating Methodology](https://nordiccreditrating.com/uploads/2023-05/Nordic%20Credit%20Rating%20-%20Corporate%20Rating%20Methodology.pdf)，现行目录及2026应用仍指2023-05-08；p1–26正文已读，矩阵未逐格核验。2026-09-23[补充征求意见](https://nordiccreditrating.com/article/nordic-credit-rating-invites-comments-revised-corporate-rating-methodology-proposal?language_content_entity=en)截至2026-10-23，公告已读、提案全文未读 | 独立预测、风险偏好及实际联营股利/现金税息桥按本方法定义；租赁不重复加债。通用框架排除项目融资和企业证券化，投资控股另选法；2026提案不拼入正式方法，支持/原则等依赖正文仍未完成 |
 | JCR | [通用方法2024-10-01](https://www.jcr.co.jp/en/pdf/general/JCR%27s_Rating_Methodology20241001_r2.pdf)15页正文、[控股2025-04-02](https://www.jcr.co.jp/en/pdf/general/HoldingCompany20250402_en.pdf)3页已读；[混合工具2022-12-01](https://www.jcr.co.jp/en/pdf/general/20221201_en.pdf)仅p1–3、9–12，矩阵未全核 | 主体违约与债项损失分开；控股集团能力另接本部现金、结构性次级及双重杠杆；负面担保保护对象与例外逐条取合同。观察期不截断已知远期大额到期，信用权益不等于会计权益 |
-| ICRA | [Corporate Credit Rating Methodology，2025-07](https://www.icra.in/Rating/GetRatingMethodologyFile/960~Corporate%20Credit%20Rating%20Methodology%2C%20Jul%202025.pdf)20页中已读p1、6–18，p2–5未完整阅读；后继版及依赖方法未穷尽 | 其FFO/CFO/FCF、资本和利息定义另建桥，不替换本项目同名指标。储备现金分别判断会计分类、到期可用性、方法净债务抵扣；经营周转排除资本性应付，股东质押连接控制变更/加速条款，不能只据担保物提高主体评级 |
+| ICRA | [Corporate Credit Rating Methodology，2025-07](https://www.icra.in/Rating/GetRatingMethodologyFile/960~Corporate%20Credit%20Rating%20Methodology%2C%20Jul%202025.pdf)20页已读，p4–5行业连续带、竞争驱动及规模/份额图已核图；2026-10-03重取与原件哈希一致，后继版及依赖方法未穷尽 | 其FFO/CFO/FCF、资本和利息定义另建桥，不替换本项目同名指标。规模与细分市场份额分别评价，建设周期接入债务承受力。储备现金分别判断会计分类、到期可用性、方法净债务抵扣；经营周转排除资本性应付，股东质押连接控制变更/加速条款，不能只据担保物提高主体评级 |
 
 另已全文核读[CRISIL 2026-09企业汇编](https://www.crisil.com/content/dam/crisilrating/criteria-and-methodology/criteria-for-manufacturing-trading-and-corporate-services-sector.pdf)111页及CARE制造、流动性、投资控股和非金融比率方法。CRISIL比率不算术合成，CARE特定债务、现金生成及覆盖口径分别建桥；两者全部评级尺度和支持依赖尚未取得，不能从这些文件自造机构等级。第11节另列AM Best保险结论形成路径，资本和国家风险等配套输入仍需核验。
 
