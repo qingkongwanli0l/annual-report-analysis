@@ -121,7 +121,7 @@
 
 #### S&P银行资本：预计RAC到资本与盈利因素
 
-使用上表2026-05-05重发的金融机构方法，以下为PDF及印刷页码。B4的监管资本桥继续保留；S&P的TAC和风险加权资产须另依分析日及法域生效的RAC方法取证。官方[在用目录](https://www.spglobal.com/ratings/en/regulatory/ratings-criteria/-/articles/criteria/financial-institutions/filter/banks)及[模型页](https://www.spglobal.com/ratings/en/products/financial-services-credit-tools)列2026-05-05新方法；2024版已归档，需当地注册的法域另核生效。新RAC正文未核部分不能用旧参数或征求意见替代。公开模型仍须外部输入TAC，不能以监管资本或会计权益直接填入；050526公开版内置主权/BICRA/经济风险参数截至2025-12-31，须核分析时点变化，其输入和计算范围也不等同分析师版本。
+使用上表2026-05-05重发的金融机构方法，以下为PDF及印刷页码。B4的监管资本桥继续保留；S&P的TAC和风险加权资产须另依分析日及法域生效的RAC方法取证。官方[在用目录](https://www.spglobal.com/ratings/en/regulatory/ratings-criteria/-/articles/criteria/financial-institutions/filter/banks)及[模型页](https://www.spglobal.com/ratings/en/products/financial-services-credit-tools)列2026-05-05新方法；2024版已归档，需当地注册的法域另核生效。[现行RAC正文](https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/3610675)及附录尚未取得，TAC调整、风险暴露/权重和正常化损失参数继续未决，不能用旧参数或征求意见替代。公开模型仍须外部输入TAC，不能以监管资本或会计权益直接填入；050526公开版内置主权/BICRA/经济风险参数截至2025-12-31，须核分析时点变化，其输入和计算范围也不等同分析师版本。
 
 1. **先判许可资本约束（p18、20–21，¶79–88/表8）。** 核维持牌照的各项最低资本指标，分别列审慎缓冲要求；较高缓冲线是否构成许可约束，仍核违反后是否会导致撤牌，不能一律排除。预计仍合规但余量狭窄且可能在合理不利变化下违规时，按原表判断at risk：SACP最高bb+，资本与盈利至多constrained。属表8的监管宽容或违规时，SACP最高b-、资本与盈利weak，CCC情形另核；预计短暂违规且有监管同意的可信近期补资计划时，可按at risk判断。100bp是通常判断线索，存在保守计算和压力稳定等例外，不作机械触发。已适用上限时不再执行后两步，除为辨别constrained或weak。
 2. **形成预计多元化前RAC（p21–22，¶93–95/表9）。** 银行从最新完整财务/监管口径接入新信息，预测通常未来1–2年的盈利、留存、资产负债规模/组合和资本管理，重建预计TAC及S&P RWA。保留现期与预计、预测假设及其证据，不能用当前监管资本率或多元化后RAC代替。已核输入的预计RAC按`>15%`、`(10%,15%]`、`(7%,10%]`、`(5%,7%]`、`(3%,5%]`、`≤3%`依次形成very strong、strong、adequate、moderate、constrained、weak初始档；用未舍入值判断边界。不能把缺失风险暴露填0，也不假定四表足以复现RAC。
