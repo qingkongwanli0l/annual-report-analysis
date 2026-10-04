@@ -129,8 +129,8 @@ def workbook(w, data, path):
             for rowno, row in enumerate(rows, 1):
                 for col, item in enumerate(row):
                     ws.write(rowno, col, json.dumps(item, ensure_ascii=False) if isinstance(item, (dict, list)) else item, wrap)
-                if name in ("Readme", "Reconciliations"):
-                    lines = max(sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // (widths[col]-2)
+                if name in ("Readme", "Reconciliations") or name.endswith("Contracts"):
+                    lines = max(sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // ((widths[col] if widths else 28)-2)
                                     for line in str(item).split("\n")) for col, item in enumerate(row))
                     ws.set_row(rowno, 15 * lines + 3)
             ws.autofilter(0, 0, max(1, len(rows)), len(headers)-1)
@@ -367,8 +367,8 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
     cash.print_area(print_start, 0, print_row-3, min(4, len(snapshot["periods"])))
     cash.set_h_pagebreaks(list(range(print_start+len(keys)+2, print_row, len(keys)+2)))
     contracts = artifact.get("contracts", [])
-    ws = sheet(prefix+"Contracts", ["条件", "日期", "指标", "关系", "阈值", "计算值", "结果", "定义", "依据"],
-               [[c["label"], c["test_date"], c["metric"], c["relation"], c["threshold"], c["value"], c["status"], c["definition"], c["source"]] for c in contracts])
+    ws = sheet(prefix+"Contracts", ["条件", "日期", "指标", "关系", "阈值", "计算值", "结果", "定义", "依据", "原因"],
+               [[c["label"], c["test_date"], c["metric"], c["relation"], c["threshold"], c["value"], c["status"], c["definition"], c["source"], c.get("reason", "")] for c in contracts])
     dates = [p["end"] for p in snapshot["periods"]]
     for i, c in enumerate(contracts, 2):
         if c["test_date"] in dates:
@@ -390,8 +390,25 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             rows.append([label, value])
         sheet(prefix+"Reverse", ["字段", "结果"], rows, [35,100])
         if reverse.get("rows"):
-            summary = ["period_end", "revenue", "net_income", "cfo", "cash_end", "debt_end", "cash_headroom"]
+            summary = ["period_end", "revenue", "ebitda", "ebit", "net_income", "cfo", "cash_end", "debt_end",
+                       "cash_headroom", "funding_needed_to_floor", "interest_coverage", "debt_to_ebitda", "status"]
             sheet(prefix+"AtBoundary", summary, [[r[k] for k in summary] for r in reverse["rows"]])
+        if reverse.get("contracts"):
+            sheet(prefix+"BoundaryContracts", ["条件", "日期", "指标", "关系", "阈值", "计算值", "结果", "定义", "依据", "原因"],
+                  [[c["label"], c["test_date"], c["metric"], c["relation"], c["threshold"], c["value"], c["status"], c["definition"], c["source"], c.get("reason", "")] for c in reverse["contracts"]])
+    for suffix, result in [("ActualBridge", artifact), ("BoundaryActual", reverse or {})]:
+        bridge = result.get("actual_bridge", [])
+        if bridge:
+            fields = ["period_index", "period_start", "period_end", "metric", "period_total", "actual", "remaining",
+                      "through_date", "source", "available_at", "same_scope", "status", "conflict"]
+            ws = sheet(prefix+suffix, fields, [[r[k] for k in fields] for r in bridge],
+                       [14,14,14,22,24,24,24,14,70,14,14,22,14])
+            for i, r in enumerate(bridge, 1):
+                ws.set_row(i, max(30, 15 * (1 + sum(2 if ord(c) > 255 else 1 for c in r["source"] or "") // 68)))
+            ws.merge_range(len(bridge)+2, 0, len(bridge)+2, 12,
+                           f"path_basis: {artifact.get('path_basis', '未提供')}；实际桥仅比较累计实际与全期输入。remaining 不重建剩余期间，也不重设现金路径；same_scope 是输入声明。空值不是零；边界表是已运行快照，修改输入后须重跑。",
+                           book.add_format({"text_wrap": True, "valign": "top"}))
+            ws.set_row(len(bridge)+2, 45)
 
 
 def panel_sheets(sheet, artifact, prefix, number, percent):
@@ -545,10 +562,10 @@ def word(data, path):
             table(["期间", "营运资本增加", "资本开支", "借入", "还本", "股利"],
                   [[r["period_end"], *[fmt(r[k]) for k in ("delta_nwc", "capex", "drawdown", "principal", "dividends")]] for r in rows])
             if artifact.get("contracts"):
-                doc.add_heading("输入合同条件", 2)
+                doc.add_heading("输入约束条件", 2)
                 table(["条件和日期", "定义与阈值", "计算结果"],
                       [[c["label"]+"\n"+c["test_date"], f"{c['definition']}\n{c['metric']} {c['relation']} {fmt(c['threshold'])}\n来源 {c['source']}",
-                        f"{fmt(c['value'])}\n{c['status']}"] for c in artifact["contracts"]])
+                        f"{fmt(c['value'])}\n{c['status']}\n{c.get('reason', '')}"] for c in artifact["contracts"]])
             if artifact.get("reverse"):
                 reverse = artifact["reverse"]
                 doc.add_heading("逆向现金边界", 2)
@@ -559,6 +576,25 @@ def word(data, path):
                     doc.add_paragraph("这是输入假设下的现金边界，不是发生概率或法律违约判断。")
                 else:
                     doc.add_paragraph(reverse.get("reason", "未取得收敛边界"))
+                if reverse.get("rows"):
+                    table(["边界期间", "EBITDA", "EBIT", "净利润", "债务/EBITDA", "利息覆盖倍数"],
+                          [[r["period_end"], *[fmt(r[k]) for k in ("ebitda", "ebit", "net_income", "debt_to_ebitda", "interest_coverage")]] for r in reverse["rows"]])
+                    table(["边界期间与状态", "CFO", "期末现金", "期末债务", "现金余量", "补至现金底线"],
+                          [[r["period_end"]+"\n"+r["status"], *[fmt(r[k]) for k in ("cfo", "cash_end", "debt_end", "cash_headroom", "funding_needed_to_floor")]] for r in reverse["rows"]])
+                if reverse.get("contracts"):
+                    doc.add_heading("逆根处全部输入约束", 3)
+                    table(["条件和日期", "定义与阈值", "计算结果"],
+                          [[c["label"]+"\n"+c["test_date"], f"{c['definition']}\n{c['metric']} {c['relation']} {fmt(c['threshold'])}\n来源 {c['source']}",
+                            f"{fmt(c['value'])}\n{c['status']}\n{c.get('reason', '')}"] for c in reverse["contracts"]])
+            for title, result in [("实际累计与全期假设桥", artifact), ("逆根处实际累计与全期假设桥", artifact.get("reverse") or {})]:
+                if result.get("actual_bridge"):
+                    doc.add_heading(title, 2)
+                    doc.add_paragraph(f"path_basis: {artifact.get('path_basis', '未提供')}；仅比较累计实际与全期输入，remaining 不重建剩余期间，也不重设现金路径；same_scope 是输入声明，未知值不替换为零。")
+                    table(["期间与指标", "全期/累计/remaining", "状态与口径", "截至与证据"],
+                          [[f"{r['period_start']} 至 {r['period_end']}\n{r['metric']}",
+                            f"全期 {fmt(r['period_total'])}\n累计 {fmt(r['actual'])}\nremaining {fmt(r['remaining'])}",
+                            f"{r['status']}\nsame_scope {str(r['same_scope']).lower()}\nconflict {str(r['conflict']).lower()}",
+                            f"截至 {r['through_date'] or '未提供'}\n公布 {r['available_at'] or '未提供'}\n{r['source'] or '未提供'}"] for r in result["actual_bridge"]])
             if artifact["unprojected_periods"]:
                 doc.add_paragraph(f"因现金未融资缺口，后续 {artifact['unprojected_periods']} 期未继续预测。")
         elif q["method"] == "pit_margin_persistence_v1":

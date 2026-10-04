@@ -13,12 +13,81 @@ from calculate import evaluate
 from export import display, export, prepare, word, workbook
 from recovery import RecoveryInput, calculate_recovery
 import scenarios
-from test_quantitative import manufacturing_case
+from test_quantitative import manufacturing_case, reverse_realized_case
 from test_recovery import example
 from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_cash_boundary_constraints_and_actual_bridges_are_visible(self):
+        source = reverse_realized_case('unit_price')
+        source['path_basis'] = 'counterfactual'
+        source['periods'][0]['fixed_cash_cost'] = 500
+        source['reverse']['target_cash'] = 50
+        term = dict(source='Constructed threshold, not a debt agreement', available_at='2024-12-31',
+                    definition='Constructed input condition', test_date='2025-12-31',
+                    relation='at_least', threshold=0)
+        source['contracts'] = [dict(term, label='Cash condition', metric='cash_end'),
+                               dict(term, label='Profit condition', metric='ebitda'),
+                               dict(term, label='Leverage condition', metric='debt_to_ebitda',
+                                    relation='at_most', threshold=3),
+                               dict(term, label='Unprojected condition', metric='cash_end', test_date='2025-06-30')]
+        artifact = scenarios.run(source)
+        self.assertEqual(artifact['reverse']['rows'][0]['ebitda'], -50)
+        self.assertEqual(artifact['reverse']['contracts'][2]['status'], 'not_tested')
+        w = Workpaper.model_validate({
+            'mandate': dict(title='Boundary visibility', entity='Constructed', industry='manufacturing',
+                            purpose='Read existing scenario results', period_start='2025-01-01',
+                            period_end='2025-12-31', cutoff='2025-06-30', accounting_basis='Constructed',
+                            scope='single entity', version='v2'),
+            'sources': [], 'evidence': [], 'facts': [], 'findings': [], 'sections': [],
+            'quantitative': [scenarios.to_workpaper_result(artifact, 'cash', 'Cash', [], [])],
+        })
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            input_path = root/'input.json'
+            input_path.write_text(w.model_dump_json(), encoding='utf-8')
+            export(input_path, root/'output')
+            self.assertEqual(json.loads((root/'output/quantitative-cash.json').read_text(encoding='utf-8')), artifact)
+            report = Document(root/'output/report.docx')
+            boundary = next(t for t in report.tables if t.cell(0, 0).text == '边界期间')
+            self.assertEqual(boundary.cell(1, 1).text.replace('\u2011', '-'), '-50.0000')
+            self.assertEqual(boundary.cell(1, 4).text, '未计算')
+            conditions = [t for t in report.tables if t.cell(0, 0).text == '条件和日期']
+            self.assertEqual(len(conditions), 2)
+            self.assertIn('not_tested', conditions[1].cell(3, 2).text)
+            self.assertIn('no projection at test date or ratio denominator is not meaningful', conditions[1].cell(3, 2).text)
+            bridges = [t for t in report.tables if t.cell(0, 0).text == '期间与指标']
+            self.assertEqual(len(bridges), 2)
+            self.assertIn('remaining -450.0000', bridges[1].cell(1, 1).text.replace('\u2011', '-'))
+            self.assertIn('not_supplied', bridges[1].cell(2, 2).text)
+            with ZipFile(root/'output/workbook.xlsx') as archive:
+                ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                strings = [''.join(item.itertext()) for item in ET.fromstring(archive.read('xl/sharedStrings.xml'))]
+                sheets = ET.fromstring(archive.read('xl/workbook.xml')).find('x:sheets', ns)
+                exported = {s.get('name'): ET.fromstring(archive.read(f'xl/worksheets/sheet{i}.xml'))
+                            for i, s in enumerate(sheets, 1)}
+                headings = [strings[int(c.find('x:v', ns).text)] for c in
+                            exported['Q1AtBoundary'].findall('x:sheetData/x:row[@r="1"]/x:c', ns)]
+                self.assertIn('ebit', headings)
+                self.assertIn('ebitda', headings)
+                self.assertIn('debt_to_ebitda', headings)
+                conditions = exported['Q1BoundaryContracts']
+                self.assertEqual(strings[int(conditions.find(".//x:c[@r='G4']/x:v", ns).text)], 'not_tested')
+                self.assertIsNone(conditions.find(".//x:c[@r='F4']/x:v", ns))
+                bridge = exported['Q1BoundaryActual']
+                self.assertEqual(float(bridge.find(".//x:c[@r='G2']/x:v", ns).text), -450)
+                self.assertIsNone(bridge.find(".//x:c[@r='G3']/x:v", ns))
+                self.assertIn('Q1ActualBridge', exported)
+            with ZipFile(root/'output/presentation.pptx') as archive:
+                slides = [''.join(ET.fromstring(archive.read(name)).itertext()) for name in archive.namelist()
+                          if name.startswith('ppt/slides/slide') and name.endswith('.xml')]
+                visible = ''.join(''.join(slides).split())
+                for text in ['EBITDA -50', '债务/EBITDA 未计算', 'Leverage condition', 'Unprojected condition',
+                             'not_tested', 'outside_input_threshold', 'remaining -450', 'not_supplied',
+                             'same_scope true', 'conflict true', '不重建剩余期间，也不重设现金路径']:
+                    self.assertIn(''.join(text.split()), visible)
+
     def test_small_reconciliation_residuals_and_tolerance_remain_readable(self):
         raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
         context = {**raw['facts'][0]['context'], 'measure':'ratio', 'currency':None,

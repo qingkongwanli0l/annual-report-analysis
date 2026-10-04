@@ -203,8 +203,7 @@ async function main() {
       qtext(s, '明确的业务与融资假设', 8.88, 1.7, 3.55, 0.55, 19, dark, true);
       qtext(s, `首期数量 ${number(p.volume)}\n单位价格 ${number(p.unit_price)}\nDSO ${number(p.dso)} 天\n资本开支 ${number(p.capex)}\n新增借款 ${number(p.drawdown)}\n还本 ${number(p.principal)} / 股利 ${number(p.dividends)}`, 8.88, 2.43, 3.55, 2.5, 17);
       qtext(s, '按期初债务计息；期末融资及还本。负现金后停止预测。逐期输入与证据见工作簿。', 8.88, 5.13, 3.55, 1, 12, '56646C');
-      const contractText = (a.contracts || []).slice(0, 2).map(c => `${c.label} ${c.test_date}：${number(c.value)} / 阈值 ${number(c.threshold)}，${c.status}`).join('\n');
-      qtext(s, contractText || '未输入合同条件；不推造行业门槛。', 0.65, 5.98, 7.65, 0.85, 11, '56646C');
+      qtext(s, a.contracts?.length ? '全部输入约束及真实状态见后续条件页。' : '未输入合同条件；不推造行业门槛。', 0.65, 5.98, 7.65, 0.85, 11, '56646C');
       s.addNotes([q.id, ...q.assumptions, ...q.limitations, JSON.stringify(a.contracts), originalSources].join('\n'));
       if (a.reverse) {
         const r = a.reverse;
@@ -222,6 +221,38 @@ async function main() {
         }
         qtext(s, '条件边界不表示发生概率。改变假设、区间或目标后须重跑SciPy求根；根处完整现金路径随artifact保存。', 0.65, 6.0, 12, 0.72, 15, '56646C');
         s.addNotes([q.id, r.source || '', ...q.limitations, JSON.stringify(r.rows || []), originalSources].join('\n'));
+        if (r.rows?.length) {
+          const boundary = r.rows.map(row => `${row.period_end} | ${row.status}\n收入 ${number(row.revenue)}；EBITDA ${number(row.ebitda)}；EBIT ${number(row.ebit)}\n净利润 ${number(row.net_income)}；CFO ${number(row.cfo)}\n期末现金 ${number(row.cash_end)}；期末债务 ${number(row.debt_end)}\n现金余量 ${number(row.cash_headroom)}；补至现金底线 ${number(row.funding_needed_to_floor)}\n债务/EBITDA ${number(row.debt_to_ebitda)}；利息覆盖倍数 ${number(row.interest_coverage)}`).join('\n\n');
+          for (const body of paragraphs(boundary, 12, 4.75, 17)) {
+            s = page(q.label + '：逆根盈利与杠杆');
+            qtext(s, `金额单位 ${a.currency} × ${number(a.amount_scale)}；已运行边界快照，修改输入后须重跑。`, 0.65, 1.45, 12, 0.45, 13, '56646C');
+            qtext(s, body, 0.65, 2.0, 12, 4.75, 17);
+            s.addNotes([q.id, r.source || '', originalSources].join('\n'));
+          }
+        }
+      }
+      for (const [title, result] of [['全部输入约束', a], ['逆根处全部输入约束', a.reverse || {}]]) {
+        const conditions = (result.contracts || []).map(c => `${c.label} | ${c.test_date}\n${c.definition}\n${c.metric} ${c.relation} ${number(c.threshold)}；计算值 ${number(c.value)}；${c.status}\n${c.reason || ''}\n来源 ${c.source}`).join('\n\n');
+        for (const body of paragraphs(conditions, 12, 4.9, 16)) {
+          s = page(q.label + '：' + title);
+          qtext(s, body, 0.65, 1.6, 12, 4.9, 16);
+          s.addNotes([q.id, originalSources].join('\n'));
+        }
+      }
+      for (const [title, result] of [['实际累计与全期假设桥', a], ['逆根处实际累计与全期假设桥', a.reverse || {}]]) {
+        if (result.actual_bridge?.length) {
+          const bridge = [`path_basis: ${a.path_basis || '未提供'}；实际桥仅比较累计实际与全期输入。remaining 不重建剩余期间，也不重设现金路径；same_scope 是输入声明，未知值不替换为零。`,
+            ...result.actual_bridge.map(row => `${row.period_start} 至 ${row.period_end} | ${row.metric}\n全期 ${number(row.period_total)}；累计 ${number(row.actual)}；remaining ${number(row.remaining)}\n${row.status}；same_scope ${row.same_scope}；conflict ${row.conflict}\n截至 ${row.through_date || '未提供'}；公布 ${row.available_at || '未提供'}\n来源 ${row.source || '未提供'}`)].join('\n\n');
+          for (const body of paragraphs(bridge, 12, 4.9, 16)) {
+            s = page(q.label + '：' + title);
+            qtext(s, body, 0.65, 1.6, 12, 4.9, 16);
+            s.addNotes([q.id, originalSources].join('\n'));
+          }
+        }
+      }
+      for (const body of paragraphs(q.limitations.join('\n\n'), 12, 4.9, 16)) {
+        s = page(q.label + '：适用限制');
+        qtext(s, body, 0.65, 1.6, 12, 4.9, 16);
       }
     } else if (q.method === 'single_entity_recovery_waterfall') {
       const totals = a.rows.filter(r => r.kind === 'claim_total');
