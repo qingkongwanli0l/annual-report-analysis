@@ -208,7 +208,7 @@ Excel现金表同时列出客户收款、供应商付款和存货内含折旧摊
 
 ### 合同与逆向边界
 
-合同条件包含自己的定义、来源、日期、指标、关系和阈值；没有默认行业或评级阈值。可测试`cash_end/debt_end/ebitda/interest_coverage/debt_to_ebitda`，其中利息覆盖=`EBIT/Interest`，杠杆=`期末Debt/本期EBITDA`，分别要求利息或EBITDA为正。必须确认这恰好是合同定义；若合同使用不同允许加回或净债务定义，不得冒称完成合同测试。测试日没有预测值时为`not_tested`；结果`outside_input_threshold`本身不等于法律违约。
+合同条件包含自己的定义、来源、日期、指标、关系和阈值；没有默认行业或评级阈值。可测试`cash_end/debt_end/ebitda/interest_coverage/debt_to_ebitda`，其中利息覆盖=`EBIT/Interest`，杠杆=`期末Debt/本期EBITDA`，分别要求利息或EBITDA为正。必须确认这恰好是合同定义；若合同使用不同允许加回或净债务定义，不得冒称完成合同测试。测试日没有预测值时为`not_tested`；结果`outside_input_threshold`本身不等于法律违约。Python与Excel的条件比较均容纳`8×2^-52×max(|计算值|,|阈值|)`以内的浮点尾差；这不是财务重要性、合同宽限或豁免，不改变原始金额和实际支付判断。
 
 逆向压力只解决一个有经济含义的标量问题：在指定期间改变`volume/unit_price/unit_cost_of_sales/fixed_cash_cost/dso/dio/dpo`之一，使指定期末现金等于输入目标。调用SciPy的Brent求根，需提供经济可行的上下界；无异号时返回`not_bracketed`，不扩大边界到任意数值求出答案。若更早现金断裂导致目标期不可预测，不能继续假定正常经营求根。[SciPy求根要求](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root_scalar.html)
 

@@ -376,7 +376,7 @@ def scenario_sheets(book, sheet, artifact, prefix, number):
             ref = f"'{prefix}Cash'!{xl_col_to_name(keys.index(c['metric']))}{row}"
             ws.write_formula(i-1, 5, f"=IF(ISNUMBER('{prefix}Cash'!V{row}),{ref},NA())", number, c["value"] if c["value"] is not None else "#N/A")
             comparison = ">=" if c["relation"] == "at_least" else "<="
-            ws.write_formula(i-1, 6, f'=IF(COUNT(E{i}:F{i})=2,IF(F{i}{comparison}E{i},"within_input_threshold","outside_input_threshold"),"not_tested")', None, c["status"])
+            ws.write_formula(i-1, 6, f'=IF(COUNT(E{i}:F{i})=2,IF(OR(F{i}{comparison}E{i},ABS(F{i}-E{i})<=8*2^-52*MAX(ABS(E{i}),ABS(F{i}))),"within_input_threshold","outside_input_threshold"),"not_tested")', None, c["status"])
     reverse = artifact.get("reverse")
     if reverse:
         rows = [["status", reverse["status"]], ["definition", reverse["definition"]],
