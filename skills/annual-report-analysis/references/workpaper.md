@@ -132,7 +132,7 @@ Excel 金额残差按两端 Decimal 基础单位结果保留的小数位计算 R
 
 `scenarios.py`、`panel.py`、`recovery.py` 各有具体 JSON 输入和 CLI，按对应方法参考执行，再用其 `to_workpaper_result` 适配函数记录实际产物。模型输入快照、计算版本和结果均保留。没有运行不得编写一个看似成功的 artifact；关键结果应独立复算或改变单一假设重新运行。
 
-线性评分区间由 `score_bounds.run(workpaper, spec, id=..., label=..., as_of=...)` 直接返回既有 `QuantitativeResult`，调用及输入结构见[信用形成程序11.1](corporate-credit.md#111-保留可以逐步复核的形成过程)。精确有理端点及开闭通过 `artifact.rows` 保留；循环小数不硬转成宣称精确的 Decimal figure。其结果是所给条件下的范围或未决状态，不是官方定点分数或等级。更新同名记录后重新校验底稿并导出；工作簿展示快照，不自动重算区间模型。
+数值查档及线性评分区间由 `score_bounds.run(workpaper, spec, id=..., label=..., as_of=...)` 直接返回既有 `QuantitativeResult`，调用及输入结构见[信用形成程序11.1](corporate-credit.md#111-保留可以逐步复核的形成过程)。`numeric_band` 引用事实/计算、原表阈值单位和完整分数区间，命中行、归一化输入、精确有理端点及开闭通过 `artifact.rows` 保留，原表转录保存在输入快照；循环小数不硬转成宣称精确的 Decimal figure。其结果是所给条件下的范围或未决状态，不是官方定点分数或等级。更新同名记录后重新校验底稿并导出；工作簿展示快照，不自动重算区间模型。
 
 同口径汇总、差额、比率和静态现金来源用途表中可由基础运算表达的计算使用 `calculations`；预测收付单列为假设并保留实际窗口，按已有 `period_rule` 与期初余额连接。专门脚本可在保留原始事实 context 的前提下承接情景等模型或已取证的跨范围桥。将实际执行的输入快照保存为 `quantitative.artifact.input_snapshot`，运算返回值保存为 `artifact.rows`，同时保留算式、单位、执行说明，并填写输入引用、证据、假设与限制。把字面 `result` 和文字 `formula` 写入文件只是在保存数值，不构成对输入执行计算。
 

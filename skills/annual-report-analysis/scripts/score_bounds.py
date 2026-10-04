@@ -1,4 +1,4 @@
-"""Propagate supplied score intervals under explicit independent linear assumptions."""
+"""Select supplied numeric method bands and propagate independent linear score intervals."""
 import argparse
 from datetime import date
 from fractions import Fraction
@@ -15,7 +15,7 @@ from workpaper import QuantitativeResult, Record, Workpaper
 
 Text = Annotated[str, Field(min_length=1)]
 METHOD = "linear_score_bounds_v1"
-VERSION = "1.0"
+VERSION = "1.1"
 
 
 class Bounds(Record):
@@ -36,6 +36,22 @@ class Leaf(Node):
     bounds: Bounds | None
     state: Literal["method_band", "assumption", "missing"]
     input_refs: list[Text] = Field(default_factory=list)
+
+
+class Band(Record):
+    id: Text
+    lower: Text | None
+    upper: Text | None
+    left_closed: bool = Field(strict=True)
+    right_closed: bool = Field(strict=True)
+    score: Bounds
+
+
+class NumericBand(Node):
+    mode: Literal["numeric_band"]
+    input_ref: Text
+    threshold_scale: Text
+    bands: list[Band] = Field(min_length=1)
 
 
 class Term(Record):
@@ -64,7 +80,7 @@ class Unresolved(Node):
 
 class Spec(Record):
     method_evidence: list[Text] = Field(min_length=1)
-    nodes: list[Leaf | Weighted | Convex | Unresolved] = Field(min_length=1)
+    nodes: list[Leaf | NumericBand | Weighted | Convex | Unresolved] = Field(min_length=1)
     outputs: list[Text] = Field(min_length=1)
 
 
@@ -81,6 +97,33 @@ def _weighted(terms):
                          sum(w * i.lower for w, i in terms) / total,
                          sum(w * i.upper for w, i in terms) / total,
                          all(i.right == P.CLOSED for _, i in terms))])
+
+
+def _numeric_band(node, value):
+    if not node.evidence:
+        raise ValueError(f"{node.id}: numeric bands require original table evidence")
+    scale = Fraction(node.threshold_scale)
+    if scale <= 0:
+        raise ValueError(f"{node.id}: threshold scale must be positive")
+    if len({band.id for band in node.bands}) != len(node.bands):
+        raise ValueError(f"{node.id}: duplicate band id")
+    if value is None:
+        return None, "company input unresolved; no band selected or zero inserted", []
+    matches = []
+    for band in node.bands:
+        domain = P.from_data([(band.left_closed if band.lower is not None else False,
+                              Fraction(band.lower) * scale if band.lower is not None else -P.inf,
+                              Fraction(band.upper) * scale if band.upper is not None else P.inf,
+                              band.right_closed if band.upper is not None else False)])
+        if domain.empty:
+            raise ValueError(f"{node.id}/{band.id}: empty numeric threshold interval")
+        score = _interval(band.score)
+        if value in domain:
+            matches.append((band.id, score))
+    ids = [id for id, _ in matches]
+    if len(matches) != 1:
+        return None, "no matching numeric band" if not matches else "overlapping numeric bands; no unique selection", ids
+    return matches[0][1], "", ids
 
 
 def run(workpaper, spec, *, id, label, as_of):
@@ -111,16 +154,18 @@ def run(workpaper, spec, *, id, label, as_of):
         children = [t.node_ref for t in n.terms] if isinstance(n, Weighted) else getattr(n, "children", [])
         if any(ref not in intervals for ref in children):
             raise ValueError(f"{n.id}: children must refer to earlier score nodes")
-        refs = n.input_refs if isinstance(n, Leaf) else [t.weight_ref for t in n.terms] if isinstance(n, Weighted) else []
+        refs = n.input_refs if isinstance(n, Leaf) else [n.input_ref] if isinstance(n, NumericBand) else [t.weight_ref for t in n.terms] if isinstance(n, Weighted) else []
         if any(ref not in values for ref in refs):
             raise ValueError(f"{n.id}: unknown workpaper input reference")
         used_refs.update(refs)
         evidence.update(n.evidence)
         for ref in refs:
             evidence.update(support[ref])
-        result, reason, normalizer, active = None, "", None, children
-        if isinstance(n, Leaf):
-            if n.bounds is None:
+        result, reason, normalizer, active, matched = None, "", None, children, []
+        if isinstance(n, (Leaf, NumericBand)):
+            if isinstance(n, NumericBand):
+                result, reason, matched = _numeric_band(n, values[n.input_ref])
+            elif n.bounds is None:
                 reason = "score interval unresolved; not replaced with zero"
             elif n.state == "method_band" and any(values[ref] is None for ref in refs):
                 reason = "method band has missing company input; no automatic band selection"
@@ -164,7 +209,7 @@ def run(workpaper, spec, *, id, label, as_of):
                     for ref in children:
                         result |= intervals[ref]
                     result = result.enclosure
-        if not isinstance(n, Leaf):
+        if not isinstance(n, (Leaf, NumericBand)):
             variables[n.id] = set().union(*(variables[ref] for ref in active))
             if isinstance(n, Convex):
                 variables[n.id].add(f"weights:{n.id}")
@@ -176,7 +221,7 @@ def run(workpaper, spec, *, id, label, as_of):
         elif getattr(n, "basis_state", None) == "assumption" or getattr(n, "state", None) == "assumption":
             assumptions.append(f"{n.id}: {n.note}")
         rows.append({"id": n.id, "mode": n.mode, "children": children, "input_refs": refs,
-                     "state": getattr(n, "state", getattr(n, "basis_state", "unresolved")),
+                     "state": "method_band" if isinstance(n, NumericBand) else getattr(n, "state", getattr(n, "basis_state", "unresolved")),
                      "joint_basis": getattr(n, "joint_basis", None), "note": n.note,
                      "normalizer_exact": str(normalizer) if normalizer is not None else None,
                      "lower_exact": str(result.lower) if result is not None else None,
@@ -185,6 +230,8 @@ def run(workpaper, spec, *, id, label, as_of):
                      "upper_closed": result.right == P.CLOSED if result is not None else None,
                      "range_text": P.to_string(result, conv=str) if result is not None else None,
                      "status": "unresolved" if result is None else "point_given_inputs" if result == P.singleton(result.lower) else "range_given_inputs",
+                     "matched_band_ids": matched,
+                     "input_normalized_exact": str(values[n.input_ref]) if isinstance(n, NumericBand) and values[n.input_ref] is not None else None,
                      "reason": reason, "selected_output": n.id in s.outputs})
     if set(s.outputs) - intervals.keys():
         raise ValueError("outputs must refer to score nodes")
@@ -198,7 +245,7 @@ def run(workpaper, spec, *, id, label, as_of):
         id=id, label=label, method=METHOD, as_of=cutoff, input_refs=sorted(used_refs), evidence=sorted(evidence),
         assumptions=["Composed intervals require the declared independent feasible sets; no shared constraints are solved.",
                      *dict.fromkeys(a for ref in sorted(used_refs) for a in input_assumptions[ref]), *assumptions],
-        limitations=["Supplied method bands and assumptions are not verified or automatically selected; no interpolation, official model or rating mapping is performed.",
+        limitations=["Numeric lookup matches supplied thresholds and retains their full score intervals; original tables, input definitions and manually supplied leaves are not verified. No interpolation, official model or rating mapping is performed.",
                      "Exact rational endpoints describe the supplied inputs; referenced Decimal calculations retain their existing calculation precision.",
                      "Missing rules, contributing inputs or unestablished joint feasibility remain unresolved; no zero or equal weights are inserted."],
         artifact={"method": METHOD, "version": VERSION, "as_of": cutoff.isoformat(),

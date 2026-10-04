@@ -1,4 +1,5 @@
 """Source-linked interval arithmetic and joint-feasibility counterexamples."""
+from decimal import Decimal
 from fractions import Fraction
 import json
 from pathlib import Path
@@ -73,7 +74,67 @@ def wealth_nodes():
             weighted("wealth", [("market", "w47"), ("operation", "w3"), ("rd", "w5")])]
 
 
+def numeric():
+    return {"id": "credit", "mode": "numeric_band", "input_ref": "w47", "threshold_scale": "0.01",
+            "bands": [{"id": "middle", "lower": "35", "upper": "50", "left_closed": True,
+                       "right_closed": False, "score": {"lower": "3", "upper": "4", "left_closed": True, "right_closed": False}},
+                      {"id": "higher", "lower": "50", "upper": None, "left_closed": True,
+                       "right_closed": False, "score": {"lower": "4", "upper": "5", "left_closed": True, "right_closed": False}}],
+            "evidence": ["E"], "note": "Constructed original numeric table; no interpolation"}
+
+
 class ScoreBoundsTests(unittest.TestCase):
+    def test_numeric_lookup_keeps_original_band_and_percent_scale(self):
+        node = numeric()
+        result = run([node], "credit")
+        self.assertEqual(interval(result, "credit"), P.closedopen(Fraction(3), Fraction(4)))
+        self.assertEqual(row(result, "credit")["matched_band_ids"], ["middle"])
+        self.assertEqual(row(result, "credit")["input_normalized_exact"], "47/100")
+        self.assertNotEqual(interval(result, "credit"), P.singleton(Fraction(4)))
+        node["input_ref"] = "w55"
+        self.assertEqual(interval(run([node], "credit"), "credit"), P.closedopen(Fraction(4), Fraction(5)))
+
+    def test_numeric_boundary_overlap_gap_and_unbounded_threshold(self):
+        w, node = workpaper(), numeric()
+        w.facts[0].value = Decimal("50")
+        self.assertEqual(row(run([node], "credit", w), "credit")["matched_band_ids"], ["higher"])
+        node["bands"][0]["right_closed"] = True
+        result = row(run([node], "credit", w), "credit")
+        self.assertIsNone(result["range_text"])
+        self.assertEqual(result["matched_band_ids"], ["middle", "higher"])
+        self.assertIn("overlapping", result["reason"])
+        node["bands"][0]["right_closed"], node["bands"][1]["left_closed"] = False, False
+        result = row(run([node], "credit", w), "credit")
+        self.assertIsNone(result["range_text"])
+        self.assertIn("no matching", result["reason"])
+        node["bands"].append({"id": "lowest", "lower": None, "upper": "35", "left_closed": False,
+                              "right_closed": False, "score": {"lower": "1", "upper": "3", "left_closed": True, "right_closed": False}})
+        w.facts[0].value = Decimal("-1")
+        self.assertEqual(interval(run([node], "credit", w), "credit"), P.closedopen(Fraction(1), Fraction(3)))
+
+    def test_numeric_missing_or_invalid_calculation_is_not_zero(self):
+        w, node = workpaper(), numeric()
+        w.facts[0].value, w.facts[0].state, w.facts[0].note = None, "missing", "Constructed company input not available"
+        self.assertIsNone(row(run([node], "credit", w), "credit")["range_text"])
+        w = workpaper()
+        w.calculations.append(Calculation.model_validate({
+            "id": "invalid_ratio", "label": "Zero denominator", "op": "ratio", "terms": [{"ref": "w47"}, {"ref": "w0"}],
+            "context": w.facts[0].context.model_dump(mode="json"), "definition": "Constructed zero denominator", "interpretation": "Undefined"}))
+        node["input_ref"] = "invalid_ratio"
+        result = run([node], "credit", w)
+        self.assertIsNone(row(result, "credit")["range_text"])
+        self.assertIn("non-positive denominator", result.artifact["input_snapshot"]["resolved_inputs"]["invalid_ratio"]["calculation_reason"])
+
+    def test_numeric_aggregation_and_existing_export_interface(self):
+        w = workpaper()
+        result = run([numeric(), leaf("other", 7, 7), weighted("group", [("credit", "w47"), ("other", "w3")])], "group", w)
+        self.assertEqual(interval(result, "group"), P.closedopen(Fraction("3.24"), Fraction("4.18")))
+        w.quantitative.append(result)
+        prepared = prepare(Workpaper.model_validate(w.model_dump(mode="json")), evaluate(w))
+        saved = prepared["quantitative"][0]["artifact"]
+        self.assertEqual(saved["rows"][0]["matched_band_ids"], ["middle"])
+        self.assertEqual(saved["input_snapshot"]["spec"]["nodes"][0]["bands"][0]["score"]["upper"], "4")
+
     def test_exact_open_wealth_bound_is_not_point_score(self):
         result = run(wealth_nodes(), "wealth")
         actual = interval(result, "wealth")
@@ -185,12 +246,14 @@ class ScoreBoundsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             folder = Path(folder)
             (folder / "workpaper.json").write_text(workpaper().model_dump_json(), encoding="utf-8")
-            (folder / "spec.json").write_text(json.dumps(spec(wealth_nodes(), "wealth")), encoding="utf-8")
+            (folder / "spec.json").write_text(json.dumps({"method_evidence": ["E"], "nodes": wealth_nodes() + [numeric()],
+                "outputs": ["wealth", "credit"]}), encoding="utf-8")
             output = subprocess.run([sys.executable, "-B", "-X", "utf8", str(SCRIPTS / "score_bounds.py"),
                 str(folder / "workpaper.json"), str(folder / "spec.json"), "--id", "bounds", "--label", "Conditional intervals",
                 "--as-of", "2026-06-30"], check=True, capture_output=True, text=True)
             result = QuantitativeResult.model_validate_json(output.stdout)
             self.assertEqual(row(result, "wealth")["range_text"], "[34/5,382/55)")
+            self.assertEqual(row(result, "credit")["range_text"], "[3,4)")
 
 
 if __name__ == "__main__":
