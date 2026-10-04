@@ -1,16 +1,17 @@
 # Crown Castle 2025 年报与 Fiber 出售案例
 
-以2025年US GAAP合并年报为基础，信息截止2026-06-30。案例分析减值计量单元、终止经营重列、利润与现金、出售结算及新旧信贷约束；2026年七月之后发表的交割实绩未倒填进这个信息集。
+以2025年US GAAP合并年报为基础，信息截止2026-06-30。案例连接减值、终止经营、出售结算、新旧信贷约束、S&P财务调整及客户续约变化；2026年七月之后发表的交割实绩未倒填进这个信息集。
 
 成果来自同一份[共同底稿](workpaper.json)：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[PowerPoint讨论稿](deliverables/presentation.pptx)。原值、重列数、备考假设和实际期后事项分开记录；仓库不转载原年报、交易协议或会计准则全文。
 
 在仓库根目录安装README列出的依赖后，可复算并重新导出：
 
 ```bash
-python skills/annual-report-analysis/scripts/export.py examples/crown-castle-2025/workpaper.json --output output/crown-castle
+python examples/crown-castle-2025/sp_adjustments.py examples/crown-castle-2025/workpaper.json --output output/crown-castle/workpaper.json
+python skills/annual-report-analysis/scripts/export.py output/crown-castle/workpaper.json --output output/crown-castle/deliverables
 ```
 
-该命令复算已经取证的示例底稿。分析另一企业时，应先阅读其原始披露并建立自己的事实和判断，不能替换公司名称后使用。
+第一条命令从同一底稿原值复算案例专用方法桥与敏感性，第二条复算基础运算并导出三份成果。修改输入后须依次重跑；Excel中的方法桥是已运行快照。分析另一企业时，应先阅读其原始披露并建立自己的事实和判断，不能替换公司名称后使用。
 
 ## 原件与可复核答案
 
@@ -28,6 +29,11 @@ python skills/annual-report-analysis/scripts/export.py examples/crown-castle-202
 | 出售备考权益与利润 | 备考权益−1,635−161＝−1,796；持续经营利润1,103＋85＝1,188。−161不是已核定实际处置损失，85不是按猜测利率计算的实际年度节息 | 同上，PDF p19–21，Note2(D)–(E) |
 | 合同价格调整 | 两业务基价各4,250，营运资本、净债务、交易与分拆费用、CapEx等按协议调整；公开机制不能反推出未公开的124构成或最终结算 | [签署出售协议](https://www.sec.gov/Archives/edgar/data/1051470/000095014225000762/eh250603725_ex0201.htm) §1.1、§2.2–2.7 |
 | 契约定义与版本 | 旧常规净杠杆上限6.50，新协议为7.00；会计终止经营不自动将待售但未处置业务排除出契约EBITDA。新承诺4,500替代旧安排，不能叠加额度 | [旧协议2022修订](https://www.sec.gov/Archives/edgar/data/1051470/000119312522190527/d536644dex101.htm)与[2026新协议](https://investor.crowncastle.com/static-files/dd7712df-51aa-4a29-b6a5-67becf7b2234)的定义、§1.04、§1.05及财务契约 |
+| 租赁方法桥 | 经营租赁负债均值5,277.5×5.2%＝利息代理274.43；ROU成本599减利息代理＝CFO加回324.57。实际租赁付现519另列，可变费用147留经营成本，分类调整不增加现金 | 2025年报p58、85、87；[S&P Ratios and Adjustments](https://www.maalot.co.il/Publications/MT20251223092257.pdf) ¶92–105 |
+| 现金付息和FFO | 原申报InterestPaidNet确认965排除资本化利息。以资本化现金15作估计，EBITDA3,448、调整现金利息1,254.43、现金税15，FFO2,178.57；仅加回已证实RSU61时，FFO2,166.57 | 2025年报p68、83–84、87；[SEC原申报事实](https://data.sec.gov/api/xbrl/companyfacts/CIK0001051470.json)，仅选accession 0001051470-26-000016；方法¶35、123、133 |
+| 现金分类与历史杠杆 | CFO2,181.57−capex167＝FOCF2,014.57，尚非付完全部租赁本金的现金。ARO未抵减、仅扣99合格现金条件下，2025债务29,789，债务/EBITDA8.64倍；不能当作2026出售后杠杆 | 共同底稿Q_sp_crown；2025年报p74、88；方法¶86–120 |
+| 实际经营变化 | 2026Q1持续CFO509−213＝296，上年641−270＝371，同比−20.22%。billings增量30−49−5＝−24，分别反映剔DISH/Sprint后的增长、DISH终止及Sprint不续约 | [Q1报告](https://investor.crowncastle.com/static-files/de60fca2-89d5-499d-899b-8e0a23030617) PDF6；[Q1补充](https://investor.crowncastle.com/static-files/38f6a584-60a8-452d-bfd2-a44103aeec82) PDF10 |
+| 土地控制与续约暴露 | 自有地块塔数占30.26%，末季年化毛现金利润占42.68%；2028续约组AT&T占775/861＝90.01%。续约表是含延期假设的年度化暴露，不是2028确定损失；土地、账内租赁、客户合同的不同剩余年限不能直接比较 | [Q4补充](https://investor.crowncastle.com/static-files/bea23792-6649-4b95-9395-aa837e68396c) PDF13–14；[数字基础设施方法](https://www.maalot.co.il/Publications/MT20251012123218.pdf) PDF61–78 |
 
 ## 保留的原件差异及证据边界
 
@@ -35,4 +41,6 @@ python skills/annual-report-analysis/scripts/export.py examples/crown-castle-202
 - 2025Q1原报准备819，加已发生出售费用11为损失830；2026Q1却将上年准备回述为830。保留+11的版本差异，不把两种披露自动视为正式更正。
 - 公开备考中的834资产行标签与原年报不同，保留原标签和定位；不自行修改原件或把未调整行的标签差异归为交易损失。
 
-共同底稿包含344项事实、100项计算和81项勾稽，其中79项在输入容差内，上述两项差异保留。容差内并不证明交易真实或报表公允。内部估值、实际结算、法律实体资金限制、合规证书与债项回收仍需具体证据；本案例形成会计与信用分析输入，不给未经验证的正式主体或债项级别。
+共同底稿包含381项事实、116项基础计算、84项勾稽及1组已执行的方法桥；82项勾稽在输入容差内，上述两项差异保留。S&P桥明确分列原报、方法代理、资本化现金估计及股份支付/减记敏感性，三份成果共用这些记录。
+
+这些估计可以支持专业判断，但不等于机构已发表的Crown指标。业务证据支持将medial波动档列为待验证候选，条件不满足时检验standard；尚未完成CICRA、竞争地位、前瞻财务、支持与债项形成链，不预授low或正式主体/债项级别。内部估值、实际结算、法律实体资金限制、合规证书与债项回收仍需具体证据；勾稽在容差内也不证明交易真实或报表公允。

@@ -10,13 +10,14 @@
     "accounting_basis": "US GAAP",
     "scope": "合并报表；明确区分持续经营、终止经营及契约借款人口径",
     "language": "zh-CN",
-    "version": "crown-castle-2025-public-1",
+    "version": "crown-castle-2025-public-2",
     "methods": [
       "下载官方 PDF，以 pypdf 提取；关键表逐页图像复核；原件 SHA-256 留存",
       "仅采用截止日前公开原件；分别保留原报、重列比较期和期后事项，禁止跨期倒填",
       "以共同底稿复算四表及交易调节；金额按原表百万美元记录，勾稽差额以美元列示",
       "已执行程序仅为公开资料阅读、版本对照和计算；内部审计证据列为待核请求",
-      "读取出售备考、签署出售协议和新旧信贷定义，将备考假设、实际交割收付及尚未完成的计划分列。"
+      "读取出售备考、签署出售协议和新旧信贷定义，将备考假设、实际交割收付及尚未完成的计划分列。",
+      "按S&P Ratios and Adjustments 2025-12-17及Sector-Specific Corporate Methodology 2025-09-26数字基础设施章建立历史调整桥和条件路径；方法代理、实际现金和分析估计分列。"
     ],
     "limitations": [
       "研究执行于 2026-10-03；信息截止严格为 2026-06-30。2026 年二季报及七月业绩公告虽涉及六月期末，因发表日晚于截止日排除。",
@@ -25,7 +26,8 @@
       "2024 原报收入与 2025 年报重列比较收入差异，以及 2026 Q1 对 2025 Q1 待售准备回述差异尚未解释。",
       "现金流桥使用合并表内持续/终止组成项目，不能将其视为法律母公司单体现金流。",
       "US GAAP 条款编号来自 SEC 公司回复及公司政策，未将公司回复视为 SEC 批准，亦未声称已阅读全文 FASB Codification。",
-      "公开备考BS假设2025-12-31完成、利润表假设2025-01-01完成，2026-05-01发表；其金额不属于2025已报实数或2026五月实际现金。出售协议后续修订未找到可识别文本，最初签署机制不能视为全部最终条款。"
+      "公开备考BS假设2025-12-31完成、利润表假设2025-01-01完成，2026-05-01发表；其金额不属于2025已报实数或2026五月实际现金。出售协议后续修订未找到可识别文本，最初签署机制不能视为全部最终条款。",
+      "S&P桥包含披露支持的最佳估计及局部敏感性；未完成主权/行业、竞争地位、前瞻财务、支持与债项全形成链，不宣告机构级别。"
     ]
   },
   "sources": [
@@ -116,6 +118,46 @@
       "published": "2022-07-08",
       "availability_note": "官方196页PDF，SEC对应https://www.sec.gov/Archives/edgar/data/1051470/000119312522190527/d536644dex101.htm。实际读指定定义PDF p42–43/45–46/56–57/69/73/79–81、§1.04/1.05 PDF p84–85（印刷p55–56）、§6.09/6.10 PDF p158（印刷p129）；SEC在线区分删除线。未全读所有附件。",
       "sha256": "8fcc0400dc2335a91feed8c83e4eb821b9750fa8fe86fca14b93918d23766333"
+    },
+    {
+      "id": "S_SP_Q4",
+      "title": "Crown Castle Q4 2025 Supplemental Information",
+      "url": "https://investor.crowncastle.com/static-files/bea23792-6649-4b95-9395-aa837e68396c",
+      "published": "2026-02-04",
+      "sha256": "9f02eedff49239618fc0454339d80c8b8edbfc13f3e0a166e93fad313b86854b",
+      "availability_note": "官方原件；S&P日期为当前所用重发版，原发日期与阅读范围见对应证据；公司补充资料页码为PDF物理页。"
+    },
+    {
+      "id": "S_SP_Q1",
+      "title": "Crown Castle Q1 2026 Supplemental Information",
+      "url": "https://investor.crowncastle.com/static-files/38f6a584-60a8-452d-bfd2-a44103aeec82",
+      "published": "2026-04-22",
+      "sha256": "cb5cd5c2bc971628c318e0d4c63014e036364c1044381af9885bfcc808684572",
+      "availability_note": "官方原件；S&P日期为当前所用重发版，原发日期与阅读范围见对应证据；公司补充资料页码为PDF物理页。"
+    },
+    {
+      "id": "S_SP_RATIOS",
+      "title": "S&P Corporate Methodology: Ratios And Adjustments",
+      "url": "https://www.maalot.co.il/Publications/MT20251223092257.pdf",
+      "published": "2025-12-17",
+      "sha256": "0e97e341f6cc5f5662c76b021da898c243f10d32a89d13d3b233613d2b7619f3",
+      "availability_note": "官方原件；S&P日期为当前所用重发版，原发日期与阅读范围见对应证据；公司补充资料页码为PDF物理页。"
+    },
+    {
+      "id": "S_SP_SECTORS",
+      "title": "S&P Sector-Specific Corporate Methodology — Digital Infrastructure",
+      "url": "https://www.maalot.co.il/Publications/MT20251012123218.pdf",
+      "published": "2025-09-26",
+      "sha256": "31a53f0162f26153a279644fe954a064efdb35dfc549accfe2e4b601e0be5474",
+      "availability_note": "官方原件；S&P日期为当前所用重发版，原发日期与阅读范围见对应证据；公司补充资料页码为PDF物理页。"
+    },
+    {
+      "id": "S_SP_XBRL",
+      "title": "SEC Companyfacts：Crown Castle 2025原申报事实",
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001051470.json",
+      "published": "2026-02-23",
+      "sha256": "26332892a4dcd974308249d90b2fd21a8a0a454f86190fc157c66b1699b57196",
+      "availability_note": "API响应取得于2026-10-04；仅选accession 0001051470-26-000016、filed 2026-02-23、2025年度事实，未使用截止日后申报值。published为所选原申报公开日，非API快照取得日。"
     }
   ],
   "evidence": [
@@ -356,6 +398,90 @@
       "locator": "Exhibit Index p101–102，Ex10.49–10.55，尤其2022 Amendment7",
       "observation": "截至2025年报官方索引最后列明旧信贷2022-07-08 Amendment7；结合2026Q1索引和新信贷8-K终止披露、截止前官方定向搜索，所读范围未发现后续改变选定旧定义/门槛的提交文本。不能推定不存在未公开豁免。",
       "reliability": "官方公开原件；选定原文阅读与复算，不构成审计保证"
+    },
+    {
+      "id": "E_SP_RATIOS",
+      "source": "S_SP_RATIOS",
+      "locator": "原发2019-04-01，2025-12-17重发，PDF7 ¶31–35；17–25 ¶86–137；44–45 ¶223–225",
+      "observation": "例行调整资料不完整时允许有依据的最佳估计；经营租赁同步调整债、EBITDA、利息和现金流；资本化现金利息重分类不改变FOCF；内部使用软件通常不反转。现金抵债不普遍扣最低运营预算，特殊受限现金按实际目的判断。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_SCOPE",
+      "source": "S25",
+      "locator": "note1/PDF及印刷p62；p60、p87–88",
+      "observation": "附注除特别说明外采用持续经营范围。合并CFO含终止经营，需剥离；补充现金付息、现金税和租赁支付按该附注范围解释。现金总计308不能全部作为可抵债现金。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_LEASE",
+      "source": "S25",
+      "locator": "PDF/印刷p58、p64、p75、p85、p87；note14",
+      "observation": "经营租赁成本599对应ROU，另有可变147，经营租赁实际付现519；期末经营租赁负债5229，贴现率5.2%。融资租赁折旧185已含690，融资租赁负债5已含金融债务；不能重复加回。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_CASH",
+      "source": "S25",
+      "locator": "PDF/印刷p68利息表；p87补充现金流",
+      "observation": "应计利息956、融资费摊销31、资本化15，净列费用972。现金付息965、现金税15，不能把所得税费用16或全部非现金利息当现金。资本化现金实付未单列，另作分析估计。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_SBC",
+      "source": "S25",
+      "locator": "PDF/印刷p59、p65、p83–84",
+      "observation": "持续经营股份支付73，其中每RSU对应一股普通股的费用61。PP&E放弃和核销12、损益净减记行11，差1未解释；不得将权益变动157代替费用73。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_ARO",
+      "source": "S25",
+      "locator": "PDF/印刷p65、p73–74；p80–82税务",
+      "observation": "ARO301加增值25减结算4至322；折旧488、摊销177及ARO增值25合为690。未识别逐项税益/专款抵减，REIT身份不证明所有税益为零，也不能机械用21%。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_XBRL",
+      "source": "S_SP_XBRL",
+      "locator": "facts/us-gaap/InterestPaidNet、InterestCostsCapitalized、AllocatedShareBasedCompensationExpense、ShareBasedCompensation；指定原申报accession",
+      "observation": "InterestPaidNet的2025值965百万美元，标签定义明确排除资本化利息且列经营活动。资本化利息15为发生额而非独立现金金额；73同时标为股份支付费用及非现金股份支付费用。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_Q1CFO",
+      "source": "SQ126",
+      "locator": "PDF6/印刷p5，2026Q1/2025Q1现金流表；PDF19–20/印刷p18–19，note13重组事项",
+      "observation": "合并CFO509/641，终止经营CFO213/270；比较期间均按同一持续经营范围剥离。2026重组计划费用14、已付12、未付2；2023/2024计划本季另付4、未付12。不能因公司非GAAP加回就从方法经营费用全部剔除。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_Q1BILL",
+      "source": "S_SP_Q1",
+      "locator": "PDF10/印刷p9：2026Q1列，Components of changes in site rental revenues",
+      "observation": "上年同期billings964；剔DISH及Sprint后的本期增量30，DISH终止影响−49、Sprint不续约−5，合为−24。该非GAAP经营桥不是现金回款或IFRS/CAS收入。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_RENEW",
+      "source": "S_SP_Q4",
+      "locator": "PDF13/印刷p12；TENANT OVERVIEW及脚注(a)–(f)",
+      "observation": "客户合同平均剩余6年，AT&T3年；2028续约组年度化现金租金861，其中AT&T775。该表假设续约/延期，排除DISH，不是2028确定损失或当年现金到期额。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_LAND",
+      "source": "S_SP_Q4",
+      "locator": "PDF14/印刷p13：GROUND INTEREST OVERVIEW及脚注(e)–(i)",
+      "observation": "自有土地塔12045/39804，自有地块贡献末季年化站点租金毛现金利润1280/2999。租地加权剩余35年含续约选择权，与账内租赁15年、客户当前6年不可等同。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
+    },
+    {
+      "id": "E_SP_SECTORS",
+      "source": "S_SP_SECTORS",
+      "locator": "2025-07-07原发、2025-09-26重发；PDF61–78数字基础设施章，尤其68–71及77",
+      "observation": "塔资产提供方与移动运营商付塔费不同。波动档要求业务风险、竞争地位及可预测CFO等共同条件，90%/2/3不是租赁收入比例。土地控制、客户质量和网络必要性可以缓释，但不能替代续约及违约压力。",
+      "reliability": "官方原件；按所列范围取证，估计及方法适用判断另标，不构成审计保证。"
     }
   ],
   "facts": [
@@ -8289,6 +8415,857 @@
       ],
       "state": "reported",
       "note": "2025-03-13签署、2025-03-17公开；不含实际营运资本/净债务/费用/CapEx等调整。"
+    },
+    {
+      "id": "sp_rou_cost",
+      "label": "ROU经营租赁成本",
+      "concept": "sp_rou_cost",
+      "value": "599",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_LEASE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_variable_lease",
+      "label": "可变租赁费用",
+      "concept": "sp_variable_lease",
+      "value": "147",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_LEASE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_lease_cash",
+      "label": "经营租赁实际付现",
+      "concept": "sp_lease_cash",
+      "value": "519",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_SCOPE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_interest_incurred",
+      "label": "应计债务利息",
+      "concept": "sp_interest_incurred",
+      "value": "956",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_finance_fee",
+      "label": "损益内融资费用摊销",
+      "concept": "sp_finance_fee",
+      "value": "31",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_capitalized_interest",
+      "label": "当期资本化利息发生额",
+      "concept": "sp_capitalized_interest",
+      "value": "15",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_interest_paid_net",
+      "label": "经营现金付息（排除资本化利息）",
+      "concept": "sp_interest_paid_net",
+      "value": "965",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_XBRL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_cash_tax",
+      "label": "实际现金所得税",
+      "concept": "sp_cash_tax",
+      "value": "15",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_CASH"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_rsu",
+      "label": "直接证实以一股普通股结算的RSU费用",
+      "concept": "sp_rsu",
+      "value": "61",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_SBC"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_ppe_writeoff",
+      "label": "PP&E放弃和核销总额",
+      "concept": "sp_ppe_writeoff",
+      "value": "12",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_SBC"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_aro_accretion",
+      "label": "ARO折现增值",
+      "concept": "sp_aro_accretion",
+      "value": "25",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_ARO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_aro_settled",
+      "label": "ARO结算减少",
+      "concept": "sp_aro_settled",
+      "value": "4",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_ARO"
+      ],
+      "state": "reported",
+      "note": "原表为Settlements，未独立证明全部属于现金支付。"
+    },
+    {
+      "id": "sp_depreciation",
+      "label": "折旧",
+      "concept": "sp_depreciation",
+      "value": "488",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_ARO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_amortization",
+      "label": "摊销",
+      "concept": "sp_amortization",
+      "value": "177",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_ARO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_lease_rate",
+      "label": "期末经营租赁加权贴现率",
+      "concept": "sp_lease_rate",
+      "value": "5.2",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "ratio",
+        "currency": null,
+        "scale": ".01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_LEASE"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_aro_open",
+      "label": "期初ARO",
+      "concept": "sp_aro_open",
+      "value": "301",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_ARO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_aro_end",
+      "label": "期末ARO",
+      "concept": "sp_aro_end",
+      "value": "322",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_ARO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_capitalized_cash_estimate",
+      "label": "资本化现金付息估计",
+      "concept": "sp_capitalized_cash_estimate",
+      "value": "15",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "assumption",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_CASH"
+      ],
+      "state": "assumption",
+      "note": "依Ratios¶35/133，以已披露当期资本化发生额作最佳估计；尚未取得独立实付拆分。不把发生额标作现金事实，敏感性按逐单位变化解释。"
+    },
+    {
+      "id": "sp_q1_cfo_2026",
+      "label": "Q1合并CFO 2026",
+      "concept": "sp_q1_cfo_2026",
+      "value": "509",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_q1_disc_2026",
+      "label": "Q1终止经营CFO 2026",
+      "concept": "sp_q1_disc_2026",
+      "value": "213",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_q1_cfo_2025",
+      "label": "Q1合并CFO 2025",
+      "concept": "sp_q1_cfo_2025",
+      "value": "641",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_q1_disc_2025",
+      "label": "Q1终止经营CFO 2025",
+      "concept": "sp_q1_disc_2025",
+      "value": "270",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_billings_prior",
+      "label": "上年同期站点billings",
+      "concept": "sp_billings_prior",
+      "value": "964",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-03-31",
+        "aggregation": "flow",
+        "basis": "Company non-GAAP site rental billings",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1BILL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_billings_organic",
+      "label": "剔DISH/Sprint后的增量",
+      "concept": "sp_billings_organic",
+      "value": "30",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "Company non-GAAP site rental billings",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1BILL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_billings_dish",
+      "label": "DISH终止增量",
+      "concept": "sp_billings_dish",
+      "value": "-49",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "Company non-GAAP site rental billings",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1BILL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_billings_sprint",
+      "label": "Sprint不续约增量",
+      "concept": "sp_billings_sprint",
+      "value": "-5",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "Company non-GAAP site rental billings",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1BILL"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_renew_att",
+      "label": "2028续约组AT&T年度化现金支付暴露",
+      "concept": "sp_renew_att",
+      "value": "775",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "Company annualized renewal exposure as of 2025-12-31",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_RENEW"
+      ],
+      "state": "reported",
+      "note": "续约/延期假设下的年度化租金；不是2028实际收款或预计损失。"
+    },
+    {
+      "id": "sp_renew_total",
+      "label": "2028续约组全部年度化现金支付暴露",
+      "concept": "sp_renew_total",
+      "value": "861",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "Company annualized renewal exposure as of 2025-12-31",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_RENEW"
+      ],
+      "state": "reported",
+      "note": "续约/延期假设下的年度化租金；不是2028实际收款或预计损失。"
+    },
+    {
+      "id": "sp_owned_towers",
+      "label": "自有地块塔数",
+      "concept": "sp_owned_towers",
+      "value": "12045",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "Company tower portfolio",
+        "measure": "count",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "towers"
+      },
+      "evidence": [
+        "E_SP_LAND"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_total_towers",
+      "label": "合计塔数",
+      "concept": "sp_total_towers",
+      "value": "39804",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "Company tower portfolio",
+        "measure": "count",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "towers"
+      },
+      "evidence": [
+        "E_SP_LAND"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sp_owned_margin",
+      "label": "自有地块末季年化毛现金利润",
+      "concept": "sp_owned_margin",
+      "value": "1280",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-10-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "Company Q4 2025 LQA site rental gross cash margin",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_LAND"
+      ],
+      "state": "reported",
+      "note": "末季年化值，排除直线收入、预收租金摊销及直线费用；不是2025全年现金流。"
+    },
+    {
+      "id": "sp_total_margin",
+      "label": "全部地块末季年化毛现金利润",
+      "concept": "sp_total_margin",
+      "value": "2999",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-10-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "Company Q4 2025 LQA site rental gross cash margin",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_LAND"
+      ],
+      "state": "reported",
+      "note": "末季年化值，排除直线收入、预收租金摊销及直线费用；不是2025全年现金流。"
+    },
+    {
+      "id": "sp_restruct26_expense",
+      "label": "2026重组计划Q1费用",
+      "concept": "sp_restruct26_expense",
+      "value": "14",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": "原件按重组计划分组，不能将2026新计划视作全部重组。"
+    },
+    {
+      "id": "sp_restruct26_payment",
+      "label": "2026重组计划Q1支付",
+      "concept": "sp_restruct26_payment",
+      "value": "12",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": "原件按重组计划分组，不能将2026新计划视作全部重组。"
+    },
+    {
+      "id": "sp_restruct26_liability",
+      "label": "2026重组计划期末负债",
+      "concept": "sp_restruct26_liability",
+      "value": "2",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": "原件按重组计划分组，不能将2026新计划视作全部重组。"
+    },
+    {
+      "id": "sp_restruct_old_payment",
+      "label": "2023/2024重组计划本期支付",
+      "concept": "sp_restruct_old_payment",
+      "value": "4",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": "原件按重组计划分组，不能将2026新计划视作全部重组。"
+    },
+    {
+      "id": "sp_restruct_old_liability",
+      "label": "2023/2024重组计划期末负债",
+      "concept": "sp_restruct_old_liability",
+      "value": "12",
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "E_SP_Q1CFO"
+      ],
+      "state": "reported",
+      "note": "原件按重组计划分组，不能将2026新计划视作全部重组。"
     }
   ],
   "calculations": [
@@ -12179,6 +13156,550 @@
       "period_rule": "same",
       "denominator": "positive",
       "multiplier": "1"
+    },
+    {
+      "id": "C_sp_lease_open",
+      "label": "经营租赁负债合计 2024",
+      "concept": "operating_lease_liability",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "leasecur2024",
+          "weight": "1"
+        },
+        {
+          "ref": "leaselong2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: leasecur2024 × 1, leaselong2024 × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_lease_end",
+      "label": "经营租赁负债合计 2025",
+      "concept": "operating_lease_liability",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "leasecur2025",
+          "weight": "1"
+        },
+        {
+          "ref": "leaselong2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: leasecur2025 × 1, leaselong2025 × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_lease_average",
+      "label": "真实期初期末经营租赁负债均值",
+      "concept": null,
+      "op": "average_balance",
+      "terms": [
+        {
+          "ref": "C_sp_lease_open",
+          "weight": "1"
+        },
+        {
+          "ref": "C_sp_lease_end",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "average",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "average_balance: C_sp_lease_open × 1, C_sp_lease_end × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_sbc_residual",
+      "label": "股份支付总额与直接证实RSU的差额",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "sbc2025",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_rsu",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "difference: sbc2025 × 1, sp_rsu × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_writeoff_difference",
+      "label": "PP&E核销与损益净行差额",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "sp_ppe_writeoff",
+          "weight": "1"
+        },
+        {
+          "ref": "writedown2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "difference: sp_ppe_writeoff × 1, writedown2025 × 1",
+      "interpretation": "该差额未被解释，不能擅称减值转回。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_interest",
+      "label": "带符号利息费用桥",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "sp_interest_incurred",
+          "weight": "-1"
+        },
+        {
+          "ref": "sp_finance_fee",
+          "weight": "-1"
+        },
+        {
+          "ref": "sp_capitalized_interest",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: sp_interest_incurred × -1, sp_finance_fee × -1, sp_capitalized_interest × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_dda",
+      "label": "折旧摊销及ARO增值桥",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "sp_depreciation",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_amortization",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_aro_accretion",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: sp_depreciation × 1, sp_amortization × 1, sp_aro_accretion × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_aro",
+      "label": "ARO滚动",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "sp_aro_open",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_aro_accretion",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_aro_settled",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: sp_aro_open × 1, sp_aro_accretion × 1, sp_aro_settled × -1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "rollforward",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_q1_cfo_2026",
+      "label": "持续经营Q1 CFO 2026",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "sp_q1_cfo_2026",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_q1_disc_2026",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "difference: sp_q1_cfo_2026 × 1, sp_q1_disc_2026 × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_q1_cfo_2025",
+      "label": "持续经营Q1 CFO 2025",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "sp_q1_cfo_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_q1_disc_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-03-31",
+        "aggregation": "flow",
+        "basis": "US GAAP",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "difference: sp_q1_cfo_2025 × 1, sp_q1_disc_2025 × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_q1_cfo_change",
+      "label": "持续经营Q1 CFO同比",
+      "concept": null,
+      "op": "growth",
+      "terms": [
+        {
+          "ref": "C_sp_q1_cfo_2026",
+          "weight": "1"
+        },
+        {
+          "ref": "C_sp_q1_cfo_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "ratio",
+        "basis": "US GAAP",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "growth: C_sp_q1_cfo_2026 × 1, C_sp_q1_cfo_2025 × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_bill_change",
+      "label": "Q1站点billings变动",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "sp_billings_organic",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_billings_dish",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_billings_sprint",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "Company non-GAAP site rental billings",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: sp_billings_organic × 1, sp_billings_dish × 1, sp_billings_sprint × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_bill_current",
+      "label": "Q1站点billings桥后金额",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "C_sp_bill_change",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_billings_prior",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2026-01-01",
+        "end": "2026-03-31",
+        "aggregation": "flow",
+        "basis": "Company non-GAAP site rental billings",
+        "measure": "money",
+        "currency": "USD",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "sum: C_sp_bill_change × 1, sp_billings_prior × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "comparison",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_renew_share",
+      "label": "2028续约组AT&T暴露占比",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "sp_renew_att",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_renew_total",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "Company annualized renewal exposure as of 2025-12-31",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "ratio: sp_renew_att × 1, sp_renew_total × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_owned_share",
+      "label": "自有地块塔数占比",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "sp_owned_towers",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_total_towers",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "Company tower portfolio",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "ratio: sp_owned_towers × 1, sp_total_towers × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "C_sp_owned_margin_share",
+      "label": "自有地块末季年化毛现金利润占比",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "sp_owned_margin",
+          "weight": "1"
+        },
+        {
+          "ref": "sp_total_margin",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "Crown Castle Inc. and subsidiaries",
+        "scope": "consolidated",
+        "start": "2025-10-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "Company Q4 2025 LQA site rental gross cash margin",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "ratio: sp_owned_margin × 1, sp_total_margin × 1",
+      "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
     }
   ],
   "reconciliations": [
@@ -12829,6 +14350,30 @@
       "expected": "C_fibergw",
       "tolerance": "0",
       "basis": "仅复算官方公开表所列百万美元精度；零阈值不代表审计门槛，残差单位美元。"
+    },
+    {
+      "id": "R_sp_interest",
+      "label": "S&P输入原报interest勾稽",
+      "actual": "interest2025",
+      "expected": "C_sp_interest",
+      "tolerance": "0",
+      "basis": "同一百万美元原表可直接复算，未扩大容差。"
+    },
+    {
+      "id": "R_sp_dda",
+      "label": "S&P输入原报dda勾稽",
+      "actual": "daa2025",
+      "expected": "C_sp_dda",
+      "tolerance": "0",
+      "basis": "同一百万美元原表可直接复算，未扩大容差。"
+    },
+    {
+      "id": "R_sp_aro",
+      "label": "S&P输入原报aro勾稽",
+      "actual": "sp_aro_end",
+      "expected": "C_sp_aro",
+      "tolerance": "0",
+      "basis": "同一百万美元原表可直接复算，未扩大容差。"
     }
   ],
   "findings": [
@@ -13104,6 +14649,120 @@
         "算术一致与披露齐备仍不能替代存在性、计价和完整性审计证据。"
       ],
       "changes_if": "取得相反的正式更正或企业底稿后重新评估。"
+    },
+    {
+      "id": "F13",
+      "title": "租赁调整应同时改变债务、盈利及现金分类",
+      "question": "ROU成本、实际支付和方法代理是否被混用？",
+      "conclusion": "期末经营租赁负债{{C_sp_lease_end}}，真实期初期末均值{{C_sp_lease_average}}。按披露贴现率计算利息代理{{sp_lease_interest}}及CFO加回代理{{sp_lease_principal_proxy}}；实际经营租赁付现{{sp_lease_cash}}另列。该分类不增加可支用现金。",
+      "mechanism": "ROU成本{{sp_rou_cost}}与可变费用{{sp_variable_lease}}分开；可变费用没有进入对应租赁负债，继续留经营成本。融资租赁折旧已在DDA内、融资租赁负债已在金融债内；预付租赁PPA和直线租赁成本不能再叠加到ROU成本。Crown为塔资产提供方，不直接套移动运营商MSA付塔费分支。",
+      "status": "conditional",
+      "evidence": [
+        "E_SP_RATIOS",
+        "E_SP_SCOPE",
+        "E_SP_LEASE",
+        "sp_lease_interest",
+        "sp_lease_principal_proxy"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "期末披露贴现率是方法要求的年度利息代理；实际租赁现金仍可能因预付、确认节奏和新增合同不同于该代理。"
+      ],
+      "changes_if": "未来续租、可变租金、地块迁移或合同范围改变时重做债务与现金路径；不把租赁CFO加回当新增偿债来源。"
+    },
+    {
+      "id": "F14",
+      "title": "从原报至EBITDA、FFO与FOCF的估计桥",
+      "question": "哪些金额已证实，哪些只需有限敏感性？",
+      "conclusion": "SEC原申报确认现金付息{{sp_interest_paid_net}}排除资本化利息。以资本化现金付息{{sp_capitalized_cash_estimate}}估计，EBITDA为{{sp_ebitda}}、FFO为{{sp_ffo}}、CFO为{{sp_cfo}}、FOCF为{{sp_focf}}。这些为方法分析估计，不是机构已发表指标；FOCF尚非支付全部租赁本金后的自由现金。",
+      "mechanism": "现金税采用{{sp_cash_tax}}而非费用16；ARO非现金增值只接应计利息，不再当现金。股份支付{{sbc2025}}中RSU{{sp_rsu}}已直接证实，差额{{C_sp_sbc_residual}}另作敏感性：只加回RSU时EBITDA{{sp_ebitda_rsu}}、FFO{{sp_ffo_rsu}}。净减记行与PP&E核销差{{C_sp_writeoff_difference}}未解释，采用总额敏感性EBITDA{{sp_ebitda_writeoff}}。现有业务没有外售软件触发，适用内部使用软件不反转分支；不把未披露IT投入全额费用化。资本化现金估计每增加一单位，FFO/CFO各下降一单位，capex也下降一单位，FOCF不变。",
+      "status": "conditional",
+      "evidence": [
+        "E_SP_RATIOS",
+        "E_SP_CASH",
+        "E_SP_SBC",
+        "E_SP_ARO",
+        "E_SP_XBRL",
+        "sp_ebitda",
+        "sp_ffo",
+        "sp_focf"
+      ],
+      "counterevidence": [
+        "C_sp_sbc_residual",
+        "C_sp_writeoff_difference"
+      ],
+      "alternatives": [
+        "非RSU差额可能仍符合权益结算条件，不能把仅加回RSU的敏感性当已证实主值；净减记与PP&E总额差异也不能未经证据命名为转回。"
+      ],
+      "changes_if": "取得资本化现金结算、股份支付差额分类或减记差额后更新相关项及聚合影响；接近财务分档临界值时提高精确取证程度，不暂停已可完成的分析。"
+    },
+    {
+      "id": "F15",
+      "title": "历史高杠杆与售后去杠杆须按时间连接",
+      "question": "2025方法债务能否直接扣除2026出售总价？",
+      "conclusion": "将经营租赁及尚未抵减ARO接入后，2025债务估计{{sp_gross_debt}}。仅在普通现金符合可动用条件时净债为{{sp_net_debt}}，对应历史债务/EBITDA{{sp_leverage}}、FFO/债务{{sp_ffo_debt}}。这是2025保留业务与债务的历史压力，不是出售后杠杆或评级等级。",
+      "mechanism": "ARO滚动可勾稽，但具体税益、专用基金及残值需继续核；不能对REIT机械套21%或认定税益必为零。受限现金须按用途判断，不能全扣或永久全排除；最低运营现金需求属于实际预算，不能擅加为S&P抵债的普遍条件。2025备考按{{pf_repay}}偿债、利息改善{{pf_interestdelta}}；五月实际已偿约{{debtrepaid}}，后续偿债与回购仍为计划。出售现金释放与保留租赁义务、资本分配需同时接入预测，不能以出售总价直接冲历史债务。",
+      "status": "conditional",
+      "evidence": [
+        "E_SP_RATIOS",
+        "E_SP_ARO",
+        "E25CASH",
+        "EPROBASIS",
+        "EPROBS",
+        "EPROPL",
+        "EQ126SALE",
+        "sp_net_debt",
+        "sp_leverage"
+      ],
+      "counterevidence": [
+        "missing_parent_cash"
+      ],
+      "alternatives": [
+        "已完成出售和偿债降低融资负担，但租赁义务仍保留，回购与资本投入会消耗释放现金；历史杠杆不能单独说明售后状态。"
+      ],
+      "changes_if": "取得截至六月的售后实际债务、可支用现金和完成回购记录后更新债务/现金桥，再用经营及续约预测判断财务档和流动性。"
+    },
+    {
+      "id": "F16",
+      "title": "Q1实际现金与客户违约检验历史趋势",
+      "question": "持续租赁业务的可预测性是否经得起实际变化？",
+      "conclusion": "同口径持续经营Q1 CFO由{{C_sp_q1_cfo_2025}}降至{{C_sp_q1_cfo_2026}}，同比{{C_sp_q1_cfo_change}}。剔DISH/Sprint后的billings增量{{sp_billings_organic}}，被DISH{{sp_billings_dish}}及Sprint{{sp_billings_sprint}}抵销，净变动{{C_sp_bill_change}}。现金降幅不能全归因DISH；需继续分解营运资本、支付节奏和重组。",
+      "mechanism": "公司Q1的2026重组计划费用{{sp_restruct26_expense}}、支付{{sp_restruct26_payment}}和余额{{sp_restruct26_liability}}；2023/2024计划另有本期支付{{sp_restruct_old_payment}}、余额{{sp_restruct_old_liability}}。经营性重组不能跟随公司非GAAP任意全部加回。DISH索赔不是现金，管理层应收可回收判断也不是确定回款。当前实际证据支持压力已经发生，同时说明剔除两个事件的业务仍有增长，不能只给单方向故事。",
+      "status": "supported",
+      "evidence": [
+        "E_SP_Q1CFO",
+        "E_SP_Q1BILL",
+        "EDISH",
+        "C_sp_q1_cfo_change",
+        "C_sp_bill_change"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "应付结算、计息支付及重组付款可令季度CFO变化大于经常盈利变化；DISH实际损失不排除其他客户仍有新增租赁及合同提价。"
+      ],
+      "changes_if": "取得Q1现金变化逐项归因、DISH实收及后续续约后更新现金预测；对持续增长和特定客户损失分别建情景。"
+    },
+    {
+      "id": "F17",
+      "title": "塔资产控制、续约集中与波动档形成",
+      "question": "经营优势能否支持较低现金流波动档？",
+      "conclusion": "自有土地覆盖{{C_sp_owned_share}}的塔，贡献{{C_sp_owned_margin_share}}的末季年化毛现金利润。2028续约组年度化租金暴露中AT&T占{{C_sp_renew_share}}，该暴露不代表当年确定损失。长期租赁及续约经济性支持将medial列为待验证候选；若相应条件不满足则检验standard，不能预授low或直接输出等级。",
+      "mechanism": "租地35年含公司续约权、账内租赁15年、客户当前合同6年/AT&T3年各有不同定义。土地控制和核心市场规模是正面证据，客户集中及DISH违约为反证。S&P数字基础设施章低/中波动要求业务风险、竞争地位及至少90%/2/3可预测CFO等共同条件；收入占比不能替代CFO归属，客户短剩余期也不单独否定支持性框架路径。本案尚未独立完成CICRA、竞争地位、预测CFO及支持债项形成链，保留明确分支，不将保守标签视作已证实分类。",
+      "status": "conditional",
+      "evidence": [
+        "E_SP_LAND",
+        "E_SP_RENEW",
+        "E_SP_SECTORS",
+        "E_SP_Q1BILL",
+        "C_sp_renew_share"
+      ],
+      "counterevidence": [
+        "EDISH"
+      ],
+      "alternatives": [
+        "网络迁移成本、核心站点及可执行土地续约权可能缓释集中风险；DISH违约和AT&T续约集中则要求验证客户质量和费率假设，不能由平均合同期直接定档。"
+      ],
+      "changes_if": "把实际土地续约权、客户续约费率/迁移经济性和违约压力接入预测，核准竞争地位及现金归属，再确定波动档和后续评级路径。"
     }
   ],
   "procedures": [
@@ -13319,6 +14978,39 @@
       ],
       "performed_by": "Codex 公开原件研究复算（非审计）",
       "performed_on": "2026-10-03"
+    },
+    {
+      "id": "P_SP",
+      "finding": "F14",
+      "purpose": "复核持续经营范围及跨会计和信用方法的调整桥",
+      "assertions": [
+        "完整性",
+        "分类",
+        "计算准确性",
+        "期间及范围"
+      ],
+      "population": "所列官方年报、Q1披露、SEC原申报标签与S&P相关条文",
+      "selection": "按实际租赁、付息、股份支付、减记、ARO及客户事件取证，不是企业交易统计审计抽样",
+      "steps": [
+        "核对原报附注默认持续经营范围及现金流剥离",
+        "核原SEC accession和InterestPaidNet定义，分别记录应计与现金资本化利息",
+        "阅读租赁/ARO/股份支付/软件及最佳估计条款并建立无重复加回的桥",
+        "从同一底稿执行确定性计算及案例专用方法桥，保留局部敏感性",
+        "核对Q1实际变化、续约表头及土地指标定义"
+      ],
+      "status": "performed",
+      "result": "原报利息、DDA和ARO滚动勾稽，资本化现金与分类残余保留估计；不构成完整主体或债项评级。",
+      "evidence": [
+        "E_SP_RATIOS",
+        "E_SP_XBRL",
+        "E_SP_Q1CFO",
+        "E_SP_RENEW",
+        "E_SP_LAND",
+        "sp_ffo",
+        "C_sp_aro"
+      ],
+      "performed_by": "公开资料研究复算（非审计）",
+      "performed_on": "2026-10-03"
     }
   ],
   "requests": [
@@ -13385,6 +15077,14 @@
       "reason": "管理层可收回判断需要独立反证与收款支持",
       "owner_role": "法务/信用控制",
       "close_when": "按公开信息截止和法律实体区分已收、争议、预计收回及计量调整"
+    },
+    {
+      "id": "Q_SP",
+      "finding": "F14",
+      "request": "资本化现金利息的结算拆分、股份支付非RSU差额的结算分类、PP&E核销与净减记差额说明；ARO可用税益及专款抵减",
+      "reason": "收窄实际存在的估计差额和评级临界性；965付息gross/net以及RSU已知部分无需重复索取",
+      "owner_role": "资金、财务及税务负责人",
+      "close_when": "逐项解释已识别差额，重新执行同一方法桥并评价聚合影响；不要求无关的全量内部资料才提供已有分析"
     }
   ],
   "sections": [
@@ -13469,7 +15169,1100 @@
         "C_pf_interest",
         "C_pf_contni"
       ]
+    },
+    {
+      "title": "S&P财务调整及分析估计",
+      "findings": [
+        "F13",
+        "F14",
+        "F15"
+      ],
+      "figures": [
+        "sp_lease_interest",
+        "sp_ebitda",
+        "sp_ffo",
+        "sp_cfo",
+        "sp_focf",
+        "sp_gross_debt",
+        "sp_leverage"
+      ]
+    },
+    {
+      "title": "经营变化与信用方法形成",
+      "findings": [
+        "F16",
+        "F17"
+      ],
+      "figures": [
+        "C_sp_q1_cfo_2026",
+        "C_sp_q1_cfo_change",
+        "C_sp_bill_change",
+        "C_sp_renew_share"
+      ]
     }
   ],
-  "quantitative": []
+  "quantitative": [
+    {
+      "id": "Q_sp_crown",
+      "label": "Crown Castle持续经营财务方法桥",
+      "method": "S&P Ratios and Adjustments 2025-12-17；案例专用Decimal复算",
+      "as_of": "2026-06-30",
+      "input_refs": [
+        "C_sp_lease_average",
+        "sp_lease_rate",
+        "sp_rou_cost",
+        "opincome2025",
+        "daa2025",
+        "sbc2025",
+        "writedown2025",
+        "interest2025",
+        "sp_capitalized_interest",
+        "sp_aro_accretion",
+        "sp_capitalized_cash_estimate",
+        "sp_interest_paid_net",
+        "sp_cash_tax",
+        "C_contcfo_2025",
+        "capex2025",
+        "C_sp_sbc_residual",
+        "C_sp_writeoff_difference",
+        "debt2025",
+        "C_sp_lease_end",
+        "sp_aro_end",
+        "cash2025"
+      ],
+      "evidence": [
+        "E_SP_RATIOS",
+        "E_SP_SCOPE",
+        "E_SP_LEASE",
+        "E_SP_CASH",
+        "E_SP_SBC",
+        "E_SP_ARO",
+        "E_SP_XBRL"
+      ],
+      "assumptions": [
+        "资本化现金付息以同年已披露应计资本化利息估计，原报值与估计分列；改变该估计时FFO和CFO同额反向变动，资本支出同额反向变动，FOCF不变。",
+        "股份支付全部作为权益结算、资产净减记全部作为非流动项是有披露支持的分析估计；RSU已直接证实，余项另给敏感性。内部使用软件按适用方法不反转。",
+        "ARO先采用未抵减负债的分析估计；税益、专款和残值尚未量化。条件净债仅扣普通现金，并以其符合方法可动用条件为前提。"
+      ],
+      "limitations": [
+        "指标是按已识别事项形成的分析估计，不是S&P发表的发行人指标或会计报表重述；不构成主体或债项等级。",
+        "历史2025持续经营利润与当年末保留债务配套；未把2026实际出售收款直接从历史债务扣除。",
+        "租赁CFO加回是方法分类代理，不等于实际付款，也不增加可支用现金。受限现金用途及最终售后债务现金仍需独立取证。"
+      ],
+      "artifact": {
+        "input_snapshot": {
+          "C_sp_lease_average": {
+            "record": {
+              "id": "C_sp_lease_average",
+              "label": "真实期初期末经营租赁负债均值",
+              "concept": null,
+              "op": "average_balance",
+              "terms": [
+                {
+                  "ref": "C_sp_lease_open",
+                  "weight": "1"
+                },
+                {
+                  "ref": "C_sp_lease_end",
+                  "weight": "1"
+                }
+              ],
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "average",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "definition": "average_balance: C_sp_lease_open × 1, C_sp_lease_end × 1",
+              "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+              "period_rule": "same",
+              "denominator": "positive",
+              "multiplier": "1"
+            },
+            "normalized": "5277500000"
+          },
+          "sp_lease_rate": {
+            "record": {
+              "id": "sp_lease_rate",
+              "label": "期末经营租赁加权贴现率",
+              "concept": "sp_lease_rate",
+              "value": "5.2",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": null,
+                "end": "2025-12-31",
+                "aggregation": "instant",
+                "basis": "US GAAP",
+                "measure": "ratio",
+                "currency": null,
+                "scale": ".01",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_LEASE"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "0.052"
+          },
+          "sp_rou_cost": {
+            "record": {
+              "id": "sp_rou_cost",
+              "label": "ROU经营租赁成本",
+              "concept": "sp_rou_cost",
+              "value": "599",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_LEASE"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "599000000"
+          },
+          "opincome2025": {
+            "record": {
+              "id": "opincome2025",
+              "label": "2025 持续经营营业利润",
+              "concept": "opincome",
+              "value": "2075",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25PL"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "2075000000"
+          },
+          "daa2025": {
+            "record": {
+              "id": "daa2025",
+              "label": "2025 持续经营折旧摊销摊增",
+              "concept": "daa",
+              "value": "690",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25PL"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "690000000"
+          },
+          "sbc2025": {
+            "record": {
+              "id": "sbc2025",
+              "label": "2025 持续经营股份支付现金流调整",
+              "concept": "sbc",
+              "value": "73",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25CF"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "73000000"
+          },
+          "writedown2025": {
+            "record": {
+              "id": "writedown2025",
+              "label": "2025 持续经营资产核销",
+              "concept": "writedown",
+              "value": "11",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25PL"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "11000000"
+          },
+          "interest2025": {
+            "record": {
+              "id": "interest2025",
+              "label": "2025 持续经营利息及融资摊销净支出（带符号）",
+              "concept": "interest",
+              "value": "-972",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25PL"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "-972000000"
+          },
+          "sp_capitalized_interest": {
+            "record": {
+              "id": "sp_capitalized_interest",
+              "label": "当期资本化利息发生额",
+              "concept": "sp_capitalized_interest",
+              "value": "15",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_CASH"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "15000000"
+          },
+          "sp_aro_accretion": {
+            "record": {
+              "id": "sp_aro_accretion",
+              "label": "ARO折现增值",
+              "concept": "sp_aro_accretion",
+              "value": "25",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_ARO"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "25000000"
+          },
+          "sp_capitalized_cash_estimate": {
+            "record": {
+              "id": "sp_capitalized_cash_estimate",
+              "label": "资本化现金付息估计",
+              "concept": "sp_capitalized_cash_estimate",
+              "value": "15",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "assumption",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_CASH"
+              ],
+              "state": "assumption",
+              "note": "依Ratios¶35/133，以已披露当期资本化发生额作最佳估计；尚未取得独立实付拆分。不把发生额标作现金事实，敏感性按逐单位变化解释。"
+            },
+            "normalized": "15000000"
+          },
+          "sp_interest_paid_net": {
+            "record": {
+              "id": "sp_interest_paid_net",
+              "label": "经营现金付息（排除资本化利息）",
+              "concept": "sp_interest_paid_net",
+              "value": "965",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_XBRL"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "965000000"
+          },
+          "sp_cash_tax": {
+            "record": {
+              "id": "sp_cash_tax",
+              "label": "实际现金所得税",
+              "concept": "sp_cash_tax",
+              "value": "15",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_CASH"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "15000000"
+          },
+          "C_contcfo_2025": {
+            "record": {
+              "id": "C_contcfo_2025",
+              "label": "2025 持续经营 CFO",
+              "concept": null,
+              "op": "sum",
+              "terms": [
+                {
+                  "ref": "cfo2025",
+                  "weight": "1"
+                },
+                {
+                  "ref": "disccfo2025",
+                  "weight": "-1"
+                }
+              ],
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "definition": "(1 × cfo2025) + (-1 × disccfo2025)",
+              "interpretation": "在披露精度内复算；不是新增管理层披露或审计保证。",
+              "period_rule": "same",
+              "denominator": "positive",
+              "multiplier": "1"
+            },
+            "normalized": "1872000000"
+          },
+          "capex2025": {
+            "record": {
+              "id": "capex2025",
+              "label": "2025 持续经营资本支出（现金流符号）",
+              "concept": "capex",
+              "value": "-182",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25CF"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "-182000000"
+          },
+          "C_sp_sbc_residual": {
+            "record": {
+              "id": "C_sp_sbc_residual",
+              "label": "股份支付总额与直接证实RSU的差额",
+              "concept": null,
+              "op": "difference",
+              "terms": [
+                {
+                  "ref": "sbc2025",
+                  "weight": "1"
+                },
+                {
+                  "ref": "sp_rsu",
+                  "weight": "1"
+                }
+              ],
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "definition": "difference: sbc2025 × 1, sp_rsu × 1",
+              "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+              "period_rule": "same",
+              "denominator": "positive",
+              "multiplier": "1"
+            },
+            "normalized": "12000000"
+          },
+          "C_sp_writeoff_difference": {
+            "record": {
+              "id": "C_sp_writeoff_difference",
+              "label": "PP&E核销与损益净行差额",
+              "concept": null,
+              "op": "difference",
+              "terms": [
+                {
+                  "ref": "sp_ppe_writeoff",
+                  "weight": "1"
+                },
+                {
+                  "ref": "writedown2025",
+                  "weight": "1"
+                }
+              ],
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": "2025-01-01",
+                "end": "2025-12-31",
+                "aggregation": "flow",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "definition": "difference: sp_ppe_writeoff × 1, writedown2025 × 1",
+              "interpretation": "该差额未被解释，不能擅称减值转回。",
+              "period_rule": "same",
+              "denominator": "positive",
+              "multiplier": "1"
+            },
+            "normalized": "1000000"
+          },
+          "debt2025": {
+            "record": {
+              "id": "debt2025",
+              "label": "持续经营债务及其他义务账面值",
+              "concept": "debt",
+              "value": "24337",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": null,
+                "end": "2025-12-31",
+                "aggregation": "instant",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25DEBT"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "24337000000"
+          },
+          "C_sp_lease_end": {
+            "record": {
+              "id": "C_sp_lease_end",
+              "label": "经营租赁负债合计 2025",
+              "concept": "operating_lease_liability",
+              "op": "sum",
+              "terms": [
+                {
+                  "ref": "leasecur2025",
+                  "weight": "1"
+                },
+                {
+                  "ref": "leaselong2025",
+                  "weight": "1"
+                }
+              ],
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": null,
+                "end": "2025-12-31",
+                "aggregation": "instant",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "definition": "sum: leasecur2025 × 1, leaselong2025 × 1",
+              "interpretation": "按输入原值及所列期间复算，范围不扩展至法律母公司或评级机构已发表指标。",
+              "period_rule": "same",
+              "denominator": "positive",
+              "multiplier": "1"
+            },
+            "normalized": "5229000000"
+          },
+          "sp_aro_end": {
+            "record": {
+              "id": "sp_aro_end",
+              "label": "期末ARO",
+              "concept": "sp_aro_end",
+              "value": "322",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": null,
+                "end": "2025-12-31",
+                "aggregation": "instant",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E_SP_ARO"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "322000000"
+          },
+          "cash2025": {
+            "record": {
+              "id": "cash2025",
+              "label": "2025 持续经营非受限现金",
+              "concept": "cash",
+              "value": "99",
+              "context": {
+                "entity": "Crown Castle Inc. and subsidiaries",
+                "scope": "consolidated",
+                "start": null,
+                "end": "2025-12-31",
+                "aggregation": "instant",
+                "basis": "US GAAP",
+                "measure": "money",
+                "currency": "USD",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "evidence": [
+                "E25BS"
+              ],
+              "state": "reported",
+              "note": ""
+            },
+            "normalized": "99000000"
+          }
+        },
+        "rows": [
+          {
+            "metric": "经营租赁利息代理",
+            "result": "274.4300",
+            "formula": "C_sp_lease_average × sp_lease_rate",
+            "status": "method_proxy"
+          },
+          {
+            "metric": "经营租赁折旧及CFO加回代理",
+            "result": "324.5700",
+            "formula": "sp_rou_cost − sp_lease_interest",
+            "status": "method_proxy"
+          },
+          {
+            "metric": "S&P口径EBITDA分析估计",
+            "result": "3448",
+            "formula": "opincome2025 + daa2025 + sp_rou_cost + sbc2025 + writedown2025",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "应计利息已识别调整小计",
+            "result": "1286.4300",
+            "formula": "−interest2025 + sp_capitalized_interest + sp_lease_interest + sp_aro_accretion",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "现金利息分析估计（含租赁代理）",
+            "result": "1254.4300",
+            "formula": "sp_interest_paid_net + sp_capitalized_cash_estimate + sp_lease_interest",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "FFO分析估计",
+            "result": "2178.5700",
+            "formula": "sp_ebitda − sp_cash_interest − sp_cash_tax",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "CFO分析估计",
+            "result": "2181.5700",
+            "formula": "C_contcfo_2025 + sp_lease_principal_proxy − sp_capitalized_cash_estimate",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "资本支出分析估计（移出资本化现金利息）",
+            "result": "167",
+            "formula": "−capex2025 − sp_capitalized_cash_estimate",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "FOCF分析估计（尚非付完全部租赁本金的现金）",
+            "result": "2014.5700",
+            "formula": "sp_cfo − sp_capex",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "仅加回已直接证实RSU的EBITDA敏感性",
+            "result": "3436",
+            "formula": "sp_ebitda − C_sp_sbc_residual",
+            "status": "classification_sensitivity"
+          },
+          {
+            "metric": "仅加回已直接证实RSU的FFO敏感性",
+            "result": "2166.5700",
+            "formula": "sp_ffo − C_sp_sbc_residual",
+            "status": "classification_sensitivity"
+          },
+          {
+            "metric": "采用PP&E核销总额的EBITDA敏感性",
+            "result": "3449",
+            "formula": "sp_ebitda + C_sp_writeoff_difference",
+            "status": "classification_sensitivity"
+          },
+          {
+            "metric": "债务分析估计（ARO尚未抵减）",
+            "result": "29888",
+            "formula": "debt2025 + C_sp_lease_end + sp_aro_end",
+            "status": "analysis_estimate"
+          },
+          {
+            "metric": "仅扣99合格现金的条件债务",
+            "result": "29789",
+            "formula": "sp_gross_debt − cash2025",
+            "status": "conditional_cash_accessibility"
+          },
+          {
+            "metric": "2025历史条件债务/EBITDA",
+            "result": "8.639501160092807424593967517",
+            "formula": "sp_net_debt / sp_ebitda",
+            "status": "historical_not_post_sale"
+          },
+          {
+            "metric": "2025历史条件FFO/债务",
+            "result": "0.07313337137869683440196045520",
+            "formula": "sp_ffo / sp_net_debt",
+            "status": "historical_not_post_sale"
+          },
+          {
+            "metric": "股份支付差额对EBITDA的影响",
+            "result": "0.003480278422273781902552204176",
+            "formula": "C_sp_sbc_residual / sp_ebitda",
+            "status": "classification_sensitivity"
+          }
+        ],
+        "units": "金额为百万美元；ratio为小数，leverage为倍数。输入快照另保留基础单位和原始context。",
+        "execution": "由examples/crown-castle-2025/sp_adjustments.py读取同一底稿原值和基础运算结果，实际执行Decimal算术。"
+      },
+      "figures": [
+        {
+          "id": "sp_lease_interest",
+          "label": "经营租赁利息代理",
+          "row": 0,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_lease_principal_proxy",
+          "label": "经营租赁折旧及CFO加回代理",
+          "row": 1,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_ebitda",
+          "label": "S&P口径EBITDA分析估计",
+          "row": 2,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_accrual_interest",
+          "label": "应计利息已识别调整小计",
+          "row": 3,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_cash_interest",
+          "label": "现金利息分析估计（含租赁代理）",
+          "row": 4,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_ffo",
+          "label": "FFO分析估计",
+          "row": 5,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_cfo",
+          "label": "CFO分析估计",
+          "row": 6,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_capex",
+          "label": "资本支出分析估计（移出资本化现金利息）",
+          "row": 7,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_focf",
+          "label": "FOCF分析估计（尚非付完全部租赁本金的现金）",
+          "row": 8,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_ebitda_rsu",
+          "label": "仅加回已直接证实RSU的EBITDA敏感性",
+          "row": 9,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_ffo_rsu",
+          "label": "仅加回已直接证实RSU的FFO敏感性",
+          "row": 10,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_ebitda_writeoff",
+          "label": "采用PP&E核销总额的EBITDA敏感性",
+          "row": 11,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "flow",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_gross_debt",
+          "label": "债务分析估计（ARO尚未抵减）",
+          "row": 12,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": null,
+            "end": "2025-12-31",
+            "aggregation": "instant",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_net_debt",
+          "label": "仅扣99合格现金的条件债务",
+          "row": 13,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": null,
+            "end": "2025-12-31",
+            "aggregation": "instant",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "money",
+            "currency": "USD",
+            "scale": "1000000",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_leverage",
+          "label": "2025历史条件债务/EBITDA",
+          "row": 14,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "ratio",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "ratio",
+            "currency": null,
+            "scale": "1",
+            "physical_unit": "times"
+          }
+        },
+        {
+          "id": "sp_ffo_debt",
+          "label": "2025历史条件FFO/债务",
+          "row": 15,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "ratio",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "ratio",
+            "currency": null,
+            "scale": "1",
+            "physical_unit": null
+          }
+        },
+        {
+          "id": "sp_sbc_effect",
+          "label": "股份支付差额对EBITDA的影响",
+          "row": 16,
+          "field": "result",
+          "context": {
+            "entity": "Crown Castle Inc. and subsidiaries",
+            "scope": "continuing_operations_method_bridge",
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "aggregation": "ratio",
+            "basis": "US GAAP to S&P Ratios and Adjustments (2025-12-17)",
+            "measure": "ratio",
+            "currency": null,
+            "scale": "1",
+            "physical_unit": null
+          }
+        }
+      ]
+    }
+  ]
 }
