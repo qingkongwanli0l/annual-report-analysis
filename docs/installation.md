@@ -57,6 +57,6 @@ python skills/annual-report-analysis/scripts/export.py examples/catl-2025/workpa
 | Claude Code | 已执行技能并生成三种文件；实测使用其已配置的 DeepSeek 模型，不代表 Anthropic 模型测试；全面分析初稿仍需专业核验 |
 | 官方 DeepSeek harness | 已执行技能并生成三种文件；全面分析初稿仍需专业核验 |
 | ChatGPT 原生入口 | 尚未完成安装、分析和导出的完整工作流实测 |
-| Codex CLI | 已执行并生成三种文件，但 PPT 存在数值裁切；不等同于 ChatGPT 原生入口验证 |
+| Codex CLI | 已执行并生成三种文件；同一底稿经当前导出器重导出，抽查关键数值显示完整；不等同于 ChatGPT 原生入口验证 |
 
 已有执行结果中仍发现取数、财务口径和因果判断错误。文件可打开、公式可重算，不代表分析内容正确；实际使用应核对关键原文、计算和专业判断，并检查文件版式。本地依赖安装与导出已运行，但尚未证明所有操作系统或托管宿主的首次安装体验。
