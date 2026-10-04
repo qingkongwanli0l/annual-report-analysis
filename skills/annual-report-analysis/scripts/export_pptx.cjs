@@ -94,9 +94,13 @@ async function main() {
       const refs = sourceRefs([...item.figures, ...item.figure_refs,
         ...selected.flatMap(f => [...f.evidence, ...f.counterevidence, ...f.figure_refs])]);
       const sourceIds = [...new Set(refs.map(ref => evidence[ref].source))];
-      const trace = `底稿 ${item.findings.join(' / ')}；来源 ${sourceIds.join(' / ')}\n原文定位、URL及完整引用见本页备注；完整方法和明细见同名底稿及 Word/Excel。`;
+      const fullTrace = `底稿 ${item.findings.join(' / ')}；来源 ${sourceIds.join(' / ')}\n原文定位、URL及完整引用见本页备注；完整方法和明细见同名底稿及 Word/Excel。`;
+      const trace = lines(fullTrace, 12, 10).length <= 4 ? fullTrace
+        : `底稿判断 ${selected.length} 项；来源 ${sourceIds.length} 份。\n完整底稿ID、原文定位、URL见本页备注；完整方法和明细见同名 Word/Excel。`;
       const width = figures.length ? 7.9 : 12;
-      const status = selected.map(f => `[${f.id}] ${f.status}`).join(' / ');
+      const fullStatus = selected.map(f => `[${f.id}] ${f.status}`).join(' / ');
+      const status = lines(fullStatus, 12, 11).length <= 2 ? fullStatus
+        : `判断状态 ${[...new Set(selected.map(f => f.status))].join(' / ')}；逐项状态见本页备注。`;
       const bodies = paragraphs(item.body, width, 4.15, 18);
       const cards = paragraphs(figures.map(f => `${f.label}\n${f.display}`).join('\n\n'), 3.55, 4.15, 16);
       const count = Math.max(1, bodies.length, cards.length);
@@ -109,7 +113,7 @@ async function main() {
         }
         s.addText(lines(status, 12, 11).join('\n'), {x:0.65,y:5.82,w:12,h:0.4,fontSize:11,color:dark,margin:0,valign:'top',lineSpacingMultiple:1});
         s.addText(lines(trace, 12, 10).join('\n'), {x:0.65,y:6.25,w:12,h:0.8,fontSize:10,color:'586874',margin:0,valign:'top',lineSpacingMultiple:1});
-        s.addNotes([`底稿 ${ids.join(', ')}`, sourceNotes(refs),
+        s.addNotes([`底稿 ${ids.join(', ')}`, fullStatus, fullTrace, sourceNotes(refs),
           ...(index === 0 ? [...d.mandate.methods, ...d.mandate.limitations] : [])].join('\n'));
       }
     }
