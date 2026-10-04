@@ -103,6 +103,62 @@ python scripts/scenarios.py scenario-input.json --output scenario-result.json
 
 `unit_cost_of_sales`是含分配折旧摊销的完整单位销售成本，不是单位变动成本；`fixed_cash_cost`只包括未进入营业成本的其他固定现金期间费用。`depreciation`为损益确认的总折旧摊销，`depreciation_in_cost_of_sales`为其中已经计入营业成本的部分，不能再次扣减利润。`inventory_cash_conversion`为本期加入存货的内部生产人工等现金投入；外购加工仍属供应商采购。`inventory_depreciation_change`为期末存货内含折旧摊销减期初内含金额，允许负值。后三项分解均必填，零必须有明确假设；不得以现金目标反推补平，也不能从资料缺失推定为零。
 
+**由底稿结果填写输入。** 上例可在共同底稿按下表展开费用与折旧字段。六项事实都标 `state="assumption"`，采用相同构造主体、范围、2025年期间和人民币百万元 context；构造来源不能标成公司已披露事实。事实、计算及证据字段按 [workpaper.md](workpaper.md) 完整填写。其余驱动仍是上例已经逐项说明的构造假设，这里只展开费用、折旧与存货投入连接。
+
+| 记录 ID | 构造假设或计算（百万元） |
+|---|---|
+| period_expenses | 营业成本外经营期间费用280，包含期间费用折旧；不含利息、所得税、资本化支出或其他现金表项目；无付款时差 |
+| period_da | 其中折旧摊销30，本例全部损益折旧计入期间费用 |
+| other_noncash | 其他非现金费用0，是本例明示假设 |
+| total_da | 同范围损益总折旧摊销30 |
+| internal_production_cash | 本期加入存货的内部生产现金投入0；本例存货全由供应商投入形成 |
+| inventory_da_change | 存货内含折旧摊销净变化0；本例期初期末存货均不含折旧摊销 |
+| cash_period_expenses | `sum`：period_expenses − period_da − other_noncash |
+| da_in_cost | `difference`：total_da − period_da |
+
+以下片段承接已经建立上述记录的 `Workpaper` 对象 `w`；`input_data` 是上面的完整构造 JSON 字典，`budget_terms` 是记录这些构造前提的已有 evidence ID。按工作底稿运行说明，从技能目录的 scripts 导入现有模块，输出目录设为用户任务目录。片段不是独立建稿程序，不会自动把财报内容变成假设。
+
+```python
+from copy import deepcopy
+from decimal import Decimal
+from calculate import evaluate
+from workpaper import Workpaper
+import scenarios
+
+calculated = evaluate(w)
+values = {f.id: f.value * f.context.scale if f.value is not None else None
+          for f in w.facts}
+values.update({r["id"]: Decimal(r["normalized"]) if r["normalized"] is not None else None
+               for r in calculated["calculations"]})
+field_refs = {
+    "fixed_cash_cost": "cash_period_expenses",
+    "depreciation_in_cost_of_sales": "da_in_cost",
+    "depreciation": "total_da",
+    "inventory_cash_conversion": "internal_production_cash",
+    "inventory_depreciation_change": "inventory_da_change",
+}
+scenario = deepcopy(input_data)
+for field, ref in field_refs.items():
+    # evaluate返回基础货币金额，模型使用amount_scale指定的金额单位。
+    scenario["periods"][0][field] = float(values[ref] / Decimal(str(scenario["amount_scale"])))
+scenario["periods"][0]["source"] = (
+    "其余驱动沿用上例构造假设；费用、折旧与存货投入见底稿budget_terms；字段桥："
+    + repr(field_refs)
+)
+result = scenarios.run(scenario)
+record = scenarios.to_workpaper_result(
+    result, id="cash_scenario", label="构造经营现金情景",
+    input_refs=list(field_refs.values()), evidence=["budget_terms"],
+)
+data = w.model_dump(mode="json")
+data["quantitative"] = [q for q in data["quantitative"] if q["id"] != record["id"]] + [record]
+w = Workpaper.model_validate(data)
+```
+
+现金费用得到250，成本内折旧得到0，原例期末现金仍为32.5。若把期间费用内折旧假设改为20、总折旧保持30，同步更新该分支的事实说明及 `budget_terms`，重新计算会同时得到现金费用260和成本内折旧10。本例费用总额、完整销售成本及其他驱动固定，现金经营期间费用增加10与模型供应商付款减少10相互抵销，现金仍为32.5；这不是实际会计重分类的证明。只改一个模型字段，会破坏这组底稿输入与模型的一致性。实际企业的期间费用变化还须核对其他非现金项目和付款时差，不因本构造结果相同就推定真实现金无影响。
+
+**缺失对照。** 另建一份未完成底稿，将 `other_noncash` 改成 `value=null, state="missing"`，注明该组成尚未取得，并移除该分支 `quantitative` 中原有的 `cash_scenario` 结果。对它调用 `evaluate` 后，`cash_period_expenses` 为 `not_calculated/null`，`da_in_cost` 仍为0。继续交付已核费用、折旧与待补事项；这个分支不调用上面的字段赋值和情景运行，不沿用已完成分支的250或现金32.5。取得非现金项目和付款时差，或取得可辩护的假设范围后，再建立完整条件输入分别运行。
+
 ### 方程、时序和口径
 
 对每一期，以实际包含的日历天数D计算：
