@@ -68,6 +68,16 @@ async function main() {
     s.addText(`${d.mandate.entity}  |  ${d.mandate.period_end}  |  ${d.mandate.version}  |  ${++n}`, { x: 0.6, y: 7.08, w: 12.1, h: 0.2, fontSize: 9, color: darkPage ? 'B9D1CC' : '586874', margin: 0 });
     return s;
   };
+  const evidence = Object.fromEntries(d.evidence.map(e => [e.id, e]));
+  const sourcesById = Object.fromEntries(d.sources.map(source => [source.id, source]));
+  const usedEvidence = new Set();
+  const sourceRefs = refs => [...new Set(refs.flatMap(ref => d.figures[ref] ? d.figures[ref].evidence : [ref]))];
+  const sourceNotes = refs => sourceRefs(refs).map(ref => {
+    usedEvidence.add(ref);
+    const e = evidence[ref], source = sourcesById[e.source];
+    return `[${ref}] ${source.title} | ${e.locator}\n${source.url}`;
+  }).join('\n');
+  const findings = Object.fromEntries(d.findings.map(f => [f.id, f]));
   let s = page(d.mandate.title, true);
   const purpose = fitted(d.mandate.purpose, 11.8, 1.25, 24);
   s.addText(purpose.text, { x: 0.7, y: 1.8, w: 11.8, h: 1.25, fontSize: purpose.size, color: 'FFFFFF', margin: 0, valign:'top', lineSpacingMultiple:1 });
@@ -76,6 +86,37 @@ async function main() {
   const unknownDates = d.sources.filter(source => source.published === null).map(source => source.id);
   if (unknownDates.length) s.addText(`来源 ${unknownDates.join(', ')} 公布日期未核验。不得将当前内容分析称为历史时点可用性验证。`,
     {x:0.7,y:5.35,w:11.8,h:0.95,fontSize:16,color:'FFFFFF',margin:0,fit:'shrink'});
+  if (d.presentation?.length) {
+    for (const [index, item] of d.presentation.entries()) {
+      const selected = item.findings.map(id => findings[id]);
+      const figures = item.figures.map(id => d.figures[id]);
+      const ids = [...new Set([...item.findings, ...item.figures, ...item.figure_refs])];
+      const refs = sourceRefs([...item.figures, ...item.figure_refs,
+        ...selected.flatMap(f => [...f.evidence, ...f.counterevidence, ...f.figure_refs])]);
+      const sourceIds = [...new Set(refs.map(ref => evidence[ref].source))];
+      const trace = `底稿 ${item.findings.join(' / ')}；来源 ${sourceIds.join(' / ')}\n原文定位、URL及完整引用见本页备注；完整方法和明细见同名底稿及 Word/Excel。`;
+      const width = figures.length ? 7.9 : 12;
+      const status = selected.map(f => `[${f.id}] ${f.status}`).join(' / ');
+      const bodies = paragraphs(item.body, width, 4.15, 18);
+      const cards = paragraphs(figures.map(f => `${f.label}\n${f.display}`).join('\n\n'), 3.55, 4.15, 16);
+      const count = Math.max(1, bodies.length, cards.length);
+      for (let i = 0; i < count; i++) {
+        s = page(item.title + (count > 1 ? ` ${i + 1}/${count}` : ''), false, true);
+        s.addText(bodies[i] || '', {x:0.65,y:1.55,w:width,h:4.15,fontSize:18,color:ink,margin:0,valign:'top',lineSpacingMultiple:1});
+        if (cards[i]) {
+          s.addShape(pptx.ShapeType.rect, {x:8.8,y:1.45,w:3.9,h:4.45,fill:{color:'E6EFEC'},line:{color:'E6EFEC'}});
+          s.addText(cards[i], {x:8.98,y:1.55,w:3.55,h:4.15,fontSize:16,color:green,margin:0,valign:'top',lineSpacingMultiple:1});
+        }
+        s.addText(lines(status, 12, 11).join('\n'), {x:0.65,y:5.82,w:12,h:0.4,fontSize:11,color:dark,margin:0,valign:'top',lineSpacingMultiple:1});
+        s.addText(lines(trace, 12, 10).join('\n'), {x:0.65,y:6.25,w:12,h:0.8,fontSize:10,color:'586874',margin:0,valign:'top',lineSpacingMultiple:1});
+        s.addNotes([`底稿 ${ids.join(', ')}`, sourceNotes(refs),
+          ...(index === 0 ? [...d.mandate.methods, ...d.mandate.limitations] : [])].join('\n'));
+      }
+    }
+    await pptx.writeFile({ fileName: output });
+    console.log(JSON.stringify({node:process.version, pptxgenjs:pptx.version}));
+    return;
+  }
   if (d.mandate.methods.length) {
     for (const body of paragraphs(d.mandate.methods.join('\n\n'), 12, 4.9, 16)) {
       s = page('采用方法与适用范围');
@@ -88,18 +129,8 @@ async function main() {
       s.addText(body, {x:0.65,y:1.6,w:12,h:4.9,fontSize:16,color:ink,margin:0,valign:'top',lineSpacingMultiple:1});
     }
   }
-  const evidence = Object.fromEntries(d.evidence.map(e => [e.id, e]));
-  const sourcesById = Object.fromEntries(d.sources.map(source => [source.id, source]));
-  const usedEvidence = new Set();
-  const sourceRefs = refs => [...new Set(refs.flatMap(ref => d.figures[ref] ? d.figures[ref].evidence : [ref]))];
-  const sourceNotes = refs => sourceRefs(refs).map(ref => {
-    usedEvidence.add(ref);
-    const e = evidence[ref], source = sourcesById[e.source];
-    return `[${ref}] ${source.title} | ${e.locator}\n${source.url}`;
-  }).join('\n');
   const counterText = ref => d.figures[ref]
     ? `${d.figures[ref].label}：${d.figures[ref].display}` : evidence[ref].observation;
-  const findings = Object.fromEntries(d.findings.map(f => [f.id, f]));
   for (const section of d.sections) {
     const selected = section.findings.map(id => findings[id]);
     const allFigures = section.figures.map(id => d.figures[id]);

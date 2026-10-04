@@ -170,6 +170,10 @@ class Section(Record):
     figures: list[str] = Field(default_factory=list)
 
 
+class PresentationSlide(Section):
+    body: str
+
+
 class QuantitativeFigure(Record):
     id: str
     label: str
@@ -215,6 +219,7 @@ class Workpaper(Record):
     procedures: list[Procedure] = Field(default_factory=list)
     requests: list[Request] = Field(default_factory=list)
     sections: list[Section]
+    presentation: list[PresentationSlide] = Field(default_factory=list)
     quantitative: list[QuantitativeResult] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -258,7 +263,7 @@ class Workpaper(Record):
             require(p.evidence, support, p.id)
         for r in self.requests:
             require([r.finding], findings, r.id)
-        for s in self.sections:
+        for s in [*self.sections, *self.presentation]:
             require(s.findings, findings, s.title)
             require(s.figures, numbers | figures, s.title)
         model_cutoffs = {}

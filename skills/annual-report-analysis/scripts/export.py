@@ -92,13 +92,14 @@ def prepare(w, result):
         "procedures": ("purpose", "assertions", "population", "selection", "steps", "result"),
         "requests": ("request", "reason", "close_when"),
         "sections": ("title",),
+        "presentation": ("title", "body"),
         "quantitative": ("label", "assumptions", "limitations"),
     }
     for group, keys in narrative_fields.items():
         for record in data[group]:
-            if group == "findings":
+            if group in ("findings", "presentation"):
                 tokens = re.findall(r"\{\{([^{}]+)\}\}", "\n".join(x for key in keys for x in (record[key] if isinstance(record[key], list) else [record[key]])))
-                record["figure_refs"] = list(dict.fromkeys([*tokens, *(ref for ref in record["evidence"] if ref in figures)]))
+                record["figure_refs"] = list(dict.fromkeys([*tokens, *(ref for ref in record.get("evidence", []) if ref in figures)]))
             for key in keys:
                 value = record[key]
                 record[key] = [resolve(x) for x in value] if isinstance(value, list) else resolve(value)

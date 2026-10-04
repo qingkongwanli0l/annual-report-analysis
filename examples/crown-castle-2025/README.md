@@ -2,7 +2,7 @@
 
 以2025年US GAAP合并年报为基础，信息截止2026-06-30。案例连接减值、终止经营、出售结算、新旧信贷约束、S&P财务调整及客户续约变化；2026年七月之后发表的交割实绩未倒填进这个信息集。
 
-成果来自同一份[共同底稿](workpaper.json)：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[PowerPoint讨论稿](deliverables/presentation.pptx)。原值、重列数、备考假设和实际期后事项分开记录；仓库不转载原年报、交易协议或会计准则全文。
+成果来自同一份[共同底稿](workpaper.json)：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[9页PowerPoint讨论简报](deliverables/presentation.pptx)。简报由底稿的`presentation`编排，正文保留判断条件，备注保留原文定位；完整研究内容见Word和Excel。原值、重列数、备考假设和实际期后事项分开记录；仓库不转载原年报、交易协议或会计准则全文。
 
 在仓库根目录安装README列出的依赖后，可复算并重新导出：
 

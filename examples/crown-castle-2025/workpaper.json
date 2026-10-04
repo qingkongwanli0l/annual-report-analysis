@@ -10,7 +10,7 @@
     "accounting_basis": "US GAAP",
     "scope": "合并报表；明确区分持续经营、终止经营及契约借款人口径",
     "language": "zh-CN",
-    "version": "crown-castle-2025-public-2",
+    "version": "crown-castle-2025-public-3",
     "methods": [
       "下载官方 PDF，以 pypdf 提取；关键表逐页图像复核；原件 SHA-256 留存",
       "仅采用截止日前公开原件；分别保留原报、重列比较期和期后事项，禁止跨期倒填",
@@ -6666,7 +6666,7 @@
         "measure": "ratio",
         "currency": null,
         "scale": "1",
-        "physical_unit": null
+        "physical_unit": "times"
       },
       "evidence": [
         "E25COV"
@@ -6689,7 +6689,7 @@
         "measure": "ratio",
         "currency": null,
         "scale": "1",
-        "physical_unit": null
+        "physical_unit": "times"
       },
       "evidence": [
         "E25COV",
@@ -6713,7 +6713,7 @@
         "measure": "ratio",
         "currency": null,
         "scale": "1",
-        "physical_unit": null
+        "physical_unit": "times"
       },
       "evidence": [
         "E25COV"
@@ -6736,7 +6736,7 @@
         "measure": "ratio",
         "currency": null,
         "scale": "1",
-        "physical_unit": null
+        "physical_unit": "times"
       },
       "evidence": [
         "E25COV",
@@ -7543,7 +7543,7 @@
         "measure": "ratio",
         "currency": null,
         "scale": "1",
-        "physical_unit": null
+        "physical_unit": "times"
       },
       "evidence": [
         "ECREDIT"
@@ -12350,7 +12350,7 @@
         "measure": "ratio",
         "currency": null,
         "scale": "1",
-        "physical_unit": null
+        "physical_unit": "times"
       },
       "definition": "(1 × limit2025) + (-1 × leverage2025)",
       "interpretation": "比率差额，不是可借美元金额；需契约 EBITDA 才能换算。",
@@ -16263,6 +16263,111 @@
           }
         }
       ]
+    }
+  ],
+  "presentation": [
+    {
+      "title": "出售释放资金，售后信用判断仍取决于现金与合同",
+      "body": "截至2026-06-30，已完成出售及部分还债；后续回购、偿债计划仍须与实际支付分开。历史杠杆不能证明出售后的信用等级。\n\n本简报采用US GAAP披露及S&P《Ratios and Adjustments》2025-12-17版、《Sector-Specific Corporate Methodology》2025-09-26版数字基础设施章的调整路径；未完成全套全球尺度评级形成链，不给主体或债项字母。\n\n关键前提是售后实际债务、可上划现金和保留业务预测。取得这些资料后须连同续约与客户违约压力更新判断。完整分析及口径见同一底稿、Word与Excel。",
+      "findings": [
+        "F05",
+        "F08",
+        "F09",
+        "F15",
+        "F17"
+      ],
+      "figures": []
+    },
+    {
+      "title": "利润改善须拆开减值、出售计量与持续经营",
+      "body": "Fiber长期资产的未折现测试通过，与商誉全额减值可以同时成立；测试单元、计量基础不同，且另有节点核销。缺管理层预测及估值模型，不能据披露顺序认证计量合理。\n\n待售后停止折旧、终止经营重列比较数据；持续净利润变化{{C_contnimove}}，不宜用合并利润反弹替代经营改善。\n\n处置损失{{saleloss2025}}包含准备及已发生售出成本，费用不等于当期付现。估计净售价差额尚未解释；补分类及估值底稿后应同步重算税、权益与现金影响。",
+      "findings": [
+        "F01",
+        "F02",
+        "F03"
+      ],
+      "figures": [
+        "C_contnimove",
+        "saleloss2025"
+      ]
+    },
+    {
+      "title": "现金勾稽通过，可调度资金仍要按法律主体确认",
+      "body": "合并四表的主要关系已复算，但年末全部现金{{cashend2025}}包含受限及终止经营部分；持续非受限现金仅{{cash2025}}。\n\n持续CFO减资本支出、再与集团分配比较为{{C_cashdiv_2025}}，是一项压力观察，尚非母公司现金缺口。旧授信、CP备用与现金不能重复相加。\n\n出售形成的期后资金不回写年末。取得法律实体资金、上划限制、到期及资本承诺后，才能建立真正可用的流动性覆盖；算术一致也不替代存在性、计价或完整性审计。",
+      "findings": [
+        "F04",
+        "F05",
+        "F12"
+      ],
+      "figures": [
+        "cash2025",
+        "C_cashdiv_2025"
+      ]
+    },
+    {
+      "title": "交割现金、公开备考与后续计划保留三条时间线",
+      "body": "五月实际价款按合同总价减初步调整复算为{{C_saleproceeds}}，另付约{{costpaid}}已计提成本，已还债约{{debtrepaid}}。后续CP清偿及回购仍是计划，不能全部视为交割日已完成。\n\n公开备考假设在2025年末已出售，其现金结果{{C_pf_cash}}与假设偿债、费用基准均不等于五月实际期末现金。\n\n最终结算尚缺；取得截止日前公开的确认后再补事实，晚于截止的二季度披露留作另一期验证。两条现金桥不可拼接来推算售后余额。",
+      "findings": [
+        "F08",
+        "F15"
+      ],
+      "figures": [
+        "C_saleproceeds",
+        "debtrepaid"
+      ]
+    },
+    {
+      "title": "契约余量、提款条件和债项顺位分别判断",
+      "body": "旧协议净杠杆{{leverage2025}}对限额{{limit2025}}；该余量不能直接换算成可借金额，契约EBITDA与通用EBITDA不同。待售但未处置业务亦不能因GAAP终止经营直接剔除。\n\n五月新协议替代旧协议，须按实际出售及偿债重建定义口径；名义额度扣信用证{{C_newnetLC}}不等于可支用现金，提款还有陈述、无违约等条件。\n\nCP短期限、塔票据现金清扫及隔离结构各自影响付款时点和追索。补合规证书、具体债券条款及回收估值前，不给债项等级，也不以担保物账面值替代回收。",
+      "findings": [
+        "F06",
+        "F07",
+        "F09"
+      ],
+      "figures": [
+        "C_headroom2025",
+        "C_newnetLC"
+      ]
+    },
+    {
+      "title": "评级调整改变分类，不会创造可用于还债的现金",
+      "body": "租赁债务、盈利及现金分类须同时调整；CFO的租赁加回是方法代理，实际租赁付现另列。可变费用与已包含的融资租赁不能重复资本化。\n\n历史调整估计EBITDA{{sp_ebitda}}、FFO{{sp_ffo}}、FOCF{{sp_focf}}；FOCF尚非扣除全部租赁本金后的自由现金，也不是机构已发表指标。\n\n资本化现金利息、股份支付及减记差异保留局部敏感性；ARO与现金抵减须核证据。历史杠杆{{sp_leverage}}不代表售后评级；更新实际现金、债务和资本分配后再接预测。",
+      "findings": [
+        "F13",
+        "F14",
+        "F15"
+      ],
+      "figures": [
+        "sp_ebitda",
+        "sp_leverage"
+      ]
+    },
+    {
+      "title": "客户事件与续约集中检验持续现金，而非单向外推",
+      "body": "同口径持续经营Q1 CFO同比{{C_sp_q1_cfo_change}}；剔DISH与Sprint后的billings仍有增长。现金降幅不能全归DISH，需分解营运资本、利息与重组支付。\n\nDISH合同索赔和管理层可收回判断都不是确定回款；法律回收、实际收款可能改变应收损失与收入预测。\n\n2028续约组年度化租金暴露中AT&T占{{C_sp_renew_share}}，不代表当年必然损失。土地控制与迁移成本可能缓释风险；medial仅是待验证候选，须核竞争地位、可预测CFO归属及续约情景，不能直接定档。",
+      "findings": [
+        "F11",
+        "F16",
+        "F17"
+      ],
+      "figures": [
+        "C_sp_q1_cfo_change",
+        "C_sp_renew_share"
+      ]
+    },
+    {
+      "title": "下一步以能改变判断的证据关闭未决事项",
+      "body": "原报与重列收入、上年待售准备回述存在未解释差异。取得正式更正或逐项桥前，保留两版，不能自行选一个数强行平账。\n\n优先取得截止前售后债务与现金、最终结算、合规证书、客户实收及续约预测；将其接入法律主体资金和契约定义，评估是否改变流动性及财务档。公开可取得协议应先补读，不泛称内部缺口。\n\n减值、税、股份支付等关键差异需相应底稿。这里完成的是公开资料阅读与复算，未执行函证、控制测试或估值重建，不能把审计师的程序记作本次执行。",
+      "findings": [
+        "F10",
+        "F12",
+        "F06",
+        "F09",
+        "F14",
+        "F15",
+        "F17"
+      ],
+      "figures": []
     }
   ]
 }
