@@ -111,7 +111,7 @@ Excel 金额残差按两端 Decimal 基础单位结果保留的小数位计算 R
 
 `scenarios.py`、`panel.py`、`recovery.py` 各有具体 JSON 输入和 CLI，按对应方法参考执行，再用其 `to_workpaper_result` 适配函数记录实际产物。模型输入快照、计算版本和结果均保留。没有运行不得编写一个看似成功的 artifact；关键结果应独立复算或改变单一假设重新运行。
 
-专门脚本可在保留原始事实 context 的前提下承接已取证的跨范围桥。将实际执行的输入快照保存为 `quantitative.artifact.input_snapshot`，结果行保存为 `artifact.rows`，同时保留算式、单位、执行说明，并填写输入引用、证据、假设与限制。例如 `artifact: {"input_snapshot":{"left":"12","right":"8","unit":"CNY"},"rows":[{"metric":"范围差额","result":"4","formula":"12 - 8","unit":"CNY"}]}`。这是已运行结果的字段示例，不是一次实际计算。
+同口径汇总、差额、比率和静态现金来源用途表中可由基础运算表达的计算使用 `calculations`；预测收付单列为假设并保留实际窗口，按已有 `period_rule` 与期初余额连接。专门脚本可在保留原始事实 context 的前提下承接情景等模型或已取证的跨范围桥。将实际执行的输入快照保存为 `quantitative.artifact.input_snapshot`，运算返回值保存为 `artifact.rows`，同时保留算式、单位、执行说明，并填写输入引用、证据、假设与限制。把字面 `result` 和文字 `formula` 写入文件只是在保存数值，不构成对输入执行计算。
 
 其他 method 声明 `figures` 后，Word和PPT按其标签、context单位及统一显示精度汇总指标，不逐字段转储全部结果行；完整行、公式和未舍入值仍进入Excel及结果JSON。选择指标时包括影响判断的基准、压力、缺口和未计算结果，不能只展示有利值。没有 `figures` 时保留原字段展示，此时由研究者提供简短可读的行及明确单位，勿把大量中间变量当汇报正文。完整补充明细也可留在artifact其他字段，随JSON保存。导出只展示已运行快照，不重新执行或验证外部算式。输入或方法改变后，须重跑专门脚本，再更新同一底稿并重新导出。不要改原始 scope/basis，也不要把派生结果记为 reported。
 
