@@ -54,7 +54,7 @@ python scripts/scenarios.py scenario-input.json --output scenario-result.json
 
 对已取证、声明同范围且日期可用的累计量，`scenarios.run` 在投影或逆向前比较其与原期间总额。默认 `path_basis="forward"` 遇到模型非负项目的负剩余会报出具体项目、总额、实际和差额；修订设定/范围后再运行。原样数学复现明确设置 `path_basis="counterfactual"`，可以保留原路径，同时自动保存 `actual_bridge` 和具体冲突限制。逆向搜索的每个已评估候选及最终根按变更后的期间总额复核；forward遇到冲突候选即拒绝本次搜索，不自动裁剪区间。counterfactual另存冲突候选和最终根的桥及限制；`not_bracketed`（未括住根）或 `not_identified`（未建立唯一边界）时仍保留已评估冲突。未提供或未取证的累计项目保持缺口，不补零；各已知行的基础差额仍继续完成。
 
-`actual_bridge` 只比较累计与所给期间总额，不重置现金起点、不把剩余金额倒造成销量/单价，也不自动构建剩余 Period。真实企业剩余预测须另取累计终点的同范围开局状态，设置下一日起的 Period，并消费已核剩余 capex/drawdown/principal/dividends及经营驱动。累计终点早于信息截止日时，中间经过期间仍需实际或明确估计，不能把全年减Q1直接叫作下半年预测。原样复现、尚未衔接的全年条件路径和真实剩余预测分别命名；数值闭合不关闭这项期间缺口。
+`actual_bridge` 只比较累计与所给期间总额，不重置现金起点、不把剩余金额倒造成销量/单价，也不自动构建剩余 Period。真实企业剩余预测须另取累计终点的同范围开局状态，同时更新 opening 的 date、cash、receivables、inventory、payables、debt，设置下一日起的 Period，并消费已核剩余 capex/drawdown/principal/dividends及经营驱动。已消费的累计数保留在原桥，不再放进新 Period 的 realized。累计终点早于信息截止日时，中间经过期间仍需实际或明确估计，不能把全年减Q1直接叫作下半年预测。原样复现、尚未衔接的全年条件路径和真实剩余预测分别命名；数值闭合不关闭这项期间缺口。
 
 ### 完整的构造输入示例
 
