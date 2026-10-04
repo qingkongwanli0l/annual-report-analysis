@@ -35,7 +35,7 @@ description: Analyze annual reports and related disclosures to develop evidence-
 
 先按全面程序核对该企业的完整披露及适用评级方法，再针对每项实际分析要求查阅所需参考。未取得或未读取的方法保持覆盖缺口，不能用另一机构的近似主题代替，也不能把当前参考文件集合当作全部要求。无需一次载入不适用正文，但不能漏掉适用内容。
 
-加载由实际分析动作触发，不由报告标题决定。涉及政策、估计、盈利、现金质量或既有模型输入复核时，先读会计参考的对应章节；首次调用情景脚本前，按量化参考第2节逐项写出原披露到模型字段的调整算式，接通最近实际期末、法人/业务范围、现金收付与到期融资。未接通项目的影响须保留在结果结论中，不能把模型现金余量称为公司支付安全边界。读取字段契约或脚本不替代方法参考；无需载入不适用的章节。
+加载由实际分析动作触发，不由报告标题决定。建立借款、有息债务或短债底稿时，先读[工商信用第3节](references/corporate-credit.md#3-报表到信用口径逐笔财务调整桥)，执行分类与期限交叉核对，再取占比分子及到期金额。涉及政策、估计、盈利、现金质量或既有模型输入复核时，先读会计参考的对应章节；首次调用情景脚本前，按量化参考第2节逐项写出原披露到模型字段的调整算式，接通最近实际期末、法人/业务范围、现金收付与到期融资。未接通项目的影响须保留在结果结论中，不能把模型现金余量称为公司支付安全边界。读取字段契约或脚本不替代方法参考；无需载入不适用的章节。
 
 现有方法资源可由 [accounting-and-audit.md](references/accounting-and-audit.md)、[corporate-credit.md](references/corporate-credit.md)、[domestic-credit-methods.md](references/domestic-credit-methods.md)、[sector-analysis.md](references/sector-analysis.md)、[special-credit-structures.md](references/special-credit-structures.md)、[quantitative-analysis.md](references/quantitative-analysis.md)、[financial-institutions.md](references/financial-institutions.md) 和 [sources-and-standards.md](references/sources-and-standards.md) 定位。这是资源索引，不是分析项目表；仍以覆盖底稿中适用原文的逐项要求决定执行内容。参考未承接的要求须补读原始方法并完成有依据的分析，缺少必要资料时保留具体未完成项，不以自造参数、近似名称或套用其他行业关闭。
 
