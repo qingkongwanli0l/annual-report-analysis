@@ -304,6 +304,26 @@ class ScenarioTests(unittest.TestCase):
             self.assertAlmostEqual(reverse["driver_value"]/scale, 51/52, places=12)
             self.assertLess(abs(reverse["cash_residual"]/scale), 1e-10)
 
+    def test_contract_equality_tolerates_roundoff_not_real_breaches(self):
+        for metric, relation, price, cost, threshold in (
+                ("debt_to_ebitda", "at_most", 1, .3, 3),
+                ("ebitda", "at_least", .3, .2, .1)):
+            with self.subTest(metric=metric):
+                data = cash_case()
+                data["opening"].update(cash=10, receivables=0, inventory=0, payables=0, debt=2.1)
+                data["minimum_cash"]["value"] = 0
+                data["periods"][0].update(volume=1, unit_price=price, unit_cost_of_sales=cost,
+                    fixed_cash_cost=0, depreciation=0, capex=0, tax_rate=0,
+                    dso=0, dio=0, dpo=0, interest_rate=0, principal=0, dividends=0)
+                data["contracts"] = [{"label": "Constructed equality boundary", "definition": "Decimal input equality",
+                    "test_date": "2025-12-31", "metric": metric, "relation": relation, "threshold": threshold,
+                    "source": "Constructed analytical condition", "available_at": "2024-12-31"}]
+                result = scenarios.run(data)["contracts"][0]
+                self.assertAlmostEqual(result["value"], threshold)
+                self.assertEqual(result["status"], "within_input_threshold")
+                data["periods"][0]["unit_price"] -= 1e-6
+                self.assertEqual(scenarios.run(data)["contracts"][0]["status"], "outside_input_threshold")
+
     def test_input_dated_thresholds_and_future_assumption(self):
         data = cash_case()
         term = {"label": "Illustrative contractual cash condition", "definition": "Cash at stated date",

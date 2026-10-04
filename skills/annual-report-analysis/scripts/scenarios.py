@@ -192,6 +192,8 @@ def _project(s):
             status = "not_tested"
         else:
             complies = value >= contract.threshold if contract.relation == "at_least" else value <= contract.threshold
+            complies = complies or isclose(value, contract.threshold, rel_tol=0,
+                                           abs_tol=8 * max(ulp(value), ulp(contract.threshold)))
             status = "within_input_threshold" if complies else "outside_input_threshold"
         contract_results.append({**contract.model_dump(mode="json"), "value": value, "status": status,
                                  "reason": "no projection at test date or ratio denominator is not meaningful" if value is None else ""})
