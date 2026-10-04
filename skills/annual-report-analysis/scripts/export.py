@@ -516,16 +516,16 @@ def word(data, path):
     m = data["mandate"]
     doc.add_paragraph(m["title"], "Title")
     doc.add_paragraph(f"{m['period_start']} — {m['period_end']}　资料截止 {m['cutoff']}　底稿 {m['version']}")
+    doc.add_paragraph(f"对象：{m['entity']}。范围：{m['scope']}。会计基础：{m['accounting_basis']}。")
     doc.add_paragraph(m["purpose"])
-    for text in m["methods"]:
-        doc.add_paragraph("方法与适用范围："+text)
     findings = {f["id"]: f for f in data["findings"]}
     quantitative_origins = {f["id"]: q["id"] for q in data["quantitative"] for f in q["figures"]}
     if data["findings"]:
         doc.add_heading("核心判断", 1)
     for f in data["findings"][:3]:
         doc.add_paragraph(f"[{f['status']}] {f['conclusion']} [{f['id']}; {', '.join(f['evidence'])}]")
-    doc.add_paragraph(f"范围：{m['scope']}。会计基础：{m['accounting_basis']}。")
+    for text in m["methods"]:
+        doc.add_paragraph("方法与适用范围："+text)
     for text in m["limitations"]:
         doc.add_paragraph(text)
     for s in data["sections"]:
