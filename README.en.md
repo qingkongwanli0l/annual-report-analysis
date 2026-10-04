@@ -42,4 +42,4 @@ Editing Excel numbers can recalculate formulas but does not update the common wo
 
 The published skill keeps its analytical procedures and necessary official source references. Existing references do not represent complete coverage of every rating agency's content. Research recommendations are distinct from authorized ratings, statutory audit opinions and licensed professional sign-off.
 
-MIT license. Third-party standards and reports remain linked rather than republished in full. Contributions should identify a public source, problem location, observed result and evidence for the correction. The project includes no user tracking.
+MIT license; external dependencies retain their own licenses. The interval library [portion](https://github.com/AlexandreDecan/portion) uses LGPL-3.0 and its source is not copied into this project. Third-party standards and reports remain linked rather than republished in full. Contributions should identify a public source, problem location, observed result and evidence for the correction. The project includes no user tracking.

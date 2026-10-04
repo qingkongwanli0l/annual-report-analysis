@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 SCRIPTS = Path(__file__).resolve().parents[1] / "skills" / "annual-report-analysis" / "scripts"
@@ -46,6 +47,39 @@ def manufacturing_case():
     return data
 
 
+def realized_case():
+    data = cash_case()
+    data["as_of"] = "2026-06-30"
+    data["opening"].update(date="2025-12-31", available_at="2025-12-31")
+    data["periods"][0].update(start="2026-01-01", end="2026-12-31", drawdown=10000)
+    # Disclosed CATL financing conflict in constructed cash settings, not a full issuer forecast.
+    data["realized"] = [dict(period_index=0, through_date="2026-03-31", metric="drawdown",
+        value=7972.172 + 7998.480, source="CATL Q1 2026 consolidated cash-flow p11: loans plus bonds",
+        available_at="2026-04-15", same_scope=True)]
+    return data
+
+
+def reverse_realized_case(driver):
+    data = cash_case()
+    data["as_of"] = "2025-06-30"
+    data["opening"].update(cash=100, receivables=0, inventory=0, payables=0, debt=0)
+    data["minimum_cash"]["value"] = 0
+    data["periods"][0].update(volume=10, unit_price=100, unit_cost_of_sales=0,
+        fixed_cash_cost=0, depreciation=0, capex=0, tax_rate=0, dso=0, dio=0, dpo=0,
+        interest_rate=0, principal=0, dividends=0)
+    cost = driver == "unit_cost_of_sales"
+    if cost:
+        data["periods"][0]["unit_cost_of_sales"] = 100
+    data["realized"] = [dict(period_index=0, through_date="2025-03-31",
+        metric="cost_of_sales" if cost else "revenue", value=900,
+        source="Constructed sourced cumulative amount", available_at="2025-04-30", same_scope=True)]
+    data["reverse"] = dict(period_index=0, driver=driver,
+        bounds=[1, 10] if driver == "volume" else [10, 100], test_date="2025-12-31",
+        target_cash=900 if cost else 300, definition="Constructed cash boundary",
+        source="Constructed budget", available_at="2024-12-31")
+    return data
+
+
 def annual_record(entity, year, margin, published, version="original"):
     return {"id": f"{entity}-{year}-{version}", "entity": entity,
             "period_start": f"{year}-01-01", "period_end": f"{year}-12-31",
@@ -73,6 +107,193 @@ def panel_case():
 
 
 class ScenarioTests(unittest.TestCase):
+    def test_reverse_candidates_cannot_bypass_realized_gross_constraints(self):
+        for driver in ("unit_price", "volume", "unit_cost_of_sales"):
+            with self.subTest(driver=driver):
+                data = reverse_realized_case(driver)
+                original = deepcopy(data)
+                original.pop("reverse")
+                self.assertFalse(any(r["conflict"] for r in scenarios.run(original)["actual_bridge"]))
+                metric = data["realized"][0]["metric"]
+                with patch.object(scenarios, "_project", wraps=scenarios._project) as project:
+                    with self.assertRaisesRegex(ValueError, f"period 0 {metric}.*100.*900.*-800"):
+                        scenarios.run(data)
+                    self.assertEqual(project.call_count, 1)
+
+    def test_reverse_final_root_rechecks_realized_gross_constraints(self):
+        data = reverse_realized_case("unit_price")
+        data["reverse"].update(bounds=[90, 100], target_cash=1050)
+        reverse = scenarios.run(data)["reverse"]
+        self.assertEqual(reverse["driver_value"], 95)
+        self.assertEqual(reverse["candidate_conflicts"], [])
+        row = next(r for r in reverse["actual_bridge"] if r["metric"] == "revenue")
+        self.assertEqual((row["period_total"], row["actual"], row["remaining"]), (950, 900, 50))
+        with patch("scipy.optimize.root_scalar") as solver, patch.object(scenarios, "_project", wraps=scenarios._project) as project:
+            solver.return_value.root, solver.return_value.converged = 20, True
+            with self.assertRaisesRegex(ValueError, "period 0 revenue.*200.*900.*-700"):
+                scenarios.run(data)
+            self.assertEqual(project.call_count, 3)
+
+    def test_counterfactual_reverse_preserves_new_candidate_and_root_bridges(self):
+        for driver in ("unit_price", "volume", "unit_cost_of_sales"):
+            with self.subTest(driver=driver):
+                data = reverse_realized_case(driver)
+                data["path_basis"] = "counterfactual"
+                original = deepcopy(data)
+                original.pop("realized")
+                baseline = scenarios.run(original)
+                result = scenarios.run(data)
+                reverse = result["reverse"]
+                self.assertEqual(result["rows"], baseline["rows"])
+                for key in ("status", "driver_value", "rows", "contracts", "cash_residual", "endpoint_cash_residuals"):
+                    self.assertEqual(reverse[key], baseline["reverse"][key])
+                self.assertFalse(any(r["conflict"] for r in result["actual_bridge"]))
+                self.assertAlmostEqual(reverse["driver_value"], 2 if driver == "volume" else 20)
+                root = next(r for r in reverse["actual_bridge"] if r["metric"] == data["realized"][0]["metric"])
+                self.assertEqual((root["period_total"], root["actual"], root["remaining"]), (200, 900, -700))
+                self.assertTrue(root["conflict"])
+                self.assertEqual((root["through_date"], root["source"], root["available_at"], root["same_scope"]),
+                    ("2025-03-31", "Constructed sourced cumulative amount", "2025-04-30", True))
+                first = reverse["candidate_conflicts"][0]
+                candidate = next(r for r in first["actual_bridge"] if r["conflict"])
+                self.assertEqual((candidate["period_total"], candidate["actual"], candidate["remaining"]), (100, 900, -800))
+                self.assertTrue(any("reverse" in text and "counterfactual" in text.lower() for text in result["assumptions"]))
+                self.assertTrue(any("reverse candidate" in text and "-800" in text for text in result["limitations"]))
+                self.assertTrue(any("reverse root" in text and "-700" in text for text in result["limitations"]))
+                self.assertEqual(scenarios.run(result["input_snapshot"]), result)
+                adapted = scenarios.to_workpaper_result(result, "reverse", "Counterfactual boundary", [], [])
+                self.assertEqual(QuantitativeResult.model_validate(adapted).artifact["reverse"], reverse)
+                self.assertEqual(adapted["limitations"], result["limitations"])
+
+    def test_counterfactual_reverse_keeps_candidate_bridges_without_a_unique_root(self):
+        for status in ("not_bracketed", "not_identified"):
+            with self.subTest(status=status):
+                data = reverse_realized_case("unit_price")
+                data["path_basis"] = "counterfactual"
+                if status == "not_identified":
+                    data["periods"][0]["dso"] = 365
+                    data["reverse"]["target_cash"] = 100
+                else:
+                    data["reverse"]["target_cash"] = 1200
+                result = scenarios.run(data)
+                self.assertEqual(result["reverse"]["status"], status)
+                candidate = result["reverse"]["candidate_conflicts"][0]
+                row = next(r for r in candidate["actual_bridge"] if r["conflict"])
+                self.assertEqual((row["period_total"], row["actual"], row["remaining"]), (100, 900, -800))
+                self.assertTrue(any("reverse candidate" in text and "-800" in text for text in result["limitations"]))
+
+    def test_realized_gross_financing_conflict_stops_forward_before_math(self):
+        data = realized_case()
+        data["reverse"] = dict(period_index=0, driver="dso", bounds=[36.5, 60], test_date="2026-12-31",
+            target_cash=10020, definition="Constructed cash boundary", source="Constructed budget",
+            available_at="2025-12-31")
+        with patch.object(scenarios, "_project") as project, patch.object(scenarios, "_reverse") as reverse:
+            with self.assertRaisesRegex(ValueError, "period 0 drawdown.*10000.*15970.*-5970"):
+                scenarios.run(data)
+            project.assert_not_called()
+            reverse.assert_not_called()
+
+    def test_counterfactual_retains_actual_conflict_and_original_math(self):
+        data = realized_case()
+        data["path_basis"] = "counterfactual"
+        data["reverse"] = dict(period_index=0, driver="dso", bounds=[36.5, 60], test_date="2026-12-31",
+            target_cash=10020, definition="Constructed cash boundary", source="Constructed budget",
+            available_at="2025-12-31")
+        original = deepcopy(data)
+        original.pop("realized")
+        baseline = scenarios.run(original)
+        result = scenarios.run(data)
+        self.assertEqual(result["rows"], baseline["rows"])
+        self.assertEqual(result["contracts"], baseline["contracts"])
+        for key in ("status", "driver_value", "rows", "contracts", "cash_residual", "endpoint_cash_residuals"):
+            self.assertEqual(result["reverse"][key], baseline["reverse"][key])
+        row = next(r for r in result["actual_bridge"] if r["metric"] == "drawdown")
+        self.assertEqual(row["status"], "known")
+        self.assertTrue(row["conflict"])
+        self.assertAlmostEqual(row["remaining"], -5970.652)
+        self.assertTrue(any("counterfactual" in text for text in result["assumptions"]))
+        self.assertTrue(any("drawdown" in text and "15970" in text for text in result["limitations"]))
+        self.assertEqual(scenarios.run(result["input_snapshot"]), result)
+        adapted = scenarios.to_workpaper_result(result, "cash", "Counterfactual", [], [])
+        self.assertEqual(QuantitativeResult.model_validate(adapted).artifact, result)
+        from calculate import evaluate
+        from export import prepare
+        from workpaper import Workpaper
+        paper = Workpaper.model_validate(dict(mandate=dict(title="Constructed bridge", entity=data["entity"],
+            industry="industrial", purpose="Counterfactual comparison", period_start="2026-01-01",
+            period_end="2026-12-31", cutoff=data["as_of"], accounting_basis="CAS", scope="consolidated", version="test"),
+            sources=[], evidence=[], facts=[], findings=[], sections=[], quantitative=[adapted]))
+        prepared = prepare(paper, evaluate(paper))["quantitative"][0]
+        self.assertEqual(prepared["artifact"]["actual_bridge"], result["actual_bridge"])
+        self.assertEqual(prepared["artifact"]["reverse"], result["reverse"])
+        self.assertEqual(prepared["limitations"], result["limitations"])
+
+    def test_absent_actuals_preserve_mathematical_reproduction_with_gap(self):
+        result = scenarios.run(cash_case())
+        self.assertAlmostEqual(result["rows"][0]["cash_end"], 32.5)
+        self.assertTrue(all(r["status"] == "not_supplied" and r["actual"] is None and r["remaining"] is None
+                            for r in result["actual_bridge"]))
+        self.assertTrue(any("not_supplied" in text for text in result["limitations"]))
+
+    def test_partial_actuals_keep_unknown_and_unmatched_scope_separate(self):
+        data = realized_case()
+        base = data["realized"][0]
+        data["realized"] = [{**base, "value": 5000}, {**base, "metric": "capex", "value": None},
+            {**base, "metric": "principal", "value": 20},
+            {**base, "metric": "revenue", "value": 129131.041, "same_scope": False},
+            {**base, "metric": "dividends", "value": 30, "source": None, "available_at": None}]
+        original = deepcopy(data)
+        original.pop("realized")
+        result = scenarios.run(data)
+        self.assertEqual(result["rows"], scenarios.run(original)["rows"])
+        rows = {r["metric"]: r for r in result["actual_bridge"]}
+        self.assertEqual(rows["drawdown"]["remaining"], 5000)
+        self.assertEqual(rows["principal"]["remaining"], 80)
+        for metric in ("capex", "revenue", "dividends"):
+            self.assertEqual(rows[metric]["status"], "not_identified")
+            self.assertIsNone(rows[metric]["remaining"])
+            self.assertFalse(rows[metric]["conflict"])
+        self.assertEqual(rows["revenue"]["actual"], 129131.041)
+        self.assertEqual(rows["cost_of_sales"]["status"], "not_supplied")
+        self.assertIsNone(rows["cost_of_sales"]["actual"])
+        self.assertTrue(any("not_identified" in text for text in result["limitations"]))
+
+    def test_realized_dates_and_duplicate_snapshots_are_not_guessed(self):
+        base = realized_case()
+        for extra, message in [({}, "duplicate"),
+                ({"metric": "capex", "through_date": "2026-02-28"}, "one cumulative through_date")]:
+            data = deepcopy(base)
+            data["realized"].append({**data["realized"][0], **extra})
+            with self.assertRaisesRegex(ValueError, message):
+                scenarios.run(data)
+        for change, message in [({"through_date": "2025-12-31"}, "within its period"),
+                ({"available_at": "2026-02-28"}, "before its measurement date"),
+                ({"available_at": "2026-07-01"}, "available by as_of")]:
+            data = deepcopy(base)
+            data["realized"][0].update(change)
+            with self.assertRaisesRegex(ValueError, message):
+                scenarios.run(data)
+
+    def test_cumulative_actuals_for_different_periods_are_not_combined(self):
+        data = realized_case()
+        data["opening"].update(date="2024-12-31", available_at="2024-12-31")
+        second = deepcopy(data["periods"][0])
+        data["periods"][0].update(start="2025-01-01", end="2025-12-31")
+        data["periods"].append(second)
+        actual = data["realized"][0]
+        data["realized"] = [{**actual, "through_date": "2025-03-31", "value": 1000},
+                            {**actual, "period_index": 1, "value": 2000}]
+        rows = [r for r in scenarios.run(data)["actual_bridge"] if r["metric"] == "drawdown"]
+        self.assertEqual([(r["period_index"], r["actual"], r["remaining"]) for r in rows],
+                         [(0, 1000, 9000), (1, 2000, 8000)])
+
+    def test_realized_gross_domain_rejects_signed_net_amounts(self):
+        for change in ({"value": -1}, {"metric": "net_financing"}):
+            data = realized_case()
+            data["realized"][0].update(change)
+            with self.assertRaises(ValueError):
+                scenarios.run(data)
+
     def test_turnover_proxies_cannot_create_negative_cash_receipts_or_payments(self):
         data = cash_case()
         data.update(amount_scale=1, payables_denominator="purchases")

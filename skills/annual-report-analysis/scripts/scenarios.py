@@ -75,6 +75,16 @@ class Reverse(Sourced):
     definition: str = Field(min_length=1)
 
 
+class Realized(Input):
+    period_index: int = Field(ge=0)
+    through_date: date
+    metric: Literal["revenue", "cost_of_sales", "capex", "drawdown", "principal", "dividends"]
+    value: float | None = Field(default=None, ge=0)
+    source: str | None = Field(default=None, min_length=1)
+    available_at: date | None = None
+    same_scope: bool = False
+
+
 class Scenario(Input):
     entity: str
     as_of: date
@@ -87,6 +97,8 @@ class Scenario(Input):
     periods: list[Period] = Field(min_length=1)
     contracts: list[Contract] = Field(default_factory=list)
     reverse: Reverse | None = None
+    path_basis: Literal["forward", "counterfactual"] = "forward"
+    realized: list[Realized] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def periods_and_sources(self):
@@ -95,7 +107,26 @@ class Scenario(Input):
             if p.start != previous + timedelta(days=1) or p.end < p.start:
                 raise ValueError("forecast periods must be contiguous after the opening date")
             previous = p.end
-        sourced = [self.opening, self.minimum_cash, *self.periods, *self.contracts]
+        sourced = [self.opening, self.minimum_cash, *self.periods, *self.contracts,
+                   *[r for r in self.realized if r.available_at is not None]]
+        seen, through_dates = set(), {}
+        for r in self.realized:
+            if r.period_index >= len(self.periods):
+                raise ValueError("realized period_index is outside the forecast")
+            p = self.periods[r.period_index]
+            if not p.start <= r.through_date <= p.end:
+                raise ValueError("realized cumulative through_date must be within its period")
+            if r.through_date > self.as_of:
+                raise ValueError("realized cumulative through_date cannot be after as_of")
+            if r.available_at is not None and r.available_at < r.through_date:
+                raise ValueError("realized source cannot be public before its measurement date")
+            key = (r.period_index, r.metric)
+            if key in seen:
+                raise ValueError("duplicate realized metric for a period; select one cumulative snapshot")
+            seen.add(key)
+            if r.period_index in through_dates and through_dates[r.period_index] != r.through_date:
+                raise ValueError("realized rows for one period must share one cumulative through_date")
+            through_dates[r.period_index] = r.through_date
         if self.reverse:
             sourced.append(self.reverse)
             if self.reverse.period_index >= len(self.periods):
@@ -110,8 +141,40 @@ class Scenario(Input):
         if self.opening.available_at < self.opening.date:
             raise ValueError("opening actual balances cannot be public before their measurement date")
         if self.opening.date > self.as_of or any(x.available_at > self.as_of for x in sourced):
-            raise ValueError("opening data and assumption sources must be available by as_of")
+            raise ValueError("opening data, realized data and assumption sources must be available by as_of")
         return self
+
+
+def _actual_bridge(s):
+    actuals = {(r.period_index, r.metric): r for r in s.realized}
+    rows = []
+    for index, p in enumerate(s.periods):
+        totals = {"revenue": p.volume * p.unit_price, "cost_of_sales": p.volume * p.unit_cost_of_sales,
+                  "capex": p.capex, "drawdown": p.drawdown, "principal": p.principal, "dividends": p.dividends}
+        for metric, total in totals.items():
+            r = actuals.get((index, metric))
+            known = r is not None and r.value is not None and r.source is not None and r.available_at is not None and r.same_scope
+            actual = r.value if r else None
+            remaining = total - actual if known else None
+            conflict = known and actual > total and not isclose(actual, total, rel_tol=0,
+                                                               abs_tol=8 * max(ulp(actual), ulp(total)))
+            rows.append({"period_index": index, "period_start": p.start.isoformat(), "period_end": p.end.isoformat(),
+                         "metric": metric, "period_total": total, "actual": actual, "remaining": remaining,
+                         "through_date": r.through_date.isoformat() if r else None,
+                         "source": r.source if r else None, "available_at": r.available_at.isoformat() if r and r.available_at else None,
+                         "same_scope": r.same_scope if r else False,
+                         "status": "known" if known else "not_identified" if r else "not_supplied", "conflict": bool(conflict)})
+    return rows
+
+
+def _checked_actual_bridge(s):
+    actual_bridge = _actual_bridge(s)
+    conflicts = [f"period {r['period_index']} {r['metric']}: period_total={r['period_total']}, actual={r['actual']}, remaining={r['remaining']}"
+                 for r in actual_bridge if r["conflict"]]
+    if conflicts and s.path_basis == "forward":
+        raise ValueError("sourced cumulative gross amounts declared same-scope exceed forward totals: " + "; ".join(conflicts)
+                         + "; revise period totals/scope or explicitly select counterfactual")
+    return actual_bridge, conflicts
 
 
 def _project(s):
@@ -206,11 +269,17 @@ def _reverse(s):
     target = s.reverse
     snapshot = s.model_dump(mode="json")
     snapshot["reverse"] = None
+    candidate_conflicts = {}
 
     def objective(driver_value):
         changed = deepcopy(snapshot)
         changed["periods"][target.period_index][target.driver] = float(driver_value)
-        rows, _ = _project(Scenario.model_validate(changed))
+        candidate = Scenario.model_validate(changed)
+        actual_bridge, conflicts = _checked_actual_bridge(candidate)
+        if conflicts:
+            candidate_conflicts[float(driver_value)] = {"driver_value": float(driver_value),
+                "actual_bridge": actual_bridge, "conflicts": conflicts}
+        rows, _ = _project(candidate)
         row = next((r for r in rows if r["period_end"] == target.test_date.isoformat()), None)
         if row is None:
             raise ValueError("an earlier unfunded period prevents projection at reverse test_date")
@@ -229,10 +298,12 @@ def _reverse(s):
     if a_zero and b_zero:
         return {"status": "not_identified", "definition": target.definition,
                 "bounds": [low, high], "endpoint_cash_residuals": [a, b],
+                "candidate_conflicts": list(candidate_conflicts.values()),
                 "reason": "both bounds meet the cash target within floating-point precision; no unique driver boundary established"}
     if not (a_zero or b_zero) and (a > 0) == (b > 0):
         return {"status": "not_bracketed", "definition": target.definition,
                 "bounds": [low, high], "endpoint_cash_residuals": [a, b],
+                "candidate_conflicts": list(candidate_conflicts.values()),
                 "reason": "no sign change within supplied bounds; no failure boundary established"}
     if a_zero or b_zero:
         root, converged = (low if a_zero else high), True
@@ -241,25 +312,33 @@ def _reverse(s):
         root, converged = float(solution.root), solution.converged
     changed = deepcopy(snapshot)
     changed["periods"][target.period_index][target.driver] = root
-    rows, contracts = _project(Scenario.model_validate(changed))
+    candidate = Scenario.model_validate(changed)
+    actual_bridge, conflicts = _checked_actual_bridge(candidate)
+    rows, contracts = _project(candidate)
+    cash_residual = objective(root)[0]
     return {"status": "converged" if converged else "not_converged",
             "driver": target.driver, "period_index": target.period_index,
             "driver_value": root, "test_date": target.test_date.isoformat(),
-            "target_cash": target.target_cash, "cash_residual": objective(root)[0],
+            "target_cash": target.target_cash, "cash_residual": cash_residual,
             "bounds": [low, high], "endpoint_cash_residuals": [a, b],
             "definition": target.definition, "source": target.source,
             "rows": rows, "contracts": contracts,
+            "actual_bridge": actual_bridge, "actual_conflicts": conflicts,
+            "candidate_conflicts": list(candidate_conflicts.values()),
             "limitation": "A conditional cash boundary, not a default probability or a most-likely scenario."}
 
 
 def run(input_dict):
     s = Scenario.model_validate(input_dict)
+    actual_bridge, conflicts = _checked_actual_bridge(s)
     rows, contracts = _project(s)
     result = {
         "method": METHOD, "as_of": s.as_of.isoformat(),
         "input_snapshot": s.model_dump(mode="json"),
         "currency": s.currency, "amount_scale": s.amount_scale,
+        "path_basis": s.path_basis, "actual_bridge": actual_bridge,
         "assumptions": [
+            f"Path basis: {s.path_basis}; the supplied complete periods are retained.",
             f"Opening balances: {s.opening.source} (available {s.opening.available_at}).",
             f"Minimum operating cash {s.minimum_cash.value}: {s.minimum_cash.source} (available {s.minimum_cash.available_at}).",
             "All sales use the supplied receivable-days proxy; inventory uses cost-of-sales days.",
@@ -284,8 +363,28 @@ def run(input_dict):
         "rows": rows, "contracts": contracts,
         "unprojected_periods": len(s.periods) - len(rows),
     }
+    if not s.realized:
+        result["limitations"].append("Cumulative actual inputs not_supplied; this mathematical path has not been reconciled to realized amounts.")
+    else:
+        result["limitations"].append("Realized amounts use the scenario entity, currency and amount_scale; same_scope is the caller's evidence declaration, not script verification.")
+        result["limitations"].append("actual_bridge compares cumulative amounts with supplied period totals only; it does not construct remaining Periods, infer volume or rebase the cash path.")
+        gaps = [f"period {r['period_index']} {r['metric']} {r['status']}" for r in actual_bridge
+                if r["status"] != "known" and s.periods[r["period_index"]].start <= s.as_of]
+        if gaps:
+            result["limitations"].append("Actual bridge incomplete: " + "; ".join(gaps) + "; unknown or incomparable inputs are not replaced with zero.")
+    if conflicts:
+        result["assumptions"].append("Counterfactual replay retains the original period assumptions despite sourced cumulative conflicts.")
+        result["limitations"].extend("Counterfactual conflict: " + c + "; this is not a reconciled forward forecast." for c in conflicts)
     if s.reverse:
         result["reverse"] = _reverse(s)
+        reverse = result["reverse"]
+        if reverse["candidate_conflicts"]:
+            result["assumptions"].append("Counterfactual reverse retains evaluated candidates despite sourced cumulative conflicts; their actual bridges are separate from the baseline bridge.")
+            for candidate in reverse["candidate_conflicts"]:
+                result["limitations"].extend(f"Counterfactual reverse candidate {s.reverse.driver}={candidate['driver_value']}: " + c
+                    + "; this is not a reconciled forward forecast." for c in candidate["conflicts"])
+        result["limitations"].extend(f"Counterfactual reverse root {s.reverse.driver}={reverse['driver_value']}: " + c
+            + "; this is not a reconciled forward forecast." for c in reverse.get("actual_conflicts", []))
     return result
 
 

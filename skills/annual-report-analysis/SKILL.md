@@ -35,7 +35,7 @@ description: Analyze annual reports and related disclosures to develop evidence-
 
 先按全面程序核对该企业的完整披露及适用评级方法，再针对每项实际分析要求查阅所需参考。未取得或未读取的方法保持覆盖缺口，不能用另一机构的近似主题代替，也不能把当前参考文件集合当作全部要求。无需一次载入不适用正文，但不能漏掉适用内容。
 
-加载由实际分析动作触发，不由报告标题决定。建立借款、有息债务或短债底稿时，先读[工商信用第3节](references/corporate-credit.md#3-报表到信用口径逐笔财务调整桥)，执行分类与期限交叉核对，再取占比分子及到期金额。涉及政策、估计、盈利、现金质量或既有模型输入复核时，先读会计参考的对应章节；首次调用情景脚本前，按量化参考第2节逐项写出原披露到模型字段的调整算式，接通最近实际期末、法人/业务范围、现金收付与到期融资。未接通项目的影响须保留在结果结论中，不能把模型现金余量称为公司支付安全边界。读取字段契约或脚本不替代方法参考；无需载入不适用的章节。
+加载由实际分析动作触发，不由报告标题决定。决定结论的总额、比率、评分或预测字段进入计算前，先读适用方法及会计章节，按[底稿的输入形成步骤](references/workpaper.md#先形成计算输入)完成原披露组成及读取终点、原始主体/业务/期限范围、本次纳入/排除/未决理由，再由这些记录生成计算引用。建立借款、有息债务或短债底稿时，执行[工商信用第3节](references/corporate-credit.md#3-报表到信用口径逐笔财务调整桥)的分类与期限交叉核对。现金或既有模型复核先读[会计第3—4节](references/accounting-and-audit.md#3-四张报表附注及比较期重建)，再按量化第2节形成原披露到字段的调整桥；原样复现可先运行并保存原输入及未验证状态，生成企业修正版和真实企业预测结论前须接通最近实际期末、法人/业务范围、现金收付与到期融资。一行未决只保留该行及下游缺口，先完成其他可确定行。原样复现与企业修正版分别记录，未接通项目的影响进入结论，原样复现不关闭输入缺口，不把模型现金余量称为公司支付安全边界。读取字段契约或脚本不替代方法参考；无需载入不适用的章节。
 
 现有方法资源可由 [accounting-and-audit.md](references/accounting-and-audit.md)、[corporate-credit.md](references/corporate-credit.md)、[domestic-credit-methods.md](references/domestic-credit-methods.md)、[sector-analysis.md](references/sector-analysis.md)、[special-credit-structures.md](references/special-credit-structures.md)、[quantitative-analysis.md](references/quantitative-analysis.md)、[financial-institutions.md](references/financial-institutions.md) 和 [sources-and-standards.md](references/sources-and-standards.md) 定位。这是资源索引，不是分析项目表；仍以覆盖底稿中适用原文的逐项要求决定执行内容。参考未承接的要求须补读原始方法并完成有依据的分析，缺少必要资料时保留具体未完成项，不以自造参数、近似名称或套用其他行业关闭。
 
@@ -48,6 +48,8 @@ description: Analyze annual reports and related disclosures to develop evidence-
 使用 [workpaper.md](references/workpaper.md) 的共同 JSON，字段由 `scripts/workpaper.py` 校验。事实保存原值、单位、期间、实体、范围、准则、证据位置；计算引用事实 ID 或前序计算 ID。脚本做算术，模型解释。没有对应数据就标 `missing`/`null`，不能填零或凭记忆补数。
 
 基础运算由 `scripts/calculate.py` 执行。平均资产/权益需要真实期初期末；零分母、亏损增长、负权益和不等长期间不能正常排名。公司披露加权 ROE 与自行算的平均权益 ROE 分列。FCF、EBITDA、扣非及机构信用指标各有定义，不以相同名字混用。
+
+已核或明确假设的线性评分区间按[形成程序11.1](references/corporate-credit.md#111-保留可以逐步复核的形成过程)调用 `scripts/score_bounds.py`，保留精确端点、开闭、已知权重和未决项。未建立独立可行关系时不声称精确合成范围；脚本不选择档位、补内部权重或映射评级。
 
 情景、面板和回收按相应参考调用脚本，保存输入快照、方法/依赖版本、假设、逐期结果及限制。预测与历史、已落实和计划融资、实际与假设支持分别表达；压力结果不能直接当会计应计减值或实际违约概率。
 
