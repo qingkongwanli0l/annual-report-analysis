@@ -19,6 +19,8 @@ cd annual-report-analysis
 
 将技能目录复制到项目 `.agents/skills/annual-report-analysis/` 或 `.dsh/skills/annual-report-analysis/`。这里指官方 [deepseek-ai/deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)，不是任意接入 DeepSeek 模型的第三方聊天界面。技能发现方式见其[技能子系统说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.md)。模型访问与工具执行由宿主配置。
 
+这里的项目目录是从运行目录向上找到的最近含 `.git` 的目录；没有 Git 根目录时才使用当前运行目录。应将技能放在该根目录下，放入普通子目录的 `.agents/skills` 不会成为独立项目技能。手动读取 `SKILL.md` 不等于已被宿主发现。
+
 ## ChatGPT 与 Codex
 
 仓库提供 `.codex-plugin/plugin.json`，引用同一 `skills/`，不依赖 MCP 服务。`.agents/plugins/marketplace.json` 将仓库根目录登记为本地插件来源。安装了 Codex CLI 的用户可在仓库目录注册并检查来源：
