@@ -23,16 +23,18 @@ cd annual-report-analysis
 
 ## ChatGPT 与 Codex
 
-仓库提供 `.codex-plugin/plugin.json`，引用同一 `skills/`，不依赖 MCP 服务。`.agents/plugins/marketplace.json` 将仓库根目录登记为本地插件来源。安装了 Codex CLI 的用户可在仓库目录注册并检查来源：
+仓库提供 `.codex-plugin/plugin.json`，引用同一 `skills/`，不依赖 MCP 服务。`.agents/plugins/marketplace.json` 将仓库根目录登记为本地插件来源。安装了 Codex CLI 的用户可在仓库目录注册来源、安装并检查状态：
 
 ```bash
 codex plugin marketplace add .
 codex plugin list --marketplace annual-report-analysis-local --available --json
+codex plugin add annual-report-analysis@annual-report-analysis-local --json
+codex plugin list --marketplace annual-report-analysis-local --json
 ```
 
-随后重启支持本地来源的 ChatGPT 桌面应用，在插件目录选择“企业年报分析（开发版）”来源并安装 `annual-report-analysis`，再在新会话中调用技能。Codex 也可将整个技能目录放到支持的项目或个人技能位置。参考官方[打包说明](https://developers.openai.com/plugins/build/plugins)与[构建技能说明](https://learn.chatgpt.com/docs/build-skills)。
+`plugin add` 完成本地安装；`plugin list` 应显示 `installed: true` 和 `enabled: true`。也可重启支持本地来源的 ChatGPT 桌面应用，在插件目录选择“企业年报分析（开发版）”来源并安装 `annual-report-analysis`，再在新会话中调用技能。Codex 也可将整个技能目录放到支持的项目或个人技能位置。参考官方[打包说明](https://developers.openai.com/plugins/build/plugins)与[构建技能说明](https://learn.chatgpt.com/docs/build-skills)。
 
-上述来源注册及插件发现已在 Codex CLI 0.160.0 验证；它们不等于已安装或已经执行，也不代表插件已上架公共目录或可在网页端直接安装。
+上述来源注册、插件安装及启用状态已在 Codex CLI 0.160.0 验证（2026-10-04）；安装副本的必要文件与来源逐一核对一致。本地安装不等于 ChatGPT 已加载或已经执行，也不代表插件已上架公共目录或可在网页端直接安装。
 
 完整三文件工作流需要宿主具备文件读取、Python/Node 脚本执行和文件交付能力。发现或读取技能本身不能证明这些能力可用；ChatGPT 原生完整工作流尚未完成实测。
 
