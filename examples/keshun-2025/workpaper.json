@@ -17,7 +17,7 @@
     ],
     "limitations": [
       "公开资料分析，不构成审计；未执行函证、盘点、穿行测试、凭证抽查、管理层访谈或合同原件核验。",
-      "2025年报PDF第1—92、97—245页完成文本阅读；第93—96页未读未用。视觉复核选页另见覆盖证据，不声称全文视觉审阅。",
+      "2025年报PDF第1—245页完成文本阅读；视觉复核仅为覆盖证据所列选页，包括补读的第83、95—96页，不声称全文视觉审阅。外部机构历史评级与本次研究判断分列，未作为因素输入或等级校准目标。",
       "2023年同控重述摘要及部分期初/期末余额可核，完整盈利、利息等细项仍缺；2024原年报的2023明细保留原范围，不能据其补齐同口径指标。",
       "2026一季报未经审计；对比季报未统一作横琴同控重述，不按季度数据年度化。",
       "没有完整同控重述三年细项；财务两年30/70和最新周期输入是明确研究适配，缺明细不等于原文仅存在近两年报表数据。",
@@ -385,7 +385,7 @@
       "id": "ks_a_e_coverage",
       "source": "ks_a_s_25",
       "locator": "PDF页码与印刷页码一致",
-      "observation": "文本实际覆盖第1—92、97—245页；不使用第93—96页。选定表格46页提取矩阵；视觉读第114、119、125、128、185、208、209、210页；其余为文本及矩阵核读。2024补充只读第10、116—124、127—130、164、184、191、192、194、195、203、208—210页，未声称阅读全文。2026Q1全部12页文本已读。内控审计4页、自评11页、政策变更2页全部文本已读；募集资金鉴证11页，其中第10、11页为扫描图视觉阅读。 追加独立视觉复读2025第168页、2024第210页；补流归还及续作公告全部2页和6页已读。 2024年报第126、131—134页后续补读，含原2023合并权益变动表。",
+      "observation": "文本实际覆盖第1—245页；第93—96页债券发行、存续变动、偿债安排及指标已补读，第83页项目效益及第95—96页指标另经图像核对。第95页外部评级仅记录机构历史结论，不作为本研究因素得分或等级校准目标。选定表格46页提取矩阵；视觉读第114、119、125、128、185、208、209、210页；其余为文本及矩阵核读。2024补充只读第10、116—124、127—130、164、184、191、192、194、195、203、208—210页，未声称阅读全文。2026Q1全部12页文本已读。内控审计4页、自评11页、政策变更2页全部文本已读；募集资金鉴证11页，其中第10、11页为扫描图视觉阅读。 追加独立视觉复读2025第168页、2024第210页；补流归还及续作公告全部2页和6页已读。 2024年报第126、131—134页后续补读，含原2023合并权益变动表。",
       "reliability": "覆盖记录，阅读范围可由抽取文件及实际源页追溯；非审计保证"
     },
     {
@@ -441,7 +441,7 @@
       "id": "ks_a_e_audit",
       "source": "ks_a_s_25",
       "locator": "第97—101页，审计报告",
-      "observation": "致同出具无保留意见；收入确认，以及应收账款、合同资产和其他非流动资产中的合同资产减值这两项关键审计事项的审计程序由审计师实施，不作为本分析已实施程序。审计意见不保证无任何错报或未来偿债。",
+      "observation": "致同出具无保留意见；收入确认，以及应收账款、合同资产和其他非流动资产中的合同资产减值这两项关键审计事项的审计程序由审计师实施，不作为本分析已实施程序。审计意见不保证无任何错报或未来偿债。 第100页明确财报审计意见不涵盖年报其他信息，亦不对其发表鉴证结论；审计师称就其他信息无事项需报告，不等于对第95页未来偿债安排作出保证。",
       "reliability": "发行人正式披露；财务报表经审计，但本分析未复做审计程序"
     },
     {
@@ -1689,6 +1689,34 @@
       "locator": "PDF193企业所得税应付；203利息及其他收益；205–206当期/递延所得税与其他经营收现分项",
       "observation": "2025合并亏损仍有当期所得税58,386,629.64；所得税期末应付14,216,594.91；其他经营收现含利息、补助及手续费与保证金/受限资金/员工还款等不同性质。",
       "reliability": "公开经审计年报；未来支付和收益确认按明示条件，不证明未来可收回或可抵扣。"
+    },
+    {
+      "id": "ks_a_e_bond_metrics",
+      "source": "ks_a_s_25",
+      "locator": "第95—96页，第七节第八项，近两年主要会计数据和财务指标，含跨页续表",
+      "observation": "发行人列示2025/2024的流动比率、资产负债率、速动比率、EBITDA全部债务比、利息保障倍数、现金利息保障倍数、EBITDA利息保障倍数、贷款偿还率和利息偿付率，原值单列。扣非净利润以万元保留两位小数，与本底稿原元值舍入一致；续表表头仍写期末/上年末，但利息及偿付率为年度指标。该段未给出全部债务、利息及现金保障的具体公式或偿付率总体，不能按名称直接等同研究指标。",
+      "reliability": "发行人正式年报披露；按原表记录，不等于本研究独立验证全部指标定义或逐笔履约；本节属于年报其他信息，财报无保留审计意见不覆盖该节或保证指标公式"
+    },
+    {
+      "id": "ks_a_e_bond_repayment_claim",
+      "source": "ks_a_s_25",
+      "locator": "第93—95页，可转债发行、无担保、存续变动；第95页四、6（3）及五至七项",
+      "observation": "第93—94页发行与挂牌、无担保、面值变动及转股价与既有债项记录一致。第95页管理层称综合授信充足、融资快速有效、内生经营现金稳定、募投实施提升盈利，遇回售、赎回或到期可通过自有资金及融资支付本息；同时将大额亏损主要归因于减值并称对生产经营无重大影响。年末除债券外有息债逾期项列不适用，报告期违反规章制度项列否。这是管理层陈述，尚未以银行、合同和项目现金逐笔验证；无担保不表示没有发行人付款责任。 第五项标题为亏损超过上年末净资产10%，正文列归母净利润-535,342,762.09元、占2025年末公司净资产13.49%；正文期间与标题不同，且公司净资产未在该行明示归母/总权益。",
+      "reliability": "发行人管理层公开陈述；与资金可达性、授信条件、项目进度及实际偿付分别核对；第100页其他信息说明不对未来偿债安排提供审计鉴证"
+    },
+    {
+      "id": "ks_a_e_external_rating_2025",
+      "source": "ks_a_s_25",
+      "locator": "第95页四、6（2），本年度可转债资信评级",
+      "observation": "年报引述联合资信2025-06-24跟踪报告（联合〔2025〕5318号）：主体长期信用等级AA、科顺转债AA、展望稳定。这里只记录年报中的历史外部评级事实；不是本研究截止日评级、因素输入、方法校准值或对条件建议的替代。",
+      "reliability": "年报对外部机构历史结论的引述；本条未独立复核该2025评级报告全文"
+    },
+    {
+      "id": "ks_a_e_project_reported_benefits",
+      "source": "ks_a_s_25",
+      "locator": "第83页募集资金承诺投资项目表，四项建设/升级项目及补流行；表格图像核对",
+      "observation": "安徽滁州、福建三明、重庆长寿扩产及智能化升级四行，本报告期实现效益和累计实现效益均明列0，预定可使用日期均2028-12-31，是否达到预计效益均列否。补充流动资金另列，其是否达到预计效益为不适用；不能由四项项目效益零推断全部募投资金未产生任何融资成本节约或经营帮助，也不能将这些未披露的帮助当已量化偿债来源。",
+      "reliability": "发行人项目表原披露，不是本研究独立审计项目收益；零为表列值，未将空白替零"
     }
   ],
   "facts": [
@@ -22819,6 +22847,443 @@
       ],
       "state": "reported",
       "note": "公开季报未经审计；并未披露所得税应付或其他应收款可回收分项。"
+    },
+    {
+      "id": "ks_a_reported_current_ratio_2025",
+      "label": "发行人披露流动比率",
+      "concept": "reported_current_ratio",
+      "value": "1.40",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_current_ratio_2024",
+      "label": "发行人披露流动比率",
+      "concept": "reported_current_ratio",
+      "value": "1.62",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_liability_ratio_2025",
+      "label": "发行人披露资产负债率",
+      "concept": "reported_liability_ratio",
+      "value": "67.32",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_liability_ratio_2024",
+      "label": "发行人披露资产负债率",
+      "concept": "reported_liability_ratio",
+      "value": "64.18",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_quick_ratio_2025",
+      "label": "发行人披露速动比率",
+      "concept": "reported_quick_ratio",
+      "value": "1.26",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_quick_ratio_2024",
+      "label": "发行人披露速动比率",
+      "concept": "reported_quick_ratio",
+      "value": "1.47",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_ebitda_debt_ratio_2025",
+      "label": "发行人披露EBITDA全部债务比",
+      "concept": "reported_ebitda_debt_ratio",
+      "value": "-2.53",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_ebitda_debt_ratio_2024",
+      "label": "发行人披露EBITDA全部债务比",
+      "concept": "reported_ebitda_debt_ratio",
+      "value": "4.78",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_interest_cover_2025",
+      "label": "发行人披露利息保障倍数",
+      "concept": "reported_interest_cover",
+      "value": "-4.95",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_interest_cover_2024",
+      "label": "发行人披露利息保障倍数",
+      "concept": "reported_interest_cover",
+      "value": "1.43",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_cash_interest_cover_2025",
+      "label": "发行人披露现金利息保障倍数",
+      "concept": "reported_cash_interest_cover",
+      "value": "10.73",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_cash_interest_cover_2024",
+      "label": "发行人披露现金利息保障倍数",
+      "concept": "reported_cash_interest_cover",
+      "value": "7.92",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_ebitda_interest_cover_2025",
+      "label": "发行人披露EBITDA利息保障倍数",
+      "concept": "reported_ebitda_interest_cover",
+      "value": "-2.12",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_ebitda_interest_cover_2024",
+      "label": "发行人披露EBITDA利息保障倍数",
+      "concept": "reported_ebitda_interest_cover",
+      "value": "4.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_loan_repayment_rate_2025",
+      "label": "发行人披露贷款偿还率",
+      "concept": "reported_loan_repayment_rate",
+      "value": "100.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_loan_repayment_rate_2024",
+      "label": "发行人披露贷款偿还率",
+      "concept": "reported_loan_repayment_rate",
+      "value": "100.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_interest_payment_rate_2025",
+      "label": "发行人披露利息偿付率",
+      "concept": "reported_interest_payment_rate",
+      "value": "100.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_interest_payment_rate_2024",
+      "label": "发行人披露利息偿付率",
+      "concept": "reported_interest_payment_rate",
+      "value": "100.00",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；指标公式未披露，未与研究口径等同",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_metrics"
+      ],
+      "state": "reported",
+      "note": "原表百分数按scale=0.01换算，倍数按原值；比较列保留年报原披露，不自行推定公式或重述调整。"
+    },
+    {
+      "id": "ks_a_reported_loss_equity_2025",
+      "label": "发行人披露归母亏损占2025年末净资产比例",
+      "concept": "reported_loss_equity",
+      "value": "13.49",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "2025年报债券章节发行人披露；比例期间及权益范围按原文保留",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_bond_repayment_claim"
+      ],
+      "state": "reported",
+      "note": "第95页第五项标题为亏损超过上年末净资产10%，正文比例为占2025年末净资产13.49%；分别保留，不替公司改为同一期间。"
     }
   ],
   "calculations": [
@@ -33999,6 +34464,402 @@
       "period_rule": "comparison",
       "denominator": "positive",
       "multiplier": "-1"
+    },
+    {
+      "id": "ks_a_ebitda_liab_comparison_2024",
+      "label": "EBITDA/总负债一致性对照",
+      "concept": "ebitda_liab_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_liab_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "既有研究EBITDA/期末总负债；仅比较结果与发行人EBITDA全部债务比的舍入一致性，不认定公司以总负债定义全部债务。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebitda_debt_comparison_2024",
+      "label": "EBITDA/研究广义利息债",
+      "concept": "ebitda_debt_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_debt_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "既有研究EBITDA/本底稿广义利息债；分母包括全部应付票据，具体组成沿用债务调整桥，不与发行人未说明公式的全部债务等同。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebitda_expinterest_comparison_2024",
+      "label": "EBITDA/费用化利息一致性对照",
+      "concept": "ebitda_expinterest_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_interest_exp_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "definition": "既有研究EBITDA/费用化利息；与公司保障倍数接近只说明该候选分母可解释舍入结果。研究全部利息保障另含资本化利息，未被替换。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebit_expinterest_comparison_2024",
+      "label": "EBIT/费用化利息一致性对照",
+      "concept": "ebit_expinterest_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebit_2024",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_interest_exp_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "definition": "税前利润加费用化利息后除以费用化利息；只作公司利息保障倍数的算术一致性对照，不据匹配确认公司公式。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebitda_liab_comparison_2025",
+      "label": "EBITDA/总负债一致性对照",
+      "concept": "ebitda_liab_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_liab_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "既有研究EBITDA/期末总负债；仅比较结果与发行人EBITDA全部债务比的舍入一致性，不认定公司以总负债定义全部债务。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebitda_debt_comparison_2025",
+      "label": "EBITDA/研究广义利息债",
+      "concept": "ebitda_debt_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_debt_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "既有研究EBITDA/本底稿广义利息债；分母包括全部应付票据，具体组成沿用债务调整桥，不与发行人未说明公式的全部债务等同。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebitda_expinterest_comparison_2025",
+      "label": "EBITDA/费用化利息一致性对照",
+      "concept": "ebitda_expinterest_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebitda_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_interest_exp_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "definition": "既有研究EBITDA/费用化利息；与公司保障倍数接近只说明该候选分母可解释舍入结果。研究全部利息保障另含资本化利息，未被替换。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_ebit_expinterest_comparison_2025",
+      "label": "EBIT/费用化利息一致性对照",
+      "concept": "ebit_expinterest_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_ebit_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_interest_exp_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "definition": "税前利润加费用化利息后除以费用化利息；只作公司利息保障倍数的算术一致性对照，不据匹配确认公司公式。",
+      "interpretation": "负分子显示会计盈利未覆盖该分母，不包装为正常覆盖。负EBITDA下扩大分母使比率趋近零，不代表偿债改善；不同定义的负比率不据数值大小排序。舍入匹配不能证明发行人公式，不直接改变既有评级因素。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_loss_closing_parent_comparison",
+      "label": "本期归母亏损金额/期末归母权益",
+      "concept": "loss_closing_parent_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_ownerequity_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "将本期已披露归母净亏损取负后除以期末归母权益；期初对照的rollforward仅界定期初余额与本期流量的运算窗口，不将期初值改为期末余额。",
+      "interpretation": "用于区分第95页标题的上年末与正文的本年末净资产口径，四种比较不互换；不从原文口径差异直接推定错报或评级调整。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_a_loss_closing_total_comparison",
+      "label": "本期归母亏损金额/期末总权益",
+      "concept": "loss_closing_total_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_equity_2025",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "将本期已披露归母净亏损取负后除以期末总权益；期初对照的rollforward仅界定期初余额与本期流量的运算窗口，不将期初值改为期末余额。",
+      "interpretation": "用于区分第95页标题的上年末与正文的本年末净资产口径，四种比较不互换；不从原文口径差异直接推定错报或评级调整。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_a_loss_opening_parent_comparison",
+      "label": "本期归母亏损金额/期初归母权益",
+      "concept": "loss_opening_parent_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_ownerequity_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "将本期已披露归母净亏损取负后除以期初归母权益；期初对照的rollforward仅界定期初余额与本期流量的运算窗口，不将期初值改为期末余额。",
+      "interpretation": "用于区分第95页标题的上年末与正文的本年末净资产口径，四种比较不互换；不从原文口径差异直接推定错报或评级调整。",
+      "period_rule": "rollforward",
+      "denominator": "positive",
+      "multiplier": "-1"
+    },
+    {
+      "id": "ks_a_loss_opening_total_comparison",
+      "label": "本期归母亏损金额/期初总权益",
+      "concept": "loss_opening_total_comparison",
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "ks_a_parentincome_2025",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_equity_2024",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "中国企业会计准则；2025年报披露及同控重述口径",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "将本期已披露归母净亏损取负后除以期初总权益；期初对照的rollforward仅界定期初余额与本期流量的运算窗口，不将期初值改为期末余额。",
+      "interpretation": "用于区分第95页标题的上年末与正文的本年末净资产口径，四种比较不互换；不从原文口径差异直接推定错报或评级调整。",
+      "period_rule": "rollforward",
+      "denominator": "positive",
+      "multiplier": "-1"
     }
   ],
   "reconciliations": [
@@ -35289,6 +36150,39 @@
       "changes_if": "拿到账面至合同本金的逐笔调节、债权人和到期日，并确认背书追索及供应商融资性质后重算债务、短债覆盖和融资缺口。"
     },
     {
+      "id": "ks_a_find_reported_debt_metrics",
+      "title": "发行人偿债指标与研究定义分列",
+      "question": "年报债券章节的同名指标是否与研究计算可直接比较？",
+      "conclusion": "发行人2025/2024 EBITDA全部债务比分别为{{ks_a_reported_ebitda_debt_ratio_2025}}、{{ks_a_reported_ebitda_debt_ratio_2024}}，EBITDA利息保障分别为{{ks_a_reported_ebitda_interest_cover_2025}}、{{ks_a_reported_ebitda_interest_cover_2024}}。研究2025 EBITDA/广义利息债为{{ks_a_ebitda_debt_comparison_2025}}，EBITDA/全部利息为{{ks_a_ebitda_interest_2025}}；差异需先核定义，不能据指标名称互相替换。",
+      "mechanism": "用既有金额计算，2025/2024 EBITDA/总负债为{{ks_a_ebitda_liab_comparison_2025}}、{{ks_a_ebitda_liab_comparison_2024}}，EBITDA/费用化利息为{{ks_a_ebitda_expinterest_comparison_2025}}、{{ks_a_ebitda_expinterest_comparison_2024}}，EBIT/费用化利息为{{ks_a_ebit_expinterest_comparison_2025}}、{{ks_a_ebit_expinterest_comparison_2024}}，舍入后分别与发行人对应指标一致。这是候选分母的一致性解释，不是公司公式已获确认。现金利息保障{{ks_a_reported_cash_interest_cover_2025}}及两年偿还/付息率原值保留，未用合计利息现金、分红现金或某一应计利息拼出相同结果。负盈利与报告期偿付完成可以并存，历史偿付率不证明未来付款资金充足。 同页亏损比例原文{{ks_a_reported_loss_equity_2025}}与本期亏损/期末归母权益{{ks_a_loss_closing_parent_comparison}}舍入一致；期末总权益对照为{{ks_a_loss_closing_total_comparison}}，标题上年末口径的归母/总权益对照为{{ks_a_loss_opening_parent_comparison}}、{{ks_a_loss_opening_total_comparison}}。两种期初口径均超过标题10%门槛，但不能用期末比例冒充期初比例；原文期间和权益范围说明仍需澄清，不据此认定亏损金额错误。",
+      "status": "supported",
+      "evidence": [
+        "ks_a_e_bond_metrics",
+        "ks_a_e_external_rating_2025",
+        "ks_a_ebitda_liab_comparison_2024",
+        "ks_a_ebitda_debt_comparison_2024",
+        "ks_a_ebitda_expinterest_comparison_2024",
+        "ks_a_ebit_expinterest_comparison_2024",
+        "ks_a_ebitda_liab_comparison_2025",
+        "ks_a_ebitda_debt_comparison_2025",
+        "ks_a_ebitda_expinterest_comparison_2025",
+        "ks_a_ebit_expinterest_comparison_2025",
+        "ks_a_ebitda_interest_2025",
+        "ks_a_ebitda_interest_2024",
+        "ks_a_e_bond_repayment_claim",
+        "ks_a_loss_closing_parent_comparison",
+        "ks_a_loss_closing_total_comparison",
+        "ks_a_loss_opening_parent_comparison",
+        "ks_a_loss_opening_total_comparison"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "公司指标可能采用总负债或不同利息定义，亦可能有未列调节；相同舍入结果不足以在这些解释中唯一择一。",
+        "年报另引述的2025年外部AA/稳定与本次条件研究建议分开；不以该外部等级消除当前资金、历史口径及持续承诺限制。"
+      ],
+      "changes_if": "取得公司指标计算表、全部债务/利息组成及贷款偿付总体后，逐项桥接至研究口径并解释差异；若涉及实际债务漏项、资金受限或逾期，再更新对应因素和付款情景。仅完成舍入对照不变更既有条件等级。"
+    },
+    {
       "id": "ks_a_find_supplier",
       "title": "供应商融资与现金分类",
       "question": "供应商融资是否重复计债或掩盖营运资金压力？",
@@ -35942,7 +36836,7 @@
       "title": "项目延期压缩偿债前的投产回收窗口，临时补流归还须单独排期",
       "question": "投入进度如何传导至未来支付及评级条件？",
       "conclusion": "2025末四项建设升级的累计募集投入比例{{ks_project_c_project_ratio}}；未投入计划额度{{ks_project_c_project_remaining}}不是即期负债。四项预定可使用日均延至2028-12-31，与2029-08-03合同到期相隔215个自然日；可使用不等于满产、收款或已获处置价。2026-01-09新一期临时补流批准不超过12个月且项目需要时提前归还，不能因项目延期而把该用途义务推迟至2028年。",
-      "mechanism": "需求较弱→放慢投资可减少近期资本支出，却可能使新产能经营回款晚于债项支付；建设计划恢复→先需资金及营运周转→需将暂时补流从一般经营资金中恢复用途→先查母公司可调度现金。尚未投入额度、临时补流恢复用途与债券本金不是三笔可相加的外部债务。源表38.82%包括永久补流，不能证明项目已接近四成完工。",
+      "mechanism": "需求较弱→放慢投资可减少近期资本支出，却可能使新产能经营回款晚于债项支付；建设计划恢复→先需资金及营运周转→需将暂时补流从一般经营资金中恢复用途→先查母公司可调度现金。尚未投入额度、临时补流恢复用途与债券本金不是三笔可相加的外部债务。源表38.82%包括永久补流，不能证明项目已接近四成完工。 年报第95页称募投实施已提升盈利、稳定经营现金及自有资金和融资可支付回售/赎回/到期本息；与上述实际投入、延期和资金恢复条件对照，该主张尚不能替代按法人及付款日验证的偿债来源，投入比例也不能作为项目利润或完工率的反证。 第83页四项建设/升级项目当期及累计效益均明列零，是对项目贡献的直接披露；补流项目及全部资金用途的影响范围不同，不能据此认定上述总体主张虚假，但新增项目盈利尚未由该表支持。需说明具体收益、时点及法人并与现金预算衔接。",
       "status": "conditional",
       "evidence": [
         "ks_project_e_progress",
@@ -35950,7 +36844,10 @@
         "ks_project_e_tracking",
         "ks_d_e_fund_new",
         "ks_d_e_issue_coupon",
-        "ks_d_e_maturity_call"
+        "ks_d_e_maturity_call",
+        "ks_a_e_bond_repayment_claim",
+        "ks_a_e_project_reported_benefits",
+        "ks_a_e_audit"
       ],
       "counterevidence": [
         "ks_project_e_schedule",
@@ -36130,7 +37027,7 @@
       "title": "未用借款与授信披露冲突，融资落实条件待核",
       "question": "年末披露额度能否支持付款日的再融资假设？",
       "conclusion": "年报未用银行借款额度{{ks_a_undrawn}}，跟踪报告同称2025年底的银行授信总额{{ks_credit_facility_total}}、未用{{ks_credit_facility_undrawn}}。未用披露名义差额{{ks_credit_facility_gap}}，尚未解释。两来源用词不同只是待核线索，不能据此称口径已对齐，任何一项也未作为已落实现金计入。",
-      "mechanism": "按同一法人、银行及产品对应总额、已用、未用、共享或循环额度，核抵质押、保证金、财务约束、提款前提、撤销权和有效期，再将真正可用金额匹配付款日。综合授信可能包含票据、保函或其他产品，年报借款额度也可能有不同总体；这些是候选解释，不是已查明原因。现有再融资研究分5.0/4.5及加权4.65仅保留为原条件分支，金额冲突未关闭前不能证明这一赋值或BBB+资金前提充分，也不因缺资料任意另给分。",
+      "mechanism": "按同一法人、银行及产品对应总额、已用、未用、共享或循环额度，核抵质押、保证金、财务约束、提款前提、撤销权和有效期，再将真正可用金额匹配付款日。综合授信可能包含票据、保函或其他产品，年报借款额度也可能有不同总体；这些是候选解释，不是已查明原因。现有再融资研究分5.0/4.5及加权4.65仅保留为原条件分支，金额冲突未关闭前不能证明这一赋值或BBB+资金前提充分，也不因缺资料任意另给分。 年报第95页管理层称授信充足、可快速融资且自有资金及融资足以偿付；这与已披露季度融资形成支持线索，但未解决两个额度总体及合同可提用条件的差异。",
       "status": "unresolved",
       "evidence": [
         "ks_a_e_maturity",
@@ -36138,7 +37035,8 @@
         "ks_credit_facility_gap"
       ],
       "counterevidence": [
-        "ks_a_e_q1"
+        "ks_a_e_q1",
+        "ks_a_e_bond_repayment_claim"
       ],
       "alternatives": [
         "一季度实际新增借款证明当季有融资发生，但不能证明六月以后的未用额度、提款条件或母公司付款能力。",
@@ -36242,30 +37140,45 @@
     {
       "id": "ks_a_proc_cfo",
       "finding": "ks_a_find_cfo",
-      "purpose": "公开原件核验与计算重现",
+      "purpose": "重算公开直接法及间接法经营现金、现金期初期末桥和投入/分配后现金余量",
       "assertions": [
         "准确性",
         "列报",
         "范围与截止"
       ],
-      "population": "已登记公开PDF及指定页面",
-      "selection": "对本发现相关主表、附注及异常表格定向核读",
+      "population": "2025年报第111—113页现金流量表及第208—209页补充资料的2025/2024两列；相关资本开支、分红及现金余额原值",
+      "selection": "两列现金流表和间接调节的已列项目全部算术重算，未取得交易明细总体或执行交易抽样",
       "steps": [
-        "抄录四表及现金补充资料的原符号和列期",
-        "使用既有calculate.evaluate重算加总、净额与滚动",
-        "保留原始输入和计算结果，未将未闭合项目调平"
+        "按原符号重算经营流入/流出小计、直接法CFO，并以净利润加减已披露调整重算间接法CFO，两列分别与报表CFO比较。",
+        "分别重算经营、投资、筹资净额加汇率的现金变动，以及期初现金等价物至期末桥；不将货币资金全部当作现金等价物。",
+        "依既有明示公式复算CFO扣现金资本开支及已分红后的余量；仅验证披露与算式的一致性，保留与本程序范围不同的附注差额和未获明细。"
       ],
       "status": "performed",
-      "result": "本次全部底稿勾稽的状态与残差见同源结果；现金、利润归属和权益及主要附注的已列算式已复算。应收准备符号与滁州在建两项原披露差异保留，不宣称所有附注均闭合。",
+      "result": "2025直接法 ks_a_recalc_cfo_2025 与间接法 ks_a_indirect_cfo_2025 均为{{ks_a_cfo_2025}}；2024对应两算式均为{{ks_a_cfo_2024}}，勾稽 ks_a_r_cfo_2025/2024 及 ks_a_r_indirect_cfo_2025/2024 残差为零。现金三类活动加汇率及期初期末桥分别见 ks_a_recalc_cashdelta_2025/2024、ks_a_cashbridge_2025/2024，对应 ks_a_r_cashdelta_2025/2024 和 ks_a_r_cash_2025/2024 残差为零。投入及分配后余量见 ks_a_fcf_2025、ks_a_fcf_after_div；这些复算不证明收付款真实性、持续经营口径或资金可达性。另列的 ks_a_r_arres、ks_a_r_chuzhou 及 ks_tax_r_candidate 差额仍未决，不属于本项现金加总已闭合的证明范围。",
       "evidence": [
-        "ks_a_e_bs",
-        "ks_a_e_is",
         "ks_a_e_cf",
+        "ks_a_e_indirect",
         "ks_a_e_equity",
-        "ks_a_e_indirect"
+        "ks_a_recalc_opcashin_2025",
+        "ks_a_recalc_opcashout_2025",
+        "ks_a_recalc_cfo_2025",
+        "ks_a_indirect_cfo_2025",
+        "ks_a_recalc_opcashin_2024",
+        "ks_a_recalc_opcashout_2024",
+        "ks_a_recalc_cfo_2024",
+        "ks_a_indirect_cfo_2024",
+        "ks_a_recalc_cashdelta_2025",
+        "ks_a_recalc_cashdelta_2024",
+        "ks_a_cashbridge_2025",
+        "ks_a_cashbridge_2024",
+        "ks_a_fcf_2025",
+        "ks_a_fcf_after_div",
+        "ks_a_ar_res_roll",
+        "ks_a_chuzhou_roll",
+        "ks_tax_candidate_residual"
       ],
       "performed_by": "公开资料研究分析",
-      "performed_on": "2026-10-03"
+      "performed_on": "2026-10-04"
     },
     {
       "id": "ks_a_proc_cip",
@@ -36366,21 +37279,30 @@
     {
       "id": "ks_a_pending_ar",
       "finding": "ks_a_find_ar",
-      "purpose": "底层事实进一步核验",
+      "purpose": "验证期末债权的可回收金额和现金时间，区分真实回款、非现金处置及融资支持收现",
       "assertions": [
-        "存在性",
-        "完整性",
-        "计价",
-        "权利义务"
+        "计价和分摊",
+        "存在性及权利",
+        "截止"
       ],
-      "population": "对应底层余额、合同、交易和期后事项",
-      "selection": "尚未取得总体，不预称已抽样",
+      "population": "尚未取得：期末按客户、合同和发票的债权余额及准备明细、原始账龄、期后收付款、重组/抵债和经销担保贷款完整台账；取得后先与已披露原值、准备和核销滚动核对总体",
+      "selection": "总体取得后优先覆盖单项计提、长账龄、大额风险客户、抵债重组和年末保证支持回款；再覆盖其余主要组合。按实际集中度和差错风险确定项目，不预称样本数量或已实施抽样",
       "steps": [
-        "客户逐笔期后银行收现、账龄及重组台账，单项和组合ECL参数、抵债估值及担保可执行证据。"
+        "将期末余额追至合同、交付/验收及结算权利，重建原始到期日和账龄；将银行收款逐笔追至该期末发票/债权，核付款人、付款日期及冲销分录，剔开新订单预收、集团内划转和与旧债无关的资金。",
+        "对年末经销贷款支持收现，联查银行放款、本公司收款、保证及期后还贷/退款，辨别由融资支持但真实结清的旧债与资金循环；不能仅凭保证余额从CFO扣减。",
+        "将非现金重组、抵债和核销逐笔接至原债权、协议及执行事实，核资产权属、可变现净额、税费和预计回收日期，避免将抵债入账额当作现金回款；对准备其他变动保留原负号并核其语义及总账。",
+        "用核实的期后收现和重组执行检验单项/组合ECL中的违约、回收率及时间假设；差异先区分披露符号、范围、真实漏损或现金延期，形成可复算的准备及回收时间修订。",
+        "将经证实的损失或可用资金变化分别接到资产质量/权益与逐月收现情景；同一损失不在准备、评级调整和现金重复扣减，资料不足部分保持未知，不预定下调幅度。"
       ],
       "status": "awaiting_data",
-      "result": "未实施；公开资料不足以替代函证、凭证、合同或现场验证。",
-      "evidence": [],
+      "result": "未实施底层核验；现有公开账龄、准备和经营应收调整已列示，不能据此证明每笔债权真实可收回或确定实际收款时间。",
+      "evidence": [
+        "ks_a_e_ar",
+        "ks_a_e_contract",
+        "ks_a_ar_res_roll",
+        "ks_credit_e_dealer_use",
+        "ks_credit_e_yearend_settlement"
+      ],
       "performed_by": null,
       "performed_on": null
     },
@@ -36492,42 +37414,60 @@
     {
       "id": "ks_a_pending_cip",
       "finding": "ks_a_find_cip",
-      "purpose": "底层事实进一步核验",
+      "purpose": "定位滁州一期在建滚动差额并判断是否影响资产、当期损益、资本化和后续资金需求",
       "assertions": [
-        "存在性",
-        "完整性",
-        "计价",
-        "权利义务"
+        "完整性及准确性",
+        "计价和分摊",
+        "分类及截止"
       ],
-      "population": "对应底层余额、合同、交易和期后事项",
-      "selection": "尚未取得总体，不预称已抽样",
+      "population": "尚未取得：滁州一期期初项目明细、全年增加/转固/其他减少及期末余额至总账的完整记录、验收资料、减值和资本化利息底稿",
+      "selection": "先针对原表其他减少与期末余额的全部差异定位；总体取得后选取影响资本化、转固时点及减值的主要/异常项目，不预设未获资料的样本数量",
       "steps": [
-        "滁州一期重要在建表各列至总账明细的完整桥、其他减少内容、转固验收及资本化利息计算。"
+        "将第185页各列逐项接至项目辅助账及总账，分别重建期初、增加、转固、其他减少、期末；把其他减少逐笔追至对应科目和凭证，查清是否重分类、处置、减值、重复列示或范围变化。",
+        "将工程支出和减少分别追至合同、工程量确认、验收及付款或非现金记录；空白转固栏仍待核，不当作已证明无转固，亦不为使表格闭合而改动原披露值。",
+        "按实际达到预定可使用状态的日期核转固、折旧及借款费用停止资本化；结合延期、闲置及项目现金流资料评价减值，并区分资本化应计支出和实际现金付款。",
+        "若仅为披露表列重复/范围错误，记录正确列报桥而不机械扣利润；若确认资产计量或期间错误，量化资产、损益和权益影响。将实付资本支出及剩余合同支付接到项目资金预算，避免与临时补流恢复用途重复计债。"
       ],
       "status": "awaiting_data",
-      "result": "未实施；公开资料不足以替代函证、凭证、合同或现场验证。",
-      "evidence": [],
+      "result": "未实施明细账及验收核验；公开原表差额仍未解释，不能将其认定为应扣减利润或新增债务。",
+      "evidence": [
+        "ks_a_e_fixed",
+        "ks_a_chuzhou_roll",
+        "ks_a_chuzhou_end",
+        "ks_project_e_progress",
+        "ks_project_e_schedule"
+      ],
       "performed_by": null,
       "performed_on": null
     },
     {
       "id": "ks_a_pending_tax",
       "finding": "ks_a_find_tax",
-      "purpose": "底层事实进一步核验",
+      "purpose": "检验重大DTA可利用性，并厘清递延税余额、损益、权益和现金的归属",
       "assertions": [
-        "存在性",
-        "完整性",
-        "计价",
-        "权利义务"
+        "计价和分摊",
+        "准确性",
+        "列报及期间归属"
       ],
-      "population": "对应底层余额、合同、交易和期后事项",
-      "selection": "尚未取得总体，不预称已抽样",
+      "population": "尚未取得：按纳税主体、税区和到期年度的已确认/未确认亏损及暂时性差异明细、申报税基、转回表、税率与优惠资格、应税利润预算及递延税分录",
+      "selection": "优先覆盖减值和已确认亏损DTA、期限临近或持续亏损主体，以及可转债权益相关DTL与现金流税调整差异；其余重大差异按总体和期限风险确定，不把未确认亏损到期表替代已确认总体",
       "steps": [
-        "按纳税主体未来应税利润预算、亏损到期表、可抵扣差异转回时点及优惠资格持续性。"
+        "按同一纳税主体及税区将期初/期末DTA和DTL接至税基及暂时性差异，拆出本期损益、权益、转股、合并范围及其他变动；核现金流补充资料税调整和其他项的实际分录，不将可转债期末DTL余额直接当本期权益流量。",
+        "将亏损发生及到期年度、差异预计转回、税率/优惠和抵扣限制追至申报与适用依据，区分已确认和未确认部分；不能以集团其他主体盈利或未证实税收合并抵扣补足本主体。",
+        "将各主体未来应税利润预算接到订单、经营预测、历史预算兑现及可用应税暂时性差异转回；按同一可抵扣期间逐项分配，防止一份未来应税利润重复支持亏损、减值等多个DTA。",
+        "对到期前利润不足、转回时点错配或优惠失效形成金额与时间敏感性，辨别确认、计量和归属差异；经证实减记时按其真实税务后果更新损益/权益，不再叠加同一假设税盾。",
+        "将实际可用抵扣及税款支付安排接到现金税预算；DTA余额和递延税收益不作可调度现金。以修订后的资本缓冲及现金时点评价评级因素，候选税桥小额残差本身不触发等级调整。"
       ],
       "status": "awaiting_data",
-      "result": "未实施；公开资料不足以替代函证、凭证、合同或现场验证。",
-      "evidence": [],
+      "result": "未实施纳税主体税基和盈利预算核验；公开余额、损益及候选权益桥可复算，但尚未证明全部DTA可实现或候选税流归属已闭合。",
+      "evidence": [
+        "ks_a_e_tax",
+        "ks_tax_e_balance",
+        "ks_tax_e_pl_cash",
+        "ks_tax_e_cas18",
+        "ks_tax_candidate_residual",
+        "ks_tax_cf_pl_gap"
+      ],
       "performed_by": null,
       "performed_on": null
     },
@@ -37098,6 +38038,7 @@
         "ks_credit_find_facilities",
         "ks_a_find_cfo",
         "ks_a_find_debt",
+        "ks_a_find_reported_debt_metrics",
         "ks_a_find_supplier",
         "ks_a_find_parent",
         "ks_a_find_scope_deals",
@@ -37137,7 +38078,30 @@
         "ks_credit_facility_gap",
         "ks_credit_dealer_top10",
         "ks_credit_dealer_june",
-        "ks_credit_guarantee_external_q1"
+        "ks_credit_guarantee_external_q1",
+        "ks_a_reported_current_ratio_2025",
+        "ks_a_reported_current_ratio_2024",
+        "ks_a_reported_liability_ratio_2025",
+        "ks_a_reported_liability_ratio_2024",
+        "ks_a_reported_quick_ratio_2025",
+        "ks_a_reported_quick_ratio_2024",
+        "ks_a_reported_ebitda_debt_ratio_2025",
+        "ks_a_reported_ebitda_debt_ratio_2024",
+        "ks_a_reported_interest_cover_2025",
+        "ks_a_reported_interest_cover_2024",
+        "ks_a_reported_cash_interest_cover_2025",
+        "ks_a_reported_cash_interest_cover_2024",
+        "ks_a_reported_ebitda_interest_cover_2025",
+        "ks_a_reported_ebitda_interest_cover_2024",
+        "ks_a_reported_loan_repayment_rate_2025",
+        "ks_a_reported_loan_repayment_rate_2024",
+        "ks_a_reported_interest_payment_rate_2025",
+        "ks_a_reported_interest_payment_rate_2024",
+        "ks_a_reported_loss_equity_2025",
+        "ks_a_loss_closing_parent_comparison",
+        "ks_a_loss_closing_total_comparison",
+        "ks_a_loss_opening_parent_comparison",
+        "ks_a_loss_opening_total_comparison"
       ]
     },
     {
