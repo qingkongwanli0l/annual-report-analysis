@@ -19,6 +19,33 @@ from workpaper import Workpaper
 
 
 class ExportTests(unittest.TestCase):
+    def test_long_reconciliation_basis_remains_complete_with_supported_row_heights(self):
+        raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
+        basis = '; '.join(f'{i}×original_source_cell_{i}; 千元整数取整假设，不代表审计重要性' for i in range(38)) + '\n\n保留末尾空格  '
+        raw['reconciliations'][0]['basis'] = basis
+        w = Workpaper.model_validate(raw)
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'workbook.xlsx'
+            workbook(w, prepare(w, evaluate(w)), path)
+            with ZipFile(path) as archive:
+                ns = {'x':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+                strings = [''.join(item.itertext()) for item in ET.fromstring(archive.read('xl/sharedStrings.xml'))]
+                sheets = ET.fromstring(archive.read('xl/workbook.xml')).find('x:sheets', ns)
+                exported = {s.get('name'): ET.fromstring(archive.read(f'xl/worksheets/sheet{i}.xml'))
+                            for i, s in enumerate(sheets, 1)}
+                for sheet in exported.values():
+                    for row in sheet.findall('x:sheetData/x:row', ns):
+                        self.assertLessEqual(float(row.get('ht', '15')), 409)
+                details = exported['TextDetails']
+                parts = [strings[int(cell.find('x:v', ns).text)] for row in details.findall('x:sheetData/x:row', ns)[1:]
+                         for cell in row.findall('x:c', ns) if cell.get('r').startswith('D')]
+                self.assertEqual(''.join(parts), w.reconciliations[0].basis)
+                main = exported['Reconciliations']
+                link = main.find("x:hyperlinks/x:hyperlink[@ref='H2']", ns)
+                self.assertEqual(link.get('location'), "'TextDetails'!D2")
+                self.assertIn('TextDetails!D2:', strings[int(main.find(".//x:c[@r='H2']/x:v", ns).text)])
+                self.assertIn('ABS(E2)<=F2', main.find(".//x:c[@r='G2']/x:f", ns).text)
+
     def test_cash_boundary_constraints_and_actual_bridges_are_visible(self):
         source = reverse_realized_case('unit_price')
         source['path_basis'] = 'counterfactual'

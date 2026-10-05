@@ -6,7 +6,7 @@ import re
 import subprocess
 import platform
 from datetime import datetime
-from decimal import Decimal
+from decimal import Decimal, getcontext
 from importlib.metadata import version
 from pathlib import Path
 
@@ -120,6 +120,7 @@ def workbook(w, data, path):
         percent = book.add_format({"num_format": "0.00%;[Red](0.00%)"})
         times = book.add_format({"num_format": '#,##0.00" 倍";[Red](#,##0.00" 倍")'})
         points = book.add_format({"num_format": '0.00" 个百分点";[Red](0.00" 个百分点")'})
+        text_details = []
 
         def sheet(name, headers, rows, widths=None):
             ws = book.add_worksheet(name)
@@ -127,16 +128,30 @@ def workbook(w, data, path):
             ws.freeze_panes(1, 2)
             ws.set_row(0, 32)
             for rowno, row in enumerate(rows, 1):
+                row_lines = []
                 for col, item in enumerate(row):
-                    ws.write(rowno, col, json.dumps(item, ensure_ascii=False) if isinstance(item, (dict, list)) else item, wrap)
-                if name in ("Readme", "Reconciliations") or name.endswith("Contracts"):
-                    lines = max(sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // ((widths[col] if widths else 28)-2)
-                                    for line in str(item).split("\n")) for col, item in enumerate(row))
-                    ws.set_row(rowno, 15 * lines + 3)
+                    value = json.dumps(item, ensure_ascii=False) if isinstance(item, (dict, list)) else item
+                    if name in ("Readme", "Reconciliations", "TextDetails") or name.endswith("Contracts"):
+                        lines = sum(1 + sum(2 if ord(char) > 255 else 1 for char in line) // ((widths[col] if widths else 28)-2)
+                                    for line in str(value).split("\n"))
+                        if lines > 26:
+                            first = len(text_details) + 2
+                            cell = f"{xl_col_to_name(col)}{rowno+1}"
+                            text_details.extend([name, cell, i, part] for i, part in enumerate(re.findall(r"[^\n]{1,800}\n?|\n", str(value)), 1))
+                            value = f"完整内容见 TextDetails!D{first}:D{len(text_details)+1}"
+                            ws.write_url(rowno, col, f"internal:'TextDetails'!D{first}", wrap, value)
+                            lines = 1 + sum(2 if ord(char) > 255 else 1 for char in value) // ((widths[col] if widths else 28)-2)
+                        else:
+                            ws.write(rowno, col, value, wrap)
+                        row_lines.append(lines)
+                    else:
+                        ws.write(rowno, col, value, wrap)
+                if row_lines:
+                    ws.set_row(rowno, 15 * max(row_lines) + 3)
             ws.autofilter(0, 0, max(1, len(rows)), len(headers)-1)
             for col in range(len(headers)):
                 ws.set_column(col, col, widths[col] if widths else 28)
-            if name in ("Readme", "Calculations", "Reconciliations"):
+            if name in ("Readme", "Calculations", "Reconciliations", "TextDetails"):
                 ws.set_landscape()
                 ws.set_paper(9 if name == "Readme" else 8)
                 ws.fit_to_pages(1, 0)
@@ -258,6 +273,8 @@ def workbook(w, data, path):
                   *([["execution", "已运行专门结果快照；本次导出未重新计算或校验。输入或方法改变后须重跑专门脚本并重新导出。"]]
                     if q.method not in ("operating_cash_scenario_v2", "pit_margin_persistence_v1", "single_entity_recovery_waterfall") else []),
                   *[[f.id, f"{f.label}；artifact.rows[{f.row}].{f.field}；{f.context.model_dump_json()}"] for f in q.figures]], [28,110])
+        if text_details:
+            sheet("TextDetails", ["来源工作表", "原单元格", "顺序", "完整内容（按顺序连接）"], text_details, [26, 14, 10, 110])
 
 
 def scenario_sheets(book, sheet, artifact, prefix, number):
@@ -684,7 +701,7 @@ def export(input_path, output_dir, node="node"):
     word(data, out / "report.docx")
     presentation = subprocess.run([node, str(Path(__file__).with_name("export_pptx.cjs")), str(out / "presentation-data.json"), str(out / "presentation.pptx")], check=True, stdout=subprocess.PIPE, text=True)
     manifest = {"version": w.mandate.version, "input_sha256": hashlib.sha256(raw).hexdigest(),
-                "export_environment": {"python": platform.python_version(),
+                "export_environment": {"python": platform.python_version(), "decimal_precision": getcontext().prec,
                     **{name: version(name) for name in ("pydantic", "python-docx", "XlsxWriter")},
                     **json.loads(presentation.stdout)},
                 "scripts_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest()
