@@ -477,6 +477,8 @@ class ExportTests(unittest.TestCase):
     def test_procedure_and_request_numbers_are_resolved_in_both_documents(self):
         raw = json.loads((Path(__file__).resolve().parents[1]/'examples/catl-2025/workpaper.json').read_text(encoding='utf-8'))
         raw['procedures'][0]['result'] = 'Cash bridge {{cfo_bridge}}'
+        raw['procedures'][0]['performed_by'] = 'Constructed procedure executor'
+        raw['procedures'][0]['performed_on'] = '2026-03-07'
         raw['requests'][0]['request'] = 'Explain {{cfo_bridge}}'
         w = Workpaper.model_validate(raw)
         data = prepare(w, evaluate(w))
@@ -489,6 +491,10 @@ class ExportTests(unittest.TestCase):
                     text = ' '.join(ET.fromstring(z.read(part)).itertext())
                 self.assertIn('Cash bridge 1,332.20', text)
                 self.assertIn('Explain 1,332.20', text)
+                self.assertIn('Constructed procedure executor', text)
+                self.assertIn('2026-03-07', text)
+                if file == 'report.docx':
+                    self.assertIn('状态 awaiting_data；执行者 未记录；执行日期 未记录', text)
                 self.assertNotIn('{{cfo_bridge}}', text)
         raw['procedures'][0]['result'] = 'Unknown {{typo_cfo_missing}}'
         w = Workpaper.model_validate(raw)

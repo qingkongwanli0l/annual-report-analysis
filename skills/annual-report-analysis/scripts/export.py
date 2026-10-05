@@ -662,7 +662,7 @@ def word(data, path):
         doc.add_heading("已执行程序与待核工作", 1)
     for p in data["procedures"]:
         doc.add_heading(f"{p['id']} {p['purpose']}", 2)
-        doc.add_paragraph(f"状态 {p['status']}；认定 {'、'.join(p['assertions'])}；总体 {p['population']}；选取 {p['selection']}。")
+        doc.add_paragraph(f"状态 {p['status']}；执行者 {p['performed_by'] or '未记录'}；执行日期 {p['performed_on'] or '未记录'}；认定 {'、'.join(p['assertions'])}；总体 {p['population']}；选取 {p['selection']}。")
         for step in p["steps"]:
             doc.add_paragraph(step)
         doc.add_paragraph(f"实际结果：{p['result']}；证据 {', '.join(p['evidence'])}。")
