@@ -47,6 +47,8 @@ description: Analyze annual reports and related disclosures to develop evidence-
 
 使用 [workpaper.md](references/workpaper.md) 的共同 JSON，字段由 `scripts/workpaper.py` 校验。事实保存原值、单位、期间、实体、范围、准则、证据位置；计算引用事实 ID 或前序计算 ID。脚本做算术，模型解释。没有对应数据就标 `missing`/`null`，不能填零或凭记忆补数。
 
+运行前核实实际使用的 Python/Node 和声明依赖；安装依赖与运行脚本使用同一解释器。所选环境缺依赖时，使用宿主已配的可用环境或在任务环境安装声明依赖，保留原错误及最终版本；不另写计算或导出实现替代现有脚本。明确权限拒绝后停止被拒绝的操作，不能切换工具完成同一写入。
+
 基础运算由 `scripts/calculate.py` 执行。平均资产/权益需要真实期初期末；零分母、亏损增长、负权益和不等长期间不能正常排名。公司披露加权 ROE 与自行算的平均权益 ROE 分列。FCF、EBITDA、扣非及机构信用指标各有定义，不以相同名字混用。
 
 数值因素按[形成程序11.1](references/corporate-credit.md#111-保留可以逐步复核的形成过程)调用 `scripts/score_bounds.py` 的 `numeric_band`，用底稿数值匹配原表阈值并保留完整分数区间；定性判断、已核区间及明确假设另作叶子。随后按已证线性规则合成，保留精确端点、开闭、已知权重和未决项。脚本不验证原表抄录、补内部权重或映射评级，未建立独立可行关系时不声称精确合成范围。

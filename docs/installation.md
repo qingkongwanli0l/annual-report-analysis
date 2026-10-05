@@ -42,6 +42,8 @@ codex plugin list --marketplace annual-report-analysis-local --json
 
 需要 Python 3.11+ 与 Node 18+。在可写仓库副本中安装依赖；托管插件缓存不可写时，复制到用户工作目录或使用宿主现成依赖。
 
+有多个 Python 环境时，安装依赖和运行脚本使用同一解释器；一个环境安装成功不会补齐另一环境。缺依赖先修复任务环境，不以另写计算器或导出器替代项目脚本。宿主明确拒绝写入时，先解决该操作的权限，不能改用其他工具写同一目标。
+
 ```bash
 python -m pip install -r skills/annual-report-analysis/requirements.txt
 npm install --prefix skills/annual-report-analysis
