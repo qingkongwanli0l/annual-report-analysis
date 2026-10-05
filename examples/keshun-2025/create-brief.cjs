@@ -41,7 +41,7 @@ async function main() {
   text(s, `${chain[0].issuer} / ${chain[0].outlook}展望`, 0.7, 1.55, 11.7, 1.05, 49, 'FFFFFF', true);
   text(s, '历史因素代表值下的主体与无担保债项条件分支', 0.7, 2.85, 11.7, 0.5, 23, 'D4E8E1');
   text(s, '以付款日前资金及用途安排足以覆盖为条件。历史毛现金流的范围调整、母公司未来资金及持续承诺后果尚待核实；模型数值尚不能证明实际付款覆盖。', 0.7, 3.65, 11.7, 1.28, 22, 'FFFFFF');
-  text(s, '采用境内相对信用尺度及联合公开方法的明示研究适配；不是联合资信评级行动。完整研究及底稿另附，本汇报只提炼影响决定的事项。', 0.7, 5.35, 11.7, 0.7, 15, 'D4E8E1');
+  text(s, `采用方法：${['ks_r_method','ks_r_principles','ks_r_support','ks_r_issue'].map(id => d.sources.find(source => source.id === id).title).join('；')}。\n采用境内相对信用尺度及明示研究适配；不是联合资信评级行动。完整研究及底稿另附。`, 0.7, 5.15, 11.7, 1.15, 13, 'D4E8E1');
 
   s = page('建议来自因素、调整、支持与债项的连续判断', ['ks_r_recommendation','ks_r_support_assessment','ks_r_adjustments']);
   card(s, 0.6, 1.45, 3.8, '经营风险', chain[0].business, `自身竞争力 ${value('ks_r_competitive_score')}`);
