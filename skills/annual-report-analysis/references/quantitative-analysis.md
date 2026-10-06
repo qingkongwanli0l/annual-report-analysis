@@ -19,7 +19,9 @@
 
 ## 2. 可复算的经营现金情景
 
-调用 `scripts/scenarios.py`，或在Python中调用 `scenarios.run(input_dict)`。当前方法为`operating_cash_scenario_v2`。各情景分别传入完整输入；结果保存原始输入快照、方法版本、假设来源、限制和每期中间金额。改变业务驱动后必须重新运行同一个计算函数。
+先核模型是否适配真实企业。工业模型不适配时，可按已形成的业务机制，用现有 `calculations` 表达金额与明确无量纲假设的条件现金来源用途。历史跨期或跨范围桥若不能由现有期间规则表达，保存实际已执行的原始输入、口径、算式、单位、期间、精度和结果，在 `quantitative` 记录执行快照，明确导出不自动重算该快照；未来参考代理另列为 `assumption`。原始数据改变时，先重做历史桥并更新未来参考假设，再计算和导出。不得为调用引擎伪造数量、成本分解、准则或期间，不得以 `forecast` 规则伪装历史桥，不得把金融业务工业化或未知填零。说明尚不能运行的范围及经济限制；算术、结构验证和数据准备成功不代表资金可达、完整预算或正式评级已核实。
+
+使用工业模型时调用 `scripts/scenarios.py`，或在Python中调用 `scenarios.run(input_dict)`。当前方法为`operating_cash_scenario_v2`。各情景分别传入完整输入；结果保存原始输入快照、方法版本、假设来源、限制和每期中间金额。改变业务驱动后必须重新运行同一个计算函数。
 
 ```text
 python scripts/scenarios.py scenario-input.json --output scenario-result.json

@@ -38,7 +38,7 @@ PDF提取默认保留页码与文本。`--tables`另外给出候选表的边界�
 | requests | 具体所需资料、结论影响、责任角色、关闭条件 |
 | sections | Word及详细PPT的主题和 findings/figures 引用；此处不再填第二套数值 |
 | presentation | 可选短稿页列表，每页仅 title、body、findings、figures；正文由研究者综合，数字仍引用共同底稿 |
-| quantitative | 场景/面板/回收脚本结果，输入事实和证据、假设、限制、方法、截至日及含输入快照的 artifact |
+| quantitative | 场景/面板/回收脚本结果或已执行的专门计算快照，输入事实和证据、假设、限制、方法、截至日及含输入快照的 artifact；源数据改变时须重做快照，导出不重新运行这些计算 |
 
 ### 先形成计算输入
 
@@ -82,7 +82,7 @@ PDF提取默认保留页码与文本。`--tables`另外给出候选表的边界�
 }
 ```
 
-余额 `aggregation=instant` 且 `start=null`。实际期间均值 `average`、比率 `ratio`、情景驱动 `assumption` 单独标识。`measure` 为 money/count/ratio/days；金额必须有币种，其他量纲币种为空，count必须填 `physical_unit`（如GWh、shares）。原披露“17.5%”可以写 `value="17.5", scale="0.01", measure="ratio"`；计算出的比率使用 scale=1。原币种不要猜测，跨币种转换需要单独的已取证汇率/换算底稿。
+原始时点余额事实使用 `aggregation=instant`、`start=null`，`end` 记录余额日期；余额滚动计算仍使用 `aggregation=instant`，`start` 记录桥的运算窗口、`end` 记录期末日期，结果仍是期末存量，不是期间流量。实际期间均值 `average`、比率 `ratio`、情景驱动 `assumption` 单独标识。`measure` 为 money/count/ratio/days；金额必须有币种，其他量纲币种为空，count必须填 `physical_unit`（如GWh、shares）。原披露“17.5%”可以写 `value="17.5", scale="0.01", measure="ratio"`；计算出的比率使用 scale=1。原币种不要猜测，跨币种转换需要单独的已取证汇率/换算底稿。
 
 合并总权益和归母权益、总净利润和归母利润即使同属合并表也具有不同经济概念，须按指标定义选取。程序只检查结构和部分口径一致性，不会代替这种会计判断。母公司使用不同 `scope`，银行监管口径与会计合并口径亦分开。
 
