@@ -178,6 +178,34 @@
       "locator": "PDF23/印刷22，表8财务风险完整表及两项注释；PDF19/印刷18加权步骤",
       "observation": "表8偿付能力下资本充足性二级权重50%、保险风险40%、盈利能力10%；资本充足性下净资产（亿元）50%、综合偿付能力充足率（%）25%、核心偿付能力充足率（%）25%，该三行对人身险及财产险合并列示。流动性二级权重100%，下属可快速变现资产/资产总额（%）60%、流动性覆盖率（%）40%。注1说明人身险/财产险其他三级因子及权重存在差异；注2再保险及集团等按核心业务确定适用性与权重。本例只以股份有限公司人身险原表标准权重形成资本参考区间。",
       "reliability": "直接读取方法扫描原页；原PDF SHA保留于本底稿来源记录；扫描页未提取出正文，不宣称已全文提取。"
+    },
+    {
+      "id": "e_cash_exec",
+      "source": "a25",
+      "locator": "PDF99–100/印刷97–98完整合并现金流量；PDF210/印刷208附注46(1)–(2)",
+      "observation": "年度经营/投资/筹资、净现金变化、现金构成和利润至CFO；合同负债变动不是自由现金。",
+      "reliability": "发行人正式原披露；本轮独立回读并计算。未确认底层交易、未披露拆分或内部模型。"
+    },
+    {
+      "id": "e_alm_exec",
+      "source": "a25",
+      "locator": "PDF150–151/印刷148–149完整期限表及两段脚注；PDF166/印刷164货币资金及存款限制",
+      "observation": "期限表包括金融项目及未采用PAA保险资产/负债，是现有保单预期未折现净现金、不含未来新业务；一年以内保险为净流入311631，非毛偿付。可随时要求偿还4691941。原页图像另核。",
+      "reliability": "发行人正式原披露；本轮独立回读并计算。未确认底层交易、未披露拆分或内部模型。"
+    },
+    {
+      "id": "e_rate_exec",
+      "source": "a25",
+      "locator": "PDF140/印刷138利率风险50bp敏感性完整段，至价格风险下一小节",
+      "observation": "发布的税前利润/OCI分别+17846/−13272及−48344/+403；不是本轮模型重新估值、税后资本或现金。",
+      "reliability": "发行人正式原披露；本轮独立回读并计算。未确认底层交易、未披露拆分或内部模型。"
+    },
+    {
+      "id": "e_cl_full_table_corrected",
+      "source": "a25",
+      "locator": "PDF150–151/印刷148–149完整五列期限表，17行，至两段脚注结束；PDF99–100/印刷97–98三类流入/流出小计及汇率；PDF166/210货币资金和现金等价物细项",
+      "observation": "完整原行金额、列名和符号已逐项列入本底稿事实及同年同桶描述性计算，定位见本项原年报页码。破折号按原披露保留、不替代缺失为零；全部实际列示金额进入各自同年同桶描述性合计。期限为金融及非PAA保险未折现合同/预期现金，保险为现有保单净现金、不含未来新业务。现金三类小计含净额项目。",
+      "reliability": "同SHA完整原页，独立静态文本及既有已封存原页视觉依据；不重估精算或动态现金模型。"
     }
   ],
   "facts": [
@@ -1011,6 +1039,2996 @@
       ],
       "state": "reported",
       "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。"
+    },
+    {
+      "id": "x_cl_cfo",
+      "label": "报告经营现金净额",
+      "concept": "x_cl_cfo",
+      "value": "459925",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_cfi",
+      "label": "报告投资现金净额",
+      "concept": "x_cl_cfi",
+      "value": "-547368",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_cff",
+      "label": "报告筹资现金净额",
+      "concept": "x_cl_cff",
+      "value": "144341",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_fx",
+      "label": "汇率对现金影响",
+      "concept": "x_cl_fx",
+      "value": "-30",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_cce_open",
+      "label": "现金等价物期初",
+      "concept": "x_cl_cce_open",
+      "value": "85505",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_cce_close",
+      "label": "现金等价物期末",
+      "concept": "x_cl_cce_close",
+      "value": "142373",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_cash_change_reported",
+      "label": "报告现金净增",
+      "concept": "x_cl_cash_change_reported",
+      "value": "56868",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_op_in",
+      "label": "经营现金流入小计",
+      "concept": "x_cl_op_in",
+      "value": "978259",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_op_out",
+      "label": "经营现金流出小计原符号",
+      "concept": "x_cl_op_out",
+      "value": "-518334",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_premium_cash",
+      "label": "收到保险合同保费现金",
+      "concept": "x_cl_premium_cash",
+      "value": "965054",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": "保费和合同变动不能替代保险服务收入或可分配现金。"
+    },
+    {
+      "id": "x_cl_claims_cash",
+      "label": "签发合同赔款现金原符号",
+      "concept": "x_cl_claims_cash",
+      "value": "-388817",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_ni",
+      "label": "合并净利润",
+      "concept": "x_cl_ni",
+      "value": "156552",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_contract_change_cf",
+      "label": "CFO桥合同负债及分出再保资产变动",
+      "concept": "x_cl_contract_change_cf",
+      "value": "644623",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": "保费和合同变动不能替代保险服务收入或可分配现金。"
+    },
+    {
+      "id": "x_cl_repo_statement",
+      "label": "现金流表回购款现金净额",
+      "concept": "x_cl_repo_statement",
+      "value": "180633",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cash_exec"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "x_cl_money_book",
+      "label": "账面货币资金合计",
+      "concept": "x_cl_money_book",
+      "value": "143319",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "附注十1；不是全部可调度现金。"
+    },
+    {
+      "id": "x_cl_restricted_demand",
+      "label": "披露受限活期存款",
+      "concept": "x_cl_restricted_demand",
+      "value": "912",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "只这一明确项目，不声称已列齐全部限制。"
+    },
+    {
+      "id": "x_cl_alm_cash",
+      "label": "原表1年以内未折现现金及等价物",
+      "concept": "x_cl_alm_cash",
+      "value": "142407",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_reverse_repo",
+      "label": "原表1年以内未折现买入返售",
+      "concept": "x_cl_alm_reverse_repo",
+      "value": "50879",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_deposits",
+      "label": "原表1年以内未折现定期存款",
+      "concept": "x_cl_alm_deposits",
+      "value": "71164",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_fvtpl",
+      "label": "原表1年以内未折现交易性金融资产",
+      "concept": "x_cl_alm_fvtpl",
+      "value": "125195",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_ac_debt",
+      "label": "原表1年以内未折现债权投资",
+      "concept": "x_cl_alm_ac_debt",
+      "value": "27359",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_fvoci_debt",
+      "label": "原表1年以内未折现其他债权投资",
+      "concept": "x_cl_alm_fvoci_debt",
+      "value": "365591",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_reins_asset",
+      "label": "原表1年以内未折现分出再保资产",
+      "concept": "x_cl_alm_reins_asset",
+      "value": "6395",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_capital_deposit",
+      "label": "原表1年以内未折现存出资本保证金",
+      "concept": "x_cl_alm_capital_deposit",
+      "value": "552",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_repo",
+      "label": "原表1年以内未折现卖出回购",
+      "concept": "x_cl_alm_repo",
+      "value": "-331863",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_shortloan",
+      "label": "原表1年以内未折现短期借款",
+      "concept": "x_cl_alm_shortloan",
+      "value": "-6",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_insurance",
+      "label": "原表1年以内未折现保险合同净现金",
+      "concept": "x_cl_alm_insurance",
+      "value": "311631",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_reins_liab",
+      "label": "原表1年以内未折现分出再保负债",
+      "concept": "x_cl_alm_reins_liab",
+      "value": "-230",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_bonds",
+      "label": "原表1年以内未折现应付债券",
+      "concept": "x_cl_alm_bonds",
+      "value": "-753",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_alm_lease",
+      "label": "原表1年以内未折现租赁负债",
+      "concept": "x_cl_alm_lease",
+      "value": "-777",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "按原符号；不是实际年度现金或可立即调用余额。保险行是现有保单未来净现金，不含新业务。"
+    },
+    {
+      "id": "x_cl_demand",
+      "label": "保户可随时要求偿还的披露金额",
+      "concept": "x_cl_demand",
+      "value": "4691941",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "合同选择权暴露；不是实际同时退保或本年付款预测。"
+    },
+    {
+      "id": "x_cl_alm_insurance_gt5",
+      "label": "原表5年以上保险未折现净流出",
+      "concept": "x_cl_alm_insurance_gt5",
+      "value": "-9241515",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_nonPAA_undiscounted_more_than_five_years",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_alm_exec"
+      ],
+      "state": "reported",
+      "note": "与一年内桶不同范围，保留原负号；不能直接与自由现金比较。"
+    },
+    {
+      "id": "x_cl_rate_up_pbt",
+      "label": "利率+50bp税前利润变动",
+      "concept": "x_cl_rate_up_pbt",
+      "value": "17846",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_interest_sensitivity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_rate_exec"
+      ],
+      "state": "reported",
+      "note": "公司原披露、其他变量不变；不是本轮模型运行，不作现金或税后资本。"
+    },
+    {
+      "id": "x_cl_rate_up_oci",
+      "label": "利率+50bp税前OCI变动",
+      "concept": "x_cl_rate_up_oci",
+      "value": "-13272",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_interest_sensitivity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_rate_exec"
+      ],
+      "state": "reported",
+      "note": "公司原披露、其他变量不变；不是本轮模型运行，不作现金或税后资本。"
+    },
+    {
+      "id": "x_cl_rate_down_pbt",
+      "label": "利率−50bp税前利润变动",
+      "concept": "x_cl_rate_down_pbt",
+      "value": "-48344",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_interest_sensitivity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_rate_exec"
+      ],
+      "state": "reported",
+      "note": "公司原披露、其他变量不变；不是本轮模型运行，不作现金或税后资本。"
+    },
+    {
+      "id": "x_cl_rate_down_oci",
+      "label": "利率−50bp税前OCI变动",
+      "concept": "x_cl_rate_down_oci",
+      "value": "403",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_interest_sensitivity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_rate_exec"
+      ],
+      "state": "reported",
+      "note": "公司原披露、其他变量不变；不是本轮模型运行，不作现金或税后资本。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_deposits",
+      "label": "2025原表一至三年：定期存款",
+      "concept": "x_cl_alm_2025_one_to_three_deposits",
+      "value": "197203",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_deposits",
+      "label": "2025原表三至五年：定期存款",
+      "concept": "x_cl_alm_2025_three_to_five_deposits",
+      "value": "179384",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_nomaturity_fvtpl",
+      "label": "2025原表无到期日：交易性金融资产",
+      "concept": "x_cl_alm_2025_nomaturity_fvtpl",
+      "value": "1209222",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_fvtpl",
+      "label": "2025原表一至三年：交易性金融资产",
+      "concept": "x_cl_alm_2025_one_to_three_fvtpl",
+      "value": "249829",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_fvtpl",
+      "label": "2025原表三至五年：交易性金融资产",
+      "concept": "x_cl_alm_2025_three_to_five_fvtpl",
+      "value": "153977",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_fvtpl",
+      "label": "2025原表五年以上：交易性金融资产",
+      "concept": "x_cl_alm_2025_over_five_fvtpl",
+      "value": "592465",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_ac_debt",
+      "label": "2025原表一至三年：债权投资",
+      "concept": "x_cl_alm_2025_one_to_three_ac_debt",
+      "value": "86632",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_ac_debt",
+      "label": "2025原表三至五年：债权投资",
+      "concept": "x_cl_alm_2025_three_to_five_ac_debt",
+      "value": "78712",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_ac_debt",
+      "label": "2025原表五年以上：债权投资",
+      "concept": "x_cl_alm_2025_over_five_ac_debt",
+      "value": "30486",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_fvoci_debt",
+      "label": "2025原表一至三年：其他债权投资",
+      "concept": "x_cl_alm_2025_one_to_three_fvoci_debt",
+      "value": "442359",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_fvoci_debt",
+      "label": "2025原表三至五年：其他债权投资",
+      "concept": "x_cl_alm_2025_three_to_five_fvoci_debt",
+      "value": "316336",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_fvoci_debt",
+      "label": "2025原表五年以上：其他债权投资",
+      "concept": "x_cl_alm_2025_over_five_fvoci_debt",
+      "value": "4491791",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_nomaturity_equity",
+      "label": "2025原表无到期日：其他权益工具投资",
+      "concept": "x_cl_alm_2025_nomaturity_equity",
+      "value": "317876",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_reins_asset",
+      "label": "2025原表一至三年：分出再保险合同资产",
+      "concept": "x_cl_alm_2025_one_to_three_reins_asset",
+      "value": "2935",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_reins_asset",
+      "label": "2025原表三至五年：分出再保险合同资产",
+      "concept": "x_cl_alm_2025_three_to_five_reins_asset",
+      "value": "2709",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_reins_asset",
+      "label": "2025原表五年以上：分出再保险合同资产",
+      "concept": "x_cl_alm_2025_over_five_reins_asset",
+      "value": "34838",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_capital_deposit",
+      "label": "2025原表一至三年：存出资本保证金",
+      "concept": "x_cl_alm_2025_one_to_three_capital_deposit",
+      "value": "5998",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_capital_deposit",
+      "label": "2025原表三至五年：存出资本保证金",
+      "concept": "x_cl_alm_2025_three_to_five_capital_deposit",
+      "value": "508",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_nomaturity_trading_liab",
+      "label": "2025原表无到期日：交易性金融负债",
+      "concept": "x_cl_alm_2025_nomaturity_trading_liab",
+      "value": "-82010",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_longloan",
+      "label": "2025原表一至三年：长期借款",
+      "concept": "x_cl_alm_2025_one_to_three_longloan",
+      "value": "-52",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_insurance",
+      "label": "2025原表一至三年：保险合同负债",
+      "concept": "x_cl_alm_2025_one_to_three_insurance",
+      "value": "-195398",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_insurance",
+      "label": "2025原表三至五年：保险合同负债",
+      "concept": "x_cl_alm_2025_three_to_five_insurance",
+      "value": "-509499",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_insurance",
+      "label": "2025原表五年以上：保险合同负债",
+      "concept": "x_cl_alm_2025_over_five_insurance",
+      "value": "-9241515",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_reins_liab",
+      "label": "2025原表一至三年：分出再保险合同负债",
+      "concept": "x_cl_alm_2025_one_to_three_reins_liab",
+      "value": "-186",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_reins_liab",
+      "label": "2025原表三至五年：分出再保险合同负债",
+      "concept": "x_cl_alm_2025_three_to_five_reins_liab",
+      "value": "-175",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_reins_liab",
+      "label": "2025原表五年以上：分出再保险合同负债",
+      "concept": "x_cl_alm_2025_over_five_reins_liab",
+      "value": "-605",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_bonds",
+      "label": "2025原表一至三年：应付债券",
+      "concept": "x_cl_alm_2025_one_to_three_bonds",
+      "value": "-1505",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_bonds",
+      "label": "2025原表三至五年：应付债券",
+      "concept": "x_cl_alm_2025_three_to_five_bonds",
+      "value": "-35753",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_lease",
+      "label": "2025原表一至三年：租赁负债",
+      "concept": "x_cl_alm_2025_one_to_three_lease",
+      "value": "-695",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_lease",
+      "label": "2025原表三至五年：租赁负债",
+      "concept": "x_cl_alm_2025_three_to_five_lease",
+      "value": "-135",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_lease",
+      "label": "2025原表五年以上：租赁负债",
+      "concept": "x_cl_alm_2025_over_five_lease",
+      "value": "-19",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_cash",
+      "label": "2024原表一年以内：现金及现金等价物",
+      "concept": "x_cl_alm_2024_oneyear_cash",
+      "value": "85538",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_reverse_repo",
+      "label": "2024原表一年以内：买入返售金融资产",
+      "concept": "x_cl_alm_2024_oneyear_reverse_repo",
+      "value": "30560",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_deposits",
+      "label": "2024原表一年以内：定期存款",
+      "concept": "x_cl_alm_2024_oneyear_deposits",
+      "value": "98921",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_deposits",
+      "label": "2024原表一至三年：定期存款",
+      "concept": "x_cl_alm_2024_one_to_three_deposits",
+      "value": "220790",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_deposits",
+      "label": "2024原表三至五年：定期存款",
+      "concept": "x_cl_alm_2024_three_to_five_deposits",
+      "value": "158031",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_deposits",
+      "label": "2024原表五年以上：定期存款",
+      "concept": "x_cl_alm_2024_over_five_deposits",
+      "value": "6513",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_nomaturity_fvtpl",
+      "label": "2024原表无到期日：交易性金融资产",
+      "concept": "x_cl_alm_2024_nomaturity_fvtpl",
+      "value": "954938",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_fvtpl",
+      "label": "2024原表一年以内：交易性金融资产",
+      "concept": "x_cl_alm_2024_oneyear_fvtpl",
+      "value": "182734",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_fvtpl",
+      "label": "2024原表一至三年：交易性金融资产",
+      "concept": "x_cl_alm_2024_one_to_three_fvtpl",
+      "value": "258146",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_fvtpl",
+      "label": "2024原表三至五年：交易性金融资产",
+      "concept": "x_cl_alm_2024_three_to_five_fvtpl",
+      "value": "161557",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_fvtpl",
+      "label": "2024原表五年以上：交易性金融资产",
+      "concept": "x_cl_alm_2024_over_five_fvtpl",
+      "value": "563771",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_ac_debt",
+      "label": "2024原表一年以内：债权投资",
+      "concept": "x_cl_alm_2024_oneyear_ac_debt",
+      "value": "45123",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_ac_debt",
+      "label": "2024原表一至三年：债权投资",
+      "concept": "x_cl_alm_2024_one_to_three_ac_debt",
+      "value": "98270",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_ac_debt",
+      "label": "2024原表三至五年：债权投资",
+      "concept": "x_cl_alm_2024_three_to_five_ac_debt",
+      "value": "60139",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_ac_debt",
+      "label": "2024原表五年以上：债权投资",
+      "concept": "x_cl_alm_2024_over_five_ac_debt",
+      "value": "51323",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_fvoci_debt",
+      "label": "2024原表一年以内：其他债权投资",
+      "concept": "x_cl_alm_2024_oneyear_fvoci_debt",
+      "value": "276528",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_fvoci_debt",
+      "label": "2024原表一至三年：其他债权投资",
+      "concept": "x_cl_alm_2024_one_to_three_fvoci_debt",
+      "value": "480528",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_fvoci_debt",
+      "label": "2024原表三至五年：其他债权投资",
+      "concept": "x_cl_alm_2024_three_to_five_fvoci_debt",
+      "value": "297260",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_fvoci_debt",
+      "label": "2024原表五年以上：其他债权投资",
+      "concept": "x_cl_alm_2024_over_five_fvoci_debt",
+      "value": "3714798",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_nomaturity_equity",
+      "label": "2024原表无到期日：其他权益工具投资",
+      "concept": "x_cl_alm_2024_nomaturity_equity",
+      "value": "171817",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_reins_asset",
+      "label": "2024原表一年以内：分出再保险合同资产",
+      "concept": "x_cl_alm_2024_oneyear_reins_asset",
+      "value": "6619",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_reins_asset",
+      "label": "2024原表一至三年：分出再保险合同资产",
+      "concept": "x_cl_alm_2024_one_to_three_reins_asset",
+      "value": "2706",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_reins_asset",
+      "label": "2024原表三至五年：分出再保险合同资产",
+      "concept": "x_cl_alm_2024_three_to_five_reins_asset",
+      "value": "2759",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_reins_asset",
+      "label": "2024原表五年以上：分出再保险合同资产",
+      "concept": "x_cl_alm_2024_over_five_reins_asset",
+      "value": "36490",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_capital_deposit",
+      "label": "2024原表一年以内：存出资本保证金",
+      "concept": "x_cl_alm_2024_oneyear_capital_deposit",
+      "value": "483",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_capital_deposit",
+      "label": "2024原表一至三年：存出资本保证金",
+      "concept": "x_cl_alm_2024_one_to_three_capital_deposit",
+      "value": "2566",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_capital_deposit",
+      "label": "2024原表三至五年：存出资本保证金",
+      "concept": "x_cl_alm_2024_three_to_five_capital_deposit",
+      "value": "4202",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_nomaturity_trading_liab",
+      "label": "2024原表无到期日：交易性金融负债",
+      "concept": "x_cl_alm_2024_nomaturity_trading_liab",
+      "value": "-53521",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_repo",
+      "label": "2024原表一年以内：卖出回购金融资产款",
+      "concept": "x_cl_alm_2024_oneyear_repo",
+      "value": "-151564",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_shortloan",
+      "label": "2024原表一年以内：短期借款",
+      "concept": "x_cl_alm_2024_oneyear_shortloan",
+      "value": "-67",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_longloan",
+      "label": "2024原表一年以内：长期借款",
+      "concept": "x_cl_alm_2024_oneyear_longloan",
+      "value": "-9987",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_longloan",
+      "label": "2024原表一至三年：长期借款",
+      "concept": "x_cl_alm_2024_one_to_three_longloan",
+      "value": "-3348",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_insurance",
+      "label": "2024原表一年以内：保险合同负债",
+      "concept": "x_cl_alm_2024_oneyear_insurance",
+      "value": "333654",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_insurance",
+      "label": "2024原表一至三年：保险合同负债",
+      "concept": "x_cl_alm_2024_one_to_three_insurance",
+      "value": "-116952",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_insurance",
+      "label": "2024原表三至五年：保险合同负债",
+      "concept": "x_cl_alm_2024_three_to_five_insurance",
+      "value": "-400199",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_insurance",
+      "label": "2024原表五年以上：保险合同负债",
+      "concept": "x_cl_alm_2024_over_five_insurance",
+      "value": "-8740310",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_reins_liab",
+      "label": "2024原表一年以内：分出再保险合同负债",
+      "concept": "x_cl_alm_2024_oneyear_reins_liab",
+      "value": "-33",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_reins_liab",
+      "label": "2024原表一至三年：分出再保险合同负债",
+      "concept": "x_cl_alm_2024_one_to_three_reins_liab",
+      "value": "-53",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_reins_liab",
+      "label": "2024原表三至五年：分出再保险合同负债",
+      "concept": "x_cl_alm_2024_three_to_five_reins_liab",
+      "value": "-49",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_reins_liab",
+      "label": "2024原表五年以上：分出再保险合同负债",
+      "concept": "x_cl_alm_2024_over_five_reins_liab",
+      "value": "-304",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_bonds",
+      "label": "2024原表一年以内：应付债券",
+      "concept": "x_cl_alm_2024_oneyear_bonds",
+      "value": "-753",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_bonds",
+      "label": "2024原表一至三年：应付债券",
+      "concept": "x_cl_alm_2024_one_to_three_bonds",
+      "value": "-1505",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_bonds",
+      "label": "2024原表三至五年：应付债券",
+      "concept": "x_cl_alm_2024_three_to_five_bonds",
+      "value": "-36307",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_lease",
+      "label": "2024原表一年以内：租赁负债",
+      "concept": "x_cl_alm_2024_oneyear_lease",
+      "value": "-767",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_lease",
+      "label": "2024原表一至三年：租赁负债",
+      "concept": "x_cl_alm_2024_one_to_three_lease",
+      "value": "-679",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_lease",
+      "label": "2024原表三至五年：租赁负债",
+      "concept": "x_cl_alm_2024_three_to_five_lease",
+      "value": "-180",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_lease",
+      "label": "2024原表五年以上：租赁负债",
+      "concept": "x_cl_alm_2024_over_five_lease",
+      "value": "-14",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "原行原符号，金融及非PAA保险表的组成。保险为既有保单净现金；不等于全年实际现金或立即可用余额。"
+    },
+    {
+      "id": "x_cl_inv_in",
+      "label": "投资活动现金流入小计",
+      "concept": "x_cl_inv_in",
+      "value": "2810051",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "现金流量表列报小计，包含净额列报项目，不是银行流水毛额。"
+    },
+    {
+      "id": "x_cl_inv_out",
+      "label": "投资活动现金流出原负号",
+      "concept": "x_cl_inv_out",
+      "value": "-3357419",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "现金流量表列报小计，包含净额列报项目，不是银行流水毛额。"
+    },
+    {
+      "id": "x_cl_fin_in",
+      "label": "筹资活动现金流入小计",
+      "concept": "x_cl_fin_in",
+      "value": "184799",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "现金流量表列报小计，包含净额列报项目，不是银行流水毛额。"
+    },
+    {
+      "id": "x_cl_fin_out",
+      "label": "筹资活动现金流出原负号",
+      "concept": "x_cl_fin_out",
+      "value": "-40458",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "现金流量表列报小计，包含净额列报项目，不是银行流水毛额。"
+    },
+    {
+      "id": "x_cl_2024_op_in",
+      "label": "2024经营流入",
+      "concept": "x_cl_2024_op_in",
+      "value": "825531",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_inv_in",
+      "label": "2024投资流入",
+      "concept": "x_cl_2024_inv_in",
+      "value": "2422429",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_fin_in",
+      "label": "2024筹资流入",
+      "concept": "x_cl_2024_fin_in",
+      "value": "42243",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_op_out",
+      "label": "2024经营流出原负号",
+      "concept": "x_cl_2024_op_out",
+      "value": "-446736",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_inv_out",
+      "label": "2024投资流出原负号",
+      "concept": "x_cl_2024_inv_out",
+      "value": "-2777049",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_fin_out",
+      "label": "2024筹资流出原负号",
+      "concept": "x_cl_2024_fin_out",
+      "value": "-129002",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_fx",
+      "label": "2024汇率影响",
+      "concept": "x_cl_2024_fx",
+      "value": "28",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_2024_change_reported",
+      "label": "2024现金净减少",
+      "concept": "x_cl_2024_change_reported",
+      "value": "-62556",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "比较期现金流表原小计/符号。"
+    },
+    {
+      "id": "x_cl_book_deposit",
+      "label": "货币资金存款",
+      "concept": "x_cl_book_deposit",
+      "value": "134662",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "PDF166对PDF210原细项；不猜对应差额原因。"
+    },
+    {
+      "id": "x_cl_cf_deposit",
+      "label": "现金流补充资料存款",
+      "concept": "x_cl_cf_deposit",
+      "value": "133717",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "PDF166对PDF210原细项；不猜对应差额原因。"
+    },
+    {
+      "id": "x_cl_book_settlement",
+      "label": "货币资金结算备付金",
+      "concept": "x_cl_book_settlement",
+      "value": "8657",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "PDF166对PDF210原细项；不猜对应差额原因。"
+    },
+    {
+      "id": "x_cl_cf_settlement",
+      "label": "现金流补充资料结算备付金",
+      "concept": "x_cl_cf_settlement",
+      "value": "8656",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_cl_full_table_corrected"
+      ],
+      "state": "reported",
+      "note": "PDF166对PDF210原细项；不猜对应差额原因。"
     }
   ],
   "calculations": [
@@ -1598,6 +4616,1222 @@
       "period_rule": "same",
       "denominator": "positive",
       "multiplier": "1"
+    },
+    {
+      "id": "x_cl_cfo_direct",
+      "label": "经营现金流入减流出",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_op_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_op_out",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "原表流入+带符号流出",
+      "interpretation": "年度净额，不证明日内支付或自由现金。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_change",
+      "label": "年度现金净变动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_cfo",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cfi",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cff",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_fx",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "经营+投资+筹资+汇率",
+      "interpretation": "回购融资参与现金增长；CFO不能作一般工商企业可分配FCF。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_end",
+      "label": "现金期初至期末",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_cce_open",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cash_change",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "期初+全部现金净变化",
+      "interpretation": "现金定义来自附注46，不是全部货币资金或法人自由现金。",
+      "period_rule": "rollforward"
+    },
+    {
+      "id": "x_cl_money_after_demand_restriction",
+      "label": "货币资金扣已披露受限活期观察金额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_money_book",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_restricted_demand",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "143319−912",
+      "interpretation": "数值等于ALM表142407，不意味着已验证全部现金可用或其定义。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cce_scope_gap",
+      "label": "扣所述限制后与现金等价物的口径差",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_money_after_demand_restriction",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cce_close",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "已披露货币资金扣这一限制−现金流表现金等价物",
+      "interpretation": "剩余34未解释，不猜应计利息或缺口；观察差不作关闭调节。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_oneyear_net",
+      "label": "原披露一年以内未折现净现金合计",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_cash",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_reverse_repo",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_capital_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_repo",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_shortloan",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_bonds",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "该桶所有非零金融/保险/再保项目按原符号合计；原表该桶为–的项目未强造未知零",
+      "interpretation": "仅描述原表预期净现金；保证金、限制、利率/退保/变现及日内先后未调整，不能叫自由现金或压力余量。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_rate_up_sum",
+      "label": "该利率场景税前利润与OCI简单合计",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_rate_up_pbt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_rate_up_oci",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_interest_sensitivity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "该场景税前利润+税前OCI",
+      "interpretation": "不与已报告综合收益加总，不当税后权益、监管资本或现金。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_rate_down_sum",
+      "label": "该利率场景税前利润与OCI简单合计",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_rate_down_pbt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_rate_down_oci",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_interest_sensitivity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "该场景税前利润+税前OCI",
+      "interpretation": "不与已报告综合收益加总，不当税后权益、监管资本或现金。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2025_nomaturity_net",
+      "label": "2025公开无到期日未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2025_nomaturity_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_nomaturity_equity",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_nomaturity_trading_liab",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2025公开无到期日未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2025_one_to_three_net",
+      "label": "2025公开一至三年未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2025_one_to_three_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_capital_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_longloan",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_bonds",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_one_to_three_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2025公开一至三年未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2025_three_to_five_net",
+      "label": "2025公开三至五年未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2025_three_to_five_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_capital_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_bonds",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_three_to_five_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2025公开三至五年未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2025_over_five_net",
+      "label": "2025公开五年以上未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2025_over_five_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_over_five_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_over_five_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_over_five_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_over_five_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_over_five_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2025_over_five_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2025-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2025公开五年以上未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2024_nomaturity_net",
+      "label": "2024公开无到期日未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2024_nomaturity_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_nomaturity_equity",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_nomaturity_trading_liab",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_nomaturity",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2024公开无到期日未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2024_oneyear_net",
+      "label": "2024公开一年以内未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2024_oneyear_cash",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_reverse_repo",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_capital_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_repo",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_shortloan",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_longloan",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_bonds",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_oneyear_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_within_one_year",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2024公开一年以内未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2024_one_to_three_net",
+      "label": "2024公开一至三年未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2024_one_to_three_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_capital_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_longloan",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_bonds",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_one_to_three_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_one_to_three",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2024公开一至三年未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2024_three_to_five_net",
+      "label": "2024公开三至五年未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2024_three_to_five_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_capital_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_bonds",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_three_to_five_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_three_to_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2024公开三至五年未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_alm_2024_over_five_net",
+      "label": "2024公开五年以上未折现净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_alm_2024_over_five_deposits",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_fvtpl",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_ac_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_fvoci_debt",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_reins_asset",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_insurance",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_reins_liab",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_alm_2024_over_five_lease",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated_disclosed_financial_and_nonPAA_undiscounted_over_five",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS: disclosed expected/contractual cashflows at 2024-12-31",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "2024公开五年以上未折现净额",
+      "interpretation": "全部原表非破折号组成按原符号相加；仅描述性净额，不是压力余量、自由现金、期限匹配认证或动态生存期。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2025_subtotal_in",
+      "label": "三类流入小计汇总",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_op_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_inv_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_fin_in",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "三类流入小计汇总",
+      "interpretation": "列报小计汇总，有净额项目；不称所有银行流水毛额。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2025_subtotal_out_signed",
+      "label": "三类流出小计汇总原负号",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_op_out",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_inv_out",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_fin_out",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "三类流出小计汇总原负号",
+      "interpretation": "原负号不变；不称所有银行流水毛额。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2025_before_fx",
+      "label": "三类小计净额汇总",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_cash_2025_subtotal_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cash_2025_subtotal_out_signed",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "三类小计净额汇总",
+      "interpretation": "汇率影响前的年度列报净现金。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2025_after_fx",
+      "label": "小计汇总加汇率后的现金净变动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_cash_2025_before_fx",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_fx",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "小计汇总加汇率后的现金净变动",
+      "interpretation": "与所报年度净变动核对，年度加总不证明支付日资源。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2024_subtotal_in",
+      "label": "三类流入小计汇总",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_2024_op_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_2024_inv_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_2024_fin_in",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "三类流入小计汇总",
+      "interpretation": "列报小计汇总，有净额项目；不称所有银行流水毛额。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2024_subtotal_out_signed",
+      "label": "三类流出小计汇总原负号",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_2024_op_out",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_2024_inv_out",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_2024_fin_out",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "三类流出小计汇总原负号",
+      "interpretation": "原负号不变；不称所有银行流水毛额。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2024_before_fx",
+      "label": "三类小计净额汇总",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_cash_2024_subtotal_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cash_2024_subtotal_out_signed",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "三类小计净额汇总",
+      "interpretation": "汇率影响前的年度列报净现金。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_2024_after_fx",
+      "label": "小计汇总加汇率后的现金净变动",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_cash_2024_before_fx",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_2024_fx",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2024-01-01",
+        "end": "2024-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "小计汇总加汇率后的现金净变动",
+      "interpretation": "与所报年度净变动核对，年度加总不证明支付日资源。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cfi_subtotals",
+      "label": "投资现金小计净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_inv_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_inv_out",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "投资现金小计净额",
+      "interpretation": "投资流入与带符号流出原小计。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cff_subtotals",
+      "label": "筹资现金小计净额",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_fin_in",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_fin_out",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "筹资现金小计净额",
+      "interpretation": "筹资流入与带符号流出原小计。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_deposit_scope_gap",
+      "label": "存款扣所述受限活期后口径差",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_book_deposit",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_restricted_demand",
+          "weight": "-1"
+        },
+        {
+          "ref": "x_cl_cf_deposit",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "存款扣所述受限活期后口径差",
+      "interpretation": "定位为33，原件未解释原因。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_settlement_scope_gap",
+      "label": "结算备付金口径差",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_book_settlement",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_cf_settlement",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "结算备付金口径差",
+      "interpretation": "定位为1，原件未解释原因。",
+      "period_rule": "same"
+    },
+    {
+      "id": "x_cl_cash_gap_components",
+      "label": "现金口径差细项组成",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "x_cl_deposit_scope_gap",
+          "weight": "1"
+        },
+        {
+          "ref": "x_cl_settlement_scope_gap",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "现金口径差细项组成",
+      "interpretation": "33+1定位为34，只关闭算术组成，不关闭现金定义和对应原因。",
+      "period_rule": "same"
     }
   ],
   "reconciliations": [
@@ -1624,6 +5858,70 @@
       "expected": "mcr_q2",
       "tolerance": "0",
       "basis": "只报告披露百万元整数的精确聚合残差；不扩大容差或把零差当模型验证。"
+    },
+    {
+      "id": "r_x_cl_cfo",
+      "label": "经营现金小计",
+      "actual": "x_cl_cfo_direct",
+      "expected": "x_cl_cfo",
+      "tolerance": "0",
+      "basis": "百万元整数精确加总；不证明资金可用或现金时点匹配。"
+    },
+    {
+      "id": "r_x_cl_change",
+      "label": "年度现金变化",
+      "actual": "x_cl_cash_change",
+      "expected": "x_cl_cash_change_reported",
+      "tolerance": "0",
+      "basis": "百万元整数精确加总；不证明资金可用或现金时点匹配。"
+    },
+    {
+      "id": "r_x_cl_end",
+      "label": "现金期末",
+      "actual": "x_cl_cash_end",
+      "expected": "x_cl_cce_close",
+      "tolerance": "0",
+      "basis": "百万元整数精确加总；不证明资金可用或现金时点匹配。"
+    },
+    {
+      "id": "r_cl_cash_subtotals_2025",
+      "label": "r_cl_cash_subtotals_2025",
+      "actual": "x_cl_cash_2025_after_fx",
+      "expected": "x_cl_cash_change_reported",
+      "tolerance": "0",
+      "basis": "百万元整数精确加总；现金流表小计范围，有净额列报。"
+    },
+    {
+      "id": "r_cl_cash_subtotals_2024",
+      "label": "r_cl_cash_subtotals_2024",
+      "actual": "x_cl_cash_2024_after_fx",
+      "expected": "x_cl_2024_change_reported",
+      "tolerance": "0",
+      "basis": "百万元整数精确加总；现金流表小计范围，有净额列报。"
+    },
+    {
+      "id": "r_cl_cfi_subtotals",
+      "label": "r_cl_cfi_subtotals",
+      "actual": "x_cl_cfi_subtotals",
+      "expected": "x_cl_cfi",
+      "tolerance": "0",
+      "basis": "原小计对所报投资净额。"
+    },
+    {
+      "id": "r_cl_cff_subtotals",
+      "label": "r_cl_cff_subtotals",
+      "actual": "x_cl_cff_subtotals",
+      "expected": "x_cl_cff",
+      "tolerance": "0",
+      "basis": "原小计对所报筹资净额。"
+    },
+    {
+      "id": "r_cl_cash_gap_components",
+      "label": "r_cl_cash_gap_components",
+      "actual": "x_cl_cash_gap_components",
+      "expected": "x_cl_cce_scope_gap",
+      "tolerance": "0",
+      "basis": "只核差额组成；34的经济原因保持未解释。"
     }
   ],
   "findings": [
@@ -1715,6 +6013,60 @@
         "完整合同和中国法域的Fitch监管分类可能改变债项分支；缺这些不会否定已完成的披露账面勾稽。"
       ],
       "changes_if": "先关闭各缺失输入和条款/支持分支，再按同一机构有效版本合成；不得拼机构分数或以监管偿付率替代BCAR/RAC。"
+    },
+    {
+      "id": "f_x_cl_cash_exec",
+      "title": "保险经营现金参与资产配置，新增回购参与期末现金增长",
+      "question": "利润、保费和现金增长是不是同一指标？",
+      "conclusion": "保费现金{{x_cl_premium_cash}}、赔款现金{{x_cl_claims_cash}}；经营流入{{x_cl_op_in}}与流出{{x_cl_op_out}}得{{x_cl_cfo_direct}}。CFO{{x_cl_cfo}}、CFI{{x_cl_cfi}}、CFF{{x_cl_cff}}及汇率{{x_cl_fx}}合计净增{{x_cl_cash_change}}，期初{{x_cl_cce_open}}至期末{{x_cl_cash_end}}。 三类列报流入小计汇总{{x_cl_cash_2025_subtotal_in}}、带负号流出汇总{{x_cl_cash_2025_subtotal_out_signed}}，汇率前净额{{x_cl_cash_2025_before_fx}}，汇率后{{x_cl_cash_2025_after_fx}}。比较期相应流入{{x_cl_cash_2024_subtotal_in}}、带符号流出{{x_cl_cash_2024_subtotal_out_signed}}、汇率后净变动{{x_cl_cash_2024_after_fx}}。",
+      "mechanism": "保险经营现金包含保单长期资金与合同变动，净利润{{x_cl_ni}}到CFO桥中合同负债及分出再保资产变动为{{x_cl_contract_change_cf}}。投资持续吸收现金，现金流表回购款现金净额{{x_cl_repo_statement}}是资金来源之一；不能把CFO减少量固定资产投入就称可分派FCF，亦不把现金增加全归经营积累。 汇总是原现金流量表三类小计，其中有回购等净额列报；不是所有银行流水毛额，不能把保险长期保单净CFO直接当可分派FCF。",
+      "status": "supported",
+      "evidence": [
+        "e_cash_exec",
+        "x_cl_cfo_direct",
+        "x_cl_cash_change",
+        "x_cl_cash_end",
+        "e_cl_full_table_corrected",
+        "x_cl_cash_2025_after_fx",
+        "x_cl_cash_2024_after_fx"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "较高净CFO也可能伴随长期保单义务和资产投放增加，不必然代表自由支付能力增强。"
+      ],
+      "changes_if": "用于支付分析时接公开期限、受限性与到期融资；逐日法人现金未取得的影响另保留。"
+    },
+    {
+      "id": "f_x_cl_alm_exec",
+      "title": "公开期限与利率敏感性已能挑战支付和匹配判断",
+      "question": "一年内预期净流入和利率影响可否当流动性保障？",
+      "conclusion": "完整公开期限表描述性净额：2025年按无到期日、一年内、一至三年、三至五年、五年以上为{{x_cl_alm_2025_nomaturity_net}}、{{x_cl_alm_oneyear_net}}、{{x_cl_alm_2025_one_to_three_net}}、{{x_cl_alm_2025_three_to_five_net}}、{{x_cl_alm_2025_over_five_net}}；2024年同序为{{x_cl_alm_2024_nomaturity_net}}、{{x_cl_alm_2024_oneyear_net}}、{{x_cl_alm_2024_one_to_three_net}}、{{x_cl_alm_2024_three_to_five_net}}、{{x_cl_alm_2024_over_five_net}}。一年内保险净流入{{x_cl_alm_insurance}}、回购流出{{x_cl_alm_repo}}；保户选择权金额{{x_cl_demand}}。±50bp税前利润/OCI合计{{x_cl_rate_up_sum}}和{{x_cl_rate_down_sum}}。支付日法人资源尚无定义明确的单个金额，保留具体资料请求，不用合并年末context承载该未来结论。",
+      "mechanism": "期限表包括金融项目及未采用PAA保险资产/负债，是现有保单预期净现金且不含未来新业务；保险净流入不能改为毛流出，也不能与已收保费{{x_cl_premium_cash}}再次相加。保证金和可变现性未在该合计调整。利率上下行影响不对称，税前利润/OCI不是立即现金或监管资本。保险5年以上原表净流出{{x_cl_alm_insurance_gt5}}说明须跨期限观察，不能以一年合计正数宣布匹配或支付安全。货币资金{{x_cl_money_book}}扣已披露受限活期{{x_cl_restricted_demand}}得{{x_cl_money_after_demand_restriction}}，数值与ALM现金{{x_cl_alm_cash}}一致；与现金流表{{x_cl_cce_close}}仍差{{x_cl_cce_scope_gap}}，未解释，不造原因归零。 五年以上全表净额包含长期资产回款，对冲了保险单行净流出；不能把保险单行{{x_cl_alm_insurance_gt5}}称全部长期缺口。短期限与长资产配置、回购到期及保户选择权须一起讨论；比较期方向不是假设不变的动态压力结论。无到期日金额不可任意移入即时可用资源，保证金/限制未作可调用性调整。34口径差已定位为存款{{x_cl_deposit_scope_gap}}和结算备付金{{x_cl_settlement_scope_gap}}之和{{x_cl_cash_gap_components}}，原件未解释其原因，不猜应计利息或归零。",
+      "status": "conditional",
+      "evidence": [
+        "e_alm_exec",
+        "e_rate_exec",
+        "x_cl_alm_oneyear_net",
+        "x_cl_rate_up_sum",
+        "x_cl_rate_down_sum",
+        "e_cl_full_table_corrected",
+        "x_cl_alm_2025_nomaturity_net",
+        "x_cl_alm_oneyear_net",
+        "x_cl_alm_2025_one_to_three_net",
+        "x_cl_alm_2025_three_to_five_net",
+        "x_cl_alm_2025_over_five_net",
+        "x_cl_alm_2024_nomaturity_net",
+        "x_cl_alm_2024_oneyear_net",
+        "x_cl_alm_2024_one_to_three_net",
+        "x_cl_alm_2024_three_to_five_net",
+        "x_cl_alm_2024_over_five_net",
+        "x_cl_cash_gap_components"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "实际退保和续期可偏离假设；资产回款、变现折价和抵押/资本保证金限制可改变到账和可用资源。"
+      ],
+      "changes_if": "按同保险法人、币种与支付日取得毛保费/赔付/退保、回款与变现及融资/质押，才能推进真实现金生存期；无需为已公开的余额与方向分析等待全部私有模型。"
     }
   ],
   "procedures": [
@@ -1773,6 +6125,78 @@
       ],
       "performed_by": "Codex直接核读合法原件及既有脚本复算",
       "performed_on": "2026-10-06"
+    },
+    {
+      "id": "p_x_cl_cash_exec",
+      "finding": "f_x_cl_cash_exec",
+      "purpose": "补出已公开的会计和现金承接",
+      "assertions": [
+        "范围",
+        "计量属性",
+        "准确性",
+        "列报"
+      ],
+      "population": "所引原年报全部相应表和政策段",
+      "selection": "按具体公开重大事项选择；不构成审计抽样",
+      "steps": [
+        "先回读原报告行列、单位和脚注，再形成字段。",
+        "使用既有共同底稿算子复算已披露关系，原范围差异和未知拆分保留。"
+      ],
+      "status": "performed",
+      "result": "实际执行现有算子复算两期三类现金小计、2025投资/筹资净额与原有年度现金桥；具体残差见结果。不验证银行流水毛额或自由现金。",
+      "evidence": [
+        "e_cash_exec",
+        "x_cl_cfo_direct",
+        "x_cl_cash_change",
+        "x_cl_cash_end",
+        "e_cl_full_table_corrected",
+        "x_cl_cash_2025_after_fx",
+        "x_cl_cash_2024_after_fx"
+      ],
+      "performed_by": "独立会计原源补充",
+      "performed_on": "2026-10-06"
+    },
+    {
+      "id": "p_x_cl_alm_exec",
+      "finding": "f_x_cl_alm_exec",
+      "purpose": "补出已公开的会计和现金承接",
+      "assertions": [
+        "范围",
+        "计量属性",
+        "准确性",
+        "列报"
+      ],
+      "population": "所引原年报全部相应表和政策段",
+      "selection": "按具体公开重大事项选择；不构成审计抽样",
+      "steps": [
+        "先回读原报告行列、单位和脚注，再形成字段。",
+        "使用既有共同底稿算子复算已披露关系，原范围差异和未知拆分保留。"
+      ],
+      "status": "performed",
+      "result": "实际将完整原行输入现有算子，复算两期各五期限桶；现金34差额定位为33+1，原因未解释。未重估敏感性、未执行动态ALM或支付日模型。",
+      "evidence": [
+        "e_alm_exec",
+        "e_rate_exec",
+        "x_cl_alm_oneyear_net",
+        "x_cl_rate_up_sum",
+        "x_cl_rate_down_sum",
+        "x_cl_money_after_demand_restriction",
+        "x_cl_cce_scope_gap",
+        "e_cl_full_table_corrected",
+        "x_cl_alm_2025_nomaturity_net",
+        "x_cl_alm_oneyear_net",
+        "x_cl_alm_2025_one_to_three_net",
+        "x_cl_alm_2025_three_to_five_net",
+        "x_cl_alm_2025_over_five_net",
+        "x_cl_alm_2024_nomaturity_net",
+        "x_cl_alm_2024_oneyear_net",
+        "x_cl_alm_2024_one_to_three_net",
+        "x_cl_alm_2024_three_to_five_net",
+        "x_cl_alm_2024_over_five_net",
+        "x_cl_cash_gap_components"
+      ],
+      "performed_by": "独立会计原源补充",
+      "performed_on": "2026-10-06"
     }
   ],
   "requests": [
@@ -1799,15 +6223,25 @@
       "reason": "保留完整FCC与债项级差未定。",
       "owner_role": "财务/评级研究",
       "close_when": "逐项来源和方法规则已独立实读且计算可重建"
+    },
+    {
+      "id": "req_x_cl_alm_exec",
+      "finding": "f_x_cl_alm_exec",
+      "request": "先按公开期限表/货币限制与重大资产类别补充法人、币种、可变现性；决定性支付结论再定向取毛退保/赔付、回款、质押和逐日融资。",
+      "reason": "现有净预期桶和集团现金不能证明支付峰值或限制后的资源。",
+      "owner_role": "研究员；所需非公开字段再向发行人财务/资金/精算定向询证",
+      "close_when": "预期与实际、净与毛、会计与可调用现金有明确对应，逐日缺口及措施成立条件可复核。"
     }
   ],
   "sections": [
     {
-      "title": "资本债披露桥及资本充足性局部参考区间",
+      "title": "资本债披露桥、资本充足性局部参考区间与公开现金/期限分析",
       "findings": [
         "f_bond",
         "f_cap",
         "f_liq",
+        "f_x_cl_cash_exec",
+        "f_x_cl_alm_exec",
         "f_rating"
       ],
       "figures": [
@@ -1817,7 +6251,15 @@
         "comp_q2",
         "core_ratio_q2",
         "cap_to_200",
-        "fcc_result"
+        "fcc_result",
+        "x_cl_cash_change",
+        "x_cl_cash_end",
+        "x_cl_alm_2025_nomaturity_net",
+        "x_cl_alm_oneyear_net",
+        "x_cl_alm_2025_one_to_three_net",
+        "x_cl_alm_2025_three_to_five_net",
+        "x_cl_alm_2025_over_five_net",
+        "x_cl_cash_gap_components"
       ]
     }
   ],
