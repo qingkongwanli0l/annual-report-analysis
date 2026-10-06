@@ -1,0 +1,2843 @@
+{
+  "mandate": {
+    "title": "中国人寿资本债披露桥与资本充足性标准权重参考区间",
+    "entity": "中国人寿保险股份有限公司",
+    "industry": "人寿保险",
+    "purpose": "指定资本补充债与保险法人资本、流动性的公开财务信用研究；不形成完整主体或债项评级",
+    "period_start": "2025-01-01",
+    "period_end": "2026-06-30",
+    "cutoff": "2026-10-02",
+    "accounting_basis": "CAS与C-ROSS II分开",
+    "scope": "各事实保留合并、保险法人监管及明确假设范围",
+    "language": "zh-CN",
+    "version": "1",
+    "methods": [
+      "联合资信保险公司信用评级方法与模型V4.1.202606，PDF2、19–21、23、26–27、30；2026-07-01生效，复算公开金额、原表叶子及资本充足性标准权重参考区间",
+      "Fitch Insurance Rating Criteria 2026-05-29，PDF p13–16、32–36、45、49、51； dated deferrable资本属性与FCC输入边界，未形成完整Fitch评级"
+    ],
+    "limitations": [
+      "信息截止日2026-10-02，公开资料读取和复算日期2026-10-06。",
+      "2026-09-29中诚信公告只作为外部行动事实；所引C230201_2026_05方法全文未取得/未实读，不声明算法已核。",
+      "公开目录日期不是最早跨市场公开或历史PDF字节可得性的证明。",
+      "未取得最终募集说明书、有效完整债券合同、当期付款通知、完整FCC组成、流动性未舍入输入及其他完整评级输入；公开标准权重已核，局部组合不等于机构实际定值或完整评级。"
+    ]
+  },
+  "sources": [
+    {
+      "id": "a25",
+      "title": "中国人寿2025年年报",
+      "url": "https://www.e-chinalife.com/upload/resources/file/2026/03/25/2025年年度报告.pdf",
+      "published": "2026-03-26",
+      "availability_note": "公司目录标注2026-03-26，批准日2026-03-25；本文证据分别记录实际使用的原页与范围。",
+      "sha256": "575a833fd7b83ad3568483273645236eddb751a92ab89f7e1c09105d92cedb27"
+    },
+    {
+      "id": "q2",
+      "title": "2026年2季度偿付能力季度报告摘要",
+      "url": "https://www.e-chinalife.com/upload/resources/file/2026/08/27/附件1:2026年2季度偿付能力季度报告摘要.pdf",
+      "published": "2026-08-28",
+      "availability_note": "公司偿付能力报告目录标注2026-08-28；本轮实读PDF26–30、38–39、41–44及原表图像。Q1采用本件上季度比较列，不改写为当时已知版本。",
+      "sha256": "3671d815671ca9ff38b73d10feba61688b89b2ba8cee89f502b072cda4a19802"
+    },
+    {
+      "id": "lh",
+      "title": "联合资信保险公司信用评级方法与模型V4.1.202606",
+      "url": "https://report.lhratings.com/file/3028c233-0152-4bfa-b27e-50297db8de26.pdf",
+      "published": null,
+      "availability_note": "封面2026年6月；PDF2明确2026-07-01起施行；首次公布日未由本轮独立核，保留null。",
+      "sha256": "dc9958ff10b2c6cbafd3763e69bbdc65c2c19a594163b1cd51059d25d0084077"
+    },
+    {
+      "id": "fitch",
+      "title": "Fitch Insurance Rating Criteria 29 May 2026",
+      "url": "https://assets.fitchratings.com/downloadFile?reportType=report&sfReport=false&slug=insurance%2Finsurance-rating-criteria-29-05-2026",
+      "published": "2026-05-29",
+      "availability_note": "封面和各页脚2026-05-29；本轮选页提取与实读记录。",
+      "sha256": "fb66ff2bcbf0293abe9a283a923a341c67eed1de922923188fd77c97e409a6cc"
+    },
+    {
+      "id": "sub",
+      "title": "2024资本补充债券申购区间与申购提示性说明",
+      "url": "https://www.shclearing.com.cn/wcm/shch/pages/client/download/download.jsp?FileName=P020240924328527323588.pdf",
+      "published": "2024-09-23",
+      "availability_note": "来源页当前标注2024-09-23；这不是完整募集说明书；本轮实读PDF1–6。",
+      "sha256": "26d4f6deee25ce09f45fedb9961951fa560d006e712e5cff71bc1e6afc0f6819"
+    },
+    {
+      "id": "issue",
+      "title": "2024资本补充债券发行情况公告",
+      "url": "https://www.shclearing.com.cn/wcm/shch/pages/client/download/download.jsp?FileName=P020240925528924943861.pdf",
+      "published": "2024-09-25",
+      "availability_note": "上海清算所目录标注日期；PDF1票面2.15%、实际本金350亿元、代码272400007；已提取2页正文。",
+      "sha256": "de6f0938ac7952ac4a99ff376242715a84cf3831432655b2dd9102049820e472"
+    },
+    {
+      "id": "ccxi",
+      "title": "中诚信国际关于24中国人寿资本补充债01BC跟踪评级信息公告",
+      "url": "https://www.shclearing.com.cn/wcm/shch/pages/client/download/download.jsp?FileName=P020260929532518032631.pdf",
+      "published": "2026-09-29",
+      "availability_note": "PDF2公告落款2026-09-29与已存目录日期一致；3页实读。仅外部评级事实，不采用其评价分数。",
+      "sha256": "37b8771a2919dc3dea2571beb8a3b5dfac282a32be26efeda7494f31b001e72e"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "e_debt",
+      "source": "a25",
+      "locator": "PDF182/印刷180，附注十22至下一同级附注23（PDF183）",
+      "observation": "应付债券账面2025/2024为35,195/35,194百万元，均仅资本补充债；名义本金各35,000，起息2024-09-26，到期2034-09-26，前五年2.15%，未于第五年赎回则后五年3.15%。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_roll",
+      "source": "a25",
+      "locator": "PDF211/印刷209，附注十46(3)全表至附注十一1",
+      "observation": "表头：短期和长期借款/应付债券/租赁负债/卖出回购/结构化第三方款；应付债券列：2025-01-01 35,194、筹资现金流变动(754)、汇率变动–、新增租赁–、计提利息755、其他–、2025-12-31 35,195；单位人民币百万元；已核原应付债券列。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_coupon",
+      "source": "issue",
+      "locator": "PDF1完整发行表，PDF2盖章页",
+      "observation": "实际发行350亿元；代码272400007；票面2.15%；起息2024-09-26；10年期、5年末附条件发行人赎回。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_terms",
+      "source": "sub",
+      "locator": "PDF2–5，主要条款3、7–10、17–22、27至下一同级二",
+      "observation": "保单责任及其他普通负债后、核心资本前；持有人无权因不能付款申请破产；无回售；每年9月26日付息，节假日顺延不加息；本金/利息付后偿付率须达监管要求，否则递延且非约定未足额支付，不复息；有条件第五年赎回。恢复支付被递延本息后仍须符合监管要求，满足支付条件时不得递延；提示说明不替代有效最终合同及其修改。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_qcap",
+      "source": "q2",
+      "locator": "PDF26指标表、41认可资产/负债、42–43资本层、44最低资本；右列预测不纳入实际",
+      "observation": "本季度/Q1比较：认可资产8,223,638/7,831,650；认可负债6,888,950/6,586,147；核心一级1,004,779/910,273、核心二级53,387/55,449、附属一级273,769/276,990、附属二级2,753/2,791；实际资本1,334,688/1,245,503；最低资本674,846/615,627。公司单体CAS净资产654,148见PDF29，不能与监管表净资产842,562互换。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_qrisk",
+      "source": "q2",
+      "locator": "PDF44最低资本全表至文件结束，单位人民币百万元",
+      "observation": "Q2寿险133,477+非寿险12,223+市场631,435+信用101,773−量化风险分散151,510−特定保险合同损失吸收42,066+控制风险(10,486)=674,846；附加资本列–，不假装本次重建底层监管风险因子。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_lcr",
+      "source": "q2",
+      "locator": "Q2 PDF27流动性指标整表；PDF28注1–3公式",
+      "observation": "未来12个月基本LCR1 110%，必测压力含变现LCR2 353%，不考虑资产变现LCR3 59%。PDF28注1基本公式为（公司现金流入+现金及现金等价物评估时点账面价值）/公司现金流出×100%；注2压力分子另加流动性资产储备变现金额；注3不含该变现项。现金项指评估基准日账面价值，不是期初现金。110为整百分比披露；未披露未舍入值及原现金分子/分母，临界值不确认唯一实际流动性评分。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_lh_cap",
+      "source": "lh",
+      "locator": "PDF27/印刷26，表12-1整表及上文定义",
+      "observation": "人身险净资产=所有者权益=资产总额−负债总额，亿元域：(-∞,2)→1、[2,5)→[1,2)、[5,15)→[2,3)、[15,30)→[3,4)、[30,50)→[4,5)、[50,80)→[5,6)、[80,150)→[6,7)、[150,+∞)→7。综合充足率域与分数：(-∞,50)→1、[50,100)→[1,2)、[100,110)→[2,3)、[110,120)→[3,4)、[120,140)→[4,5)、[140,160)→[5,6)、[160,200)→[6,7)、[200,+∞)→7。核心充足率：(-∞,25)→1、[25,50)→[1,2)、[50,60)→[2,3)、[60,70)→[3,4)、[70,80)→[4,5)、[80,100)→[5,6)、[100,120)→[6,7)、[120,+∞)→7。综合=实际资本/最低资本，核心=核心资本/最低资本。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_lh_liq",
+      "source": "lh",
+      "locator": "PDF26/印刷25表11；PDF30/印刷29附件1流动性覆盖率及可快速变现资产公式；PDF23/印刷22表8",
+      "observation": "流动覆盖率域与分数：(-∞,30)→1、[30,80)→[1,2)、[80,90)→[2,3)、[90,100)→[3,4)、[100,110)→[4,5)、[110,130)→[5,6)、[130,150)→[6,7)、[150,+∞)→7；公式（公司现金流入+现金及现金等价物评估时点账面价值）/公司现金流出×100%；正文要求分析未来一年不同期限/情景，未证明单取基本12个月即可完成该因素。 表8公开可快速变现资产/资产总额与流动性覆盖率标准权重60%/40%；未完成另一三级因子及适用情景输入，不能合成完整流动性因素。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_lh_chain",
+      "source": "lh",
+      "locator": "PDF19/印刷18加权步骤；PDF23/印刷22表8；PDF19–21映射与矩阵；PDF29局限；PDF2生效与适用",
+      "observation": "PDF19明确三级因子按各自权重加权得到二级因子，二级再按权重合成因素，随后采用映射、风险矩阵及调整得到指示评级，个体和支持另调。PDF23表8公开资本充足性二级权重50%及净资产/综合/核心三级标准权重50%/25%/25%；本次只完成资本充足性局部标准组合，不声称机构实际赋值或完整评级。2026-07-01起施行，不倒推旧行动；主体方法不替代独立债项方法。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_fitch",
+      "source": "fitch",
+      "locator": "PDF15 dated deferrable、45 FLR、51 FCC；PDF32–36债项顺位及不履约",
+      "observation": "有期限可递延证券通常0%权益认可；FLR排除匹配资产经营债，FCC也排除其费用；FCC仅将已经在利润表扣除的固定费用加回分子，分母仍含未费用化固定费用；未确定完整税前经营收益/逐工具固定费用时不能拿报表总利息代用。混合工具先回收顺位再不履约风险，保单/主体/债项不是一项评级。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_ccxi",
+      "source": "ccxi",
+      "locator": "PDF1–3，本轮全部3页",
+      "observation": "2026-09-29维持主体AAA/稳定及债项AAA；附件所引人身保险方法C230201_2026_05。只作外部行动事实，不读取/采用其评分为本轮评分，不声称该方法算法已核。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_basis",
+      "source": "a25",
+      "locator": "PDF9/印刷7准则差异；PDF8投资指标脚注",
+      "observation": "2025CAS和IFRS归母利润、归母权益无差异；2023金融工具未按新准则重述。未凭此推定所有附注完全一致或造跨准则信用调整。",
+      "reliability": "公开原件；公开资料读取与定位，未执行底层模型审计"
+    },
+    {
+      "id": "e_lh_weights",
+      "source": "lh",
+      "locator": "PDF23/印刷22，表8财务风险完整表及两项注释；PDF19/印刷18加权步骤",
+      "observation": "表8偿付能力下资本充足性二级权重50%、保险风险40%、盈利能力10%；资本充足性下净资产（亿元）50%、综合偿付能力充足率（%）25%、核心偿付能力充足率（%）25%，该三行对人身险及财产险合并列示。流动性二级权重100%，下属可快速变现资产/资产总额（%）60%、流动性覆盖率（%）40%。注1说明人身险/财产险其他三级因子及权重存在差异；注2再保险及集团等按核心业务确定适用性与权重。本例只以股份有限公司人身险原表标准权重形成资本参考区间。",
+      "reliability": "直接读取方法扫描原页；原PDF SHA保留于本底稿来源记录；扫描页未提取出正文，不宣称已全文提取。"
+    }
+  ],
+  "facts": [
+    {
+      "id": "bond_open",
+      "label": "应付债券期初账面",
+      "concept": "bond_open",
+      "value": "35194",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2024-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_roll"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "bond_close",
+      "label": "应付债券期末账面",
+      "concept": "bond_close",
+      "value": "35195",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_roll"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "bond_cash",
+      "label": "应付债券筹资活动现金流变动",
+      "concept": "bond_cash",
+      "value": "-754",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_roll"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "bond_accrual",
+      "label": "应付债券计提利息",
+      "concept": "bond_accrual",
+      "value": "755",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_roll"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "bond_par",
+      "label": "资本债名义本金",
+      "concept": "bond_par",
+      "value": "35000",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": null,
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_debt"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "coupon_rate",
+      "label": "前五年合同年票息",
+      "concept": "coupon_rate",
+      "value": "2.15",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_coupon",
+        "e_debt"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cash_coupon_alloc",
+      "label": "筹资变动中可单列的实际现金票息",
+      "concept": "cash_coupon_alloc",
+      "value": null,
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_roll"
+      ],
+      "state": "missing",
+      "note": "(754)为债券筹资现金流变动，不是单独现金利息行；未取到有效利息付款和费用现金构成，不能全称已付票息。"
+    },
+    {
+      "id": "step_par_if_outstanding",
+      "label": "第五年未赎回分支的假设在外本金",
+      "concept": "step_par_if_outstanding",
+      "value": "35000",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2029-09-26",
+        "end": "2030-09-25",
+        "aggregation": "assumption",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_debt",
+        "e_terms"
+      ],
+      "state": "assumption",
+      "note": "只在该债第五年未赎回且本金仍全部在外的分支计算第六计息年度完整12个月理论票息，不作未来实际余额或2029财年付款计划。"
+    },
+    {
+      "id": "step_coupon_rate",
+      "label": "第六至十计息年度合同票息分支",
+      "concept": "step_coupon_rate",
+      "value": "3.15",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2029-09-26",
+        "end": "2030-09-25",
+        "aggregation": "assumption",
+        "basis": "CAS",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_debt",
+        "e_terms"
+      ],
+      "state": "assumption",
+      "note": "合同规定前五年2.15%加100bp；此处以第五年未赎回为明确分支。理论应计年票息不解除原监管支付条件，不证明实际付款。"
+    },
+    {
+      "id": "cap_q2",
+      "label": "Q2实际资本",
+      "concept": "cap_q2",
+      "value": "1334688",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "mcr_q2",
+      "label": "Q2最低资本",
+      "concept": "mcr_q2",
+      "value": "674846",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "core1_q2",
+      "label": "Q2核心一级",
+      "concept": "core1_q2",
+      "value": "1004779",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "core2_q2",
+      "label": "Q2核心二级",
+      "concept": "core2_q2",
+      "value": "53387",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sup1_q2",
+      "label": "Q2附属一级",
+      "concept": "sup1_q2",
+      "value": "273769",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "sup2_q2",
+      "label": "Q2附属二级",
+      "concept": "sup2_q2",
+      "value": "2753",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "cap_q1",
+      "label": "Q1比较实际资本",
+      "concept": "cap_q1",
+      "value": "1245503",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "mcr_q1",
+      "label": "Q1比较最低资本",
+      "concept": "mcr_q1",
+      "value": "615627",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "core1_q1",
+      "label": "Q1比较核心一级",
+      "concept": "core1_q1",
+      "value": "910273",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "core2_q1",
+      "label": "Q1比较核心二级",
+      "concept": "core2_q1",
+      "value": "55449",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "company_netasset_q2",
+      "label": "Q2公司单体CAS净资产",
+      "concept": "company_netasset_q2",
+      "value": "654148",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "company",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qcap"
+      ],
+      "state": "reported",
+      "note": "PDF29注明采用2026中期公司财务报表；原表单体列已核，未用监管表净资产842,562替换。"
+    },
+    {
+      "id": "risk_life",
+      "label": "寿险业务保险风险最低资本",
+      "concept": "risk_life",
+      "value": "133477",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "risk_nonlife",
+      "label": "非寿险保险风险最低资本",
+      "concept": "risk_nonlife",
+      "value": "12223",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "risk_market",
+      "label": "市场风险最低资本",
+      "concept": "risk_market",
+      "value": "631435",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "risk_credit",
+      "label": "信用风险最低资本",
+      "concept": "risk_credit",
+      "value": "101773",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "risk_div",
+      "label": "量化风险分散",
+      "concept": "risk_div",
+      "value": "151510",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "risk_absorb",
+      "label": "保险合同损失吸收",
+      "concept": "risk_absorb",
+      "value": "42066",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "risk_control",
+      "label": "控制风险最低资本",
+      "concept": "risk_control",
+      "value": "-10486",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_qrisk"
+      ],
+      "state": "reported",
+      "note": ""
+    },
+    {
+      "id": "lcr_base12",
+      "label": "12个月基本LCR1披露值",
+      "concept": "lcr_base12",
+      "value": "110",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_lcr"
+      ],
+      "state": "reported",
+      "note": "为披露整数百分比。仅对披露值查档，真实未舍入输入和现金分子分母未取得。"
+    },
+    {
+      "id": "lcr_mandatory2",
+      "label": "12个月必测压力含变现LCR2披露值",
+      "concept": "lcr_mandatory2",
+      "value": "353",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_lcr"
+      ],
+      "state": "reported",
+      "note": "为披露整数百分比。仅对披露值查档，真实未舍入输入和现金分子分母未取得。"
+    },
+    {
+      "id": "lcr_mandatory3",
+      "label": "12个月必测压力不变现LCR3披露值",
+      "concept": "lcr_mandatory3",
+      "value": "59",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_lcr"
+      ],
+      "state": "reported",
+      "note": "为披露整数百分比。仅对披露值查档，真实未舍入输入和现金分子分母未取得。"
+    },
+    {
+      "id": "fcc_earnings",
+      "label": "Fitch完整税前经营收益",
+      "concept": "fcc_earnings",
+      "value": null,
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "Fitch documented adjustment bridge",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_fitch"
+      ],
+      "state": "missing",
+      "note": "报表利息4,158包含不同工具；未完成匹配资产经营债排除、租赁利息、计入利润/未费用化及投资非经营调整，不填零或用单债755代替总体。"
+    },
+    {
+      "id": "fcc_expensed",
+      "label": "已费用化且应加回的完整固定费用",
+      "concept": "fcc_expensed",
+      "value": null,
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "Fitch documented adjustment bridge",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_fitch"
+      ],
+      "state": "missing",
+      "note": "报表利息4,158包含不同工具；未完成匹配资产经营债排除、租赁利息、计入利润/未费用化及投资非经营调整，不填零或用单债755代替总体。"
+    },
+    {
+      "id": "fcc_fixed",
+      "label": "Fitch完整固定费用分母",
+      "concept": "fcc_fixed",
+      "value": null,
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "Fitch documented adjustment bridge",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_fitch"
+      ],
+      "state": "missing",
+      "note": "报表利息4,158包含不同工具；未完成匹配资产经营债排除、租赁利息、计入利润/未费用化及投资非经营调整，不填零或用单债755代替总体。"
+    },
+    {
+      "id": "weight_netassets",
+      "label": "资本三级净资产标准权重",
+      "concept": "weight_netassets",
+      "value": "50",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "published_life_insurer_model",
+        "start": null,
+        "end": "2026-07-01",
+        "aggregation": "ratio",
+        "basis": "LH V4.1.202606 table 8",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_lh_weights"
+      ],
+      "state": "reported",
+      "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。"
+    },
+    {
+      "id": "weight_comprehensive",
+      "label": "资本三级综合偿付能力标准权重",
+      "concept": "weight_comprehensive",
+      "value": "25",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "published_life_insurer_model",
+        "start": null,
+        "end": "2026-07-01",
+        "aggregation": "ratio",
+        "basis": "LH V4.1.202606 table 8",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_lh_weights"
+      ],
+      "state": "reported",
+      "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。"
+    },
+    {
+      "id": "weight_core",
+      "label": "资本三级核心偿付能力标准权重",
+      "concept": "weight_core",
+      "value": "25",
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "published_life_insurer_model",
+        "start": null,
+        "end": "2026-07-01",
+        "aggregation": "ratio",
+        "basis": "LH V4.1.202606 table 8",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "0.01",
+        "physical_unit": null
+      },
+      "evidence": [
+        "e_lh_weights"
+      ],
+      "state": "reported",
+      "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。"
+    }
+  ],
+  "calculations": [
+    {
+      "id": "bond_rollforward",
+      "label": "披露应付债券账面滚动",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "bond_open",
+          "weight": "1"
+        },
+        {
+          "ref": "bond_cash",
+          "weight": "1"
+        },
+        {
+          "ref": "bond_accrual",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "instant",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "期初账面+筹资现金流变动+计提利息；本列其余披露变动为–，无其他非零组成遗漏",
+      "interpretation": "只勾稽已披露账面滚动，不证明现金全属票息、有效利率或费用分配。",
+      "period_rule": "rollforward",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "coupon_nominal",
+      "label": "本金乘合同年票息",
+      "concept": null,
+      "op": "product",
+      "terms": [
+        {
+          "ref": "bond_par",
+          "weight": "1"
+        },
+        {
+          "ref": "coupon_rate",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "35,000百万元名义本金×2.15%，完整年计息的名义金额",
+      "interpretation": "按合同原始年度条件计算，不证明2025付款日和实际支付，工作日顺延不加息。",
+      "period_rule": "balance_flow",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "bond_cash_out",
+      "label": "债券筹资变动支出方向",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "bond_cash",
+          "weight": "-1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "将原负现金变动转为支出方向用于对照",
+      "interpretation": "不改原值，不归类为全部利息。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "cash_nominal_gap",
+      "label": "披露债券现金变动与名义票息差",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "bond_cash_out",
+          "weight": "1"
+        },
+        {
+          "ref": "coupon_nominal",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "754−名义全年票息",
+      "interpretation": "单行百万元舍入最大0.5，不足以独自解释此差；费用/其他现金与日数原因待核，不称错报。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "step_coupon_nominal",
+      "label": "第五年未赎回分支的完整年度理论票息",
+      "concept": null,
+      "op": "product",
+      "terms": [
+        {
+          "ref": "step_par_if_outstanding",
+          "weight": "1"
+        },
+        {
+          "ref": "step_coupon_rate",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2029-09-26",
+        "end": "2030-09-25",
+        "aggregation": "flow",
+        "basis": "CAS",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "35,000百万元×合同分支3.15%；对应第六计息年度2029-09-26至2030-09-25完整12个月",
+      "interpretation": "不等于2029财年全年利息、实际付款额或未来现金预测；本金在外与支付条件均有明确限制。",
+      "period_rule": "forecast",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "core_q2",
+      "label": "Q2核心资本",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "core1_q2",
+          "weight": "1"
+        },
+        {
+          "ref": "core2_q2",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "核心一级+核心二级",
+      "interpretation": "与实际资本不同。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "core_q1",
+      "label": "Q1比较核心资本",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "core1_q1",
+          "weight": "1"
+        },
+        {
+          "ref": "core2_q1",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "核心一级+核心二级",
+      "interpretation": "为当前Q2报告的比较列。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "capital_layers",
+      "label": "Q2四资本层合计",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "core1_q2",
+          "weight": "1"
+        },
+        {
+          "ref": "core2_q2",
+          "weight": "1"
+        },
+        {
+          "ref": "sup1_q2",
+          "weight": "1"
+        },
+        {
+          "ref": "sup2_q2",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "四个不重叠资本层加总",
+      "interpretation": "不加回会计CSM。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "mcr_rebuilt",
+      "label": "Q2最低资本披露聚合",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "risk_life",
+          "weight": "1"
+        },
+        {
+          "ref": "risk_nonlife",
+          "weight": "1"
+        },
+        {
+          "ref": "risk_market",
+          "weight": "1"
+        },
+        {
+          "ref": "risk_credit",
+          "weight": "1"
+        },
+        {
+          "ref": "risk_div",
+          "weight": "-1"
+        },
+        {
+          "ref": "risk_absorb",
+          "weight": "-1"
+        },
+        {
+          "ref": "risk_control",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "按原披露符号聚合",
+      "interpretation": "不是本次重建监管底层风险模型。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "comp_q2",
+      "label": "Q2综合偿付率复算",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "cap_q2",
+          "weight": "1"
+        },
+        {
+          "ref": "mcr_q2",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "对应资本除同日同法人最低资本",
+      "interpretation": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "core_ratio_q2",
+      "label": "Q2核心偿付率复算",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "core_q2",
+          "weight": "1"
+        },
+        {
+          "ref": "mcr_q2",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "对应资本除同日同法人最低资本",
+      "interpretation": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "comp_q1",
+      "label": "Q1比较综合偿付率复算",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "cap_q1",
+          "weight": "1"
+        },
+        {
+          "ref": "mcr_q1",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "对应资本除同日同法人最低资本",
+      "interpretation": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "core_ratio_q1",
+      "label": "Q1比较核心偿付率复算",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "core_q1",
+          "weight": "1"
+        },
+        {
+          "ref": "mcr_q1",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-03-31",
+        "aggregation": "ratio",
+        "basis": "C-ROSS II",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "对应资本除同日同法人最低资本",
+      "interpretation": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "cap_at_200",
+      "label": "固定Q2最低资本的200%资本要求",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "mcr_q2",
+          "weight": "2"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "当前最低资本×2；原方法综合率7分域下边界",
+      "interpretation": "静态相邻阈值分析，不是拟注资、监管新增要求或现金缺口。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "cap_to_200",
+      "label": "固定最低资本达到200%的资本增量",
+      "concept": null,
+      "op": "difference",
+      "terms": [
+        {
+          "ref": "cap_at_200",
+          "weight": "1"
+        },
+        {
+          "ref": "cap_q2",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "insurance_legal_entity_regulatory",
+        "start": null,
+        "end": "2026-06-30",
+        "aggregation": "instant",
+        "basis": "C-ROSS II",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "阈值资本−当前实际资本",
+      "interpretation": "未来利润、市场变化、因子与认可调整会共同改变，不能视为只需注资此额。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "fcc_numerator",
+      "label": "Fitch FCC分子",
+      "concept": null,
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "fcc_earnings",
+          "weight": "1"
+        },
+        {
+          "ref": "fcc_expensed",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "flow",
+        "basis": "Fitch documented adjustment bridge",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1000000",
+        "physical_unit": null
+      },
+      "definition": "税前经营收益+已费用化固定费用",
+      "interpretation": "原755计提并未证明该字段完整。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "fcc_result",
+      "label": "Fitch完整FCC未计算",
+      "concept": null,
+      "op": "ratio",
+      "terms": [
+        {
+          "ref": "fcc_numerator",
+          "weight": "1"
+        },
+        {
+          "ref": "fcc_fixed",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "中国人寿保险股份有限公司",
+        "scope": "consolidated",
+        "start": "2025-01-01",
+        "end": "2025-12-31",
+        "aggregation": "ratio",
+        "basis": "Fitch documented adjustment bridge",
+        "measure": "ratio",
+        "currency": null,
+        "scale": "1",
+        "physical_unit": "times"
+      },
+      "definition": "完整定义分子/完整固定费用",
+      "interpretation": "缺口如实传递null。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "r_bond",
+      "label": "应付债券披露账面滚动",
+      "actual": "bond_rollforward",
+      "expected": "bond_close",
+      "tolerance": "0",
+      "basis": "只报告披露百万元整数的精确聚合残差；不扩大容差或把零差当模型验证。"
+    },
+    {
+      "id": "r_cap",
+      "label": "资本层与实际资本",
+      "actual": "capital_layers",
+      "expected": "cap_q2",
+      "tolerance": "0",
+      "basis": "只报告披露百万元整数的精确聚合残差；不扩大容差或把零差当模型验证。"
+    },
+    {
+      "id": "r_mcr",
+      "label": "最低资本聚合",
+      "actual": "mcr_rebuilt",
+      "expected": "mcr_q2",
+      "tolerance": "0",
+      "basis": "只报告披露百万元整数的精确聚合残差；不扩大容差或把零差当模型验证。"
+    }
+  ],
+  "findings": [
+    {
+      "id": "f_bond",
+      "title": "资本债名义条款与披露账面滚动接通",
+      "question": "真实资本债发生了什么，哪些现金已能证明？",
+      "conclusion": "应付债券披露滚动{{bond_open}}+{{bond_cash}}+{{bond_accrual}}={{bond_rollforward}}，与期末账面一致。名义全年票息为{{coupon_nominal}}；现金变动支出{{bond_cash_out}}与其差{{cash_nominal_gap}}仍未分拆，实际现金票息{{cash_coupon_alloc}}。若第五年未赎回且全额本金仍在外，第六计息年度2029-09-26至2030-09-25完整12个月理论票息为{{step_coupon_nominal}}，不作2029财年全年利息或实际付款计划。",
+      "mechanism": "该债为有期限可递延资本工具，合同清偿及付款顺位低于保单/普通负债；监管条件可先于企业整体违约阻止现金支付，非合同未足额支付的措辞不消除投资者现金时间风险。十年到期与五年发行人条件赎回分别分析。",
+      "status": "supported",
+      "evidence": [
+        "e_terms",
+        "e_debt",
+        "e_roll",
+        "e_coupon",
+        "bond_rollforward",
+        "step_coupon_nominal"
+      ],
+      "counterevidence": [
+        "cash_nominal_gap"
+      ],
+      "alternatives": [
+        "754可能还含发行费用或其他债券筹资现金，755可能含有效利率摊销；均未有逐项原证，不选定原因。"
+      ],
+      "changes_if": "取得最终合同、原付息通知、支付流水及费用摊销明细后，可分配现金/应计差；若递延条件触发，撤回正常付款假设。"
+    },
+    {
+      "id": "f_cap",
+      "title": "真实资本输入与标准权重参考区间",
+      "question": "最新公开实际资本能完成到哪一步？",
+      "conclusion": "Q2综合率{{comp_q2}}、核心率{{core_ratio_q2}}。联合V4.1表12-1给出综合率[6,7)、核心率7；单体CAS净资产{{company_netasset_q2}}对应7。按PDF19加权步骤及PDF23表8标准权重，资本充足性局部参考区间0.50×7+0.25×[6,7)+0.25×7=[6.75,7)。Q1比较综合率{{comp_q1}}对应7。固定Q2最低资本，达到200%需增量{{cap_to_200}}。该局部组合不是机构实际定值；偿付能力完整因素和主体评级未形成。",
+      "mechanism": "Q2实际资本增加却仍被最低资本上升稀释；对该相邻方法叶子的影响明确，不把叶子变化称为整个保险评级下降。",
+      "status": "supported",
+      "evidence": [
+        "e_qcap",
+        "e_qrisk",
+        "e_lh_cap",
+        "e_lh_chain",
+        "comp_q2",
+        "core_ratio_q2",
+        "cap_to_200",
+        "e_lh_weights"
+      ],
+      "counterevidence": [
+        "e_lh_chain"
+      ],
+      "alternatives": [
+        "认可资本与市场/保险/信用最低资本同时变化，单一注资或市场风险归因都不能完整解释。"
+      ],
+      "changes_if": "原资本、净资产、监管口径或方法版本改变须重算；其他两叶子仍为7且综合率达到200%时，标准权重参考组合成为7。实际赋值、模型调整及其他偿付/经营因素仍须各自形成。"
+    },
+    {
+      "id": "f_liq",
+      "title": "流动性披露可以挑战付款，临界叶子仍有限",
+      "question": "基本110%的披露能否证明资本债现金安全或唯一流动评分？",
+      "conclusion": "基本12个月披露{{lcr_base12}}与必测压力不变现{{lcr_mandatory3}}、含变现{{lcr_mandatory2}}分别记录。对110%字面输入查表11得到[5,6)，但整数披露落临界且原现金分子/分母未得，真实未舍入叶子及整体流动因素均未定。 方法表8的流动性三级标准权重60%/40%已公开，但另一三级因子及适用情景输入未完成，权重公开不解除这些缺口。",
+      "mechanism": "强压力覆盖依赖流动性资产变现；不变现覆盖低于100%表明单靠情景现金流入和现金及现金等价物在评估基准日的账面价值不覆盖情景现金流出。不同场景、期限与证券变现能否实现必须分别核，不把353%称为实际可立即支付现金。",
+      "status": "conditional",
+      "evidence": [
+        "e_lcr",
+        "e_lh_liq",
+        "e_lh_weights"
+      ],
+      "counterevidence": [
+        "e_lcr"
+      ],
+      "alternatives": [
+        "压力情景可能保守；资产确可及时无重复质押地出售将改善可支付能力；仍需同场景构成。"
+      ],
+      "changes_if": "取得真实未舍入基本LCR、情景逐期流入流出及证券变现/质押明细后，才能关闭临界叶子和现金支付结论。"
+    },
+    {
+      "id": "f_rating",
+      "title": "实际完成与完整评级未决边界",
+      "question": "这些节点是否足以给本轮主体和次级债字母级？",
+      "conclusion": "公开标准权重已核，资本充足性局部参考区间已算为[6.75,7)。机构实际赋值与调整、其他偿付与经营因素、流动性未舍入/情景及可快速变现资产输入、支持及适用债项级差仍未接通；Fitch完整FCC为{{fcc_result}}。中诚信2026-09-29主体AAA/稳定和债项AAA是外部事实，C230201_2026_05仅为行动所引版本；不足以形成自己的完整主体或债项字母级。",
+      "mechanism": "单只债的应计利息不能补成全部资本结构固定费用；Fitch dated deferrable通常0%权益认可与中国监管附属一级认可是不同目的。回收顺位、监管不履约风险和主体实力依赖不同输入，不能从已公布AAA反推本轮同级。",
+      "status": "unresolved",
+      "evidence": [
+        "e_fitch",
+        "e_lh_chain",
+        "e_ccxi",
+        "e_terms",
+        "e_basis",
+        "e_lh_weights"
+      ],
+      "counterevidence": [],
+      "alternatives": [
+        "完整合同和中国法域的Fitch监管分类可能改变债项分支；缺这些不会否定已完成的披露账面勾稽。"
+      ],
+      "changes_if": "先关闭各缺失输入和条款/支持分支，再按同一机构有效版本合成；不得拼机构分数或以监管偿付率替代BCAR/RAC。"
+    }
+  ],
+  "procedures": [
+    {
+      "id": "p_actual",
+      "finding": "f_bond",
+      "purpose": "从原表建立实际资本债披露滚动并复算",
+      "assertions": [
+        "范围",
+        "准确性",
+        "列位"
+      ],
+      "population": "2025年报全部应付债券列；本金仅此资本补充债",
+      "selection": "选择附注22及46(3)全列，其他工具列保留作表头边界，不合入该债",
+      "steps": [
+        "独立运行extract_pdf.py并渲染PDF182/211，核原表及全部变动行。",
+        "保存35194、(754)、755、35195原科目；其余变动原件为–，不填未知零。",
+        "用既有calculate.evaluate执行披露账面桥及名义票息，报告残差与未解释差。"
+      ],
+      "status": "performed",
+      "result": "r_bond披露整数残差0；只关闭披露账面滚动，实际票息现金分配仍null；原始输入和算式保留于本底稿。",
+      "evidence": [
+        "e_roll",
+        "e_debt",
+        "bond_rollforward",
+        "cash_nominal_gap"
+      ],
+      "performed_by": "Codex本轮原件读取及既有脚本复算",
+      "performed_on": "2026-10-06"
+    },
+    {
+      "id": "p_capital_weights",
+      "finding": "f_cap",
+      "purpose": "按公开人身险标准权重形成局部资本充足性参考区间",
+      "assertions": [
+        "方法加权步骤",
+        "原表权重",
+        "区间开闭"
+      ],
+      "population": "联合V4.1.202606 PDF19加权说明、PDF23表8资本及流动性行；PDF30附件公式；Q2 PDF28公式注释",
+      "selection": "直接读取已合法取得的PDF原图；仅资本三个已完成叶子参与标准加权",
+      "steps": [
+        "核PDF19/印刷18三级因子加权得二级步骤。",
+        "核PDF23/印刷22表8资本三级50/25/25、资本二级50%与流动性60/40。",
+        "核Q2 PDF28及方法PDF30现金为评估时点账面价值。",
+        "调用既有score_bounds weighted_mean，保存输入快照、标准权重和开闭端点。"
+      ],
+      "status": "performed",
+      "result": "局部标准权重参考区间[27/4,7)=[6.75,7)，右端开；机构实际定值、完整偿付/流动因素及最终评级未形成。权重、查档规则及实际输出保留于本底稿的量化记录及输入快照。",
+      "evidence": [
+        "e_lh_weights",
+        "e_lh_chain",
+        "e_lcr",
+        "e_lh_liq",
+        "e_lh_cap"
+      ],
+      "performed_by": "Codex直接核读合法原件及既有脚本复算",
+      "performed_on": "2026-10-06"
+    }
+  ],
+  "requests": [
+    {
+      "id": "req_cash",
+      "finding": "f_bond",
+      "request": "最终合同、2025/2026付息通知及付款/费用明细；将筹资现金754分配至实际票息和其他现金，解释应计755组成。",
+      "reason": "不能靠零账面滚动残差证明实际票息现金或完整工具成本。",
+      "owner_role": "发行人财务/债券事务",
+      "close_when": "同实体同工具现金、名义/有效利率与费用明细有证据闭合"
+    },
+    {
+      "id": "req_lcr",
+      "finding": "f_liq",
+      "request": "基本12个月LCR原始未舍入值、逐期限/场景现金分子分母及变现/质押清单。",
+      "reason": "110%位于原表临界；353%依赖变现。",
+      "owner_role": "资金/偿付",
+      "close_when": "临界及逐期付款缺口可重建"
+    },
+    {
+      "id": "req_fcc",
+      "finding": "f_rating",
+      "request": "完整税前经营收益调整、逐工具固定费用与经营债匹配资产及费用化记录；有效债项方法和法域回收/不履约分支。",
+      "reason": "保留完整FCC与债项级差未定。",
+      "owner_role": "财务/评级研究",
+      "close_when": "逐项来源和方法规则已独立实读且计算可重建"
+    }
+  ],
+  "sections": [
+    {
+      "title": "资本债披露桥及资本充足性局部参考区间",
+      "findings": [
+        "f_bond",
+        "f_cap",
+        "f_liq",
+        "f_rating"
+      ],
+      "figures": [
+        "bond_rollforward",
+        "coupon_nominal",
+        "cash_nominal_gap",
+        "comp_q2",
+        "core_ratio_q2",
+        "cap_to_200",
+        "fcc_result"
+      ]
+    }
+  ],
+  "presentation": [],
+  "quantitative": [
+    {
+      "id": "q_actual_leaves_v2",
+      "label": "真实输入的原表叶子与资本充足性标准权重参考区间",
+      "method": "linear_score_bounds_v1",
+      "as_of": "2026-10-02",
+      "input_refs": [
+        "comp_q1",
+        "comp_q2",
+        "company_netasset_q2",
+        "core_ratio_q2",
+        "lcr_base12",
+        "weight_comprehensive",
+        "weight_core",
+        "weight_netassets"
+      ],
+      "evidence": [
+        "e_lcr",
+        "e_lh_cap",
+        "e_lh_chain",
+        "e_lh_liq",
+        "e_lh_weights",
+        "e_qcap"
+      ],
+      "assumptions": [
+        "Composed intervals require the declared independent feasible sets; no shared constraints are solved."
+      ],
+      "limitations": [
+        "Numeric lookup matches supplied thresholds and retains their full score intervals; original tables, input definitions and manually supplied leaves are not verified. No interpolation, official model or rating mapping is performed.",
+        "Exact rational endpoints describe the supplied inputs; referenced Decimal calculations retain their existing calculation precision.",
+        "Missing rules, contributing inputs or unestablished joint feasibility remain unresolved; no zero or equal weights are inserted."
+      ],
+      "artifact": {
+        "method": "linear_score_bounds_v1",
+        "version": "1.1",
+        "as_of": "2026-10-02",
+        "dependency_versions": {
+          "portion": "2.6.3"
+        },
+        "rows": [
+          {
+            "id": "n_comp_q2",
+            "mode": "numeric_band",
+            "children": [],
+            "input_refs": [
+              "comp_q2"
+            ],
+            "state": "method_band",
+            "joint_basis": null,
+            "note": "Q2实际监管金额复算→表12-1；该叶子随后只参与资本充足性标准权重参考组合。",
+            "normalizer_exact": null,
+            "lower_exact": "6",
+            "upper_exact": "7",
+            "lower_closed": true,
+            "upper_closed": false,
+            "range_text": "[6,7)",
+            "status": "range_given_inputs",
+            "matched_band_ids": [
+              "band_7"
+            ],
+            "input_normalized_exact": "494441694845935220776295629/250000000000000000000000000",
+            "reason": "",
+            "selected_output": true
+          },
+          {
+            "id": "n_core_q2",
+            "mode": "numeric_band",
+            "children": [],
+            "input_refs": [
+              "core_ratio_q2"
+            ],
+            "state": "method_band",
+            "joint_basis": null,
+            "note": "Q2实际监管核心金额→表12-1。",
+            "normalizer_exact": null,
+            "lower_exact": "7",
+            "upper_exact": "7",
+            "lower_closed": true,
+            "upper_closed": true,
+            "range_text": "[7]",
+            "status": "point_given_inputs",
+            "matched_band_ids": [
+              "band_8"
+            ],
+            "input_normalized_exact": "1568011072155721453487165961/1000000000000000000000000000",
+            "reason": "",
+            "selected_output": true
+          },
+          {
+            "id": "n_comp_q1",
+            "mode": "numeric_band",
+            "children": [],
+            "input_refs": [
+              "comp_q1"
+            ],
+            "state": "method_band",
+            "joint_basis": null,
+            "note": "当前Q2报告Q1比较列，不作为原Q1发行时点评级复现。",
+            "normalizer_exact": null,
+            "lower_exact": "7",
+            "upper_exact": "7",
+            "lower_closed": true,
+            "upper_closed": true,
+            "range_text": "[7]",
+            "status": "point_given_inputs",
+            "matched_band_ids": [
+              "band_8"
+            ],
+            "input_normalized_exact": "404629101712562964262451127/200000000000000000000000000",
+            "reason": "",
+            "selected_output": true
+          },
+          {
+            "id": "n_liq_reported",
+            "mode": "numeric_band",
+            "children": [],
+            "input_refs": [
+              "lcr_base12"
+            ],
+            "state": "method_band",
+            "joint_basis": null,
+            "note": "仅对整百分比披露值110查档；未舍入原值及完整流动因素未定，结果条件性。",
+            "normalizer_exact": null,
+            "lower_exact": "5",
+            "upper_exact": "6",
+            "lower_closed": true,
+            "upper_closed": false,
+            "range_text": "[5,6)",
+            "status": "range_given_inputs",
+            "matched_band_ids": [
+              "band_6"
+            ],
+            "input_normalized_exact": "11/10",
+            "reason": "",
+            "selected_output": true
+          },
+          {
+            "id": "n_netasset_q2",
+            "mode": "numeric_band",
+            "children": [],
+            "input_refs": [
+              "company_netasset_q2"
+            ],
+            "state": "method_band",
+            "joint_basis": null,
+            "note": "单体CAS净资产654,148百万元按原表亿元单位查档，不把监管净资产/未来盈余认可当会计所有者权益。",
+            "normalizer_exact": null,
+            "lower_exact": "7",
+            "upper_exact": "7",
+            "lower_closed": true,
+            "upper_closed": true,
+            "range_text": "[7]",
+            "status": "point_given_inputs",
+            "matched_band_ids": [
+              "band_8"
+            ],
+            "input_normalized_exact": "654148000000",
+            "reason": "",
+            "selected_output": true
+          },
+          {
+            "id": "n_capital_factor",
+            "mode": "weighted_mean",
+            "children": [
+              "n_netasset_q2",
+              "n_comp_q2",
+              "n_core_q2"
+            ],
+            "input_refs": [
+              "weight_netassets",
+              "weight_comprehensive",
+              "weight_core"
+            ],
+            "state": "reported",
+            "joint_basis": "independent",
+            "note": "PDF19步骤及表8标准权重50/25/25构成资本充足性局部参考区间；净资产和核心两项为点7，只有综合率叶子为区间，独立区间传播没有拼接两个共享风险输入的不确定区间。未选档内点值、插值、机构调整或最终等级；不是机构实际定值。",
+            "normalizer_exact": "1",
+            "lower_exact": "27/4",
+            "upper_exact": "7",
+            "lower_closed": true,
+            "upper_closed": false,
+            "range_text": "[27/4,7)",
+            "status": "range_given_inputs",
+            "matched_band_ids": [],
+            "input_normalized_exact": null,
+            "reason": "",
+            "selected_output": true
+          }
+        ],
+        "input_snapshot": {
+          "spec": {
+            "method_evidence": [
+              "e_lh_cap",
+              "e_lh_liq",
+              "e_lh_chain",
+              "e_lh_weights"
+            ],
+            "nodes": [
+              {
+                "id": "n_comp_q2",
+                "evidence": [
+                  "e_lh_cap"
+                ],
+                "note": "Q2实际监管金额复算→表12-1；该叶子随后只参与资本充足性标准权重参考组合。",
+                "mode": "numeric_band",
+                "input_ref": "comp_q2",
+                "threshold_scale": "0.01",
+                "bands": [
+                  {
+                    "id": "band_1",
+                    "lower": null,
+                    "upper": "50",
+                    "left_closed": false,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "1",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  },
+                  {
+                    "id": "band_2",
+                    "lower": "50",
+                    "upper": "100",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "2",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_3",
+                    "lower": "100",
+                    "upper": "110",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "2",
+                      "upper": "3",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_4",
+                    "lower": "110",
+                    "upper": "120",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "3",
+                      "upper": "4",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_5",
+                    "lower": "120",
+                    "upper": "140",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "4",
+                      "upper": "5",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_6",
+                    "lower": "140",
+                    "upper": "160",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "5",
+                      "upper": "6",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_7",
+                    "lower": "160",
+                    "upper": "200",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "6",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_8",
+                    "lower": "200",
+                    "upper": null,
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "7",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "n_core_q2",
+                "evidence": [
+                  "e_lh_cap"
+                ],
+                "note": "Q2实际监管核心金额→表12-1。",
+                "mode": "numeric_band",
+                "input_ref": "core_ratio_q2",
+                "threshold_scale": "0.01",
+                "bands": [
+                  {
+                    "id": "band_1",
+                    "lower": null,
+                    "upper": "25",
+                    "left_closed": false,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "1",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  },
+                  {
+                    "id": "band_2",
+                    "lower": "25",
+                    "upper": "50",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "2",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_3",
+                    "lower": "50",
+                    "upper": "60",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "2",
+                      "upper": "3",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_4",
+                    "lower": "60",
+                    "upper": "70",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "3",
+                      "upper": "4",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_5",
+                    "lower": "70",
+                    "upper": "80",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "4",
+                      "upper": "5",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_6",
+                    "lower": "80",
+                    "upper": "100",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "5",
+                      "upper": "6",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_7",
+                    "lower": "100",
+                    "upper": "120",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "6",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_8",
+                    "lower": "120",
+                    "upper": null,
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "7",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "n_comp_q1",
+                "evidence": [
+                  "e_lh_cap"
+                ],
+                "note": "当前Q2报告Q1比较列，不作为原Q1发行时点评级复现。",
+                "mode": "numeric_band",
+                "input_ref": "comp_q1",
+                "threshold_scale": "0.01",
+                "bands": [
+                  {
+                    "id": "band_1",
+                    "lower": null,
+                    "upper": "50",
+                    "left_closed": false,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "1",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  },
+                  {
+                    "id": "band_2",
+                    "lower": "50",
+                    "upper": "100",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "2",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_3",
+                    "lower": "100",
+                    "upper": "110",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "2",
+                      "upper": "3",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_4",
+                    "lower": "110",
+                    "upper": "120",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "3",
+                      "upper": "4",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_5",
+                    "lower": "120",
+                    "upper": "140",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "4",
+                      "upper": "5",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_6",
+                    "lower": "140",
+                    "upper": "160",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "5",
+                      "upper": "6",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_7",
+                    "lower": "160",
+                    "upper": "200",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "6",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_8",
+                    "lower": "200",
+                    "upper": null,
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "7",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "n_liq_reported",
+                "evidence": [
+                  "e_lh_liq"
+                ],
+                "note": "仅对整百分比披露值110查档；未舍入原值及完整流动因素未定，结果条件性。",
+                "mode": "numeric_band",
+                "input_ref": "lcr_base12",
+                "threshold_scale": "0.01",
+                "bands": [
+                  {
+                    "id": "band_1",
+                    "lower": null,
+                    "upper": "30",
+                    "left_closed": false,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "1",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  },
+                  {
+                    "id": "band_2",
+                    "lower": "30",
+                    "upper": "80",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "2",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_3",
+                    "lower": "80",
+                    "upper": "90",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "2",
+                      "upper": "3",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_4",
+                    "lower": "90",
+                    "upper": "100",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "3",
+                      "upper": "4",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_5",
+                    "lower": "100",
+                    "upper": "110",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "4",
+                      "upper": "5",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_6",
+                    "lower": "110",
+                    "upper": "130",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "5",
+                      "upper": "6",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_7",
+                    "lower": "130",
+                    "upper": "150",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "6",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_8",
+                    "lower": "150",
+                    "upper": null,
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "7",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "n_netasset_q2",
+                "evidence": [
+                  "e_lh_cap"
+                ],
+                "note": "单体CAS净资产654,148百万元按原表亿元单位查档，不把监管净资产/未来盈余认可当会计所有者权益。",
+                "mode": "numeric_band",
+                "input_ref": "company_netasset_q2",
+                "threshold_scale": "100000000",
+                "bands": [
+                  {
+                    "id": "band_1",
+                    "lower": null,
+                    "upper": "2",
+                    "left_closed": false,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "1",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  },
+                  {
+                    "id": "band_2",
+                    "lower": "2",
+                    "upper": "5",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "1",
+                      "upper": "2",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_3",
+                    "lower": "5",
+                    "upper": "15",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "2",
+                      "upper": "3",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_4",
+                    "lower": "15",
+                    "upper": "30",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "3",
+                      "upper": "4",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_5",
+                    "lower": "30",
+                    "upper": "50",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "4",
+                      "upper": "5",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_6",
+                    "lower": "50",
+                    "upper": "80",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "5",
+                      "upper": "6",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_7",
+                    "lower": "80",
+                    "upper": "150",
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "6",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": false
+                    }
+                  },
+                  {
+                    "id": "band_8",
+                    "lower": "150",
+                    "upper": null,
+                    "left_closed": true,
+                    "right_closed": false,
+                    "score": {
+                      "lower": "7",
+                      "upper": "7",
+                      "left_closed": true,
+                      "right_closed": true
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "n_capital_factor",
+                "evidence": [
+                  "e_lh_chain",
+                  "e_lh_weights"
+                ],
+                "note": "PDF19步骤及表8标准权重50/25/25构成资本充足性局部参考区间；净资产和核心两项为点7，只有综合率叶子为区间，独立区间传播没有拼接两个共享风险输入的不确定区间。未选档内点值、插值、机构调整或最终等级；不是机构实际定值。",
+                "mode": "weighted_mean",
+                "terms": [
+                  {
+                    "node_ref": "n_netasset_q2",
+                    "weight_ref": "weight_netassets"
+                  },
+                  {
+                    "node_ref": "n_comp_q2",
+                    "weight_ref": "weight_comprehensive"
+                  },
+                  {
+                    "node_ref": "n_core_q2",
+                    "weight_ref": "weight_core"
+                  }
+                ],
+                "basis_state": "reported",
+                "joint_basis": "independent"
+              }
+            ],
+            "outputs": [
+              "n_comp_q2",
+              "n_core_q2",
+              "n_comp_q1",
+              "n_liq_reported",
+              "n_netasset_q2",
+              "n_capital_factor"
+            ]
+          },
+          "methods": [
+            "联合资信保险公司信用评级方法与模型V4.1.202606，PDF2、19–21、23、26–27、30；2026-07-01生效，复算公开金额、原表叶子及资本充足性标准权重参考区间",
+            "Fitch Insurance Rating Criteria 2026-05-29，PDF p13–16、32–36、45、49、51； dated deferrable资本属性与FCC输入边界，未形成完整Fitch评级"
+          ],
+          "resolved_inputs": {
+            "comp_q1": {
+              "normalized_exact": "404629101712562964262451127/200000000000000000000000000",
+              "state": "calculated",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "insurance_legal_entity_regulatory",
+                "start": null,
+                "end": "2026-03-31",
+                "aggregation": "ratio",
+                "basis": "C-ROSS II",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "1",
+                "physical_unit": null
+              },
+              "note": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_qcap"
+              ]
+            },
+            "comp_q2": {
+              "normalized_exact": "494441694845935220776295629/250000000000000000000000000",
+              "state": "calculated",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "insurance_legal_entity_regulatory",
+                "start": null,
+                "end": "2026-06-30",
+                "aggregation": "ratio",
+                "basis": "C-ROSS II",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "1",
+                "physical_unit": null
+              },
+              "note": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_qcap"
+              ]
+            },
+            "company_netasset_q2": {
+              "normalized_exact": "654148000000",
+              "state": "reported",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "company",
+                "start": null,
+                "end": "2026-06-30",
+                "aggregation": "instant",
+                "basis": "CAS",
+                "measure": "money",
+                "currency": "CNY",
+                "scale": "1000000",
+                "physical_unit": null
+              },
+              "note": "PDF29注明采用2026中期公司财务报表；原表单体列已核，未用监管表净资产842,562替换。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_qcap"
+              ]
+            },
+            "core_ratio_q2": {
+              "normalized_exact": "1568011072155721453487165961/1000000000000000000000000000",
+              "state": "calculated",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "insurance_legal_entity_regulatory",
+                "start": null,
+                "end": "2026-06-30",
+                "aggregation": "ratio",
+                "basis": "C-ROSS II",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "1",
+                "physical_unit": null
+              },
+              "note": "仅中国监管偿付口径，不代替BCAR、RAC、NAIC RBC或Solvency II。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_qcap"
+              ]
+            },
+            "lcr_base12": {
+              "normalized_exact": "11/10",
+              "state": "reported",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "insurance_legal_entity_regulatory",
+                "start": null,
+                "end": "2026-06-30",
+                "aggregation": "ratio",
+                "basis": "C-ROSS II",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "0.01",
+                "physical_unit": null
+              },
+              "note": "为披露整数百分比。仅对披露值查档，真实未舍入输入和现金分子分母未取得。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_lcr"
+              ]
+            },
+            "weight_comprehensive": {
+              "normalized_exact": "1/4",
+              "state": "reported",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "published_life_insurer_model",
+                "start": null,
+                "end": "2026-07-01",
+                "aggregation": "ratio",
+                "basis": "LH V4.1.202606 table 8",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "0.01",
+                "physical_unit": null
+              },
+              "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_lh_weights"
+              ]
+            },
+            "weight_core": {
+              "normalized_exact": "1/4",
+              "state": "reported",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "published_life_insurer_model",
+                "start": null,
+                "end": "2026-07-01",
+                "aggregation": "ratio",
+                "basis": "LH V4.1.202606 table 8",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "0.01",
+                "physical_unit": null
+              },
+              "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_lh_weights"
+              ]
+            },
+            "weight_netassets": {
+              "normalized_exact": "1/2",
+              "state": "reported",
+              "context": {
+                "entity": "中国人寿保险股份有限公司",
+                "scope": "published_life_insurer_model",
+                "start": null,
+                "end": "2026-07-01",
+                "aggregation": "ratio",
+                "basis": "LH V4.1.202606 table 8",
+                "measure": "ratio",
+                "currency": null,
+                "scale": "0.01",
+                "physical_unit": null
+              },
+              "note": "方法表8公开标准权重，用于局部参考组合；不是对机构本次实际定值、模型调整或最终等级的证明。",
+              "calculation_reason": "",
+              "assumptions": [],
+              "evidence": [
+                "e_lh_weights"
+              ]
+            }
+          },
+          "sources": [
+            {
+              "id": "q2",
+              "title": "2026年2季度偿付能力季度报告摘要",
+              "url": "https://www.e-chinalife.com/upload/resources/file/2026/08/27/附件1:2026年2季度偿付能力季度报告摘要.pdf",
+              "published": "2026-08-28",
+              "availability_note": "公司偿付能力报告目录标注2026-08-28；本轮实读PDF26–30、38–39、41–44及原表图像。Q1采用本件上季度比较列，不改写为当时已知版本。",
+              "sha256": "3671d815671ca9ff38b73d10feba61688b89b2ba8cee89f502b072cda4a19802"
+            },
+            {
+              "id": "lh",
+              "title": "联合资信保险公司信用评级方法与模型V4.1.202606",
+              "url": "https://report.lhratings.com/file/3028c233-0152-4bfa-b27e-50297db8de26.pdf",
+              "published": null,
+              "availability_note": "封面2026年6月；PDF2明确2026-07-01起施行；首次公布日未由本轮独立核，保留null。",
+              "sha256": "dc9958ff10b2c6cbafd3763e69bbdc65c2c19a594163b1cd51059d25d0084077"
+            }
+          ]
+        }
+      },
+      "figures": []
+    }
+  ]
+}
