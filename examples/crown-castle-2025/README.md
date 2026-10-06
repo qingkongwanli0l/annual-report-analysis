@@ -1,17 +1,19 @@
 # Crown Castle 2025 年报与 Fiber 出售案例
 
-以2025年US GAAP合并年报为基础，信息截止2026-06-30。案例连接减值、终止经营、出售结算、新旧信贷约束、S&P财务调整及客户续约变化；2026年七月之后发表的交割实绩未倒填进这个信息集。
+以2025年US GAAP合并年报为基础，信息截止2026-06-30。案例连接原报及附注、Fiber实际出售、售后现金与债务预测、S&P条件信用形成链和指定票据的回收分支；2026年七月之后发表的交割实绩未倒填进这个信息集。
 
-成果来自同一份[共同底稿](workpaper.json)：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[9页PowerPoint讨论简报](deliverables/presentation.pptx)。简报由底稿的`presentation`编排，正文保留判断条件，备注保留原文定位；完整研究内容见Word和Excel。原值、重列数、备考假设和实际期后事项分开记录；仓库不转载原年报、交易协议或会计准则全文。
+成果来自同一份[共同底稿](workpaper.json)：[Word研究报告](deliverables/report.docx)、[Excel工作底稿](deliverables/workbook.xlsx)、[16页PowerPoint讨论简报](deliverables/presentation.pptx)。简报由底稿的`presentation`编排，正文保留判断条件，备注保留原文定位；完整研究内容见Word和Excel。原值、重列数、备考假设和实际期后事项分开记录；仓库不转载原年报、交易协议或会计准则全文。
 
 在仓库根目录安装README列出的依赖后，可复算并重新导出：
 
 ```bash
 python examples/crown-castle-2025/sp_adjustments.py examples/crown-castle-2025/workpaper.json --output output/crown-castle/workpaper.json
-python skills/annual-report-analysis/scripts/export.py output/crown-castle/workpaper.json --output output/crown-castle/deliverables
+python examples/crown-castle-2025/crown_forward.py --workpaper output/crown-castle/workpaper.json --output output/crown-castle/forward.json
+python examples/crown-castle-2025/crown_rating_formation.py --workpaper output/crown-castle/forward.json --output output/crown-castle/rating.json
+python skills/annual-report-analysis/scripts/export.py output/crown-castle/rating.json --output output/crown-castle/deliverables
 ```
 
-第一条命令从同一底稿原值复算案例专用方法桥与敏感性，第二条复算基础运算并导出三份成果。修改输入后须依次重跑；Excel中的方法桥是已运行快照。分析另一企业时，应先阅读其原始披露并建立自己的事实和判断，不能替换公司名称后使用。
+依次复算历史调整桥、售后预测和信用形成，再导出三份成果。修改输入后须依次重跑；Excel中的方法、预测及信用形成结果是已运行快照。后两份中间底稿只写入被忽略的`output/`，不用提交到仓库。三个脚本专用于本案例；分析另一企业时，应重新建立事实、适用方法和专业判断，不能替换公司名称后使用。
 
 ## 原件与可复核答案
 
@@ -34,6 +36,12 @@ python skills/annual-report-analysis/scripts/export.py output/crown-castle/workp
 | 现金分类与历史杠杆 | CFO2,181.57−capex167＝FOCF2,014.57，尚非付完全部租赁本金的现金。ARO未抵减、仅扣99合格现金条件下，2025债务29,789，债务/EBITDA8.64倍；不能当作2026出售后杠杆 | 共同底稿Q_sp_crown；2025年报p74、88；方法¶86–120 |
 | 实际经营变化 | 2026Q1持续CFO509−213＝296，上年641−270＝371，同比−20.22%。billings增量30−49−5＝−24，分别反映剔DISH/Sprint后的增长、DISH终止及Sprint不续约 | [Q1报告](https://investor.crowncastle.com/static-files/de60fca2-89d5-499d-899b-8e0a23030617) PDF6；[Q1补充](https://investor.crowncastle.com/static-files/38f6a584-60a8-452d-bfd2-a44103aeec82) PDF10 |
 | 土地控制与续约暴露 | 自有地块塔数占30.26%，末季年化毛现金利润占42.68%；2028续约组AT&T占775/861＝90.01%。续约表是含延期假设的年度化暴露，不是2028确定损失；土地、账内租赁、客户合同的不同剩余年限不能直接比较 | [Q4补充](https://investor.crowncastle.com/static-files/bea23792-6649-4b95-9395-aa837e68396c) PDF13–14；[数字基础设施方法](https://www.maalot.co.il/Publications/MT20251012123218.pdf) PDF61–78 |
+| 季度现金税与预测 | Q1补充披露的LQA净付/退税横线只支持披露精度下的季度零参照，不证明毛额或未舍入数为零；全年现金税15仍为独立假设。依明示经营、费用、债务和融资条件，2026 CFO为1,799.98，2026–2028需新增融资97.79、116.14及19.73 | [Q1补充](https://investor.crowncastle.com/static-files/38f6a584-60a8-452d-bfd2-a44103aeec82) PDF12、23；共同底稿Q_crown_forward的原值、假设和逐年桥 |
+| 融资失败与压力 | 无新增额度参照在2026形成支付缺口45.77；加上50现金阈值需补95.77。该路径停止后年余额和信用比率，不形成负现金资产。联合客户及融资压力的2028 CFO为1,801.00，需新增融资385.25；不是实际违约预测 | 共同底稿Q_crown_forward，六个明示情景及对应输入快照 |
+| 波动资格及核心财务风险 | 塔现金集中于租约，但剩余期限、续约和保留的非经常服务业务使low/medial资格不能直接视为成立。采用standard主路径，转型期2026/2027逐年比率均值FFO/债务9.7062%、债务/EBITDA7.0326倍；两项核心为6。补充、波动及相邻FRP5判断另列 | [Corporate Methodology](https://www.maalot.co.il/Publications/MT20250709153825.pdf) ¶112、117、120、124–125及Tables17–19；数字基础设施方法PDF77；2025年报PDF7、18–19、47、67 |
+| June窗口资金资格 | July2026–June2027未预付固定到期2,250；June同日到期另核。J/V/U/W分别为实际合格现金、合格额度、额外用途和负营运资金使用；充分流动性数量条件为J＋V≥3,287.19＋1.2U＋0.2W，还须压力、契约与定性条件。名义4,500额度和年度预测现金不能替代实际资格 | 共同底稿S_DEV_LIQ的Liquidity Descriptors ¶38–45（取得原件，原始下载URL未核）；新协议§4.02、6.10；Q_r109_crown_rating |
+| 新协议准确计量 | §6.10(a)总净杠杆通常最高7.00倍，合格收购有限窗口另核7.50倍；§6.10(b)高级担保杠杆最高3.50倍。§1.04在已确定纳入范围后要求全额本金，排除融资费降低计量；3.50不是最低利息或股东支付覆盖 | 新协议PDF49、53、118，印刷39、43、108；§6.06支付许可另核 |
+| 指定票据条件回收 | CCI母公司4.000%、March2027高级无抵押票据面值500、账面499，无子公司保证。一般BB范围无抵押cap3，适用A/B法域时回收至少30%同主体，10%至不足30%负一子级，低于10%负两子级；B+及以下重新核Group A/B的cap及上调。实际法域、可得资产及同范围债权缺失，实际回收保留null | 2025年报PDF77–78；Q1补充PDF15；[Recovery Criteria，2026-03-31](https://www.maalot.co.il/Publications/MT20260405084138.pdf) Tables1、5–6及§98；共同底稿Q_r109_crown_rating |
 
 ## 保留的原件差异及证据边界
 
@@ -41,6 +49,8 @@ python skills/annual-report-analysis/scripts/export.py output/crown-castle/workp
 - 2025Q1原报准备819，加已发生出售费用11为损失830；2026Q1却将上年准备回述为830。保留+11的版本差异，不把两种披露自动视为正式更正。
 - 公开备考中的834资产行标签与原年报不同，保留原标签和定位；不自行修改原件或把未调整行的标签差异归为交易损失。
 
-共同底稿包含381项事实、116项基础计算、84项勾稽及1组已执行的方法桥；82项勾稽在输入容差内，上述两项差异保留。S&P桥明确分列原报、方法代理、资本化现金估计及股份支付/减记敏感性，三份成果共用这些记录。
+共同底稿包含636项事实、123项基础计算、84项勾稽及3组已执行结果：历史调整桥17行、六个前瞻情景326行、条件信用形成60行。82项勾稽在输入容差内，上述两项差异保留。原报、方法代理、资本化现金、费用及融资假设分别保留，三份成果共用这些记录。SEC Companyfacts没有单一正式公布日，底稿分别记录2025申报2026-02-23、Q1申报2026-05-07与快照取得日2026-10-04，不能把取得日当报告公开日。
 
-这些估计可以支持专业判断，但不等于机构已发表的Crown指标。数字基础设施波动档先检验low全部条件，再在low不成立时检验medial，均不成立才用standard；CICRA与业务风险档位分开。尚未完成CICRA、竞争地位、前瞻财务、支持与债项形成链，不给已确认波动档或正式主体/债项级别。内部估值、实际结算、法律实体资金限制、合规证书与债项回收仍需具体证据；勾稽在容差内也不证明交易真实或报表公允。
+BRP2、standard FRP6形成bb锚点。中性资本结构、财务政策、M&G、CRA及无额外支持/国别影响条件下，充分流动性分支为BB，不足分支为BB−；相邻FRP5则分别为BB+和BB。逐项修正按进入该步的等级及方法上限处理。这是有形成过程的研究条件建议，不是机构已发表等级；June实际资金、专门M&G分类、当前主权/T&C及正式回收法域仍待核，不能默认中性已证。
+
+塔DAV的标准多天线设施代理、必要塔数和替换融资债权示例不等于实际资产清单或实际回收。内部估值、实际结算、法律实体资金限制、合规证书与回收仍需具体证据。公开审计及治理阅读没有执行内部交易或控制测试；薪酬指标版本与精度差异、服务完整性/截止证据请求分别保留。文件生成、公式缓存和原件抽查已经执行，Office原生视觉及重算验收未执行；这些检查也不证明交易真实或报表公允。

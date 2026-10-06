@@ -86,7 +86,7 @@ def prepare(w, result):
     data = w.model_dump(mode="json")
     unknown_dates = [s.id for s in w.sources if s.published is None]
     if unknown_dates:
-        data["mandate"]["limitations"].append("来源 "+", ".join(unknown_dates)+" 的正式公布日期未核验；不得据此证明在信息截止日前已公开。当前披露内容可以继续分析，历史时点结论须补充公告时间证据。")
+        data["mandate"]["limitations"].append("来源 "+", ".join(unknown_dates)+" 未列单一正式公布日期；各报告期间的公开日、快照取得日或尚待核准事项见来源记录。历史时点结论须逐项依据实际公开时间。")
     narrative_fields = {
         "findings": ("title", "question", "conclusion", "mechanism", "changes_if", "alternatives"),
         "procedures": ("purpose", "assertions", "population", "selection", "steps", "result"),
@@ -234,7 +234,7 @@ def workbook(w, data, path):
                 ws.write_formula(i-1, 6, f'=IF(COUNT(E{i},F{i})<2,"not_tested",IF(ABS(E{i})<=F{i},"within_input_tolerance","unexplained_difference"))', wrap, checks[r.id]["status"])
                 ws.write_formula(i-1, 8, f'=IF(ISNUMBER(E{i}),"","missing or unavailable input")', wrap, checks[r.id]["reason"])
         sheet("Sources", ["ID", "文件", "链接", "公布日期", "SHA256", "时间证据与限制"],
-              [[s.id, s.title, s.url, str(s.published) if s.published else "未核验", s.sha256, s.availability_note] for s in w.sources], [20, 60, 100, 20, 70, 70])
+              [[s.id, s.title, s.url, str(s.published) if s.published else "未列单一日期", s.sha256, s.availability_note] for s in w.sources], [20, 60, 100, 20, 70, 70])
         sheet("Evidence", ["ID", "来源", "定位", "观察", "可靠性与限制"],
               [[e.id, e.source, e.locator, e.observation, e.reliability] for e in w.evidence], [20, 20, 45, 90, 65])
         sheet("Findings", ["ID", "问题", "结论", "机制", "状态", "依据", "反证", "其他解释", "改变结论条件"],
@@ -672,7 +672,7 @@ def word(data, path):
         doc.add_paragraph(f"影响：{r['reason']}。责任角色：{r['owner_role']}。关闭条件：{r['close_when']}")
     doc.add_heading("来源与定位", 1)
     for s in data["sources"]:
-        doc.add_paragraph(f"[{s['id']}] {s['title']}；公布 {s['published'] or '未核验'}\n{s['url']}\n{s['availability_note']}")
+        doc.add_paragraph(f"[{s['id']}] {s['title']}；公布 {s['published'] or '未列单一日期'}\n{s['url']}\n{s['availability_note']}")
     for e in data["evidence"]:
         doc.add_paragraph(f"[{e['id']}] {e['source']} {e['locator']}。{e['observation']} {e['reliability']}")
     for border in doc.element.xpath(".//w:pPr/w:pBdr"):

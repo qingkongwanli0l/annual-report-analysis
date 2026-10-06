@@ -21,7 +21,7 @@ Explore the deliverables through real examples:
 - [Keshun issuer and convertible-bond research](examples/keshun-2025/README.md) connects original disclosures, applicable methods and factor judgments to conditional issuer and debt recommendations. Start with the [10-slide briefing](examples/keshun-2025/deliverables/research-brief.pptx).
 - [CATL 2025](examples/catl-2025/README.md) demonstrates financial research of a defined scope, with a [common workpaper](examples/catl-2025/workpaper.json) and its [Word](examples/catl-2025/deliverables/report.docx), [Excel](examples/catl-2025/deliverables/workbook.xlsx) and [PowerPoint](examples/catl-2025/deliverables/presentation.pptx) outputs.
 - [HKEX 2025](examples/hkex-2025/README.md) demonstrates fund scopes and accounting definitions in research on a Hong Kong-listed financial infrastructure company.
-- [Crown Castle 2025 and the Fiber sale](examples/crown-castle-2025/README.md) connects impairment, discontinued operations, actual closing, public pro formas and credit covenants, retaining source discrepancies and evidence gaps.
+- [Crown Castle 2025 and the Fiber sale](examples/crown-castle-2025/README.md) connects reported figures, the completed sale, forward cash and debt scenarios, and conditional issuer/debt formation in three shared-source deliverables, retaining source discrepancies and specific evidence gaps.
 - [Four A-share battery companies](examples/a-share-battery-panel/README.md) demonstrates research across companies and periods using real disclosures, with explicit model limitations.
 
 Install dependencies and export the CATL example in a writable checkout:

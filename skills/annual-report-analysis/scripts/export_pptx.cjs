@@ -84,7 +84,7 @@ async function main() {
   s.addText(`会计基础 ${d.mandate.accounting_basis}\n范围 ${d.mandate.scope}\n信息截止 ${d.mandate.cutoff}`, { x: 0.7, y: 3.5, w: 11.8, h: 1.5, fontSize: 19, color: 'C6DEDA', margin: 0 });
   s.addNotes(d.mandate.limitations.join('\n'));
   const unknownDates = d.sources.filter(source => source.published === null).map(source => source.id);
-  if (unknownDates.length) s.addText(`来源 ${unknownDates.join(', ')} 公布日期未核验。不得将当前内容分析称为历史时点可用性验证。`,
+  if (unknownDates.length) s.addText(`来源 ${unknownDates.join(', ')} 未列单一公布日期；各期公开日与可用性说明见来源记录及备注。`,
     {x:0.7,y:5.35,w:11.8,h:0.95,fontSize:16,color:'FFFFFF',margin:0,fit:'shrink'});
   if (d.presentation?.length) {
     for (const [index, item] of d.presentation.entries()) {
