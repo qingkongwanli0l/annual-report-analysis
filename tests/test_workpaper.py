@@ -195,8 +195,8 @@ class WorkpaperTests(unittest.TestCase):
         w = Workpaper.model_validate(self.data)
         data = prepare(w, evaluate(w))
         self.assertIsNone(data['sources'][0]['published'])
-        self.assertIn('公布日期未核验', data['mandate']['limitations'][-1])
-        self.assertIn('不得据此证明', data['mandate']['limitations'][-1])
+        self.assertIn('未列单一正式公布日期', data['mandate']['limitations'][-1])
+        self.assertIn('须逐项依据实际公开时间', data['mandate']['limitations'][-1])
         self.assertEqual(data['results']['reconciliations'][0]['residual'], '0')
 
     def test_unexecuted_procedure_cannot_claim_performed_without_evidence(self):
