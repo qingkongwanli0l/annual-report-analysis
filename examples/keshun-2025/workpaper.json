@@ -44,6 +44,14 @@
       "sha256": "81f75b4c75f7ea2f474099b81ae59671bc94101fe1c314def82c888b77eaa31e"
     },
     {
+      "id": "ks_a_s_23",
+      "title": "科顺防水科技股份有限公司2023年年度报告",
+      "url": "https://static.cninfo.com.cn/finalpage/2024-04-30/1219911976.PDF",
+      "published": null,
+      "availability_note": "巨潮官方完整原件；路径含2024-04-30，未独立确认首次公开日。仅补核原范围2023折旧组成，不作为时点回测输入，不替代2025同控重述。",
+      "sha256": "48eca6b2352b352087e2dfc1ce8582c08256887b62528413bee498c3f885ae9a"
+    },
+    {
       "id": "ks_a_s_q1",
       "title": "科顺防水科技股份有限公司2026年第一季度报告",
       "url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225172706.PDF",
@@ -381,6 +389,13 @@
     }
   ],
   "evidence": [
+    {
+      "id": "ks_a_e_old_ip_dep",
+      "source": "ks_a_s_23",
+      "locator": "2023年报PDF/印刷172页附注15完整投资性房地产表；199页附注66现金流补充表，单位元",
+      "observation": "投资性房地产房屋、建筑物本期计提或摊销4880204.91元；累计折旧和摊销从1220051.28至6100256.19。CF所列固定资产折旧232646650.89仅匹配固定资产计提，不含该独立类别，使用权折旧另列。保留原范围类别桥与完整DA桥，不补同控重述2023。",
+      "reliability": "发行人官方完整原件；相应完整表及表头、类别、年度列已核，未执行资产审计。"
+    },
     {
       "id": "ks_a_e_coverage",
       "source": "ks_a_s_25",
@@ -4574,7 +4589,7 @@
         "ks_a_e_is"
       ],
       "state": "reported",
-      "note": "原表行名：费用化利息；列：本期/期末"
+      "note": "原表行名：其中：利息费用；分析项目：费用化利息；列：本期/期末"
     },
     {
       "id": "ks_a_interest_exp_2024",
@@ -4597,7 +4612,7 @@
         "ks_a_e_is"
       ],
       "state": "restated",
-      "note": "原表行名：费用化利息；列：上期/期初；同控比较口径"
+      "note": "原表行名：其中：利息费用；分析项目：费用化利息；列：上期/期初；同控比较口径"
     },
     {
       "id": "ks_a_interest_income_2025",
@@ -9935,7 +9950,7 @@
         "ks_a_e_revenue"
       ],
       "state": "reported",
-      "note": "原表行名：含资本化利息支出；列：本期/期末"
+      "note": "原表行名：利息支出；分析项目：含资本化利息支出；列：本期/期末"
     },
     {
       "id": "ks_a_interest_total_2024",
@@ -9958,7 +9973,7 @@
         "ks_a_e_revenue"
       ],
       "state": "restated",
-      "note": "原表行名：含资本化利息支出；列：上期/期初；同控比较口径"
+      "note": "原表行名：利息支出；分析项目：含资本化利息支出；列：上期/期初；同控比较口径"
     },
     {
       "id": "ks_a_interest_cap_2025",
@@ -9981,7 +9996,7 @@
         "ks_a_e_revenue"
       ],
       "state": "reported",
-      "note": "原表行名：资本化利息；列：本期/期末"
+      "note": "原表行名：减：利息资本化；分析项目：资本化利息；列：本期/期末"
     },
     {
       "id": "ks_a_interest_cap_2024",
@@ -10004,7 +10019,7 @@
         "ks_a_e_revenue"
       ],
       "state": "restated",
-      "note": "原表行名：资本化利息；列：上期/期初；同控比较口径"
+      "note": "原表行名：减：利息资本化；分析项目：资本化利息；列：上期/期初；同控比较口径"
     },
     {
       "id": "ks_a_perf_fv_2025",
@@ -10119,7 +10134,7 @@
         "ks_a_e_indirect"
       ],
       "state": "reported",
-      "note": "原表行名：固定资产及投资性房地产折旧；列：本期/期末"
+      "note": "原表行名：固定资产折旧、油气资产折耗、生产性生物资产折旧；分析项目：固定资产及投资性房地产折旧；列：本期/期末；该行已含投资性房地产折旧，不重复加回。"
     },
     {
       "id": "ks_a_dep_2024",
@@ -10142,7 +10157,7 @@
         "ks_a_e_indirect"
       ],
       "state": "restated",
-      "note": "原表行名：固定资产及投资性房地产折旧；列：上期/期初；同控比较口径"
+      "note": "原表行名：固定资产折旧、油气资产折耗、生产性生物资产折旧；分析项目：固定资产及投资性房地产折旧；列：上期/期初；同控比较口径；该行已含投资性房地产折旧，不重复加回。"
     },
     {
       "id": "ks_a_dep_rou_2025",
@@ -13986,6 +14001,29 @@
       ],
       "state": "reported",
       "note": ""
+    },
+    {
+      "id": "ks_a_old_ip_depreciation_2023",
+      "label": "投资性房地产本期折旧（原口径2023）",
+      "concept": "old_ip_depreciation",
+      "value": "4880204.91",
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2024年报原披露口径，未纳入2025横琴同控追溯调整",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "evidence": [
+        "ks_a_e_old_ip_dep"
+      ],
+      "state": "reported",
+      "note": "原表行名：计提或摊销；类别：房屋、建筑物；列：本期增加金额中的计提或摊销。与原范围2023对照衔接，不是2025同控重述。"
     },
     {
       "id": "ks_a_old_amort_2023",
@@ -29599,7 +29637,7 @@
     },
     {
       "id": "ks_a_old_ebitda_2023",
-      "label": "原2023会计EBITDA",
+      "label": "原2023CF类别EBITDA桥",
       "concept": "old_ebitda",
       "op": "sum",
       "terms": [
@@ -29636,8 +29674,41 @@
         "scale": "1",
         "physical_unit": null
       },
-      "definition": "原2023会计EBITDA",
-      "interpretation": "仅按列明财务口径运算；不单独决定信用等级。",
+      "definition": "税前利润加费用化利息、CF所列固定与使用权折旧及摊销，未含投资性房地产折旧；仅原范围对照。",
+      "interpretation": "与2024/2025含投资性房地产折旧的组成不同；不用于主盈利评分，也不替代最新同控重述2023。",
+      "period_rule": "same",
+      "denominator": "positive",
+      "multiplier": "1"
+    },
+    {
+      "id": "ks_a_old_ebitda_complete_da_2023",
+      "label": "原2023完整折旧摊销EBITDA桥",
+      "concept": "old_ebitda_complete_da",
+      "op": "sum",
+      "terms": [
+        {
+          "ref": "ks_a_old_ebitda_2023",
+          "weight": "1"
+        },
+        {
+          "ref": "ks_a_old_ip_depreciation_2023",
+          "weight": "1"
+        }
+      ],
+      "context": {
+        "entity": "科顺防水科技股份有限公司",
+        "scope": "合并",
+        "start": "2023-01-01",
+        "end": "2023-12-31",
+        "aggregation": "flow",
+        "basis": "中国企业会计准则；2024年报原披露口径，未纳入2025横琴同控追溯调整",
+        "measure": "money",
+        "currency": "CNY",
+        "scale": "1",
+        "physical_unit": null
+      },
+      "definition": "原2023CF类别桥加该年独立披露的投资性房地产折旧一次；完整DA包括固定、投资性房地产、使用权折旧及无形和长期待摊摊销。",
+      "interpretation": "明确纳入投资性房地产折旧的分析口径，非机构确认值；仍为原范围对照，不替代同控重述2023或进入主盈利评分。",
       "period_rule": "same",
       "denominator": "positive",
       "multiplier": "1"
@@ -35933,14 +36004,16 @@
       "title": "三年比较与同控重述",
       "question": "历史趋势是否同口径？",
       "conclusion": "同控收购使重述摘要与原报表不同。重述收入依次为{{ks_a_revenue_2023_restate}}、{{ks_a_revenue_2024}}、{{ks_a_revenue_2025}}；重述扣非持续为负。完整重述历史负债、利息和折旧仍缺，原口径对照不混入同口径评级输入。",
-      "mechanism": "横琴的金融资产与融资现金影响权益、利润、现金；丰泽失控后恢复控制和保理出表亦影响跨年可比性。",
+      "mechanism": "横琴的金融资产与融资现金影响权益、利润、现金；丰泽失控后恢复控制和保理出表亦影响跨年可比性。 原2023CF类别桥{{ks_a_old_ebitda_2023}}未含独立披露的投资性房地产折旧{{ks_a_old_ip_depreciation_2023}}，完整DA桥为{{ks_a_old_ebitda_complete_da_2023}}。两者均保留原范围，不补最新同控三年盈利输入；2024/2025的CF折旧行已含该项，不再重复加回。",
       "status": "conditional",
       "evidence": [
         "ks_a_e_summary",
         "ks_a_e_old",
         "ks_a_e_invest",
         "ks_a_missing_totaldebt_2023",
-        "ks_a_missing_interest_total_2023"
+        "ks_a_missing_interest_total_2023",
+        "ks_a_e_old_ip_dep",
+        "ks_a_old_ebitda_complete_da_2023"
       ],
       "counterevidence": [],
       "alternatives": [
